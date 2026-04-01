@@ -6,19 +6,20 @@
 }
 
 :root {
-  --color-bg: #faf8f5;
-  --color-surface: #ffffff;
-  --color-beige: #f0ebe3;
-  --color-beige-dark: #e0d8cc;
-  --color-accent: #8b7355;
-  --color-accent-light: #a08b6e;
-  --color-text: #3a3530;
-  --color-text-muted: #7a7068;
-  --color-border: #ddd6cc;
+  --color-bg: #ede6d8;
+  --color-surface: #f7f4ef;
+  --color-beige: #e8ddd0;
+  --color-beige-dark: #d8cabа;
+  --color-accent: #9e7c4a;
+  --color-accent-light: #b8965a;
+  --color-text: #1e1a14;
+  --color-text-muted: #6b6050;
+  --color-border: #cdbea8;
   --font-main: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+  --font-serif: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
   --max-width: 860px;
   --radius: 6px;
-  --shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  --shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
 }
 
 html {
@@ -27,10 +28,12 @@ html {
 
 body {
   font-family: var(--font-main);
-  background-color: var(--color-bg);
+  background: linear-gradient(160deg, #ede6d8 0%, #d8c9b4 55%, #c9b89a 100%);
+  background-attachment: fixed;
   color: var(--color-text);
   line-height: 1.75;
   font-size: 15px;
+  min-height: 100vh;
 }
 
 a {
@@ -52,26 +55,48 @@ a:hover {
 
 /* ===== Header ===== */
 .site-header {
-  background-color: var(--color-surface);
+  background: linear-gradient(90deg, #f2ebe0 0%, #e8ddd0 100%);
   border-bottom: 1px solid var(--color-border);
-  padding: 40px 0 32px;
+  padding: 20px 0;
+}
+
+/* ホームページ専用ヘッダー：名前なし、透過フローティング */
+.site-header-home {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+  padding: 18px 32px;
+  background: transparent;
+  border: none;
 }
 
 .header-inner {
-  position: relative;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.header-titles {
-  text-align: center;
+.site-logo {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.site-logo:hover {
+  color: var(--color-accent);
+  text-decoration: none;
 }
 
 /* 言語切り替えボタン */
 .lang-switcher {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
   display: flex;
   gap: 4px;
   align-items: center;
@@ -144,7 +169,7 @@ a:hover {
 
 /* ===== Nav ===== */
 .site-nav {
-  background-color: var(--color-beige);
+  background: linear-gradient(90deg, #e0d5c4 0%, #d4c8b4 100%);
   border-bottom: 1px solid var(--color-beige-dark);
   position: sticky;
   top: 0;
@@ -173,6 +198,11 @@ a:hover {
   text-decoration: none;
 }
 
+.site-nav a[aria-current="page"] {
+  color: var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
+}
+
 /* ===== Sections ===== */
 main {
   padding: 48px 24px 64px;
@@ -188,71 +218,139 @@ main {
 }
 
 .section-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--color-accent);
-  border-left: 4px solid var(--color-accent);
-  padding-left: 12px;
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: var(--color-text);
+  border-left: 3px solid var(--color-accent);
+  padding-left: 14px;
   margin-bottom: 24px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
 }
 
 /* ===== Profile ===== */
-.profile-grid {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 32px;
-  align-items: start;
+.profile-section {
+  padding: 0;
+  overflow: hidden;
 }
 
-.photo-placeholder {
-  width: 140px;
-  height: 140px;
-  background-color: var(--color-beige);
-  border: 1px solid var(--color-border);
-  border-radius: 4px;
+.profile-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+}
+
+.profile-photo-col {
+  background: linear-gradient(160deg, var(--color-beige-dark) 0%, #c8b898 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-text-muted);
-  font-size: 0.85rem;
+  padding: 40px 24px;
 }
 
 .profile-img {
-  width: 140px;
-  height: 140px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
-  border-radius: 4px;
-  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  border: 3px solid var(--color-accent-light);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
   display: block;
 }
 
-.profile-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 16px;
-  font-size: 0.9rem;
+.profile-info-col {
+  padding: 36px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.profile-table th,
-.profile-table td {
-  padding: 7px 12px;
+.profile-name-block {
+  border-left: 2px solid var(--color-accent-light);
+  padding-left: 18px;
+}
+
+.profile-name-ja {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--color-text);
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.profile-name-sub {
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+}
+
+.profile-dl {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.profile-dl-row {
+  display: flex;
+  gap: 0;
+  font-size: 0.875rem;
   border-bottom: 1px solid var(--color-beige);
-  text-align: left;
-  vertical-align: top;
+  padding: 9px 0;
 }
 
-.profile-table th {
-  width: 90px;
+.profile-dl-row:first-child {
+  border-top: 1px solid var(--color-beige);
+}
+
+.profile-dl-row dt {
+  width: 80px;
+  flex-shrink: 0;
   color: var(--color-text-muted);
   font-weight: 600;
-  white-space: nowrap;
+  letter-spacing: 0.03em;
 }
 
-.bio {
-  font-size: 0.9rem;
+.profile-dl-row dd {
+  color: var(--color-text);
+  margin: 0;
+}
+
+.profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.profile-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  font-size: 0.8rem;
   color: var(--color-text-muted);
-  line-height: 1.8;
+  background: var(--color-bg);
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  text-decoration: none;
+}
+
+.profile-link-btn span {
+  font-weight: 700;
+  color: var(--color-accent);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.profile-link-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: var(--color-beige);
+  text-decoration: none;
 }
 
 /* ===== Keywords ===== */
@@ -264,14 +362,20 @@ main {
 }
 
 .keyword-tag {
-  background-color: var(--color-beige);
-  border: 1px solid var(--color-beige-dark);
+  background-color: transparent;
+  border: 1px solid var(--color-accent);
   color: var(--color-accent);
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 600;
-  padding: 6px 16px;
+  padding: 5px 16px;
   border-radius: 20px;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.keyword-tag:hover {
+  background-color: var(--color-accent);
+  color: var(--color-surface);
 }
 
 /* ===== Publications ===== */
@@ -284,13 +388,14 @@ main {
 }
 
 .pub-category-title {
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
   color: var(--color-text-muted);
   border-bottom: 1px solid var(--color-border);
   padding-bottom: 6px;
   margin-bottom: 14px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
 }
 
 .pub-list {
@@ -315,6 +420,78 @@ main {
 
 .pub-venue {
   color: var(--color-text-muted);
+}
+
+/* ===== View All Link ===== */
+.view-all-wrap {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.view-all-link {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-accent-light);
+  padding-bottom: 1px;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.view-all-link:hover {
+  color: var(--color-accent-light);
+  border-color: var(--color-accent-light);
+  text-decoration: none;
+}
+
+/* ===== Cyrillic Section ===== */
+.cyrillic-section {
+  background-color: #ffefef !important;
+  padding: 16px 20px;
+}
+
+/* ===== Teaching ===== */
+.teaching-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.teaching-item {
+  background-color: var(--color-beige);
+  border: 1px solid var(--color-beige-dark);
+  border-radius: var(--radius);
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+/* ===== Research Projects ===== */
+.project-list {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project-item {
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.project-title {
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 2px;
+}
+
+.project-detail {
+  color: var(--color-text-muted);
+  margin: 0;
+  font-size: 0.85rem;
 }
 
 /* ===== Publication Labels ===== */
@@ -342,12 +519,263 @@ main {
 
 /* ===== Footer ===== */
 .site-footer {
-  background-color: var(--color-beige);
+  background: linear-gradient(90deg, #ddd2bf 0%, #d0c4ae 100%);
   border-top: 1px solid var(--color-beige-dark);
   text-align: center;
   padding: 24px 0;
   font-size: 0.8rem;
   color: var(--color-text-muted);
+}
+
+/* ===== Custom Cursor (Home Page) ===== */
+body.page-home,
+body.page-home * {
+  cursor: none !important;
+}
+
+.cursor-dot {
+  position: fixed;
+  width: 5px;
+  height: 5px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  left: -100px;
+  top: -100px;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-ring {
+  position: fixed;
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid var(--color-accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  left: -100px;
+  top: -100px;
+  transform: translate(-50%, -50%);
+  opacity: 0.55;
+  transition: width 0.18s ease, height 0.18s ease, opacity 0.18s ease;
+}
+
+/* ===== Home Page Layout ===== */
+.home-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== Home Profile (2-column: left=photo+network / right=info) ===== */
+.home-profile {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  max-width: 860px;
+  width: 100%;
+  min-height: 480px;
+}
+
+/* 左カラム：プロフィールアイコン＋ネットワーク図 */
+.profile-left {
+  position: relative;
+  width: 50%;
+  min-height: 480px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile-left .hero-img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid rgba(158, 124, 74, 0.40);
+  box-shadow: 0 10px 36px rgba(0,0,0,0.12);
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+/* 右カラム：テキスト情報 */
+.profile-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 48px 40px 48px 36px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-name {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: var(--color-text);
+  letter-spacing: 0.10em;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero-affil {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.10em;
+  margin-bottom: 4px;
+}
+
+.hero-pos {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.09em;
+  margin-bottom: 32px;
+}
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.hero-link {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  padding: 2px 0 4px;
+  transition: color 0.2s, border-color 0.2s;
+  text-decoration: none;
+}
+
+.hero-link:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  text-decoration: none;
+}
+
+/* ===== Network Cyrillic Visualization ===== */
+.network-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.network-node {
+  position: absolute;
+  cursor: grab;
+  z-index: 1;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* ヒットエリアを視覚サイズより広げる透明な拡張領域 */
+.network-node::before {
+  content: '';
+  position: absolute;
+  inset: -14px;
+}
+
+/* ホバー・ドラッグ時は profile-content (z-index:2) より前面に */
+.network-node:hover,
+.network-node.dragging {
+  z-index: 5;
+}
+
+.network-node-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  opacity: 0.50;
+  pointer-events: none;
+  transition: opacity 0.22s ease, filter 0.22s ease;
+  -webkit-user-drag: none;
+}
+
+.network-node:hover .network-node-img,
+.network-node.dragging .network-node-img {
+  opacity: 0.92;
+  filter: drop-shadow(0 2px 10px rgba(158, 124, 74, 0.40));
+}
+
+/* ホバー時：切り取り画像全体を表示するツールチップ */
+.char-tooltip {
+  position: fixed;
+  display: none;
+  z-index: 9999;
+  background: rgba(247, 244, 239, 0.97);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
+  pointer-events: none;
+}
+
+.char-tooltip img {
+  display: block;
+  max-width: 240px;
+  max-height: 200px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+/* ===== Home Bottom Nav ===== */
+.home-bottom-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  padding: 0 32px 100px;
+  width: 100%;
+  max-width: 640px;
+}
+
+.bottom-nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 40px 16px 28px;
+  text-decoration: none;
+  color: var(--color-text-muted);
+  transition: color 0.25s;
+}
+
+.bottom-nav-label {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+}
+
+.bottom-nav-bar {
+  display: block;
+  width: 20px;
+  height: 1px;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+.bottom-nav-item:hover {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.bottom-nav-item:hover .bottom-nav-bar {
+  width: 56px;
 }
 
 /* ===== Responsive ===== */
@@ -356,17 +784,8 @@ main {
     font-size: 1.5rem;
   }
 
-  /* スマホではタイトルを上、言語ボタンを下に縦並び */
-  .header-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .lang-switcher {
-    position: static;
-    transform: none;
+  .site-logo {
+    font-size: 0.95rem;
   }
 
   .site-nav ul {
@@ -390,18 +809,49 @@ main {
     margin-bottom: 16px;
   }
 
-  .profile-grid {
+  .profile-card {
     grid-template-columns: 1fr;
-    gap: 20px;
   }
 
-  .photo-placeholder,
+  .profile-photo-col {
+    padding: 32px 24px 24px;
+  }
+
   .profile-img {
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
   }
 
-  .profile-table th {
-    width: 72px;
+  .profile-info-col {
+    padding: 24px 20px;
+  }
+
+  .profile-name-ja {
+    font-size: 1.4rem;
+  }
+
+  /* ホームプロフィール：モバイルは縦積み */
+  .home-profile {
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .profile-left {
+    width: 100%;
+    min-height: 320px;
+  }
+
+  .profile-right {
+    align-items: center;
+    text-align: center;
+    padding: 32px 24px 40px;
+  }
+
+  .hero-links {
+    justify-content: center;
+  }
+
+  .hero-name {
+    font-size: 1.9rem;
   }
 }
