@@ -6,9 +6,9 @@
 }
 
 :root {
-  --color-bg: #ede6d8;
+  --color-bg: #ded7c9;
   --color-surface: #f7f4ef;
-  --color-beige: #e8ddd0;
+  --color-beige: #d9cec1;
   --color-beige-dark: #d8cabа;
   --color-accent: #9e7c4a;
   --color-accent-light: #b8965a;
@@ -28,7 +28,7 @@ html {
 
 body {
   font-family: var(--font-main);
-  background: linear-gradient(160deg, #ede6d8 0%, #d8c9b4 55%, #c9b89a 100%);
+  background: linear-gradient(160deg, #ded7c9 0%, #c9b8a2 55%, #b8a485 100%);
   background-attachment: fixed;
   color: var(--color-text);
   line-height: 1.75;
@@ -519,7 +519,7 @@ main {
 
 /* ===== Footer ===== */
 .site-footer {
-  background: linear-gradient(90deg, #ddd2bf 0%, #d0c4ae 100%);
+  background: linear-gradient(90deg, #cec3b0 0%, #c1b59f 100%);
   border-top: 1px solid var(--color-beige-dark);
   text-align: center;
   padding: 24px 0;
