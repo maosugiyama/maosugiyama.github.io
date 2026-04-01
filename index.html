@@ -321,6 +321,9 @@
             el.style.cursor = 'grab';
             document.removeEventListener('mousemove', onMove);
             document.removeEventListener('mouseup',   onUp);
+            // ドラッグ後に再加熱して周囲を落ち着かせる
+            alpha = 0.4;
+            if (!rafId) rafId = requestAnimationFrame(tick);
           }
           document.addEventListener('mousemove', onMove);
           document.addEventListener('mouseup',   onUp);
@@ -337,39 +340,53 @@
         }
       }
 
-      // フォースシミュレーション
+      // フォースシミュレーション（alpha decay で自然に静止）
+      let alpha = 1.0;
+      let rafId = null;
+
+      function drawEdges() {
+        ctx.clearRect(0, 0, W, H);
+        ctx.strokeStyle = 'rgba(158,124,74,0.20)';
+        ctx.lineWidth = 0.8;
+        for (const [i, j] of edges) {
+          ctx.beginPath();
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.stroke();
+        }
+      }
+
       function tick() {
         const cx = W * 0.5, cy = H * 0.5;
-        // 理想リング半径：プロフィールコンテンツの周囲に配置
-        const ringR    = Math.min(W, H) * 0.38;
+        const ringR     = Math.min(W, H) * 0.38;
         const repulsion = 3200, spring = 0.022, restLen = 105;
         const ringK = 0.0018, damp = 0.82;
+
+        // 毎フレーム冷却（alpha が十分小さくなったら停止）
+        alpha *= 0.96;
 
         for (let i = 0; i < N; i++) {
           const a = nodes[i];
           if (a.pinned) continue;
 
-          // リング引力：理想距離 ringR に引き寄せる
           const dx0 = a.x - cx, dy0 = a.y - cy;
           const dist0 = Math.sqrt(dx0 * dx0 + dy0 * dy0) || 1;
-          const pull = (dist0 - ringR) * ringK;
+          const pull = (dist0 - ringR) * ringK * alpha;
           a.vx -= (dx0 / dist0) * pull;
           a.vy -= (dy0 / dist0) * pull;
 
-          // 中央エリアへの強い反発（profile-content の下に潜り込まない）
           if (dist0 < ringR * 0.55) {
-            const cf = 5500 / (dist0 * dist0 + 1);
+            const cf = 5500 * alpha / (dist0 * dist0 + 1);
             a.vx += (dx0 / dist0) * cf;
             a.vy += (dy0 / dist0) * cf;
           }
 
-          // ノード間反発
           for (let j = i + 1; j < N; j++) {
             const b = nodes[j];
             const dx = a.x - b.x, dy = a.y - b.y;
             const d2 = dx * dx + dy * dy + 1;
             const d  = Math.sqrt(d2);
-            const f  = repulsion / d2;
+            const f  = repulsion * alpha / d2;
             const fx = (dx / d) * f, fy = (dy / d) * f;
             a.vx += fx; a.vy += fy;
             if (!b.pinned) { b.vx -= fx; b.vy -= fy; }
@@ -380,7 +397,7 @@
           const a = nodes[i], b = nodes[j];
           const dx = b.x - a.x, dy = b.y - a.y;
           const d  = Math.sqrt(dx * dx + dy * dy) || 1;
-          const f  = (d - restLen) * spring;
+          const f  = (d - restLen) * spring * alpha;
           const fx = (dx / d) * f, fy = (dy / d) * f;
           if (!a.pinned) { a.vx += fx; a.vy += fy; }
           if (!b.pinned) { b.vx -= fx; b.vy -= fy; }
@@ -396,19 +413,15 @@
           n.el.style.top  = (n.y - n.h / 2) + 'px';
         }
 
-        // エッジ描画
-        ctx.clearRect(0, 0, W, H);
-        ctx.strokeStyle = 'rgba(158,124,74,0.20)';
-        ctx.lineWidth = 0.8;
-        for (const [i, j] of edges) {
-          ctx.beginPath();
-          ctx.moveTo(nodes[i].x, nodes[i].y);
-          ctx.lineTo(nodes[j].x, nodes[j].y);
-          ctx.stroke();
+        drawEdges();
+
+        if (alpha > 0.001) {
+          rafId = requestAnimationFrame(tick);
+        } else {
+          rafId = null; // 静止：ループ停止
         }
-        requestAnimationFrame(tick);
       }
-      tick();
+      rafId = requestAnimationFrame(tick);
     })();
   </script>
 </body>
