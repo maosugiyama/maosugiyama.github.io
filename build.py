@@ -116,6 +116,7 @@ T = {
         "th_spec": "専門分野",
         "td_spec": specialties_ja,
         "th_rm": "researchmap",
+        "th_web": "Web",
         "cat_papers": f"論文（{len(papers)} 件）",
         "cat_books": f"著書・訳書（{len(books)} 件）",
         "cat_pres": f"発表（{len(presentations)} 件）",
@@ -141,6 +142,7 @@ T = {
         "th_spec": "Specialties",
         "td_spec": specialties_en,
         "th_rm": "researchmap",
+        "th_web": "Web",
         "cat_papers": f"Papers ({len(papers)})",
         "cat_books": f"Books &amp; Translations ({len(books)})",
         "cat_pres": f"Presentations ({len(presentations)})",
@@ -166,6 +168,7 @@ T = {
         "th_spec": "Специализация",
         "td_spec": specialties_ja,
         "th_rm": "researchmap",
+        "th_web": "Web",
         "cat_papers": f"Статьи ({len(papers)})",
         "cat_books": f"Книги и переводы ({len(books)})",
         "cat_pres": f"Доклады ({len(presentations)})",
@@ -245,6 +248,10 @@ html = f"""<!DOCTYPE html>
             <tr>
               <th data-i18n="th_spec">専門分野</th>
               <td data-i18n="td_spec">{e(specialties_ja)}</td>
+            </tr>
+            <tr>
+              <th data-i18n="th_web">Web</th>
+              <td><a href="https://maosugiyama.github.io" target="_blank" rel="noopener">maosugiyama.github.io</a></td>
             </tr>
             <tr>
               <th data-i18n="th_rm">researchmap</th>
