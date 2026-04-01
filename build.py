@@ -210,6 +210,11 @@ html = f"""<!DOCTYPE html>
         <button class="lang-btn" data-lang="ru">RU</button>
       </div>
     </div>
+    <div class="header-pdf-wrap">
+      <div class="cyrillic-chars">
+        {"".join(f'<img src="image/chars/{i:02d}.png" alt="" class="cyrillic-char">' for i in range(1, 34))}
+      </div>
+    </div>
   </header>
 
   <nav class="site-nav">
