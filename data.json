@@ -1,0 +1,145 @@
+{
+  "source": "https://researchmap.jp/mao-lang",
+  "name": {
+    "ja": "杉山 真央",
+    "en": "Mao Sugiyama"
+  },
+  "affiliation": "名古屋外国語大学 外国語専任講師",
+  "research_keywords": [
+    "ディアスポラ",
+    "演説スタイル",
+    "メディア",
+    "ロシア大統領",
+    "ロシア",
+    "テキストマイニング",
+    "文体論",
+    "社会言語学",
+    "政治ディスコース",
+    "言語文化"
+  ],
+  "papers": [
+    {
+      "title": "スターリン演説の影響力 ―聴衆の感情誘導 1941年 の事例より―",
+      "authors": "杉山真央",
+      "publication_info": "ハルビン・ウラジオス トクを語る会『セーヴ ェル』 (40) 74-90 2024年7月",
+      "labels": [
+        "筆頭著者"
+      ]
+    },
+    {
+      "title": "The Role of Words in the Program “Direct Line with Vladimir Putin”",
+      "authors": "Sugiyama Mao",
+      "publication_info": "2018 25-34 2019年5月31日",
+      "labels": []
+    },
+    {
+      "title": "ロシア年次教書演説における「問題」の表象 ―3単語のコロケーション分析 ―",
+      "authors": "杉山 真央",
+      "publication_info": "コーパスと文体論のインタフェース2018 - 15-27 2019年",
+      "labels": [
+        "査読有り"
+      ]
+    },
+    {
+      "title": "Strategic Expressions of Journalists about the Annual Message of the Russian Presidents to the Federal Assembly : In comparison with the Headlines in Printed Newspapers",
+      "authors": "Sugiyama Mao",
+      "publication_info": "2017 5-17 2018年5月30日",
+      "labels": []
+    },
+    {
+      "title": "How did the Russian Press Report Russia's First President : Comparing the Key Words between Yeltsin's addresses and the Press",
+      "authors": "Сугияма Мао",
+      "publication_info": "2017 31-50 2018年5月30日",
+      "labels": []
+    },
+    {
+      "title": "雑誌『ルベージ』に見られるЯпония(ヤポーニヤ)とНиппон(ニッポン)の呼称変化について",
+      "authors": "杉山 真央",
+      "publication_info": "Север (33) 66-79 2017年3月",
+      "labels": [
+        "査読有り"
+      ]
+    },
+    {
+      "title": "米国一般教書演説からみる米国大統領の視点 : 対外的政策から国内政策へ—U.S. Presidential perspectives through the State of the Union Address : Changes from external policies to internal policies in the U.S",
+      "authors": "杉山 真央, 木山 直毅",
+      "publication_info": "大阪医科大学紀要人文研究 = Journal of Osaka Medical College, studies in the humanities (48) 1-22 2017年3月",
+      "labels": []
+    },
+    {
+      "title": "How Do Candidates Convey Their Ideas? Strategies Used by U.S. Presidential Candidates in Their Speeches",
+      "authors": "スギヤマ マオ, キヤマ ナオキ",
+      "publication_info": "(24) 1-18 2017年",
+      "labels": [
+        "査読有り"
+      ]
+    }
+  ],
+  "books": [
+    {
+      "title": "Listening Tips",
+      "authors": "新居明子, 金子理紗, 杉山真央",
+      "publication_info": "名古屋外国語大学出版会 2025年4月3日 (ISBN: 490852355X)"
+    },
+    {
+      "title": "「近代化」の反復と多様性 :「東と西」の知の考古学的解体",
+      "authors": "伊勢芳夫, 山本 起世子, マムヌール・ラハマン, 呉 素汝, 杉浦 清文, 杉山 真央 (担当:分担執筆, 範囲:ロシアの「東」と「西」)",
+      "publication_info": "溪水社 2021年6月1日 (ISBN: 4863275587)"
+    },
+    {
+      "title": "ウラジオストク 日本人居留民の歴史 1860~1937年",
+      "authors": "有宗昌子,伊賀上菜穂,五十嵐徳子, 内山ヴァルーエフ紀子,杉山真央,松本かおり, 道上真有,藤本和貴夫,山下丈夫,ヨコタ村上 孝之(五十音順) (担当:共訳)(原著:ゾーヤ・モルグン)",
+      "publication_info": "東京堂出版 2016年7月26日 (ISBN: 4490209428)"
+    }
+  ],
+  "presentations": [
+    {
+      "title": "The Structure of Homeland Metaphors in White Émigré Poetry in 1940 “Rubezh”",
+      "event_info": "International Conference on Humanity and Social Sciences 2025 2025年1月"
+    },
+    {
+      "title": "大祖国戦争の記憶の形成と感情： プーチン戦勝記念日演説にみる人称代名詞",
+      "event_info": "英語コーパス学会第50回大会 2024年10月"
+    },
+    {
+      "title": "プーチン大統領の 戦勝記念日演説にみられる “мы (we)” と “вы (you)”",
+      "event_info": "英語コーパス学会第49回大会(30周年記念大会) 2023年9月"
+    },
+    {
+      "title": "ロシア大統領のリーダー性：問題意識と責任表現の語彙使用による比較",
+      "event_info": "コーパスと文体論のインタフェース2018 2018年10月"
+    },
+    {
+      "title": "What did Journalists Mention in the Russian Press?: Comparison of Articles about Yeltsin’s Presidential Addresses to the Federal Assembly",
+      "event_info": "Japanese Association for Digital Humanities Conference 2018 2018年9月"
+    },
+    {
+      "title": "What the First President said and how journalists understood his words: Comparing the usage of key words from. Yeltsin’s presidential addresses",
+      "event_info": "International Quantitative Linguistic Conference 2018, Breslau, Poland 2018年7月"
+    },
+    {
+      "title": "How Russian presidents’ agenda has changed over the last two decades",
+      "event_info": "Österreichische Linguistiktagung 2017,Klagenfurt, Austria 2017年12月"
+    },
+    {
+      "title": "アメリカ大統領選挙候補 者の特徴 – 語彙使用に見 る候補者のキャリア",
+      "event_info": "英語コーパス学会第42 回大会 2016年10月"
+    },
+    {
+      "title": "Diachronic changes of the Russian Presidential Addresses to the Federal Assembly: From the perspective of archetype key words",
+      "event_info": "Digital Humanities Conference 2016, Krakow, Poland 2016年7月"
+    },
+    {
+      "title": "『カスペ事件』からみる 邦字・露字新聞の報道比 較 – 在満ユダヤ人の描写 について-",
+      "event_info": "ロシア東欧学会・ JSSEE2015年合同研究大 会 2015年11月"
+    },
+    {
+      "title": "Comparing Addresses of Russian Presidents in Inaugural Ceremony: A Text-mining Approach",
+      "event_info": "Japanese Association for Digital Humanities Conference 2015 2015年9月"
+    },
+    {
+      "title": "The changing appellation of “Japan” in Russian magazine “Rubesh” in Harbin",
+      "event_info": "Japanese Association for Digital Humanities Conference 2014 2014年9月"
+    }
+  ]
+}
