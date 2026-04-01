@@ -625,6 +625,11 @@ body.page-home * {
   margin-bottom: 20px;
 }
 
+html[lang="ja"] .hero-name {
+  font-size: 1.7rem;
+  letter-spacing: 0.22em;
+}
+
 .hero-affil {
   font-size: 0.82rem;
   color: var(--color-text-muted);
