@@ -354,6 +354,13 @@ main {
 }
 
 /* ===== Keywords ===== */
+.kw-hint {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin-bottom: 14px;
+  letter-spacing: 0.04em;
+}
+
 .keyword-list {
   list-style: none;
   display: flex;
@@ -370,12 +377,75 @@ main {
   padding: 5px 16px;
   border-radius: 20px;
   letter-spacing: 0.04em;
+  cursor: pointer;
   transition: background-color 0.15s, color 0.15s;
+  user-select: none;
 }
 
 .keyword-tag:hover {
   background-color: var(--color-accent);
   color: var(--color-surface);
+}
+
+.keyword-tag.active {
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+}
+
+/* ── キーワード説明パネル ── */
+.kw-panel {
+  position: relative;
+  margin-top: 24px;
+  padding: 22px 28px 22px 24px;
+  background: var(--color-surface);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  animation: kwFadeIn 0.22s ease;
+}
+
+@keyframes kwFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.kw-panel[hidden] {
+  display: none;
+}
+
+.kw-panel-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.kw-panel-close:hover {
+  color: var(--color-text);
+  background: var(--color-beige);
+}
+
+.kw-panel-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-bottom: 10px;
+  letter-spacing: 0.06em;
+}
+
+.kw-panel-body {
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: var(--color-text);
 }
 
 /* ===== Publications ===== */

@@ -37,18 +37,32 @@
 
     <section class="section">
       <h2 class="section-title" data-i18n="sec_keywords">研究キーワード</h2>
+      <p class="kw-hint">キーワードをクリックすると説明が表示されます。</p>
       <ul class="keyword-list">
-        <li class="keyword-tag">ディアスポラ</li>
-        <li class="keyword-tag">演説スタイル</li>
-        <li class="keyword-tag">メディア</li>
-        <li class="keyword-tag">ロシア大統領</li>
-        <li class="keyword-tag">ロシア</li>
-        <li class="keyword-tag">テキストマイニング</li>
-        <li class="keyword-tag">文体論</li>
-        <li class="keyword-tag">社会言語学</li>
-        <li class="keyword-tag">政治ディスコース</li>
-        <li class="keyword-tag">言語文化</li>
+        <li class="keyword-tag" data-key="ディアスポラ">ディアスポラ</li>
+        <li class="keyword-tag" data-key="ロシアのディアスポラ">ロシアのディアスポラ</li>
+        <li class="keyword-tag" data-key="白系ロシア人">白系ロシア人</li>
+        <li class="keyword-tag" data-key="白系露人事務局">白系露人事務局</li>
+        <li class="keyword-tag" data-key="満洲国">満洲国</li>
+        <li class="keyword-tag" data-key="ハルビン">ハルビン</li>
+        <li class="keyword-tag" data-key="大祖国戦争">大祖国戦争</li>
+        <li class="keyword-tag" data-key="演説スタイル">演説スタイル</li>
+        <li class="keyword-tag" data-key="政治ディスコース">政治ディスコース</li>
+        <li class="keyword-tag" data-key="テキストマイニング">テキストマイニング</li>
+        <li class="keyword-tag" data-key="文体論">文体論</li>
+        <li class="keyword-tag" data-key="社会言語学">社会言語学</li>
+        <li class="keyword-tag" data-key="言語文化">言語文化</li>
+        <li class="keyword-tag" data-key="メディア">メディア</li>
+        <li class="keyword-tag" data-key="ロシア大統領">ロシア大統領</li>
+        <li class="keyword-tag" data-key="ロシア">ロシア</li>
       </ul>
+
+      <!-- 説明パネル -->
+      <div class="kw-panel" id="kw-panel" hidden>
+        <button class="kw-panel-close" id="kw-close" aria-label="閉じる">×</button>
+        <h3 class="kw-panel-title" id="kw-title"></h3>
+        <p class="kw-panel-body" id="kw-body"></p>
+      </div>
     </section>
 
   </main>
@@ -172,6 +186,89 @@
       btn.addEventListener('click', () => setLang(btn.dataset.lang));
     });
     setLang(localStorage.getItem('lang') || 'ja');
+
+    // ── キーワード説明辞書 ──────────────────────────────────────────
+    const KW_DESC = {
+      'ディアスポラ':
+        'ディアスポラとは、母国を離れて世界各地に移住・定住したコミュニティや人々の総体を指す。ギリシャ語の「散らばる」を語源とし、歴史的にはユダヤ人の離散を指したが、現在は広く国外移住コミュニティ全般に用いられる。本研究ではロシア革命後に国外へ亡命したロシア語圏の人々を中心に考察する。',
+
+      'ロシアのディアスポラ':
+        'ロシアのディアスポラ（Russian diaspora）とは、ロシア人のグローバルコミュニティとされる。ここで言う「ロシア人」とはエスニックな意味ではなく、ロシア語が母国語である人々、たとえば、ベラルーシ人、タタール人、またユダヤ人などを指す。',
+
+      '白系ロシア人':
+        '白系ロシア人とは、1917年のロシア革命により国外へと亡命した者、反ソ意識・反共産主義的立場をとる者、またロシア帝国の支持者を指す。「白」とはボリシェヴィキ（赤軍）に対する「白軍」に由来し、革命後に中国東北部や欧州などへ拡散した。',
+
+      '白系露人事務局':
+        '白系露人事務局とは、1934年満洲国に設立され、白系ロシア人の管理・統制を目的とした機関とされる。日本の関東軍の影響下に置かれ、満洲国内のロシア系住民の登録・監視・行政窓口として機能した。',
+
+      '満洲国':
+        '満洲国とは、1932年から1945年まで存在した、日本軍により建国された国家である。現在の中国東北部に位置し、清朝最後の皇帝・溥儀を元首に据えた。多民族国家として日本人・漢族・朝鮮人・白系ロシア人などが共存し、独自の社会・文化的環境を形成した。',
+
+      'ハルビン':
+        'ハルビンとは、中国東北部（旧満洲）に位置する都市である。20世紀初頭の東清鉄道建設以降、多くのロシア人が入植し、ロシア革命後には白系ロシア人の亡命先として東アジア最大規模のロシア系コミュニティが形成された。本研究では白系ロシア人の生活・文化・アイデンティティの拠点として位置づけ分析する。',
+
+      '大祖国戦争':
+        '大祖国戦争とは、第二次世界大戦中、1941年から1945年にかけてナチス・ドイツと戦ったソビエト連邦における戦争を指す。一般に独ソ戦と称されるが、本研究ではソ連からみた戦争として「大祖国戦争」という呼称を使用する。この戦争はソ連・ロシアの国民的記憶と集合的アイデンティティに深く刻まれている。',
+
+      '演説スタイル':
+        '演説スタイルとは、政治指導者などが公的な場で行う演説の言語的・修辞的特徴の総体を指す。語彙の選択、文の構造、比喩・繰り返しなどの修辞技法、感情に訴えかける表現などの要素が含まれ、話者のイデオロギーやアイデンティティの反映として分析される。',
+
+      '政治ディスコース':
+        '政治ディスコースとは、政治的文脈において産出・流通するテキストや発話の総体を指す。権力構造・イデオロギー・アイデンティティが言語的にいかに構築・再生産されるかを批判的言説分析（CDA）などの手法で探る。',
+
+      'テキストマイニング':
+        'テキストマイニングとは、大量のテキストデータから統計的・計算論的手法を用いて有意な情報やパターンを抽出する分析手法である。語彙頻度分析・共起分析・トピックモデリングなどが含まれ、本研究では政治演説の定量的分析に応用している。',
+
+      '文体論':
+        '文体論（スタイリスティクス）とは、文学や言語における文体・スタイルを科学的に研究する学問領域である。語彙・統語・音韻・修辞などの言語的特徴を体系的に分析し、テキストの意味や効果との関連を探る。',
+
+      '社会言語学':
+        '社会言語学とは、言語と社会の関係を研究する学問領域である。言語の使用が社会的文脈・権力関係・年齢・性別・地域などの社会的要因によってどのように変化するかを分析し、言語を通じた社会構造の理解を深める。',
+
+      '言語文化':
+        '言語文化とは、言語が担う文化的意味・価値観・世界観の総体を指す。言語は単なるコミュニケーションの道具ではなく、ある共同体の歴史・思想・社会規範を体現するものとして捉えられ、言語と文化は相互に影響し合う。',
+
+      'メディア':
+        'メディアとは、情報を伝達・拡散する媒体の総称である。新聞・テレビ・ラジオなどの伝統的メディアに加え、インターネット・SNSなどのデジタルメディアも含む。本研究では、ロシアの政治的言説がいかにメディアを通じて形成・流通するかを考察する。',
+
+      'ロシア大統領':
+        'ロシア大統領とは、ロシア連邦の国家元首であり、行政権の頂点に立つ。本研究では特にウラジーミル・プーチン大統領（2000年〜）の演説・公的発言を主要な分析対象とし、その言語スタイルと政治的言説の特徴を明らかにする。',
+
+      'ロシア':
+        'ロシアとは、ユーラシア大陸に位置する世界最大の面積を持つ国家である。1991年のソビエト連邦解体後に成立したロシア連邦を指す。スラブ語派に属するロシア語を公用語とし、多民族・多言語社会を形成する。',
+    };
+
+    // ── クリックで説明パネルを開閉 ────────────────────────────────────
+    const panel  = document.getElementById('kw-panel');
+    const title  = document.getElementById('kw-title');
+    const body   = document.getElementById('kw-body');
+    const btnClose = document.getElementById('kw-close');
+
+    document.querySelectorAll('.keyword-tag[data-key]').forEach(tag => {
+      tag.addEventListener('click', () => {
+        const key  = tag.dataset.key;
+        const desc = KW_DESC[key];
+        const isActive = tag.classList.contains('active');
+
+        // 全タグのアクティブを解除
+        document.querySelectorAll('.keyword-tag').forEach(t => t.classList.remove('active'));
+
+        if (isActive) {
+          panel.hidden = true;
+        } else {
+          tag.classList.add('active');
+          title.textContent = key;
+          body.textContent  = desc || '（説明は準備中です）';
+          panel.hidden = false;
+          panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    });
+
+    btnClose.addEventListener('click', () => {
+      panel.hidden = true;
+      document.querySelectorAll('.keyword-tag').forEach(t => t.classList.remove('active'));
+    });
   </script>
 </body>
 </html>
