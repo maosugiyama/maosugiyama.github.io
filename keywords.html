@@ -257,14 +257,15 @@
   let currentLang = 'ja';
 
   function renderKeywords(lang) {
-    kwList.innerHTML = '';
-    KW_DATA.forEach(kw => {
-      const li = document.createElement('li');
-      li.className = 'keyword-tag';
-      if (kw.key === activeKey) li.classList.add('active');
+    // 既存の子要素をすべて削除
+    while (kwList.firstChild) kwList.removeChild(kwList.firstChild);
+    KW_DATA.forEach(function(kw) {
+      var li = document.createElement('li');
+      li.className = 'keyword-tag' + (kw.key === activeKey ? ' active' : '');
       li.dataset.key = kw.key;
-      li.textContent = kw[lang] ? kw[lang].name : kw.ja.name;
-      li.addEventListener('click', () => onTagClick(kw.key));
+      var entry = kw[lang] || kw['ja'];
+      li.textContent = entry.name;
+      li.addEventListener('click', function() { onTagClick(kw.key); });
       kwList.appendChild(li);
     });
     // パネルが開いていれば言語に合わせて更新
