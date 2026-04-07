@@ -51,10 +51,6 @@
         <span class="bottom-nav-label" data-i18n="nav_projects">研究課題</span>
         <span class="bottom-nav-bar"></span>
       </a>
-      <a href="materials.html" class="bottom-nav-item">
-        <span class="bottom-nav-label" data-i18n="nav_materials">教材</span>
-        <span class="bottom-nav-bar"></span>
-      </a>
     </nav>
 
   </main>
@@ -74,7 +70,6 @@
       "nav_teaching": "担当科目",
       "nav_projects": "研究課題",
       "nav_keywords": "研究キーワード",
-      "nav_materials": "教材",
       "page_title_home": "杉山 真央",
       "page_title_pubs": "業績 | 杉山 真央",
       "page_title_teaching": "担当科目 | 杉山 真央",
@@ -106,7 +101,6 @@
       "nav_teaching": "Teaching",
       "nav_projects": "Research Projects",
       "nav_keywords": "Keywords",
-      "nav_materials": "Materials",
       "page_title_home": "Mao Sugiyama",
       "page_title_pubs": "Publications | Mao Sugiyama",
       "page_title_teaching": "Teaching | Mao Sugiyama",
@@ -138,7 +132,6 @@
       "nav_teaching": "Преподавание",
       "nav_projects": "Проекты",
       "nav_keywords": "Ключевые слова",
-      "nav_materials": "Материалы",
       "page_title_home": "Мао Сугияма",
       "page_title_pubs": "Публикации | Мао Сугияма",
       "page_title_teaching": "Преподавание | Мао Сугияма",

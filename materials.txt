@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>教材 | 杉山 真央</title>
+</head>
+<body class="page-inner">
+
+  <header class="site-header">
+    <a href="index.html" class="site-logo">杉山 真央</a>
+    <nav class="site-nav">
+      <a href="keywords.html" class="nav-link">研究キーワード</a>
+      <a href="publications.html" class="nav-link">業績</a>
+      <a href="projects.html" class="nav-link">研究課題</a>
+      <a href="materials.html" class="nav-link active">教材</a>
+    </nav>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="ja">JA</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="ru">RU</button>
+    </div>
+  </header>
+
+  <main class="inner-main">
+    <h2 class="section-title">教材</h2>
+    <div class="materials-grid">
+      <a href="https://maosugiyama.github.io/classroom-tool/" target="_blank" rel="noopener" class="material-card">
+        <div class="material-card-label">2025年度</div>
+        <div class="material-card-title">AIデータ・デジタル入門〈オムニバス〉<br>第6〜9回 授業ツール</div>
+        <div class="material-card-sub">分類・要約・感情分析・AIと社会文化</div>
+        <div class="material-card-arrow">→</div>
+      </a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 杉山 真央. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <style>
+    .materials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+    .material-card {
+      display: block;
+      text-decoration: none;
+      background: #fff;
+      border: 1px solid #e0d9d0;
+      border-radius: 10px;
+      padding: 24px 24px 20px;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .material-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+    }
+    .material-card-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      color: #a09890;
+      margin-bottom: 10px;
+    }
+    .material-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #2d2925;
+      line-height: 1.55;
+      margin-bottom: 8px;
+    }
+    .material-card-sub {
+      font-size: 0.8rem;
+      color: #6b635a;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .material-card-arrow {
+      font-size: 1rem;
+      color: #9e9080;
+      text-align: right;
+    }
+  </style>
+
+  <script>
+    function setLang(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+      localStorage.setItem('lang', lang);
+    }
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => setLang(btn.dataset.lang));
+    });
+    setLang(localStorage.getItem('lang') || 'ja');
+  </script>
+</body>
+</html>
