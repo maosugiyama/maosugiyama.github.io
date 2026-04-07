@@ -5,62 +5,216 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <title>教材 | 杉山 真央</title>
+  <title data-i18n="page_title_materials">教材 | 杉山 真央</title>
+  <style>
+    body { background: #fdf8ee; }
+    .mat-header {
+      position: sticky; top: 0;
+      background: rgba(253,248,238,.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e8dfc8;
+      padding: 14px 40px;
+      display: flex; align-items: center; gap: 20px;
+      z-index: 100;
+    }
+    .mat-home-btn {
+      display: flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      border: 1.5px solid #d4c9a8;
+      background: none; cursor: pointer;
+      color: #8a7a5a; text-decoration: none;
+      transition: background .2s, color .2s;
+      flex-shrink: 0;
+    }
+    .mat-home-btn:hover { background: #8a7a5a; color: #fff; }
+    .mat-nav { display: flex; gap: 24px; flex: 1; }
+    .mat-nav a {
+      font-family: "Jost", sans-serif;
+      font-size: .75rem; letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #9e8e6a; text-decoration: none;
+      transition: color .2s;
+    }
+    .mat-nav a:hover, .mat-nav a.active { color: #4a3e28; }
+    .mat-nav a.active { border-bottom: 1.5px solid #4a3e28; padding-bottom: 1px; }
+    .mat-lang { display: flex; gap: 6px; margin-left: auto; }
+    .mat-lang button {
+      font-family: "Jost", sans-serif;
+      font-size: .7rem; letter-spacing: .1em;
+      background: none; border: 1px solid #d4c9a8;
+      border-radius: 100px; padding: 2px 9px;
+      cursor: pointer; color: #9e8e6a;
+      transition: all .2s;
+    }
+    .mat-lang button.active { background: #4a3e28; color: #fff; border-color: #4a3e28; }
+    .mat-body {
+      max-width: 860px; margin: 0 auto;
+      padding: 60px 40px 100px;
+    }
+    .mat-eyebrow {
+      font-family: "Jost", sans-serif;
+      font-size: .7rem; letter-spacing: .22em;
+      text-transform: uppercase; color: #b0a070;
+      margin-bottom: 10px;
+    }
+    .mat-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 600; color: #2d2510;
+      margin-bottom: 48px; line-height: 1.3;
+    }
+    .mat-section-label {
+      font-family: "Jost", sans-serif;
+      font-size: .68rem; letter-spacing: .2em;
+      text-transform: uppercase; color: #b0a070;
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px;
+    }
+    .mat-section-label::after {
+      content: ""; flex: 1; height: 1px; background: #e8dfc8;
+    }
+    .mat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    .mat-card {
+      display: block; text-decoration: none;
+      background: #fff;
+      border: 1px solid #e8dfc8;
+      border-top: 3px solid #c8a84a;
+      border-radius: 0 0 8px 8px;
+      padding: 22px 22px 18px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .mat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(0,0,0,.09);
+    }
+    .mat-card-year {
+      font-family: "Jost", sans-serif;
+      font-size: .68rem; letter-spacing: .18em;
+      text-transform: uppercase; color: #c8a84a;
+      margin-bottom: 10px;
+    }
+    .mat-card-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.05rem; font-weight: 600;
+      color: #2d2510; line-height: 1.55;
+      margin-bottom: 8px;
+    }
+    .mat-card-sub {
+      font-size: .8rem; color: #7a6e52;
+      line-height: 1.65; margin-bottom: 16px;
+    }
+    .mat-card-footer {
+      display: flex; justify-content: flex-end;
+      align-items: center; gap: 4px;
+      font-family: "Jost", sans-serif;
+      font-size: .72rem; color: #b0a070;
+    }
+    @media (max-width: 600px) {
+      .mat-header { padding: 12px 20px; }
+      .mat-nav { gap: 14px; }
+      .mat-nav a { font-size: .68rem; }
+      .mat-body { padding: 40px 20px 80px; }
+    }
+  </style>
 </head>
-<body class="page-inner">
-  <header class="site-header">
-    <a href="index.html" class="site-logo">杉山 真央</a>
-    <nav class="site-nav">
-      <a href="keywords.html" class="nav-link">研究キーワード</a>
-      <a href="publications.html" class="nav-link">業績</a>
-      <a href="projects.html" class="nav-link">研究課題</a>
-      <a href="materials.html" class="nav-link active">教材</a>
+<body>
+  <header class="mat-header">
+    <a href="index.html" class="mat-home-btn" aria-label="ホームへ戻る">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+    </a>
+    <nav class="mat-nav">
+      <a href="keywords.html"    data-i18n="nav_keywords">研究キーワード</a>
+      <a href="publications.html" data-i18n="nav_publications">業績</a>
+      <a href="projects.html"    data-i18n="nav_projects">研究課題</a>
+      <a href="materials.html"   data-i18n="nav_materials" class="active">教材</a>
     </nav>
-    <div class="lang-switcher">
+    <div class="mat-lang">
       <button class="lang-btn active" data-lang="ja">JA</button>
       <button class="lang-btn" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="ru">RU</button>
     </div>
   </header>
-  <main class="inner-main">
-    <h2 class="section-title">教材</h2>
-    <div class="materials-grid">
-      <a href="https://maosugiyama.github.io/classroom-tool/" target="_blank" rel="noopener" class="material-card">
-        <div class="material-card-label">2025年度</div>
-        <div class="material-card-title">AIデータ・デジタル入門〈オムニバス〉第6〜9回 授業ツール</div>
-        <div class="material-card-sub">分類・要約・感情分析・AIと社会文化</div>
-        <div class="material-card-arrow">→</div>
+
+  <div class="mat-body">
+    <p class="mat-eyebrow" data-i18n="nav_materials">教材</p>
+    <h1 class="mat-title" data-i18n="mat_heading">授業教材・ツール一覧</h1>
+
+    <p class="mat-section-label">2025</p>
+    <div class="mat-grid">
+      <a href="https://maosugiyama.github.io/classroom-tool/" target="_blank" rel="noopener" class="mat-card">
+        <div class="mat-card-year">2025年度</div>
+        <div class="mat-card-title" data-i18n="mat_card1_title">AIデータ・デジタル入門〈オムニバス〉第6〜9回 授業ツール</div>
+        <div class="mat-card-sub" data-i18n="mat_card1_sub">分類・要約・感情分析・AIと社会文化</div>
+        <div class="mat-card-footer">
+          Open
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
       </a>
     </div>
-  </main>
+  </div>
+
   <footer class="site-footer">
     <div class="container">
-      <p>&copy; 2026 杉山 真央. All rights reserved.</p>
+      <p data-i18n="footer">&copy; 2026 杉山 真央. All rights reserved.</p>
     </div>
   </footer>
-  <style>
-    .materials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 32px; }
-    .material-card { display: block; text-decoration: none; background: #fff; border: 1px solid #e0d9d0; border-radius: 10px; padding: 24px 24px 20px; transition: transform 0.2s, box-shadow 0.2s; }
-    .material-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.10); }
-    .material-card-label { font-size: 0.72rem; letter-spacing: 0.15em; color: #a09890; margin-bottom: 10px; }
-    .material-card-title { font-family: "Cormorant Garamond", serif; font-size: 1.05rem; font-weight: 600; color: #2d2925; line-height: 1.55; margin-bottom: 8px; }
-    .material-card-sub { font-size: 0.8rem; color: #6b635a; line-height: 1.6; margin-bottom: 16px; }
-    .material-card-arrow { font-size: 1rem; color: #9e9080; text-align: right; }
-  </style>
+
   <script>
-    function setLang(lang) {
-      document.documentElement.lang = lang;
-      document.querySelectorAll(".lang-btn").forEach(btn => {
-        btn.classList.toggle("active", btn.dataset.lang === lang);
-      });
-      localStorage.setItem("lang", lang);
+  const T = {
+    ja: {
+      html_lang: "ja",
+      page_title_materials: "教材 | 杉山 真央",
+      nav_keywords: "研究キーワード", nav_publications: "業績",
+      nav_projects: "研究課題", nav_materials: "教材",
+      mat_heading: "授業教材・ツール一覧",
+      mat_card1_title: "AIデータ・デジタル入門〈オムニバス〉第6〜9回 授業ツール",
+      mat_card1_sub: "分類・要約・感情分析・AIと社会文化",
+      footer: "&copy; 2026 杉山 真央. All rights reserved."
+    },
+    en: {
+      html_lang: "en",
+      page_title_materials: "Materials | Mao Sugiyama",
+      nav_keywords: "Keywords", nav_publications: "Publications",
+      nav_projects: "Research Projects", nav_materials: "Materials",
+      mat_heading: "Teaching Materials & Tools",
+      mat_card1_title: "Introduction to AI Data & Digital (Omnibus) Sessions 6–9 Classroom Tool",
+      mat_card1_sub: "Classification · Summarization · Sentiment Analysis · AI & Society",
+      footer: "&copy; 2026 Mao Sugiyama. All rights reserved."
+    },
+    ru: {
+      html_lang: "ru",
+      page_title_materials: "Материалы | Мао Сугияма",
+      nav_keywords: "Ключевые слова", nav_publications: "Публикации",
+      nav_projects: "Проекты", nav_materials: "Материалы",
+      mat_heading: "Учебные материалы и инструменты",
+      mat_card1_title: "Введение в ИИ и цифровые данные (омнибус) Занятия 6–9",
+      mat_card1_sub: "Классификация · Резюмирование · Анализ тональности",
+      footer: "&copy; 2026 Мао Сугияма. Все права защищены."
     }
-    document.querySelectorAll(".lang-btn").forEach(btn => {
-      btn.addEventListener("click", () => setLang(btn.dataset.lang));
+  };
+  function setLang(lang) {
+    const t = T[lang]; if (!t) return;
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      if (t[el.dataset.i18n] !== undefined) el.innerHTML = t[el.dataset.i18n];
     });
-    setLang(localStorage.getItem("lang") || "ja");
+    document.documentElement.lang = t.html_lang;
+    document.title = t.page_title_materials;
+    document.querySelectorAll(".lang-btn").forEach(b =>
+      b.classList.toggle("active", b.dataset.lang === lang));
+    localStorage.setItem("lang", lang);
+  }
+  document.querySelectorAll(".lang-btn").forEach(b =>
+    b.addEventListener("click", () => setLang(b.dataset.lang)));
+  setLang(localStorage.getItem("lang") || "ja");
   </script>
 </body>
 </html>
