@@ -28,7 +28,7 @@ html {
 
 body {
   font-family: var(--font-main);
-  background: linear-gradient(160deg, #faf6ef 0%, #f0e6d2 40%, #e8d8bc 100%);
+  background: linear-gradient(160deg, #fdf8f0 0%, #eedfc0 45%, #ddc49a 100%);
   background-attachment: fixed;
   color: var(--color-text);
   line-height: 1.75;
