@@ -172,6 +172,15 @@
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         </div>
       </a>
+      <a href="russian/" target="_blank" rel="noopener" class="mat-card">
+        <div class="mat-card-year">2026年度</div>
+        <div class="mat-card-title" data-i18n="mat_card3_title">ねこと学ぶ キリル文字</div>
+        <div class="mat-card-sub" data-i18n="mat_card3_sub">ねこたちと33文字のアルファベットを探検する学習アプリ</div>
+        <div class="mat-card-footer">
+          Open
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+      </a>
     </div>
 
   </div>
@@ -192,10 +201,10 @@
       mat_heading: "授業教材・ツール一覧",
       mat_card1_title: "AIデータ・デジタル入門〈オムニバス〉第6〜9回 授業ツール",
       mat_card1_sub: "分類・要約・感情分析・AIと社会文化",
-      mat_card2_title: "МОЙ СЛОВАРЬ — ロシア語単語帳",
-      mat_card2_sub: "キリル文字・語彙・筆記体練習",
       mat_card2_title: "МОЙ СЛОВАРЬ русского языка",
       mat_card2_sub: "ロシア語単語帳（筆記体練習・都市紹介コラム付き）",
+      mat_card3_title: "ねこと学ぶ キリル文字",
+      mat_card3_sub: "ねこたちと33文字のアルファベットを探検する学習アプリ",
       footer: "&copy; 2026 杉山 真央. All rights reserved."
     },
     en: {
@@ -206,41 +215,5 @@
       mat_heading: "Teaching Materials & Tools",
       mat_card1_title: "Introduction to AI Data & Digital (Omnibus) Sessions 6–9 Classroom Tool",
       mat_card1_sub: "Classification · Summarization · Sentiment Analysis · AI & Society",
-      mat_card2_title: "МОЙ СЛОВАРЬ — Russian Vocabulary Notebook",
-      mat_card2_sub: "Cyrillic · Vocabulary · Cursive Practice",
       mat_card2_title: "МОЙ СЛОВАРЬ русского языка",
-      mat_card2_sub: "Russian Vocabulary Notebook (with cursive practice & city guides)",
-      footer: "&copy; 2026 Mao Sugiyama. All rights reserved."
-    },
-    ru: {
-      html_lang: "ru",
-      page_title_materials: "Материалы | Мао Сугияма",
-      nav_keywords: "Ключевые слова", nav_publications: "Публикации",
-      nav_projects: "Проекты", nav_materials: "Материалы",
-      mat_heading: "Учебные материалы и инструменты",
-      mat_card1_title: "Введение в ИИ и цифровые данные (омнибус) Занятия 6–9",
-      mat_card1_sub: "Классификация · Резюмирование · Анализ тональности",
-      mat_card2_title: "МОЙ СЛОВАРЬ — тетрадь для слов",
-      mat_card2_sub: "Кириллица · лексика · прописи",
-      mat_card2_title: "МОЙ СЛОВАРЬ русского языка",
-      mat_card2_sub: "Словарик для изучающих русский язык (прописи и путешествие по России)",
-      footer: "&copy; 2026 Мао Сугияма. Все права защищены."
-    }
-  };
-  function setLang(lang) {
-    const t = T[lang]; if (!t) return;
-    document.querySelectorAll("[data-i18n]").forEach(el => {
-      if (t[el.dataset.i18n] !== undefined) el.innerHTML = t[el.dataset.i18n];
-    });
-    document.documentElement.lang = t.html_lang;
-    document.title = t.page_title_materials;
-    document.querySelectorAll(".lang-btn").forEach(b =>
-      b.classList.toggle("active", b.dataset.lang === lang));
-    localStorage.setItem("lang", lang);
-  }
-  document.querySelectorAll(".lang-btn").forEach(b =>
-    b.addEventListener("click", () => setLang(b.dataset.lang)));
-  setLang(localStorage.getItem("lang") || "ja");
-  </script>
-</body>
-</html>
+      mat_ca
