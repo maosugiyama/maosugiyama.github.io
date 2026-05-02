@@ -5,3 +5,4 @@ __pycache__/
 russian/index.html.bak
 russian/*.bak*
 russian/index.html.bak*
+*.bak_ga
