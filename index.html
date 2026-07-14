@@ -82,6 +82,7 @@ header{
   background:rgba(253,252,251,.78);
   padding:2.2rem 3rem 2.4rem;
   max-width:34em;
+  text-align:left;
 }
 .cover-label::before{
   content:"";position:absolute;inset:5px;
@@ -112,7 +113,7 @@ header{
   font-family:var(--serif-jp);
   font-weight:300;
   font-size:clamp(.95rem,1.9vw,1.15rem);
-  letter-spacing:.5em;text-indent:.5em;color:var(--sakura-deep);
+  letter-spacing:.5em;text-indent:0;color:var(--sakura-deep);
   margin-top:.5rem;
 }
 .hero .tagline{
@@ -800,6 +801,17 @@ footer{
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var imgs = CARDS.map(function(src){ var im = new Image(); im.src = src; return im; });
     var nodes = [], edges = [], W = 0, H = 0, DPR = 1;
+    /* hover: enlarge the cat card under the cursor */
+    var mouse = null;
+    hero.addEventListener('mousemove', function(ev){
+      var r = canvas.getBoundingClientRect();
+      mouse = { x: ev.clientX - r.left, y: ev.clientY - r.top };
+      if (reduced) requestAnimationFrame(function(){ draw(performance.now()); });
+    });
+    hero.addEventListener('mouseleave', function(){
+      mouse = null;
+      if (reduced) requestAnimationFrame(function(){ draw(performance.now()); });
+    });
 
     function rrect(x, y, w, h, r){
       ctx.beginPath();
@@ -885,6 +897,12 @@ footer{
       nodes.forEach(function(nd){
         nd.x = nd.bx + Math.sin(t * nd.sx + nd.ph) * nd.ax;
         nd.y = nd.by + Math.cos(t * nd.sy + nd.ph * 1.7) * nd.ay;
+        var target = 1;
+        if (mouse && nd.card){
+          var mdx = mouse.x - nd.x, mdy = mouse.y - nd.y;
+          if (mdx * mdx + mdy * mdy < 26 * 26) target = 1.55;
+        }
+        nd.hs = (nd.hs || 1) + (target - (nd.hs || 1)) * (reduced ? 1 : 0.18);
       });
       /* constellation threads */
       edges.forEach(function(e){
@@ -896,25 +914,27 @@ footer{
       /* nodes */
       ctx.textAlign = 'center';
       ctx.font = '300 11px "Cormorant Garamond","Noto Serif JP",serif';
-      nodes.forEach(function(nd){
+      /* draw enlarged (hovered) cards last so they sit on top */
+      nodes.slice().sort(function(a, b){ return (a.hs || 1) - (b.hs || 1); }).forEach(function(nd){
         if (nd.card){
           var im = nd.card;
           if (!im.complete || !im.naturalWidth) return;
+          var cs = card * (nd.hs || 1);
           ctx.save();
           ctx.translate(nd.x, nd.y);
           ctx.rotate(nd.rot + Math.sin(t * 0.0004 + nd.ph) * 0.05);
-          rrect(-card/2, -card/2, card, card, card * 0.22);
+          rrect(-cs/2, -cs/2, cs, cs, cs * 0.22);
           ctx.fillStyle = '#fff';
           ctx.shadowColor = 'rgba(189,127,138,0.20)';
-          ctx.shadowBlur = 8;
+          ctx.shadowBlur = 8 + ((nd.hs || 1) - 1) * 20;
           ctx.fill();
           ctx.shadowBlur = 0;
           ctx.save();
-          rrect(-card/2, -card/2, card, card, card * 0.22);
+          rrect(-cs/2, -cs/2, cs, cs, cs * 0.22);
           ctx.clip();
-          ctx.drawImage(im, -card/2, -card/2, card, card);
+          ctx.drawImage(im, -cs/2, -cs/2, cs, cs);
           ctx.restore();
-          rrect(-card/2, -card/2, card, card, card * 0.22);
+          rrect(-cs/2, -cs/2, cs, cs, cs * 0.22);
           ctx.strokeStyle = 'rgba(238,227,227,1)';
           ctx.lineWidth = 1;
           ctx.stroke();
