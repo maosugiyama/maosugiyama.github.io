@@ -2056,6 +2056,28 @@
     color: #3A2318;                     /* 金色は明るいままで、文字を濃くする */
   }
 
+
+  /* ---- 文法ハブ：レベルのしぼり込み ---- */
+  .hub-levels { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
+  .hl {
+    background: #fff; border: 1.5px solid #F0DDD7; color: #7A5040;
+    border-radius: 999px; padding: 6px 13px;
+    font-family: inherit; font-size: 11.5px; font-weight: 800; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 5px;
+  }
+  .hl em {
+    font-style: normal; font-size: 10px; font-weight: 700;
+    background: #F5EFE8; color: #7A5040; border-radius: 999px; padding: 1px 6px;
+  }
+  .hl.on { background: #A55A50; border-color: #A55A50; color: #fff; }
+  .hl.on em { background: rgba(255,255,255,0.25); color: #fff; }
+  .hl:active { transform: scale(0.98); }
+
+  /* ---- 3・4段目の扉の色 ---- */
+  .road-stage:nth-of-type(4) { --acc: #3A5578; }
+  .stair:nth-child(3) .stair-fill { background: linear-gradient(180deg, #E0B662, #96660A); }
+  .stair:nth-child(4) .stair-fill { background: linear-gradient(180deg, #8299B8, #3A5578); }
+
 </style>
 </head>
 <body>
@@ -2141,53 +2163,47 @@
         </div>
       </div>
 
-      <div class="road-stage soon" id="road-3">
+      <div class="road-stage" id="road-3">
         <div class="stage-head">
           <span class="stage-dot">3</span>
-          <span class="stage-label"><strong>中級のとびら<span class="stage-cats" id="stage-cats-3"></span></strong><span class="soon-tag">〜 建設中 〜</span></span><span class="stage-chip" id="stage-chip-3"></span>
+          <span class="stage-label"><strong>中級のとびら<span class="stage-cats" id="stage-cats-3"></span></strong><span>格変化を仕上げ、体と数を使いこなす</span></span><span class="stage-chip" id="stage-chip-3"></span>
         </div>
         <div class="stage-items">
-          <div class="soon-card">
-            <p class="soon-lead">これから少しずつ開いていく予定の扉です。<br>初級のとびらを歩いているあいだに、こちらも育てていきます。</p>
-            <ul class="soon-list">
-              <li>形容詞の格変化</li>
-              <li>複数形の格変化（くわしく）</li>
-              <li>完了体・不完了体の使い分け</li>
-              <li>運動の動詞と接頭辞（пойти́・прийти́…）</li>
-              <li>命令形・未来形</li>
-              <li>比較級・最上級</li>
-            </ul>
-            <div class="soon-preview">
-              <strong>ひと足先に読めます</strong>
-              <button onclick="openUnitFromHome(&#39;plural-cases&#39;)">複数形の格変化（入門） →</button>
-              <button onclick="openUnitFromHome(&#39;aspect&#39;)">動詞の体（アスペクト） →</button>
+          <div class="stage-meter" id="stage-meter-3"></div>
+          <button class="home-card step4" onclick="openGrammarLevel(&#39;中級&#39;)">
+            <div class="home-card-icon"><span class="lu lu-md"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span></div>
+            <div class="home-card-body">
+              <strong>中級の文法</strong>
+              <span>複数形の格変化／形容詞の格変化／数詞／体の使い分け／運動の動詞と接頭辞／命令形と未来形／比較級・最上級</span>
+              <span class="home-card-status" id="home-step4-status"></span>
             </div>
-          </div>
+            <div class="home-card-arrow">→</div>
+          </button>
         </div>
       </div>
 
-      <div class="road-stage soon" id="road-4">
+      <div class="road-stage" id="road-4">
         <div class="stage-head">
           <span class="stage-dot">4</span>
-          <span class="stage-label"><strong>上級のとびら<span class="stage-cats" id="stage-cats-4"></span></strong><span class="soon-tag">〜 建設中 〜</span></span><span class="stage-chip" id="stage-chip-4"></span>
+          <span class="stage-label"><strong>上級のとびら<span class="stage-cats" id="stage-cats-4"></span></strong><span>長い文を読み、書きことばへ</span></span><span class="stage-chip" id="stage-chip-4"></span>
         </div>
         <div class="stage-items">
-          <div class="soon-card">
-            <p class="soon-lead">ずっと先の扉ですが、行き先だけ先にお知らせしておきます。</p>
-            <ul class="soon-list">
-              <li>関係代名詞 кото́рый でつなぐ長い文</li>
-              <li>形動詞・副動詞（書きことばの世界へ）</li>
-              <li>仮定法 бы と、ていねいな言いまわし</li>
-              <li>話しことばと書きことばの違い</li>
-              <li>童話や詩を、辞書と一緒に読んでみる</li>
-            </ul>
-          </div>
+          <div class="stage-meter" id="stage-meter-4"></div>
+          <button class="home-card step5" onclick="openGrammarLevel(&#39;上級&#39;)">
+            <div class="home-card-icon"><span class="lu lu-md"><svg viewBox="0 0 24 24"><path d="M12 3l1.912 5.813a2 2 0 0 0 1.275 1.275L21 12l-5.813 1.912a2 2 0 0 0-1.275 1.275L12 21l-1.912-5.813a2 2 0 0 0-1.275-1.275L3 12l5.813-1.912a2 2 0 0 0 1.275-1.275z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg></span></div>
+            <div class="home-card-body">
+              <strong>上級の文法</strong>
+              <span>関係代名詞 кото́рый／形動詞／副動詞／仮定法 бы／話しことばと書きことば／童話や詩を読む</span>
+              <span class="home-card-status" id="home-step5-status"></span>
+            </div>
+            <div class="home-card-arrow">→</div>
+          </button>
         </div>
       </div>
 
     </div>
 
-    <p class="roadmap-note">中級・上級のとびらは準備中です。更新があればこのページに現れますので、ときどき覗きに来てください。</p>
+    <p class="roadmap-note">4つのとびらがすべて開きました。上から順に進めば、ゼロから上級の入り口までたどり着けます。焦らず、行きつ戻りつしながらどうぞ。</p>
 
     <!-- Getting started (collapsible) -->
     <div class="getting-started" id="getting-started">
@@ -5139,7 +5155,831 @@ const GRAMMAR_UNITS = [
     {type:'mc', q:'говори́ть の完了体ペアは？', opts:['проговори́ть','сказа́ть'], a:1, ex:'говори́ть — сказа́ть はまったく別の語になるペアの代表例です。'}
   ]
 }
+,
 
+// ============ 中級 ============
+{
+  id:'plural-cases-full', cat:'case', level:'中級', title:'複数形の格変化（くわしく）', sub:'6つの格を、複数形でも使いこなす',
+  lesson:`
+  <p>単数の格に慣れたら、次は複数です。<b>与格・造格・前置格は性に関係なく同じ語尾</b>なので、覚えることは思ったより多くありません。
+  難所は<b>生格</b>だけです。</p>
+
+  <div class="verb-row">
+    <strong>кни́га（女性）の複数変化</strong>
+    <div class="conj-table">
+      <span class="pron">主格</span><span class="form">кни́ги</span>
+      <span class="pron">生格</span><span class="form">книг　←語尾が消える</span>
+      <span class="pron">与格</span><span class="form">кни́гам</span>
+      <span class="pron">対格</span><span class="form">кни́ги</span>
+      <span class="pron">造格</span><span class="form">кни́гами</span>
+      <span class="pron">前置格</span><span class="form">о кни́гах</span>
+    </div>
+  </div>
+
+  <div class="verb-row">
+    <strong>оре́х（男性）／зе́ркало（中性）の複数変化</strong>
+    <div class="conj-table">
+      <span class="pron">主格</span><span class="form">оре́хи ／ зеркала́</span>
+      <span class="pron">生格</span><span class="form">оре́хов ／ зерка́л</span>
+      <span class="pron">与格</span><span class="form">оре́хам ／ зеркала́м</span>
+      <span class="pron">対格</span><span class="form">оре́хи ／ зеркала́</span>
+      <span class="pron">造格</span><span class="form">оре́хами ／ зеркала́ми</span>
+      <span class="pron">前置格</span><span class="form">об оре́хах ／ о зеркала́х</span>
+    </div>
+    <p style="font-size:11px;color:#7A5040;">※ 母音の前では о → <b>об</b>（об оре́хах）。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>覚えるのは、この3つだけ</strong>
+    <p>与格 <b>-ам / -ям</b>　／　造格 <b>-ами / -ями</b>　／　前置格 <b>-ах / -ях</b></p>
+    <p>性も、もとの語尾も関係ありません。軟らかい語幹（-я, -ь, -е）なら я のほうを使います。</p>
+    <p>• пусты́ня → пусты́ням / пусты́нями / о пусты́нях</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>最大の難所：複数生格</strong>
+    <p>• 男性（子音）→ <b>-ов</b>：оре́х → оре́х<b>ов</b>／флаг → фла́г<b>ов</b></p>
+    <p>• 男性（-й）→ <b>-ев</b>：попуга́й → попуга́<b>ев</b></p>
+    <p>• 男性（-ь, ж, ш, ч, щ）→ <b>-ей</b>：тюле́нь → тюле́н<b>ей</b>／врач → врач<b>е́й</b></p>
+    <p>• 女性 -а → <b>語尾ゼロ</b>：кни́га → книг／лиса́ → лис</p>
+    <p>• 中性 -о → <b>語尾ゼロ</b>：зе́ркало → зерка́л／я́блоко → я́блок</p>
+    <p>• 中性 -е → <b>-ей</b>：мо́ре → море́й</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>語尾ゼロのときに現れる「出没母音」</strong>
+    <p>子音が2つ重なると発音しにくいので、<b>о か е が割り込みます</b>。</p>
+    <p>• ша́пка → ша́п<b>о</b>к　• ши́шка → ши́ш<b>е</b>к　• окно́ → о́к<b>о</b>н　• де́вушка → де́вуш<b>е</b>к</p>
+  </div>
+
+  <div class="case-row">
+    <strong>複数の対格も「動物性」で決まります</strong>
+    <p>• もの：Я чита́ю <b>кни́ги</b>.（主格と同じ）</p>
+    <p>• 生きもの：Я ви́жу <b>лис</b>.（生格と同じ）／Я ви́жу <b>студе́нтов</b>.</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>よく使う不規則な複数形</strong>
+    <div class="conj-table">
+      <span class="pron">друг（友）</span><span class="form">друзья́ / друзе́й / друзья́м / с друзья́ми</span>
+      <span class="pron">брат（兄弟）</span><span class="form">бра́тья / бра́тьев / бра́тьям</span>
+      <span class="pron">ребёнок（子）</span><span class="form">де́ти / дете́й / де́тям / с детьми́ / о де́тях</span>
+      <span class="pron">челове́к（人）</span><span class="form">лю́ди / люде́й / лю́дям / с людьми́ / о лю́дях</span>
+    </div>
+    <p style="font-size:11px;color:#7A5040;">детьми́ と людьми́ だけ造格が特別です（-ами ではありません）。</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'「たくさんの本」＝ мно́го （　）', opts:['кни́ги','книг','кни́гам'], a:1, ex:'мно́го の後は複数生格。女性名詞 -а は語尾が消えて книг。'},
+    {type:'mc', q:'「くるみについて」＝ （　） оре́хах', say:'об оре́хах', opts:['о','об','на'], a:1, ex:'母音で始まる語の前では о → об。об оре́хах。'},
+    {type:'mc', q:'複数の与格・造格・前置格について正しいのは？', opts:['性ごとに語尾が違う','性に関係なく -ам / -ами / -ах'], a:1, ex:'複数では性の区別が消えます。ここは単数より簡単です。'},
+    {type:'mc', q:'ша́пка（帽子）の複数生格は？', opts:['ша́пк','ша́пок','ша́пков'], a:1, ex:'語尾がゼロになると子音が重なるため、о が割り込んで ша́пок。'},
+    {type:'mc', q:'「友だちと一緒に」＝ с （　）', say:'с друзья́ми', opts:['дру́гами','друзья́ми','друзе́й'], a:1, ex:'друг の複数は друзья́。造格は друзья́ми。'},
+    {type:'mc', q:'「子どもたちと」＝ с （　）', say:'с детьми́', opts:['де́тями','детьми́','дете́й'], a:1, ex:'де́ти の造格は特別な形 детьми́。людьми́ も同じ仲間です。'},
+    {type:'mc', q:'Я ви́жу （　）.（キツネたちが見える）', opts:['ли́сы','лис','ли́сам'], a:1, ex:'生きものの複数対格は、複数生格と同じ形。лиса́ → лис。'},
+    {type:'input', q:'оре́х の複数生格を綴ってください（пять のあとの形）', a:'орехов', hint:'男性・子音で終わる語は -ов', ex:'оре́хов。пять оре́хов（5個のくるみ）。'}
+  ]
+},
+
+{
+  id:'adj-cases', cat:'adj', level:'中級', title:'形容詞の格変化', sub:'名詞と一緒に、形容詞も形を変える',
+  lesson:`
+  <p>名詞が格変化するとき、<b>その名詞にかかる形容詞も同じ格に変わります</b>。
+  語尾のパターンは3つ（硬変化・軟変化・混合）だけです。</p>
+
+  <div class="verb-row">
+    <strong>но́вый（新しい）— 硬変化の基本形</strong>
+    <div class="conj-table">
+      <span class="pron">　</span><span class="form">男性 ／ 中性 ／ 女性 ／ 複数</span>
+      <span class="pron">主格</span><span class="form">но́вый / но́вое / но́вая / но́вые</span>
+      <span class="pron">生格</span><span class="form">но́вого / но́вого / но́вой / но́вых</span>
+      <span class="pron">与格</span><span class="form">но́вому / но́вому / но́вой / но́вым</span>
+      <span class="pron">対格</span><span class="form">主格か生格と同じ / но́вое / но́вую / 主格か生格と同じ</span>
+      <span class="pron">造格</span><span class="form">но́вым / но́вым / но́вой / но́выми</span>
+      <span class="pron">前置格</span><span class="form">о но́вом / о но́вом / о но́вой / о но́вых</span>
+    </div>
+    <p style="font-size:11px;color:#3A5578;">女性は生格・与格・造格・前置格がすべて <b>-ой</b>。ここだけ覚えれば女性形は終わりです。</p>
+  </div>
+
+  <div class="case-row">
+    <strong>кни́га と組み合わせてみる</strong>
+    <p>• 主格：<span class="ex-inline">Э́то но́вая кни́га.</span></p>
+    <p>• 生格：<span class="ex-inline">У меня́ нет но́вой кни́ги.</span></p>
+    <p>• 与格：<span class="ex-inline">Я рад но́вой кни́ге.</span></p>
+    <p>• 対格：<span class="ex-inline">Я чита́ю но́вую кни́гу.</span></p>
+    <p>• 造格：<span class="ex-inline">Я пришёл с но́вой кни́гой.</span></p>
+    <p>• 前置格：<span class="ex-inline">Я говорю́ о но́вой кни́ге.</span></p>
+  </div>
+
+  <div class="rule-row">
+    <strong>正書法のルールがここでも効きます</strong>
+    <p>к, г, х, ж, ш, щ, ч の後には <b>ы</b> を書けないので <b>и</b> に、<b>о</b> が弱いときは <b>е</b> になります。</p>
+    <p>• ма́ленький → ма́леньк<b>и</b>е（× маленькые）／ма́леньк<b>и</b>м</p>
+    <p>• хоро́ший → хоро́ш<b>е</b>го（× хорошого）／хоро́ш<b>и</b>е</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>男性・複数の対格は「動物性」で決まります</strong>
+    <p>• もの：Я чита́ю <b>но́вый</b> журна́л.（主格と同じ）</p>
+    <p>• 生きもの：Я ви́жу <b>ма́ленького</b> ежа́.（生格と同じ）</p>
+    <p style="font-size:11px;color:#A05A00;">ёж は格変化で ё → е になります（ёж → ежа́, ежу́, ежо́м）。ё は強勢がある時だけの文字だからです。</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>語尾に強勢がある молодо́й 型</strong>
+    <div class="conj-table">
+      <span class="pron">男性</span><span class="form">молодо́й / молодо́го / молодо́му / молоды́м</span>
+      <span class="pron">女性</span><span class="form">молода́я / молодо́й / молоду́ю / молодо́й</span>
+    </div>
+    <p style="font-size:11px;color:#7A5040;">主格男性が <b>-о́й</b> なら、この型。ほかの語尾は но́вый と同じ並びです。</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'Я чита́ю （　） кни́гу.（新しい本を読んでいます）', say:'Я чита́ю но́вую кни́гу', opts:['но́вая','но́вую','но́вой'], a:1, ex:'кни́гу は対格。女性形容詞の対格は -ую。'},
+    {type:'mc', q:'У меня́ нет （　） кни́ги.（新しい本を持っていません）', opts:['но́вая','но́вую','но́вой'], a:2, ex:'нет の後は生格。女性形容詞の生格は -ой。'},
+    {type:'mc', q:'Я говорю́ о （　） кни́ге.（新しい本について話す）', opts:['но́вой','но́вую','но́вые'], a:0, ex:'女性は生格・与格・造格・前置格がすべて -ой。'},
+    {type:'mc', q:'ма́ленький の複数主格は？', opts:['ма́ленькые','ма́ленькие'], a:1, ex:'к の後に ы は書けないので -ие。正書法のルールです。'},
+    {type:'mc', q:'Я ви́жу （　） ежа́.（小さなハリネズミが見える）', opts:['ма́ленький','ма́ленького','ма́ленькому'], a:1, ex:'ёж は生きものなので、男性対格は生格と同じ形になります。'},
+    {type:'mc', q:'хоро́ший の男性生格は？', opts:['хоро́шого','хоро́шего'], a:1, ex:'ш の後で о が弱まると е を書きます。хоро́шего。'},
+    {type:'input', q:'но́вый を女性の造格にして綴ってください（с ___ кни́гой の形）', a:'новой', hint:'女性は -ой がとても多い', ex:'но́вой。с но́вой кни́гой（新しい本を持って）。'}
+  ]
+},
+
+{
+  id:'numbers', cat:'num', level:'中級', title:'数詞と数え方', sub:'数のあとで名詞の形が変わる',
+  lesson:`
+  <p>ロシア語の数え方は、<b>数によって後ろの名詞の形が変わる</b>のが特徴です。
+  ルールは3つしかありません。</p>
+
+  <div class="verb-row">
+    <strong>1から20まで</strong>
+    <div class="conj-table">
+      <span class="pron">1〜5</span><span class="form">оди́н / два / три / четы́ре / пять</span>
+      <span class="pron">6〜10</span><span class="form">шесть / семь / во́семь / де́вять / де́сять</span>
+      <span class="pron">11〜15</span><span class="form">оди́ннадцать / двена́дцать / трина́дцать / четы́рнадцать / пятна́дцать</span>
+      <span class="pron">16〜20</span><span class="form">шестна́дцать / семна́дцать / восемна́дцать / девятна́дцать / два́дцать</span>
+    </div>
+    <p style="font-size:11px;color:#7A5040;">11〜19 は「-надцать（＝10の上に）」の形。強勢の位置に注意：четы́рнадцать だけ前寄りです。</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>10の位と100</strong>
+    <div class="conj-table">
+      <span class="pron">30〜50</span><span class="form">три́дцать / со́рок / пятьдеся́т</span>
+      <span class="pron">60〜80</span><span class="form">шестьдеся́т / се́мьдесят / во́семьдесят</span>
+      <span class="pron">90・100</span><span class="form">девяно́сто / сто</span>
+    </div>
+    <p style="font-size:11px;color:#7A5040;">50・60 は語尾に強勢、70・80 は前に強勢。ここは対で覚えると楽です。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>ルール①　1 のあと → 主格・単数</strong>
+    <p>оди́н は名詞の性に合わせます：<b>оди́н</b> оре́х／<b>одна́</b> кни́га／<b>одно́</b> я́блоко</p>
+  </div>
+  <div class="rule-row">
+    <strong>ルール②　2・3・4 のあと → 生格・単数</strong>
+    <p>• два оре́х<b>а</b>／три оре́х<b>а</b>／четы́ре оре́х<b>а</b></p>
+    <p>• <b>две</b> кни́г<b>и</b>（2だけは女性形 две を使います）</p>
+  </div>
+  <div class="rule-row">
+    <strong>ルール③　5以上のあと → 生格・複数</strong>
+    <p>• пять оре́х<b>ов</b>／де́сять книг／два́дцать я́блок</p>
+  </div>
+
+  <div class="case-row">
+    <strong>21以降は「1の位」で決まります</strong>
+    <p>• два́дцать <b>оди́н</b> оре́х（1の位が1 → 主格単数）</p>
+    <p>• два́дцать <b>две</b> кни́ги（1の位が2 → 生格単数）</p>
+    <p>• два́дцать <b>пять</b> книг（1の位が5 → 生格複数）</p>
+    <p style="font-size:11px;color:#A05A00;">※ ただし 11〜14 は例外で、つねに生格複数：оди́ннадцать книг。</p>
+  </div>
+
+  <div class="case-row">
+    <strong>年齢と時刻でよく使います</strong>
+    <p>• Мне два́дцать оди́н <b>год</b>.（21歳）／Мне два́дцать два <b>го́да</b>.／Мне два́дцать пять <b>лет</b>.</p>
+    <p>• Сейча́с <b>час</b>.（1時）／два <b>часа́</b>（2時）／пять <b>часо́в</b>（5時）</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'три （　）（3個のくるみ）', say:'три оре́ха', opts:['оре́х','оре́ха','оре́хов'], a:1, ex:'2・3・4 の後は生格単数。оре́ха。'},
+    {type:'mc', q:'пять （　）（5個のくるみ）', say:'пять оре́хов', opts:['оре́х','оре́ха','оре́хов'], a:2, ex:'5以上の後は生格複数。оре́хов。'},
+    {type:'mc', q:'「2冊の本」は？', say:'две кни́ги', opts:['два кни́ги','две кни́ги','две книг'], a:1, ex:'кни́га は女性名詞なので два ではなく две。後ろは生格単数 кни́ги。'},
+    {type:'mc', q:'「21冊の本」は？', opts:['два́дцать одна́ кни́га','два́дцать одна́ кни́ги','два́дцать оди́н книг'], a:0, ex:'1の位が1なので主格単数。кни́га は女性なので одна́。'},
+    {type:'mc', q:'「11冊の本」は？', opts:['оди́ннадцать кни́ги','оди́ннадцать книг'], a:1, ex:'11〜14 は例外で、つねに生格複数です。'},
+    {type:'mc', q:'「私は25歳です」は？', opts:['Мне два́дцать пять год.','Мне два́дцать пять лет.','Мне два́дцать пять го́да.'], a:1, ex:'1の位が5 → 生格複数。год の生格複数は лет です。'},
+    {type:'mc', q:'「40」をロシア語で言うと？', say:'со́рок', opts:['со́рок','четы́рдесят','четы́рнадцать'], a:0, ex:'40 は со́рок という独自の形。четы́рнадцать は14です。'},
+    {type:'input', q:'「20」をロシア語で綴ってください（アクセント記号なしでOK）', a:'двадцать', hint:'дв… で始まります', ex:'два́дцать。два（2）＋ -дцать（10）という成り立ちです。'}
+  ]
+},
+
+{
+  id:'aspect-use', cat:'verb', level:'中級', title:'完了体・不完了体の使い分け', sub:'どちらを選ぶか、場面で決める',
+  lesson:`
+  <p>体（アスペクト）の形は「動詞の体」の回で見ました。ここでは<b>実際にどちらを選ぶか</b>を、場面ごとに整理します。
+  迷ったら「<b>結果を言いたいか、過程・習慣を言いたいか</b>」に戻ってください。</p>
+
+  <div class="verb-row">
+    <strong>過去：何を伝えたいかで変わる</strong>
+    <p>• 過程・時間の使い方 → <b>不完了体</b>：Вчера́ я <b>чита́л</b> кни́гу.（昨日は本を読んで過ごした）</p>
+    <p>• 結果・完了 → <b>完了体</b>：Вчера́ я <b>прочита́л</b> кни́гу.（読み終えた）</p>
+    <p>• くり返し・習慣 → <b>不完了体</b>：Я ча́сто <b>писа́л</b> пи́сьма.（よく手紙を書いていた）</p>
+    <p>• 一回きりの出来事 → <b>完了体</b>：Я <b>написа́л</b> письмо́.（手紙を書き上げた）</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>未来：形そのものが変わる</strong>
+    <div class="conj-table">
+      <span class="pron">不完了体</span><span class="form">бу́ду / бу́дешь / бу́дет ＋ 不定形　→ Я бу́ду чита́ть.</span>
+      <span class="pron">完了体</span><span class="form">活用した形がそのまま未来　→ Я прочита́ю.</span>
+    </div>
+    <p style="font-size:11px;color:#7A5040;">完了体に現在形はありません。прочита́ю は「読み終えるだろう」という未来です。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>不完了体しか使えない場面</strong>
+    <p>• <b>начина́ть / нача́ть・конча́ть / ко́нчить・продолжа́ть</b> の後：<br>
+    　Я <b>на́чал чита́ть</b>.（○）　× на́чал прочита́ть</p>
+    <p>• <b>禁止の命令</b>：<b>Не открыва́й</b> окно́!（開けないで）</p>
+    <p>• <b>ずっと・毎日・よく</b> などの語と一緒に：Я <b>ка́ждый день пишу́</b> пи́сьма.</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>完了体を選ぶ合図</strong>
+    <p>• <b>вдруг</b>（突然）・<b>наконе́ц</b>（ついに）・<b>уже́</b>（もう）</p>
+    <p>• 「〜してから、次に…」と出来事が順に進むとき：<br>
+    　Я <b>прочита́л</b> кни́гу и <b>пошёл</b> спать.（読み終えて、寝に行った）</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>よく使うペア（不完了体 → 完了体）</strong>
+    <div class="conj-table">
+      <span class="pron">する</span><span class="form">де́лать → сде́лать</span>
+      <span class="pron">書く</span><span class="form">писа́ть → написа́ть</span>
+      <span class="pron">読む</span><span class="form">чита́ть → прочита́ть</span>
+      <span class="pron">買う</span><span class="form">покупа́ть → купи́ть</span>
+      <span class="pron">言う</span><span class="form">говори́ть → сказа́ть</span>
+      <span class="pron">取る</span><span class="form">брать → взять</span>
+      <span class="pron">与える</span><span class="form">дава́ть → дать</span>
+      <span class="pron">始める</span><span class="form">начина́ть → нача́ть</span>
+    </div>
+  </div>
+
+  <div class="rule-row">
+    <strong>過去形の強勢が動く動詞に注意</strong>
+    <p>女性形だけ強勢が語尾に移るものがあります。</p>
+    <p>• нача́ть：<b>на́чал</b> / <b>начала́</b> / на́чали　• взять：<b>взял</b> / <b>взяла́</b> / взя́ли</p>
+    <p>• быть：был / <b>была́</b> / бы́ли　• пить：пил / <b>пила́</b> / пи́ли</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'Вчера́ я （　） письмо́.（昨日、手紙を書き上げた）', say:'Вчера́ я написа́л письмо́', opts:['писа́л','написа́л'], a:1, ex:'一回きりの完了した出来事なので完了体 написа́л。'},
+    {type:'mc', q:'Ка́ждый день я （　） пи́сьма.（毎日手紙を書きます）', opts:['пишу́','напишу́'], a:0, ex:'習慣・くり返しは不完了体。напишу́ は「書き上げるだろう」という未来です。'},
+    {type:'mc', q:'Я на́чал （　）.（読み始めた）', opts:['чита́ть','прочита́ть'], a:0, ex:'нача́ть・ко́нчить・продолжа́ть の後は、かならず不完了体です。'},
+    {type:'mc', q:'「窓を開けないで」は？', opts:['Не откро́й окно́!','Не открыва́й окно́!'], a:1, ex:'禁止の命令は不完了体を使います。'},
+    {type:'mc', q:'Я бу́ду （　）.（読むつもりです）', opts:['чита́ть','прочита́ть'], a:0, ex:'бу́ду ＋ 不定形 の形は不完了体だけ。完了体は活用形がそのまま未来になります。'},
+    {type:'mc', q:'взять の過去・女性形は？', opts:['взя́ла','взяла́','взял'], a:1, ex:'взял / взяла́ / взя́ли。女性形だけ強勢が語尾に移ります。'},
+    {type:'mc', q:'「ついに読み終えた」に合うのは？', opts:['Наконе́ц я чита́л кни́гу.','Наконе́ц я прочита́л кни́гу.'], a:1, ex:'наконе́ц（ついに）は完了の合図。完了体を選びます。'},
+    {type:'mc', q:'говори́ть の完了体ペアは？', opts:['проговори́ть','сказа́ть','поговори́ть'], a:1, ex:'говори́ть — сказа́ть。まったく別の語になる代表的なペアです。'}
+  ]
+},
+
+{
+  id:'verb-motion-pref', cat:'verb', level:'中級', title:'運動の動詞と接頭辞', sub:'пойти́・прийти́・уйти́ — 方向を接頭辞で表す',
+  lesson:`
+  <p>идти́ と е́хать に接頭辞をつけると、「出発する・到着する・立ち去る」など<b>方向のちがう動詞</b>がいくつも生まれます。
+  接頭辞の意味さえ押さえれば、まとめて理解できます。</p>
+
+  <div class="verb-row">
+    <strong>接頭辞の意味と、代表的な形</strong>
+    <div class="conj-table">
+      <span class="pron">по-（出発）</span><span class="form">пойти́ → пошёл / пойду́</span>
+      <span class="pron">при-（到着）</span><span class="form">прийти́ → пришёл / приду́</span>
+      <span class="pron">у-（立ち去る）</span><span class="form">уйти́ → ушёл / уйду́</span>
+      <span class="pron">в-（入る）</span><span class="form">войти́ → вошёл / войду́</span>
+      <span class="pron">вы-（出る）</span><span class="form">вы́йти → вы́шел / вы́йду</span>
+      <span class="pron">до-（到達する）</span><span class="form">дойти́ → дошёл / дойду́</span>
+      <span class="pron">пере-（渡る）</span><span class="form">перейти́ → перешёл / перейду́</span>
+      <span class="pron">за-（立ち寄る）</span><span class="form">зайти́ → зашёл / зайду́</span>
+    </div>
+    <p style="font-size:11px;color:#3A5578;">вы- は完了体のとき<b>つねに強勢を持ちます</b>（<b>вы́</b>йти, <b>вы́</b>шел, <b>вы́</b>йду）。</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>乗り物なら е́хать に同じ接頭辞をつけます</strong>
+    <div class="conj-table">
+      <span class="pron">出発</span><span class="form">пое́хать → пое́хал / пое́ду</span>
+      <span class="pron">到着</span><span class="form">прие́хать → прие́хал / прие́ду</span>
+      <span class="pron">立ち去る</span><span class="form">уе́хать → уе́хал / уе́ду</span>
+    </div>
+    <p>• <span class="ex-inline">Он прие́хал из Москвы́.（彼はモスクワから来た）</span></p>
+  </div>
+
+  <div class="rule-row">
+    <strong>接頭辞つきの動詞にも、体のペアがあります</strong>
+    <p>完了体は <b>-йти / -е́хать</b>、不完了体は <b>-ходи́ть / -езжа́ть</b> の形になります。</p>
+    <div class="conj-table">
+      <span class="pron">来る</span><span class="form">приходи́ть（不完了）— прийти́（完了）</span>
+      <span class="pron">去る</span><span class="form">уходи́ть — уйти́</span>
+      <span class="pron">出る</span><span class="form">выходи́ть — вы́йти</span>
+      <span class="pron">来る（乗物）</span><span class="form">приезжа́ть — прие́хать</span>
+    </div>
+    <p>• 習慣：Он <b>прихо́дит</b> ка́ждый день.（毎日来ます）</p>
+    <p>• 一回：Он <b>пришёл</b> в два часа́.（2時に来ました）</p>
+  </div>
+
+  <div class="case-row">
+    <strong>組み合わせる前置詞</strong>
+    <p>• 場所へ：<b>в / на ＋ 対格</b>　Я пошёл <b>в</b> магази́н.</p>
+    <p>• 場所から：<b>из / с ＋ 生格</b>　Я вы́шел <b>из</b> до́ма.</p>
+    <p>• 人のところへ：<b>к ＋ 与格</b>　Приходи́ <b>ко</b> мне!（うちに来て！）</p>
+    <p>• 人のところから：<b>от ＋ 生格</b>　Я иду́ <b>от</b> врача́.</p>
+    <p style="font-size:11px;color:#856348;">※ мне の前では к → <b>ко</b> になります（発音しやすくするため）。</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'「彼が来た（到着した）」は？', say:'Он пришёл', opts:['Он пошёл.','Он пришёл.','Он ушёл.'], a:1, ex:'при- は「到着」。пошёл は「出かけた」、ушёл は「行ってしまった」。'},
+    {type:'mc', q:'「彼女は行ってしまった」は？', say:'Она́ ушла́', opts:['Она́ пришла́.','Она́ ушла́.'], a:1, ex:'у- は「立ち去る」。過去女性形は ушла́。'},
+    {type:'mc', q:'вы́йти の過去・男性形は？', opts:['выше́л','вы́шел','вошёл'], a:1, ex:'вы- は完了体でつねに強勢を持つので вы́шел。вошёл は「入った」です。'},
+    {type:'mc', q:'「毎日来ます」に使うのは？', opts:['Он прихо́дит ка́ждый день.','Он пришёл ка́ждый день.'], a:0, ex:'習慣は不完了体 приходи́ть。прийти́ は一回きりの到着です。'},
+    {type:'mc', q:'「家から出た」は？', opts:['Я вы́шел из до́ма.','Я вы́шел в дом.'], a:0, ex:'「〜から」は из ＋ 生格。из до́ма。'},
+    {type:'mc', q:'「うちに来て！」の（　）は？　Приходи́ （　） мне!', opts:['к','ко','до'], a:1, ex:'мне の前では к が ко になります。ко мне。'},
+    {type:'mc', q:'「バスでモスクワから来ました」に使う動詞は？', opts:['пришёл','прие́хал','пошёл'], a:1, ex:'乗り物なので е́хать 系。прие́хал です。'},
+    {type:'input', q:'прийти́ の я の形（未来）を綴ってください', a:'приду', hint:'при＋ид…', ex:'приду́。「（私が）来ます」。完了体なので、この形で未来を表します。'}
+  ]
+},
+
+{
+  id:'imperative-future', cat:'verb', level:'中級', title:'命令形と未来形', sub:'「〜して」「〜します」を作る',
+  lesson:`
+  <p>お願いする・誘う・予定を話す。会話に必要な2つの形を、まとめて身につけましょう。</p>
+
+  <div class="verb-row">
+    <strong>命令形の作り方 — они́ の形から出発します</strong>
+    <div class="conj-table">
+      <span class="pron">母音で終わる語幹</span><span class="form">чита́ют → чита́<b>й</b>（чита́йте）</span>
+      <span class="pron">子音＋я の形に強勢</span><span class="form">пи́шут（пишу́）→ пиш<b>и́</b>（пиши́те）</span>
+      <span class="pron">子音＋強勢が前</span><span class="form">отве́тят → отве́т<b>ь</b>（отве́тьте）</span>
+    </div>
+    <p style="font-size:11px;color:#3A5578;">ていねいに言うときや複数の相手には <b>-те</b> をつけます。</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>よく使う命令形</strong>
+    <div class="conj-table">
+      <span class="pron">говори́ть</span><span class="form">говори́ / говори́те（話して）</span>
+      <span class="pron">идти́</span><span class="form">иди́ / иди́те（行って・おいで）</span>
+      <span class="pron">сказа́ть</span><span class="form">скажи́ / скажи́те（言って）</span>
+      <span class="pron">дать</span><span class="form">дай / да́йте（ください）</span>
+      <span class="pron">пить</span><span class="form">пей / пе́йте（飲んで）</span>
+      <span class="pron">есть</span><span class="form">ешь / е́шьте（食べて）</span>
+      <span class="pron">быть</span><span class="form">будь / бу́дьте（〜でいて）</span>
+    </div>
+    <p>• <span class="ex-inline">Скажи́те, пожа́луйста…（すみませんが、教えてください）</span></p>
+    <p>• <span class="ex-inline">Бу́дьте добры́!（どうかお願いします）</span></p>
+  </div>
+
+  <div class="rule-row">
+    <strong>命令形と体の関係</strong>
+    <p>• お願い・一回の依頼 → <b>完了体</b>：<b>Прочита́йте</b> э́то письмо́.</p>
+    <p>• 禁止・くり返しの指示 → <b>不完了体</b>：<b>Не открыва́йте</b> окно́!／Всегда́ <b>говори́те</b> пра́вду.</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>未来形は2種類</strong>
+    <div class="conj-table">
+      <span class="pron">不完了体</span><span class="form">бу́ду / бу́дешь / бу́дет / бу́дем / бу́дете / бу́дут ＋ 不定形</span>
+      <span class="pron">完了体</span><span class="form">活用形がそのまま未来（прочита́ю, напишу́, куплю́, скажу́）</span>
+    </div>
+    <p>• <span class="ex-inline">За́втра я бу́ду чита́ть.（明日は読書をします＝過程）</span></p>
+    <p>• <span class="ex-inline">За́втра я прочита́ю э́ту кни́гу.（明日この本を読み終えます＝結果）</span></p>
+  </div>
+
+  <div class="case-row">
+    <strong>「〜しましょう」の誘い方</strong>
+    <p>• <b>Дава́й(те) ＋ 不完了体の不定形</b>：Дава́йте чита́ть!（読みましょう）</p>
+    <p>• <b>Дава́й(те) ＋ мы の未来形</b>：Дава́йте пойдём в цирк!（サーカスに行きましょう）</p>
+    <p>• <b>мы の未来形だけ</b>でも誘いになります：Пойдём!（行こう！）</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'чита́ть の命令形（ていねい）は？', say:'чита́йте', opts:['чита́йте','чити́те','чита́ете'], a:0, ex:'母音で終わる語幹なので -й ＋ -те。чита́йте です。'},
+    {type:'mc', q:'писа́ть の命令形（ты）は？', say:'пиши́', opts:['писа́й','пиши́','пишь'], a:1, ex:'они́ の形 пи́шут から пиш- を取り、я の形に強勢があるので -и。пиши́。'},
+    {type:'mc', q:'「言ってください」は？', opts:['Скажи́те, пожа́луйста.','Ска́жете, пожа́луйста.'], a:0, ex:'скажи́те が命令形。ска́жете は「あなたが言う」という現在・未来形です。'},
+    {type:'mc', q:'「窓を開けないでください」は？', opts:['Не откро́йте окно́!','Не открыва́йте окно́!'], a:1, ex:'禁止は不完了体の命令形を使います。'},
+    {type:'mc', q:'「明日、読書をします（過程）」は？', opts:['За́втра я прочита́ю.','За́втра я бу́ду чита́ть.'], a:1, ex:'過程を言うなら不完了体の未来 бу́ду ＋ 不定形。'},
+    {type:'mc', q:'完了体 купи́ть の「я」の形 куплю́ が表すのは？', opts:['現在','未来'], a:1, ex:'完了体に現在形はありません。куплю́ は「買うでしょう」という未来です。'},
+    {type:'mc', q:'「サーカスに行きましょう」は？', opts:['Дава́йте пойдём в цирк!','Дава́йте пошли́ в цирк!'], a:0, ex:'誘いは дава́йте ＋ мы の未来形。пойдём です。'},
+    {type:'input', q:'дать の命令形（ていねい）を綴ってください', a:'дайте', hint:'да… で始まる4文字＋те', ex:'да́йте。Да́йте, пожа́луйста, чай.（お茶をください）'}
+  ]
+},
+
+{
+  id:'comparative', cat:'adj', level:'中級', title:'比較級・最上級', sub:'「もっと〜」「いちばん〜」を言う',
+  lesson:`
+  <p>「こっちのほうがおいしい」「いちばん好き」。感想を言えるようになると、会話がぐっと広がります。</p>
+
+  <div class="verb-row">
+    <strong>比較級のいちばん簡単な作り方：-ее をつける</strong>
+    <div class="conj-table">
+      <span class="pron">интере́сный</span><span class="form">интере́снее（もっとおもしろい）</span>
+      <span class="pron">краси́вый</span><span class="form">краси́вее（もっと美しい）</span>
+      <span class="pron">вку́сный</span><span class="form">вкусне́е（もっとおいしい）</span>
+      <span class="pron">бы́стрый</span><span class="form">быстре́е（もっと速い）</span>
+    </div>
+    <p style="font-size:11px;color:#3A5578;">この形は<b>格変化しません</b>。性・数・格に関係なく、いつも同じ形で使えます。</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>覚えるしかない形（よく使うものばかり）</strong>
+    <div class="conj-table">
+      <span class="pron">хоро́ший（良い）</span><span class="form">лу́чше</span>
+      <span class="pron">плохо́й（悪い）</span><span class="form">ху́же</span>
+      <span class="pron">большо́й（大きい）</span><span class="form">бо́льше</span>
+      <span class="pron">ма́ленький（小さい）</span><span class="form">ме́ньше</span>
+      <span class="pron">ста́рый（古い・年上）</span><span class="form">ста́рше</span>
+      <span class="pron">молодо́й（若い）</span><span class="form">моло́же</span>
+      <span class="pron">дорого́й（高い）</span><span class="form">доро́же</span>
+      <span class="pron">дешёвый（安い）</span><span class="form">деше́вле</span>
+    </div>
+    <p style="font-size:11px;color:#7A5040;">дешёвый → деше́вле のように、ё が е に変わるものもあります（強勢が移るため）。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>「〜より」の言い方は2つ</strong>
+    <p>• <b>чем ＋ 主格</b>：Кни́га интере́снее, <b>чем</b> фильм.（本は映画よりおもしろい）</p>
+    <p>• <b>生格だけ</b>（чем を使わない）：Кни́га интере́снее <b>фи́льма</b>.</p>
+    <p style="font-size:11px;color:#A05A00;">意味は同じ。чем の前には<b>かならずコンマ</b>を打ちます。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>名詞の前に置くときは бо́лее を使います</strong>
+    <p>-ее の形は名詞を直接修飾できません。</p>
+    <p>• ○ <b>бо́лее интере́сная</b> кни́га（よりおもしろい本）</p>
+    <p>• ○ Э́та кни́га <b>интере́снее</b>.（この本のほうがおもしろい）</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>最上級：са́мый ＋ 形容詞</strong>
+    <p>са́мый は形容詞なので、<b>名詞に合わせて変化します</b>。</p>
+    <div class="conj-table">
+      <span class="pron">男性</span><span class="form">са́мый интере́сный фильм</span>
+      <span class="pron">女性</span><span class="form">са́мая интере́сная кни́га</span>
+      <span class="pron">中性</span><span class="form">са́мое вку́сное я́блоко</span>
+      <span class="pron">複数</span><span class="form">са́мые интере́сные кни́ги</span>
+    </div>
+    <p>• 特別な形：<b>лу́чший</b>（最良の）・<b>ху́дший</b>（最悪の）・<b>ста́рший</b>（年長の）・<b>мла́дший</b>（年少の）</p>
+    <p>• <span class="ex-inline">Э́то мой лу́чший друг.（彼は私の親友です）</span></p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'вку́сный（おいしい）の比較級は？', say:'вкусне́е', opts:['вку́снее','вкусне́е','са́мый вку́сный'], a:1, ex:'-ее をつけて вкусне́е。強勢は語尾に移ります。'},
+    {type:'mc', q:'хоро́ший の比較級は？', say:'лу́чше', opts:['хоро́шее','лу́чше','бо́льше'], a:1, ex:'хоро́ший → лу́чше。英語の good → better と同じく、まったく別の形です。'},
+    {type:'mc', q:'「本は映画よりおもしろい」の正しい形は？', opts:['Кни́га интере́снее, чем фильм.','Кни́га интере́снее, чем фи́льма.'], a:0, ex:'чем の後は主格。生格を使うなら чем を外して интере́снее фи́льма とします。'},
+    {type:'mc', q:'「もっとおもしろい本」（名詞の前）は？', opts:['интере́снее кни́га','бо́лее интере́сная кни́га'], a:1, ex:'-ее の形は名詞を直接修飾できません。бо́лее ＋ 形容詞を使います。'},
+    {type:'mc', q:'「いちばんおいしいりんご」は？', opts:['са́мый вку́сное я́блоко','са́мое вку́сное я́блоко'], a:1, ex:'я́блоко は中性なので са́мое。са́мый も形容詞として変化します。'},
+    {type:'mc', q:'ма́ленький の比較級は？', opts:['ме́ньше','ма́леньше','ми́ньше'], a:0, ex:'ма́ленький → ме́ньше。бо́льше（大きい）と対で覚えましょう。'},
+    {type:'mc', q:'「私の親友」は？', opts:['мой лу́чший друг','мой бо́лее хоро́ший друг'], a:0, ex:'лу́чший は「最良の」を表す特別な形容詞。そのまま名詞を修飾できます。'}
+  ]
+},
+
+// ============ 上級 ============
+{
+  id:'relative', cat:'syntax', level:'上級', title:'関係代名詞 кото́рый', sub:'2つの文を1つにつなぐ',
+  lesson:`
+  <p>「机の上にある本」「私が読んでいる本」——日本語では名詞の前に説明を置きますが、
+  ロシア語では<b>名詞の後ろに кото́рый でつなぎます</b>。長い文が書けるようになる、最初の一歩です。</p>
+
+  <div class="rule-row">
+    <strong>кото́рый の形は、2つの情報で決まります</strong>
+    <p>① <b>性と数</b>　→ 前にある名詞（先行詞）に合わせる<br>
+    ② <b>格</b>　　　→ 後ろの文の中での役割で決まる</p>
+    <p style="font-size:11px;color:#A05A00;">この2つを別々に考えるのが、いちばんの近道です。</p>
+  </div>
+
+  <div class="case-row">
+    <strong>кни́га（女性・単数）を先行詞にして、格を変えてみる</strong>
+    <p>• <b>主格</b>：<span class="ex-inline">Кни́га, кото́рая лежи́т на столе́, — моя́.</span><br>
+    　（本が「置いてある」＝主語なので主格）</p>
+    <p>• <b>対格</b>：<span class="ex-inline">Кни́га, кото́рую я чита́ю, о́чень интере́сная.</span><br>
+    　（私が本を「読む」＝目的語なので対格）</p>
+    <p>• <b>前置格</b>：<span class="ex-inline">Кни́га, о кото́рой я говорю́, там.</span><br>
+    　（本「について」話す＝о ＋ 前置格）</p>
+    <p style="font-size:11px;color:#856348;">どの文でも кото́р- の部分は女性単数のまま。変わるのは語尾だけです。</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>кото́рый の変化（形容詞と同じ並び）</strong>
+    <div class="conj-table">
+      <span class="pron">男性</span><span class="form">кото́рый / кото́рого / кото́рому / кото́рым / о кото́ром</span>
+      <span class="pron">女性</span><span class="form">кото́рая / кото́рой / кото́рой / кото́рую / о кото́рой</span>
+      <span class="pron">中性</span><span class="form">кото́рое / кото́рого / кото́рому / кото́рым / о кото́ром</span>
+      <span class="pron">複数</span><span class="form">кото́рые / кото́рых / кото́рым / кото́рыми / о кото́рых</span>
+    </div>
+  </div>
+
+  <div class="case-row">
+    <strong>いろいろな例</strong>
+    <p>• <span class="ex-inline">Челове́к, кото́рого я жду, — мой брат.</span>（生きものの男性対格＝生格と同じ形）</p>
+    <p>• <span class="ex-inline">Дом, в кото́ром я живу́, о́чень ста́рый.</span>（в ＋ 前置格）</p>
+    <p>• <span class="ex-inline">Друг, с кото́рым я говорю́, из Росси́и.</span>（с ＋ 造格）</p>
+    <p>• <span class="ex-inline">Студе́нты, кото́рые чита́ют э́ту кни́гу, — мои́ друзья́.</span>（複数主格）</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>3つの約束</strong>
+    <p>① кото́рый の前には<b>かならずコンマ</b>を打ちます。<br>
+    ② 前置詞は кото́рый の<b>前</b>に置きます（в кото́ром、с кото́рым）。<br>
+    ③ 先行詞のすぐ後ろに置くのが基本です。</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'Кни́га, （　） я чита́ю, интере́сная.（私が読んでいる本）', say:'Кни́га, кото́рую я чита́ю', opts:['кото́рая','кото́рую','кото́рой'], a:1, ex:'後ろの文で「本を読む」＝目的語なので対格。女性の対格は кото́рую。'},
+    {type:'mc', q:'Кни́га, （　） лежи́т на столе́, — моя́.（机の上にある本）', opts:['кото́рая','кото́рую','кото́рой'], a:0, ex:'「本が置いてある」＝主語なので主格 кото́рая。'},
+    {type:'mc', q:'Дом, в （　） я живу́, ста́рый.（私が住んでいる家）', opts:['кото́рый','кото́ром','кото́рого'], a:1, ex:'в ＋ 前置格。дом は男性なので в кото́ром。'},
+    {type:'mc', q:'Друг, с （　） я говорю́…（私が話している友人）', opts:['кото́рым','кото́рого','кото́рому'], a:0, ex:'с ＋ 造格。男性の造格は кото́рым。'},
+    {type:'mc', q:'кото́рый の「性と数」を決めるのは？', opts:['後ろの文の動詞','前にある名詞（先行詞）'], a:1, ex:'性と数は先行詞から、格は後ろの文での役割から決まります。'},
+    {type:'mc', q:'Студе́нты, （　） чита́ют э́ту кни́гу…（この本を読んでいる学生たち）', opts:['кото́рые','кото́рых','кото́рым'], a:0, ex:'学生が「読む」＝主語なので複数主格 кото́рые。'},
+    {type:'mc', q:'正しい書き方はどちら？', opts:['Кни́га кото́рую я чита́ю интере́сная.','Кни́га, кото́рую я чита́ю, интере́сная.'], a:1, ex:'кото́рый の節は前後をコンマで挟みます。'}
+  ]
+},
+
+{
+  id:'participles', cat:'syntax', level:'上級', title:'形動詞（причастие）', sub:'動詞を形容詞のように使う',
+  lesson:`
+  <p><b>形動詞</b>は、動詞から作る形容詞です。「読んでいる人」「書かれた手紙」のように、
+  кото́рый の節を<b>ひとことに縮める</b>ことができます。新聞・論文・小説でよく出会います。</p>
+
+  <div class="verb-row">
+    <strong>4つの種類</strong>
+    <div class="conj-table">
+      <span class="pron">能動・現在</span><span class="form">чита́ющий（読んでいる〜）</span>
+      <span class="pron">能動・過去</span><span class="form">чита́вший（読んでいた〜）</span>
+      <span class="pron">受動・現在</span><span class="form">чита́емый（読まれている〜）</span>
+      <span class="pron">受動・過去</span><span class="form">прочи́танный（読み終えられた〜）</span>
+    </div>
+    <p style="font-size:11px;color:#3A5578;">どれも形容詞なので、<b>修飾する名詞に合わせて性・数・格が変わります</b>。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>作り方</strong>
+    <p>• 能動・現在：они́ の形の -т を取って <b>-щий</b><br>
+    　чита́ю<b>т</b> → чита́ю<b>щий</b>／говоря́<b>т</b> → говоря́<b>щий</b></p>
+    <p>• 能動・過去：不定形の -ть を <b>-вший</b> に<br>
+    　чита́<b>ть</b> → чита́<b>вший</b>／※ прийти́ → <b>прише́дший</b>（不規則）</p>
+    <p>• 受動・現在：мы の形に <b>-ый</b><br>
+    　чита́ем → чита́ем<b>ый</b>／лю́бим → люби́м<b>ый</b>（愛される＝好きな）</p>
+    <p>• 受動・過去：完了体から <b>-нный / -тый</b><br>
+    　прочита́ть → прочи́та<b>нный</b>／написа́ть → напи́са<b>нный</b>／откры́ть → откры́<b>тый</b></p>
+  </div>
+
+  <div class="case-row">
+    <strong>кото́рый の文と言いかえてみる</strong>
+    <p>• Челове́к, <b>кото́рый чита́ет</b> кни́гу　＝　Челове́к, <b>чита́ющий</b> кни́гу</p>
+    <p>• Письмо́, <b>кото́рое написа́л</b> оте́ц　＝　Письмо́, <b>напи́санное</b> отцо́м</p>
+    <p style="font-size:11px;color:#856348;">※ 受動の文では、動作をする人が<b>造格</b>になります（отцо́м＝父によって）。</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>短語尾（述語として使う形）</strong>
+    <p>受動・過去の形は、語尾を短くして「〜されている」という文を作れます。</p>
+    <div class="conj-table">
+      <span class="pron">男性</span><span class="form">Дом постро́ен.（家は建てられた）</span>
+      <span class="pron">女性</span><span class="form">Кни́га прочи́тана.（本は読み終えられた）</span>
+      <span class="pron">中性</span><span class="form">Письмо́ напи́сано.（手紙は書かれた）</span>
+      <span class="pron">複数</span><span class="form">Две́ри откры́ты.（扉は開いている）</span>
+    </div>
+    <p style="font-size:11px;color:#7A5040;">短語尾では -нн- が <b>-н-</b> ひとつになります（прочи́танный → прочи́тана）。</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'「読んでいる人」を形動詞ひとことで言うと？', opts:['чита́ющий','чита́вший','прочи́танный'], a:0, ex:'いま読んでいる（能動・現在）ので чита́ющий。они́ の形 чита́ют から作ります。'},
+    {type:'mc', q:'прочита́ть（読み終える）から作る受動・過去の形は？', opts:['прочита́ющий','прочи́танный','прочита́вший'], a:1, ex:'完了体から -нный を作って прочи́танный（読み終えられた）。'},
+    {type:'mc', q:'「本は読み終えられた」（短語尾）は？', say:'Кни́га прочи́тана', opts:['Кни́га прочи́танная.','Кни́га прочи́тана.'], a:1, ex:'述語に使うときは短語尾。-нн- が -н- ひとつになります。'},
+    {type:'mc', q:'Письмо́, напи́санное （　）.（父によって書かれた手紙）', opts:['оте́ц','отца́','отцо́м'], a:2, ex:'受動の文では動作主が造格になります。оте́ц → отцо́м。'},
+    {type:'mc', q:'形動詞について正しいのは？', opts:['形は変わらない','修飾する名詞に合わせて性・数・格が変わる'], a:1, ex:'形動詞は形容詞の仲間なので、名詞に合わせて変化します。'},
+    {type:'mc', q:'прийти́ の能動・過去の形動詞は？', opts:['приде́вший','прише́дший','приходя́щий'], a:1, ex:'прише́дший（来た〜）。過去形 пришёл と同じ語幹から作る不規則な形です。'},
+    {type:'mc', q:'люби́мый の意味は？', opts:['愛している人','愛されている・好きな'], a:1, ex:'受動・現在の形動詞。мой люби́мый фильм（私の好きな映画）のように使います。'}
+  ]
+},
+
+{
+  id:'gerunds', cat:'syntax', level:'上級', title:'副動詞（деепричастие）', sub:'「〜しながら」「〜してから」を一語で',
+  lesson:`
+  <p><b>副動詞</b>は、動詞から作る副詞です。2つの動作を1つの文にまとめます。
+  形動詞と違って<b>まったく変化しません</b>。覚えることが少ない、うれしい文法です。</p>
+
+  <div class="verb-row">
+    <strong>2つの種類</strong>
+    <div class="conj-table">
+      <span class="pron">不完了体（同時）</span><span class="form">чита́я（読みながら）</span>
+      <span class="pron">完了体（先に完了）</span><span class="form">прочита́в（読み終えてから）</span>
+    </div>
+  </div>
+
+  <div class="rule-row">
+    <strong>作り方</strong>
+    <p>• <b>不完了体</b>：они́ の形から語尾を取って <b>-я</b><br>
+    　чита́ют → чита́<b>я</b>／говоря́т → говор<b>я́</b>／слы́шат → слы́ш<b>а</b>（ж, ш, ч, щ の後は -а）</p>
+    <p>• <b>完了体</b>：不定形の -ть を <b>-в</b> に<br>
+    　прочита́ть → прочита́<b>в</b>／сказа́ть → сказа́<b>в</b>／※ прийти́ → <b>придя́</b>（不規則）</p>
+    <p>• быть → <b>бу́дучи</b>（〜でありながら）</p>
+  </div>
+
+  <div class="case-row">
+    <strong>使ってみる</strong>
+    <p>• <span class="ex-inline">Чита́я кни́гу, я пил чай.</span>（本を読みながら、お茶を飲んでいた）</p>
+    <p>• <span class="ex-inline">Прочита́в кни́гу, я пошёл спать.</span>（本を読み終えてから、寝に行った）</p>
+    <p>• <span class="ex-inline">Гуля́я по ле́су, мы уви́дели лису́.</span>（森を散歩していて、キツネを見かけた）</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>いちばん大事な約束：主語がそろっていること</strong>
+    <p>副動詞の動作をする人と、文の主語は<b>同じでなければなりません</b>。</p>
+    <p>• ○ <b>Чита́я</b> кни́гу, <b>я</b> пил чай.（読むのも飲むのも「私」）</p>
+    <p>• ✕ Чита́я кни́гу, <b>мне</b> бы́ло интере́сно.（「読む人」が文中にいない）</p>
+    <p style="font-size:11px;color:#A05A00;">ロシア語の作文でいちばん多い誤りです。直すなら «Когда́ я чита́л кни́гу, мне бы́ло интере́сно.» とします。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>副動詞句の前後にはコンマ</strong>
+    <p>• Прочита́в кни́гу<b>,</b> я пошёл спать.<br>
+    • Я<b>,</b> прочита́в кни́гу<b>,</b> пошёл спать.</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'чита́ть から作る副動詞（〜しながら）は？', opts:['чита́я','чита́в','чита́ющий'], a:0, ex:'不完了体の副動詞は -я。чита́ю т → чита́я。'},
+    {type:'mc', q:'「本を読み終えてから」は？', opts:['чита́я кни́гу','прочита́в кни́гу'], a:1, ex:'先に完了した動作は完了体の副動詞 -в。прочита́в。'},
+    {type:'mc', q:'正しい文はどちら？', opts:['Чита́я кни́гу, мне бы́ло интере́сно.','Чита́я кни́гу, я пил чай.'], a:1, ex:'副動詞の動作主と主語は同じでなければなりません。мне は主語ではないので誤りです。'},
+    {type:'mc', q:'副動詞について正しいのは？', opts:['性・数・格で変化する','まったく変化しない'], a:1, ex:'副動詞は副詞の仲間で、形は1つだけです。'},
+    {type:'mc', q:'прийти́ から作る完了体の副動詞は？', opts:['прийдя́','придя́','прише́в'], a:1, ex:'придя́（来てから）。つづりは「при＋дя」です。'},
+    {type:'mc', q:'слы́шать の副動詞は？', opts:['слы́шя','слы́ша'], a:1, ex:'ж, ш, ч, щ の後は я ではなく а を書きます（正書法のルール）。'}
+  ]
+},
+
+{
+  id:'conditional', cat:'syntax', level:'上級', title:'仮定法 бы とていねいな表現', sub:'「〜だったら」「〜していただけますか」',
+  lesson:`
+  <p>粒子 <b>бы</b> を過去形に添えるだけで、「もし〜なら」「〜したいのですが」という
+  <b>控えめで大人びた言い方</b>ができるようになります。新しい活用は覚えません。</p>
+
+  <div class="rule-row">
+    <strong>ルールは1つだけ：бы ＋ 過去形</strong>
+    <p>時制に関係なく、<b>いつでも過去形</b>を使います。現在形や未来形とは組み合わせません。</p>
+    <p>• <span class="ex-inline">Я бы прочита́л э́ту кни́гу.（その本を読みたいのですが）</span></p>
+    <p>• бы は動詞の前でも後ろでも構いません：Я прочита́л бы… ／ Я бы прочита́л…</p>
+  </div>
+
+  <div class="case-row">
+    <strong>「もし〜なら、…だろう」</strong>
+    <p><b>両方の文</b>に бы ＋ 過去形を置きます。</p>
+    <p>• <span class="ex-inline">Е́сли бы у меня́ бы́ло вре́мя, я бы пошёл в цирк.</span><br>
+    　（時間があったら、サーカスに行くのに）</p>
+    <p>• <span class="ex-inline">Е́сли бы я знал, я бы сказа́л.</span>（知っていたら、言ったのに）</p>
+    <p style="font-size:11px;color:#856348;">※ 実際に起こりうる話なら бы を使いません：Е́сли у меня́ бу́дет вре́мя, я пойду́ в цирк.</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>ていねいな言いまわし</strong>
+    <div class="conj-table">
+      <span class="pron">〜したいのですが</span><span class="form">Я хоте́л бы… ／ Мне хоте́лось бы…</span>
+      <span class="pron">〜していただけますか</span><span class="form">Не могли́ бы вы…?</span>
+      <span class="pron">〜してくださいますか</span><span class="form">Вы не могли́ бы помо́чь?</span>
+    </div>
+    <p>• <span class="ex-inline">Я хоте́л бы ко́фе, пожа́луйста.（コーヒーをお願いしたいのですが）</span></p>
+    <p style="font-size:11px;color:#7A5040;">話し手が女性なら Я хоте́л<b>а</b> бы。過去形なので性に合わせます。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>что́бы — 願いや目的を言う</strong>
+    <p>• <b>主語がちがう</b> → что́бы ＋ <b>過去形</b><br>
+    　<span class="ex-inline">Я хочу́, что́бы ты пришёл.（あなたに来てほしい）</span></p>
+    <p>• <b>主語が同じ</b> → что́бы ＋ <b>不定形</b><br>
+    　<span class="ex-inline">Я пришёл, что́бы уви́деть тебя́.（あなたに会うために来た）</span></p>
+    <p style="font-size:11px;color:#A05A00;">что́бы は что ＋ бы が1語になったもの。だから後ろが過去形になるのです。</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'「その本を読みたいのですが」は？', opts:['Я бы чита́ю э́ту кни́гу.','Я бы прочита́л э́ту кни́гу.'], a:1, ex:'бы はかならず過去形と組み合わせます。現在形とは使いません。'},
+    {type:'mc', q:'Е́сли бы у меня́ （　） вре́мя, я бы пошёл.', opts:['есть','бу́дет','бы́ло'], a:2, ex:'仮定の文では両方の節が過去形。бы́ло вре́мя です。'},
+    {type:'mc', q:'「〜していただけますか」に使うのは？', opts:['Не могли́ бы вы…?','Не мо́жете вы…?'], a:0, ex:'могли́ бы（過去形＋бы）にすると、ぐっとていねいになります。'},
+    {type:'mc', q:'話し手が女性のとき「〜したいのですが」は？', opts:['Я хоте́л бы…','Я хоте́ла бы…'], a:1, ex:'過去形なので主語の性に合わせます。女性なら хоте́ла。'},
+    {type:'mc', q:'Я хочу́, что́бы ты （　）.（あなたに来てほしい）', opts:['придёшь','пришёл','прийти́'], a:1, ex:'что́бы の後で主語が変わるときは過去形。пришёл です。'},
+    {type:'mc', q:'「あなたに会うために来た」（主語が同じ）は？', opts:['Я пришёл, что́бы уви́деть тебя́.','Я пришёл, что́бы я уви́дел тебя́.'], a:0, ex:'主語が同じなら что́бы ＋ 不定形が自然です。'},
+    {type:'mc', q:'бы と組み合わせられるのはどれ？', opts:['現在形','未来形','過去形'], a:2, ex:'бы は過去形とだけ結びつきます。これが唯一のルールです。'}
+  ]
+},
+
+{
+  id:'register', cat:'other', level:'上級', title:'話しことばと書きことば', sub:'相手と場面で言い方を選ぶ',
+  lesson:`
+  <p>同じ内容でも、友だちに話すときと、論文や手紙に書くときでは言い方が変わります。
+  <b>使い分けができると、ロシア語がぐっと自然になります。</b></p>
+
+  <div class="verb-row">
+    <strong>あいさつと呼びかけ</strong>
+    <div class="conj-table">
+      <span class="pron">ていねい</span><span class="form">Здра́вствуйте! ／ До свида́ния! ／ вы</span>
+      <span class="pron">親しい間柄</span><span class="form">Приве́т! ／ Пока́! ／ ты</span>
+    </div>
+    <p style="font-size:11px;color:#A05A00;">迷ったら <b>вы</b>。相手が「Дава́й на ты!（ты で話そう）」と言ってから切りかえます。</p>
+  </div>
+
+  <div class="case-row">
+    <strong>話しことばによく出る語</strong>
+    <p>• <b>ну</b>（で、まあ）・<b>вот</b>（ほら）・<b>зна́чит</b>（つまり）・<b>коне́чно</b>（もちろん）</p>
+    <p>• 愛称形が増えます：ма́ма → <b>ма́мочка</b>／ко́шка → <b>ко́шечка</b>／кни́га → <b>кни́жка</b></p>
+    <p>• くだけた発音：сейча́с →「щас」／что →「чё」（書くときは使いません）</p>
+  </div>
+
+  <div class="case-row">
+    <strong>書きことばによく出る語</strong>
+    <p>• <b>одна́ко</b>（しかしながら）・<b>таки́м о́бразом</b>（このように）・<b>сле́довательно</b>（したがって）</p>
+    <p>• <b>в связи́ с э́тим</b>（これに関連して）・<b>кро́ме того́</b>（さらに）</p>
+    <p>• 形動詞・副動詞は書きことば寄りです：<br>
+    　話：Челове́к, <b>кото́рый чита́ет</b> кни́гу…／書：Челове́к, <b>чита́ющий</b> кни́гу…</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>同じ内容を、2つの言い方で</strong>
+    <p>• 話：<span class="ex-inline">Я прочита́л кни́гу и пошёл спать.</span></p>
+    <p>• 書：<span class="ex-inline">Прочита́в кни́гу, я пошёл спать.</span></p>
+    <p>意味は同じですが、下は文章らしい響きになります。<b>手紙や作文では下の形が好まれます。</b></p>
+  </div>
+
+  <div class="case-row">
+    <strong>手紙の型</strong>
+    <p>• 書き出し（ていねい）：<span class="ex-inline">Уважа́емый Ива́н Ива́нович!</span>（拝啓 イワン様）</p>
+    <p>• 書き出し（親しい）：<span class="ex-inline">Дорога́я ма́ма!</span>（親愛なるお母さんへ）</p>
+    <p>• 結び：<span class="ex-inline">С уваже́нием（敬具）</span> <span class="ex-inline">До встре́чи!（また会う日まで）</span></p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'初対面の年上の人へのあいさつは？', say:'Здра́вствуйте', opts:['Приве́т!','Здра́вствуйте!'], a:1, ex:'Приве́т! は友人どうし。初対面やていねいな場面では Здра́вствуйте!。'},
+    {type:'mc', q:'手紙の結びとして自然なのは？', opts:['С уваже́нием','Ну, пока́'], a:0, ex:'С уваже́нием（敬具）は書きことば。Пока́ は話しことばです。'},
+    {type:'mc', q:'「したがって」を表す書きことばは？', opts:['зна́чит','сле́довательно'], a:1, ex:'сле́довательно は論文や報告書で使う書きことばです。'},
+    {type:'mc', q:'より文章らしいのはどちら？', opts:['Я прочита́л кни́гу и пошёл спать.','Прочита́в кни́гу, я пошёл спать.'], a:1, ex:'副動詞を使った形は書きことば寄りで、文章に向きます。'},
+    {type:'mc', q:'кни́жка はどんな語形？', opts:['書きことばの正式な形','話しことばでよく使う愛称形'], a:1, ex:'愛称形（指小形）です。会話ではこうした形が好んで使われます。'},
+    {type:'mc', q:'相手を ты で呼んでよいのはいつ？', opts:['最初から誰にでも','相手が ты で話そうと言ってから'], a:1, ex:'まずは вы が安全です。「Дава́й на ты!」と言われてから切りかえます。'}
+  ]
+},
+
+{
+  id:'reading', cat:'other', level:'上級', title:'童話や詩を読んでみる', sub:'辞書を片手に、本物のロシア語へ',
+  lesson:`
+  <p>ここまで学んだ知識で、<b>本物のロシア語</b>に手が届きます。
+  すべてを理解しようとせず、わかるところから読むのがこつです。</p>
+
+  <div class="rule-row">
+    <strong>読むときの4つの手順</strong>
+    <p>① <b>主語（主格）と動詞</b>を探す。ロシア語は語順が自由なので、<b>語尾</b>が手がかりです。<br>
+    ② 知らない語は、<b>辞書形に戻して</b>から引く（名詞は主格・単数、動詞は不定形）。<br>
+    ③ 動詞は<b>体</b>を見る。完了体なら「〜し終えた」、不完了体なら「〜していた」。<br>
+    ④ わからない語は<b>飛ばして先へ</b>。話の筋がつかめれば十分です。</p>
+  </div>
+
+  <div class="case-row">
+    <strong>昔話の書き出し</strong>
+    <p style="font-size:16px;font-weight:700;line-height:1.9;">Жи́ли-бы́ли дед да ба́ба.</p>
+    <p style="font-size:11.5px;color:#856348;">（むかしむかし、おじいさんとおばあさんが暮らしていました）</p>
+    <p>• <b>жи́ли-бы́ли</b>：жить と быть の過去・複数。昔話の決まり文句です<br>
+    • <b>дед</b>（おじいさん）・<b>ба́ба</b>（おばあさん）<br>
+    • <b>да</b>：ここでは и（〜と）の古い言い方</p>
+  </div>
+
+  <div class="case-row">
+    <strong>プーシキンの詩から（『ルスラーンとリュドミーラ』序詩）</strong>
+    <p style="font-size:16px;font-weight:700;line-height:1.9;">У лукомо́рья дуб зелёный,<br>Злата́я цепь на ду́бе том…</p>
+    <p style="font-size:11.5px;color:#856348;">（入り江のほとりに緑の樫の木、その樫には黄金の鎖…）</p>
+    <p>• <b>у лукомо́рья</b>：у ＋ 生格（〜のほとりに）<br>
+    • <b>на ду́бе</b>：на ＋ 前置格（〜の上に）<br>
+    • <b>злата́я</b>：золота́я（黄金の）の詩的な古い形<br>
+    • 続く行には <b>кот учёный</b>（学者ねこ）が登場します。ロシアでいちばん有名なねこかもしれません。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>古い文章で出会う形</strong>
+    <p>• <b>злата́я</b> ＝ золота́я、<b>брег</b> ＝ бе́рег のように、母音が省かれた詩的な形<br>
+    • <b>сей</b> ＝ э́тот（この）、<b>о́чи</b> ＝ глаза́（目）<br>
+    • 語順の入れかえ：詩では「дуб зелёный」のように形容詞が後ろに来ることがあります</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>次に読むなら</strong>
+    <p>• ロシアの昔話（<b>ру́сские наро́дные ска́зки</b>）— 文が短く、くり返しが多い<br>
+    • チェーホフの短編 — 現代語に近く、1篇が数ページ<br>
+    • 子ども向けの詩（<b>Марша́к</b>・<b>Чуко́вский</b>）— 韻とリズムで音読に最適</p>
+    <p style="font-size:11px;color:#A05A00;">音読すると、学んだ発音のルール（無声音化・アクセントによる母音の弱化）が実感できます。</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'жи́ли-бы́ли はどんな形？', opts:['жить と быть の過去・複数','命令形'], a:0, ex:'жить と быть の過去複数形を並べた、昔話の決まり文句です。'},
+    {type:'mc', q:'знако́мые（知り合いたち）を辞書で引くとき、戻すべき形は？', opts:['знако́мые のまま','знако́мый（主格・単数）'], a:1, ex:'名詞・形容詞は主格単数に戻してから引きます。動詞なら不定形です。'},
+    {type:'mc', q:'у лукомо́рья の лукомо́рья はどの格？', opts:['主格','生格','前置格'], a:1, ex:'前置詞 у は生格をとります。лукомо́рье → лукомо́рья。'},
+    {type:'mc', q:'на ду́бе の格は？', opts:['対格','前置格'], a:1, ex:'「〜の上にある」という場所なので前置格。дуб → на ду́бе。'},
+    {type:'mc', q:'злата́я は現代語では？', opts:['золота́я','зелёная'], a:0, ex:'золота́я（黄金の）の詩的な古い形です。'},
+    {type:'mc', q:'読んでいて知らない語に出会ったら、まずどうする？', opts:['すべて辞書で調べてから先へ進む','筋がつかめるなら飛ばして先へ進む'], a:1, ex:'全部調べようとすると続きません。わかるところをつなげて読むのが上達のこつです。'}
+  ]
+}
 ];
 
 
@@ -5309,16 +6149,11 @@ function renderReviewBand() {
 // ============================================================
 
 const GRAMMAR_STORAGE_KEY = 'nekoCyrillicGrammar_v1';
-const GRAMMAR_LEVELS = [
-  { key:'基礎', label:'ステップ A ｜ ゼロからの土台', desc:'名詞の性・複数形・代名詞など、すべての入り口', color:'#7BAE9E' },
-  { key:'初級', label:'ステップ B ｜ 動詞と格', desc:'動詞の活用と6つの格。ここが初級の本体です', color:'#C97B72' },
-  { key:'中級', label:'ステップ C ｜ 中級の入口', desc:'複数形の格と動詞の体。ゆっくりで大丈夫', color:'#9FB8D9' }
-];
 
 // { unitId: { read:true, best:0, total:0, cleared:false } }
 let grammarProgress = {};
 let challengeStats = { runs:0, best:0, last:null };
-let challengeConfig = { scopes:['alpha','基礎','初級','中級'], order:'random', count:10 };
+let challengeConfig = { scopes:['alpha','基礎','初級','中級','上級'], order:'random', count:10 };
 
 function saveGrammarProgress() {
   try {
@@ -5366,10 +6201,39 @@ const GRAMMAR_CATS = [
   { id:'pron', title:'代名詞編', sub:'人称代名詞と所有代名詞',             icon:'message', color:'#A05A00', tint:'#FFFBF0' },
   { id:'adj',  title:'形容詞編', sub:'名詞に形を合わせる',                 icon:'flower',  color:'#C98BB0', tint:'#FBF0F6' },
   { id:'prep', title:'前置詞編', sub:'どの前置詞が、どの格をとるか',        icon:'ruler',   color:'#5E8F84', tint:'#EAF4F1' },
+  { id:'num',  title:'数詞編',     sub:'数と、そのあとの名詞の形',           icon:'target',  color:'#8F6300', tint:'#FFF6E0' },
+  { id:'syntax',title:'文をつなぐ編', sub:'関係代名詞・形動詞・副動詞・仮定法', icon:'ruler',   color:'#3A5578', tint:'#F0F4FB' },
   { id:'other',title:'綴りと表現', sub:'正書法のルールと、きほんのフレーズ', icon:'type',    color:'#856348', tint:'#F5EFE8' }
 ];
 
 let openCats = { noun: true };
+let hubLevel = 'all';   // 'all' | '基礎' | '初級' | '中級' | '上級'
+
+// しぼり込んだレベルを含むカテゴリーだけを開く
+function openCatsForLevel(level) {
+  if (level === 'all') { openCats = {}; return; }   // 「すべて」は一覧に戻す（全カテゴリーを閉じる）
+  const cats = {};
+  GRAMMAR_CATS.forEach(function(c){
+    cats[c.id] = GRAMMAR_UNITS.some(function(u){ return u.cat === c.id && u.level === level; });
+  });
+  openCats = cats;
+}
+
+function setHubLevel(v) {
+  hubLevel = v;
+  openCatsForLevel(v);
+  renderGrammarHub();
+  const hub = document.getElementById('grammar-hub');
+  if (hub) hub.scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+// ホームの各とびらから、そのレベルの文法へ直行する
+function openGrammarLevel(level) {
+  switchTab('grammar');
+  hubLevel = level;
+  openCatsForLevel(level);
+  renderGrammarHub();
+}
 
 function toggleGrammarCat(id) {
   openCats[id] = !openCats[id];
@@ -5396,8 +6260,21 @@ function renderGrammarHub() {
   html += '<p class="section-title">' + icon('pencil', 'lu-md') + ' 文法・練習と解説</p>';
   html += '<p class="hub-lead">カテゴリーをタップすると、中の項目が開きます。どのユニットも<b>解説 → 練習問題</b>のセットです。上から順でも、気になるところだけでもOK。</p>';
 
+  // レベルのしぼり込み
+  const LEVELS = ['基礎','初級','中級','上級'];
+  html += '<div class="hub-levels">';
+  html += '<button class="hl' + (hubLevel === 'all' ? ' on' : '') + '" onclick="setHubLevel(\'all\')">すべて<em>' + GRAMMAR_UNITS.length + '</em></button>';
+  LEVELS.forEach(function(lv) {
+    const n = GRAMMAR_UNITS.filter(function(u){ return u.level === lv; }).length;
+    if (!n) return;
+    html += '<button class="hl' + (hubLevel === lv ? ' on' : '') + '" onclick="setHubLevel(\'' + lv + '\')">' + lv + '<em>' + n + '</em></button>';
+  });
+  html += '</div>';
+
   GRAMMAR_CATS.forEach(function(c) {
-    const units = GRAMMAR_UNITS.filter(function(u){ return u.cat === c.id; });
+    const units = GRAMMAR_UNITS.filter(function(u){
+      return u.cat === c.id && (hubLevel === 'all' || u.level === hubLevel);
+    });
     if (!units.length) return;
     const cl = units.filter(function(u){ return unitProg(u.id).cleared; }).length;
     const open = !!openCats[c.id];
@@ -5782,7 +6659,8 @@ function renderChallengeSetup() {
     { key:'alpha', label:'キリル文字', sub:'33匹の単語と意味' },
     { key:'基礎', label:'文法 A・土台', sub:'性・複数・代名詞ほか' },
     { key:'初級', label:'文法 B・動詞と格', sub:'活用・6つの格' },
-    { key:'中級', label:'文法 C・中級', sub:'複数の格・体' },
+    { key:'中級', label:'文法 C・中級', sub:'格変化の完成・体・数詞' },
+    { key:'上級', label:'文法 D・上級', sub:'関係代名詞・形動詞・仮定法' },
     { key:'dict', label:'ディクテーション', sub:'聞いて綴る 66問' }
   ];
 
@@ -5977,25 +6855,34 @@ function retryWrongChallenge() {
 // ホームの「道のり」— いまどの段にいるかを見える形にする
 // ------------------------------------------------------------
 // 段の定義：はじめの一歩／初級のとびら（達成できる段）と、中級・上級（建設中）
+// そのレベルのユニット（と、クリア済みの数）
+function unitsOfLevel(levels) {
+  return GRAMMAR_UNITS.filter(function(u){ return levels.indexOf(u.level) >= 0; });
+}
+function clearedOfLevel(levels) {
+  return unitsOfLevel(levels).filter(function(u){ return unitProg(u.id).cleared; }).length;
+}
+
 function stageInfo() {
   const friends = LETTERS.filter(function(l){ return letterActionCount(l.u) === 4; }).length;
-  const cleared = grammarClearedCount();
+  const L2 = ['基礎','初級'], L3 = ['中級'], L4 = ['上級'];
   const list = [
     { n:1, name:'はじめの一歩', short:'はじめの一歩', done:friends, total:LETTERS.length,
       unit:'匹', what:'なかよし', cats:0 },
-    { n:2, name:'初級のとびら', short:'初級', done:cleared, total:GRAMMAR_UNITS.length,
-      unit:'ユニット', what:'クリア', cats:1 },
-    { n:3, name:'中級のとびら', short:'中級', soon:true, cats:2 },
-    { n:4, name:'上級のとびら', short:'上級', soon:true, cats:3 }
+    { n:2, name:'初級のとびら', short:'初級', done:clearedOfLevel(L2), total:unitsOfLevel(L2).length,
+      unit:'ユニット', what:'クリア', cats:1, levels:L2 },
+    { n:3, name:'中級のとびら', short:'中級', done:clearedOfLevel(L3), total:unitsOfLevel(L3).length,
+      unit:'ユニット', what:'クリア', cats:2, levels:L3 },
+    { n:4, name:'上級のとびら', short:'上級', done:clearedOfLevel(L4), total:unitsOfLevel(L4).length,
+      unit:'ユニット', what:'クリア', cats:3, levels:L4 }
   ];
   list.forEach(function(s) {
-    if (s.soon) { s.pct = 0; return; }
     s.pct = s.total ? Math.round(s.done / s.total * 100) : 0;
-    s.complete = s.done >= s.total;
+    s.complete = s.total > 0 && s.done >= s.total;
   });
   // 現在地＝まだ終わっていない最初の段（どちらも終わっていれば初級のとびら）
   let cur = null;
-  list.forEach(function(s){ if (!cur && !s.soon && !s.complete) cur = s; });
+  list.forEach(function(s){ if (!cur && !s.complete) cur = s; });
   if (!cur) cur = list[1];
   list.forEach(function(s){ s.current = (s === cur); });
   return list;
@@ -6025,23 +6912,22 @@ function renderRoadmap() {
     let html = '<div class="stairs">';
     stages.forEach(function(s, i) {
       let cls = 'stair';
-      if (s.soon) cls += ' locked';
       if (s.complete) cls += ' done';
-      if (!s.soon && s.pct >= 20) cls += ' has-fill';
+      if (s.pct >= 20) cls += ' has-fill';
       if (s.current) cls += ' current';
       html += '<div class="' + cls + '" style="--step:' + (i + 1) + ';">';
       html += '  <span class="stair-mark">' + (s.current ? STAIR_PAW : '') + '</span>';
       html += '  <span class="stair-cats">' + catMarks(s.cats) + '</span>';
-      html += '  <span class="stair-block"><span class="stair-fill" style="height:' + (s.soon ? 0 : s.pct) + '%;"></span></span>';
+      html += '  <span class="stair-block"><span class="stair-fill" style="height:' + s.pct + '%;"></span></span>';
       html += '  <span class="stair-name">' + s.short + '</span>';
-      html += '  <span class="stair-pct">' + (s.soon ? '建設中' : s.pct + '%') + '</span>';
+      html += '  <span class="stair-pct">' + s.pct + '%</span>';
       html += '</div>';
     });
     html += '</div>';
 
     const cur = stages.filter(function(s){ return s.current; })[0];
     let now = '<p class="stairs-now"><span class="now-tag">いまここ</span> <b>' + cur.name + '</b>';
-    if (!cur.soon) {
+    if (true) {
       now += '<span class="now-sub">' + cur.what + ' ' + cur.done + ' / ' + cur.total + ' ' + cur.unit;
       if (cur.complete) now += '　→ この段は達成しました';
       else now += '　あと ' + (cur.total - cur.done) + ' ' + cur.unit;
@@ -6067,12 +6953,12 @@ function renderRoadmap() {
     }
     const chip = document.getElementById('stage-chip-' + s.n);
     if (chip) {
-      chip.className = 'stage-chip' + (s.complete ? ' done' : (s.current ? ' now' : (s.soon ? ' soon' : '')));
+      chip.className = 'stage-chip' + (s.complete ? ' done' : (s.current ? ' now' : ''));
       chip.innerHTML = s.complete ? (icon('medal', 'lu-md') + ' 達成')
-                     : (s.current ? 'いまここ' : (s.soon ? '建設中' : ''));
+                     : (s.current ? 'いまここ' : '');
     }
     const meter = document.getElementById('stage-meter-' + s.n);
-    if (meter && !s.soon) {
+    if (meter) {
       let m = '<div class="sm-head"><span>' + s.what + '</span><b>' + s.done + ' / ' + s.total + ' ' + s.unit + '</b></div>';
       m += '<div class="sm-bar"><span style="width:' + s.pct + '%;"></span></div>';
       meter.innerHTML = m;
@@ -6230,11 +7116,15 @@ function updateHomeStepStatus() {
     const friends = LETTERS.filter(function(l){ return letterActionCount(l.u) === 4; }).length;
     s1.textContent = friends ? 'なかよし ' + friends + ' / ' + LETTERS.length + ' 匹' : '33匹のねこが待っています';
   }
-  const g = document.getElementById('home-step2-status');
-  if (g) {
-    const c = grammarClearedCount();
-    g.textContent = c ? c + ' / ' + GRAMMAR_UNITS.length + ' ユニットをクリア' : GRAMMAR_UNITS.length + ' ユニット・全' + GRAMMAR_UNITS.reduce(function(n,u){ return n + u.drills.length; }, 0) + '問の練習';
-  }
+  [['home-step2-status', ['基礎','初級']], ['home-step4-status', ['中級']], ['home-step5-status', ['上級']]].forEach(function(pair) {
+    const el = document.getElementById(pair[0]);
+    if (!el) return;
+    const us = unitsOfLevel(pair[1]);
+    const c = clearedOfLevel(pair[1]);
+    const q = us.reduce(function(n,u){ return n + u.drills.length; }, 0);
+    el.textContent = c ? c + ' / ' + us.length + ' ユニットをクリア'
+                       : us.length + ' ユニット・全' + q + '問の練習';
+  });
   const d1 = document.getElementById('home-dict-status');
   if (d1) {
     const done = dictDoneCount();
