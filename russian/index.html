@@ -2248,6 +2248,72 @@
   .bk-empty strong { font-size: 13px; color: #3A2318; }
   .bk-empty span { font-size: 11.5px; color: #7A5040; line-height: 1.8; }
 
+
+  /* ---- 研究への協力のお願い ---- */
+  .research-band {
+    background: #F4F8F6;
+    border: 1.5px solid #CBE0D6;
+    border-radius: 18px;
+    padding: 14px 15px;
+    margin: 0 0 20px;
+  }
+  .research-band:empty { display: none; }
+  .rs-main { display: flex; align-items: flex-start; gap: 11px; }
+  .rs-icon {
+    width: 34px; height: 34px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 11px; background: #fff; color: #3F7A69;
+  }
+  .rs-body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .rs-body strong { font-size: 13.5px; font-weight: 800; color: #3A2318; }
+  .rs-body span { font-size: 11px; color: #7A5040; line-height: 1.8; }
+  .rs-more {
+    width: 100%; margin-top: 10px;
+    background: transparent; border: none; color: #3F7A69;
+    font-family: inherit; font-size: 11.5px; font-weight: 700;
+    cursor: pointer; text-decoration: underline;
+  }
+  .rs-actions { display: flex; gap: 8px; margin-top: 10px; }
+  .rs-actions.modal { margin-top: 16px; }
+  .rs-actions button {
+    flex: 1; border-radius: 999px; padding: 11px 8px;
+    font-family: inherit; font-size: 13px; font-weight: 800; cursor: pointer;
+  }
+  .rs-no { background: #F5EFE8; border: none; color: #7A5040; }
+  .rs-yes { background: #3F7A69; border: none; color: #fff; }
+  .rs-yes.wide { width: 100%; margin-top: 12px; padding: 12px; }
+
+  /* 説明の文書 */
+  .rs-doc h4 {
+    font-size: 12.5px; color: #A55A50; font-weight: 800;
+    margin: 14px 0 5px;
+  }
+  .rs-doc p { font-size: 11.5px; color: #3A2318; line-height: 1.9; }
+  .rs-doc ul { margin: 4px 0 0 2px; padding: 0; list-style: none; }
+  .rs-doc li {
+    font-size: 11.5px; color: #3A2318; line-height: 1.8;
+    padding-left: 15px; position: relative;
+  }
+  .rs-doc li::before {
+    content: ''; position: absolute; left: 3px; top: 8px;
+    width: 5px; height: 5px; border-radius: 50%; background: #C9A88F;
+  }
+  .rs-contact {
+    margin-top: 16px; padding-top: 12px;
+    border-top: 1px dashed #F0DDD7;
+    font-size: 11px !important; color: #7A5040 !important;
+  }
+  .rs-stop {
+    margin-top: 20px; padding-top: 14px; border-top: 1px dashed #F0DDD7;
+  }
+  .rs-stop strong { font-size: 12.5px; color: #7A5040; }
+  .rs-stop p { font-size: 11px; color: #856348; line-height: 1.7; margin: 4px 0 8px; }
+  .rs-stop button {
+    width: 100%; background: #fff; border: 1.5px solid #E0C9C4; color: #A55A50;
+    border-radius: 999px; padding: 10px;
+    font-family: inherit; font-size: 12px; font-weight: 700; cursor: pointer;
+  }
+
 </style>
 </head>
 <body>
@@ -2269,6 +2335,7 @@
 
     <p class="roadmap-title">ねこと歩く、ロシア語の道のり</p>
     <div class="stairs-wrap" id="stairs"></div>
+    <div class="research-band" id="research-band"></div>
     <div class="storage-warning" id="storage-warning"></div>
     <div class="review-band" id="review-band"></div>
     <div class="install-band" id="install-band"></div>
@@ -2452,6 +2519,14 @@
       </div>
       <div class="reward-todo" id="reward-todo"></div>
       <button class="reward-download-btn" id="reward-download-btn" onclick="downloadRewardPDF()" disabled=""><!--ICON:lock:lu-md--> まだ受け取れません</button>
+    </div>
+
+    <div class="backup-card">
+      <div class="bc-body">
+        <strong>研究への協力</strong>
+        <span>この教材はロシア語教育の研究として作られています。学習の記録を匿名で役立てられます（任意・いつでも停止できます）</span>
+      </div>
+      <button onclick="openResearchData()">開く</button>
     </div>
 
     <div class="backup-card">
@@ -2847,6 +2922,7 @@ function switchTab(tabName) {
   const content = document.getElementById('tab-' + tabName);
   if (btn) btn.classList.add('active');
   if (content) content.classList.add('active');
+  if (typeof logScreen === 'function') logScreen(tabName);
   // タブごとの再描画（進捗表示を最新に）
   if (tabName === 'grammar' && typeof renderGrammarHub === 'function' && !currentUnitId) renderGrammarHub();
   if (tabName === 'challenge' && typeof renderChallengeSetup === 'function' && !chalState) renderChallengeSetup();
@@ -3417,6 +3493,8 @@ function updateRewardProgress() {
     // Show celebration modal only once per session
     if (!window._celebrationShown) {
       window._celebrationShown = true;
+      logEvent('reward', {});
+      gaEvent('reward_unlock', {});
       setTimeout(() => {
         document.getElementById('celebration-bg').classList.add('open');
       }, 400);
@@ -3883,6 +3961,7 @@ function finishMCQuiz() {
   const bothPassed = q.q1Passed && q.q2Passed;
   if (bothPassed) {
     actions[letter.u].testPassed = true;
+    logLetterAction(letter.u, 'testPassed');
     saveProgress();
     showToast('<!--ICON:party:lu-md--> 全問正解！なかよし度アップ！', '#7BAE9E');
   } else if (q.q1Passed || q.q2Passed) {
@@ -4072,6 +4151,7 @@ function submitSPQuiz() {
   q.result = passed ? 'correct' : 'wrong';
   if (passed) {
     actions[currentLetter.u].testPassed = true;
+    logLetterAction(currentLetter.u, 'testPassed');
     saveProgress();
   }
   renderSPQuiz();
@@ -4126,6 +4206,7 @@ function speakForAction(letter, key, text) {
     if (ok) {
       actions[letter.u][key] = true;
       audioFailed[letter.u] = null;
+      logLetterAction(letter.u, key);
     } else {
       audioFailed[letter.u] = key;      // 記録はせず、案内を出す
     }
@@ -4138,6 +4219,7 @@ function speakForAction(letter, key, text) {
 // 音が出ない端末のための逃げ道（利用者が自分で選んで進める）
 function markHeardManually(key) {
   if (!currentLetter) return;
+  logLetterAction(currentLetter.u, key + '_manual');
   actions[currentLetter.u][key] = true;
   audioFailed[currentLetter.u] = null;
   saveProgress();
@@ -6876,6 +6958,7 @@ function startUnitDrill(id) {
     i: 0, correct: 0, answered: null, lastCorrect: false,
     input: '', showHint: false, wrong: []
   };
+  markQuestionShown();
   renderUnitDrill();
   const area = document.getElementById('unit-drill-area');
   if (area) area.scrollIntoView({ behavior:'smooth', block:'start' });
@@ -6907,6 +6990,7 @@ function answerUnitDrill(idx) {
   s.answered = idx;
   s.lastCorrect = (idx === q.a);
   srsRecord(q.id, s.lastCorrect);
+  logAnswer(q.id, s.lastCorrect, 'unit');
   if (s.lastCorrect) s.correct++; else s.wrong.push(q);
   renderUnitDrill();
 }
@@ -6918,6 +7002,7 @@ function submitUnitInput() {
   s.answered = 1;
   s.lastCorrect = normalizeAnswer(s.input) === normalizeAnswer(q.a);
   srsRecord(q.id, s.lastCorrect);
+  logAnswer(q.id, s.lastCorrect, 'unit');
   if (s.lastCorrect) s.correct++; else s.wrong.push(q);
   renderUnitDrill();
 }
@@ -6930,6 +7015,7 @@ function nextUnitDrill() {
   s.answered = null;
   s.input = '';
   s.showHint = false;
+  markQuestionShown();
   renderUnitDrill();
 }
 
@@ -6945,6 +7031,7 @@ function finishUnitDrill() {
     cleared: !!p.cleared || cleared
   };
   saveGrammarProgress();
+  logUnitFinish(s.unitId, s.correct, s.qs.length, cleared);
   renderUnitDrillResult();
 }
 
@@ -7098,6 +7185,7 @@ function startChallenge(customQs, mode, viewId) {
     input: '', showHint: false, wrong: [], mode: mode || 'normal',
     view: viewId || 'challenge-view'
   };
+  markQuestionShown();
   renderChallengeQ();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -7131,6 +7219,7 @@ function answerChallenge(idx) {
   s.lastCorrect = (idx === q.a);
   srsRecord(q.id, s.lastCorrect);
   markDictDone(q.id, s.lastCorrect);
+  logAnswer(q.id, s.lastCorrect, s.mode || 'chal');
   if (s.lastCorrect) s.correct++; else s.wrong.push(q);
   renderChallengeQ();
 }
@@ -7143,6 +7232,7 @@ function submitChallengeInput() {
   s.lastCorrect = normalizeAnswer(s.input) === normalizeAnswer(q.a);
   srsRecord(q.id, s.lastCorrect);
   markDictDone(q.id, s.lastCorrect);
+  logAnswer(q.id, s.lastCorrect, s.mode || 'chal');
   if (s.lastCorrect) s.correct++; else s.wrong.push(q);
   renderChallengeQ();
 }
@@ -7155,6 +7245,7 @@ function nextChallengeQ() {
   s.answered = null;
   s.input = '';
   s.showHint = false;
+  markQuestionShown();
   renderChallengeQ();
 }
 
@@ -7168,6 +7259,7 @@ function finishChallenge() {
     challengeStats.best = Math.max(challengeStats.best || 0, pct);
   }
   saveGrammarProgress();
+  logRunFinish(s.mode || 'chal', s.correct, s.qs.length);
   renderChallengeResult();
 }
 
@@ -7274,6 +7366,7 @@ const STAIR_PAW = '<svg viewBox="0 0 24 24" fill="currentColor">'
   + '</svg>';
 
 function renderRoadmap() {
+  renderResearchBand();
   renderStorageWarning();
   renderReviewBand();
   const stages = stageInfo();
@@ -7666,6 +7759,304 @@ window.addEventListener('error', function (e) { handleGlobalError(e && (e.messag
 window.addEventListener('unhandledrejection', function (e) { handleGlobalError(e && e.reason); });
 
 // ============================================================
+// 教材研究のためのデータ収集（同意した方のみ・匿名）
+// ============================================================
+// 方針
+//  ・同意した場合のみ記録します（初回に明示的にお尋ねします）
+//  ・氏名・メールアドレス・IPなど、個人を特定する情報は一切扱いません
+//  ・記録は端末の中に貯まり、利用者が自分で提出したときだけ研究者に渡ります
+//  ・いつでも「協力をやめる」ことができ、そのとき記録も削除されます
+const RESEARCH_KEY = 'nekoCyrillicResearch_v1';
+const RESEARCH_MAX_EVENTS = 5000;      // これを超えたら古いものから間引く
+// ↓ Googleフォームなどの提出先を用意したら、ここにURLを入れるとボタンが出ます
+const RESEARCH_FORM_URL = '';
+
+let research = { consent: null, pid: null, consentAt: null, events: [], truncated: 0 };
+
+function researchEnabled() { return research.consent === 'yes'; }
+
+function loadResearch() {
+  try {
+    const raw = localStorage.getItem(RESEARCH_KEY);
+    if (!raw) return;
+    const d = JSON.parse(raw);
+    if (d && typeof d === 'object') research = Object.assign(research, d);
+    if (!Array.isArray(research.events)) research.events = [];
+  } catch (e) { console.log('research load failed:', e); }
+}
+
+function saveResearch() {
+  try { localStorage.setItem(RESEARCH_KEY, JSON.stringify(research)); }
+  catch (e) { console.log('research save failed:', e); noteStorageFailure(); }
+}
+
+// 端末の種類だけを、粗く記録する（機種の特定はしません）
+function deviceKind() {
+  const ua = (navigator && navigator.userAgent) || '';
+  if (/iPhone|iPad|iPod/.test(ua)) return 'iOS';
+  if (/Android/.test(ua)) return 'Android';
+  if (/Windows/.test(ua)) return 'Windows';
+  if (/Mac OS X/.test(ua)) return 'macOS';
+  return 'other';
+}
+
+function newParticipantId() {
+  let s = '';
+  const chars = '0123456789abcdef';
+  for (let i = 0; i < 8; i++) s += chars.charAt(Math.floor(Math.random() * 16));
+  return 'R-' + s;
+}
+
+// 経過秒（同意した時点からの相対時刻。実時刻は記録しません）
+function researchNow() {
+  if (!research.consentAt) return 0;
+  return Math.round((Date.now() - new Date(research.consentAt).getTime()) / 1000);
+}
+
+function logEvent(type, payload) {
+  if (!researchEnabled()) return;
+  const ev = Object.assign({ t: researchNow(), e: type }, payload || {});
+  research.events.push(ev);
+  if (research.events.length > RESEARCH_MAX_EVENTS) {
+    const cut = research.events.length - RESEARCH_MAX_EVENTS;
+    research.events.splice(0, cut);
+    research.truncated = (research.truncated || 0) + cut;
+  }
+  saveResearch();
+}
+
+// Google アナリティクスへの送信（同意した場合のみ・失敗しても学習は止めません）
+function gaEvent(name, params) {
+  if (!researchEnabled()) return;
+  try { if (typeof gtag === 'function') gtag('event', name, params || {}); }
+  catch (e) { console.log('ga event failed:', e); }
+}
+
+// ---- 記録する出来事 ----
+let questionShownAt = 0;
+function markQuestionShown() { questionShownAt = Date.now(); }
+
+function logAnswer(id, ok, mode) {
+  if (!id) return;
+  const ms = questionShownAt ? Math.min(Date.now() - questionShownAt, 600000) : null;
+  logEvent('ans', { i: id, o: ok ? 1 : 0, m: mode, d: ms });
+  gaEvent('study_answer', { item_id: String(id).slice(0, 100), correct: ok ? 1 : 0, mode: mode });
+}
+
+function logUnitFinish(unitId, correct, total, cleared) {
+  const u = unitById(unitId) || {};
+  logEvent('unit', { u: unitId, c: correct, n: total, k: cleared ? 1 : 0 });
+  gaEvent('unit_finish', { unit_id: unitId, level: u.level || '', category: u.cat || '',
+                           correct: correct, total: total, cleared: cleared ? 1 : 0 });
+}
+
+function logRunFinish(mode, correct, total, extra) {
+  logEvent('run', Object.assign({ m: mode, c: correct, n: total }, extra || {}));
+  gaEvent('run_finish', Object.assign({ mode: mode, correct: correct, total: total }, extra || {}));
+}
+
+function logLetterAction(letter, action) {
+  logEvent('let', { l: letter, a: action });
+  gaEvent('letter_action', { letter: letter, action: action });
+}
+
+function logScreen(name) {
+  logEvent('nav', { s: name });
+  gaEvent('screen_open', { screen_name: name });
+}
+
+// ---- 同意の受け取り ----
+function setResearchConsent(yes) {
+  if (yes) {
+    research.consent = 'yes';
+    if (!research.pid) research.pid = newParticipantId();
+    if (!research.consentAt) research.consentAt = new Date().toISOString();
+    research.device = deviceKind();
+    saveResearch();
+    logEvent('start', { d: research.device });
+    gaEvent('research_consent', { granted: 1 });
+    showToast('ご協力ありがとうございます', '#3F7A69');
+  } else {
+    research = { consent: 'no', pid: null, consentAt: null, events: [], truncated: 0 };
+    saveResearch();
+    showToast('記録しません。学習はこれまでどおりお使いいただけます', '#3F7A69');
+  }
+  closeModal();
+  renderResearchBand();
+  renderRoadmap();
+}
+
+// ---- ホームの同意のお願い（まだ答えていないときだけ出す）----
+function renderResearchBand() {
+  const box = document.getElementById('research-band');
+  if (!box) return;
+  if (research.consent !== null) { box.innerHTML = ''; box.style.display = 'none'; return; }
+  box.style.display = 'block';
+  box.innerHTML =
+    '<div class="rs-main"><span class="rs-icon">' + icon('book', 'lu-md') + '</span>'
+    + '<span class="rs-body"><strong>この教材づくりに、力を貸していただけませんか</strong>'
+    + '<span>この教材は、ロシア語教育の研究として作られています。学習の記録（どの問題に正解したかなど）を'
+    + '<b>匿名で</b>研究に役立てさせてください。お名前や連絡先は一切集めません。</span></span></div>'
+    + '<button class="rs-more" onclick="openResearchInfo()">くわしい説明を読む</button>'
+    + '<div class="rs-actions">'
+    + '  <button class="rs-no" onclick="setResearchConsent(false)">協力しない</button>'
+    + '  <button class="rs-yes" onclick="setResearchConsent(true)">協力する</button>'
+    + '</div>';
+}
+
+// ---- くわしい説明 ----
+function openResearchInfo() {
+  const modal = document.getElementById('modal-content');
+  if (!modal) return;
+  let html = '';
+  html += '<div class="modal-header"><strong style="font-size:15px;font-weight:800;color:#A55A50;display:flex;align-items:center;gap:6px;">'
+       + icon('book', 'lu-md') + ' 研究へのご協力について</strong>'
+       + '<button class="close-btn" onclick="closeModal()">' + icon('close', 'lu-md') + '</button></div>';
+
+  html += '<div class="rs-doc">';
+  html += '<h4>この研究の目的</h4>';
+  html += '<p>この教材が、ロシア語のキリル文字と文法の学習にどのように役立つかを調べ、'
+       + '教材そのものを改善するためです。結果は日本ロシア教育学会などでの研究発表・論文に用います。</p>';
+
+  html += '<h4>記録させていただくこと</h4>';
+  html += '<ul>'
+       + '<li>どの問題に、正解したか・まちがえたか（問題ごと）</li>'
+       + '<li>解答までにかかったおおよその時間</li>'
+       + '<li>どのユニットを開き、どこまで進んだか</li>'
+       + '<li>どの機能（図鑑・文法・チャレンジ・ディクテーション・復習）を使ったか</li>'
+       + '<li>端末の種類（iPhone・Android・パソコンなど）</li>'
+       + '</ul>';
+
+  html += '<h4>記録しないこと</h4>';
+  html += '<ul>'
+       + '<li>お名前・メールアドレス・電話番号などの連絡先</li>'
+       + '<li>位置情報、端末の固有番号、閲覧した他のサイト</li>'
+       + '<li>入力した文字そのもの（正誤の結果だけを記録します）</li>'
+       + '</ul>';
+
+  html += '<h4>データの扱い</h4>';
+  html += '<p>記録はまず<b>あなたの端末の中だけ</b>に貯まります。研究者に渡るのは、'
+       + 'あなたが「研究用データを提出する」を押して送ってくださったときだけです。'
+       + '個人が特定できない形（ランダムな記号）で集計し、統計的な結果のみを公表します。</p>';
+
+  html += '<h4>いつでもやめられます</h4>';
+  html += '<p>ホーム下部の「研究への協力」からいつでも停止でき、そのとき端末内の記録も削除されます。'
+       + '協力しない場合でも、教材のすべての機能をこれまでどおりお使いいただけます。</p>';
+
+  html += '<p class="rs-contact">研究責任者：杉山 真央（名古屋外国語大学）<br>'
+       + 'ご質問は、サイトの連絡先までお寄せください。</p>';
+  html += '</div>';
+
+  if (research.consent === null) {
+    html += '<div class="rs-actions modal">'
+         + '  <button class="rs-no" onclick="setResearchConsent(false)">協力しない</button>'
+         + '  <button class="rs-yes" onclick="setResearchConsent(true)">協力する</button>'
+         + '</div>';
+  } else {
+    html += '<div class="modal-close-bottom"><button onclick="closeModal()">とじる</button></div>';
+  }
+  modal.innerHTML = html;
+  todoReturn = false;
+  document.getElementById('modal-bg').classList.add('open');
+}
+
+// ---- 研究用データの提出 ----
+function researchSummary() {
+  const evs = research.events || [];
+  const ans = evs.filter(function (e) { return e.e === 'ans'; });
+  const ok = ans.filter(function (e) { return e.o === 1; }).length;
+  const items = {};
+  ans.forEach(function (e) { items[e.i] = true; });
+  return { events: evs.length, answers: ans.length, correct: ok,
+           items: Object.keys(items).length, truncated: research.truncated || 0 };
+}
+
+function makeResearchExport() {
+  return JSON.stringify({
+    app: 'neko-cyrillic', kind: 'research-log', v: 1,
+    pid: research.pid, device: research.device || null,
+    consentAt: research.consentAt, exportedAt: new Date().toISOString(),
+    truncated: research.truncated || 0,
+    fields: {
+      t: '同意時点からの経過秒', e: '出来事の種類',
+      ans: '解答（i=問題ID, o=正誤1/0, m=場面 unit/chal/review/dict, d=解答までのミリ秒）',
+      unit: 'ユニット終了（u=ユニットID, c=正解数, n=問題数, k=クリア1/0）',
+      run: 'まとまった演習の終了（m=種類, c=正解数, n=問題数）',
+      let: '文字カードの操作（l=文字, a=操作）', nav: '画面の切りかえ（s=画面名）',
+      start: '協力の開始（d=端末の種類）'
+    },
+    summary: researchSummary(),
+    events: research.events
+  });
+}
+
+function openResearchData() {
+  const modal = document.getElementById('modal-content');
+  if (!modal) return;
+  const s = researchSummary();
+  let html = '';
+  html += '<div class="modal-header"><strong style="font-size:15px;font-weight:800;color:#A55A50;display:flex;align-items:center;gap:6px;">'
+       + icon('book', 'lu-md') + ' 研究への協力</strong>'
+       + '<button class="close-btn" onclick="closeModal()">' + icon('close', 'lu-md') + '</button></div>';
+
+  if (research.consent !== 'yes') {
+    html += '<p class="bk-lead">いまは記録していません。ご協力いただける場合は、下のボタンから内容をご確認ください。</p>';
+    html += '<button class="rs-yes wide" onclick="openResearchInfo()">説明を読む</button>';
+  } else {
+    html += '<div class="bk-summary">' + icon('paw', 'lu-md') + ' あなたの記録：解答 ' + s.answers + ' 回'
+         + '（正解 ' + s.correct + '）／のべ ' + s.items + ' 問／記録 ' + s.events + ' 件</div>';
+    html += '<p class="bk-lead">下のデータを研究者にお送りいただくと、教材の改善に役立ちます。'
+         + '<b>お名前や連絡先は含まれていません。</b>いつでも提出せずにやめられます。</p>';
+    html += '<textarea class="bk-area" id="rs-data" readonly onclick="this.select()">' + makeResearchExport() + '</textarea>';
+    html += '<div class="drill-actions">';
+    html += '  <button class="drill-clear" onclick="downloadResearchData()">ファイルに保存</button>';
+    html += '  <button class="drill-submit" onclick="copyResearchData()">データをコピー</button>';
+    html += '</div>';
+    if (RESEARCH_FORM_URL) {
+      html += '<button class="rs-yes wide" onclick="window.open(\'' + RESEARCH_FORM_URL + '\',\'_blank\')">提出フォームを開く</button>';
+    }
+    html += '<div class="rs-stop">'
+         + '<strong>協力をやめる</strong>'
+         + '<p>停止すると、端末内の記録もすべて削除されます。学習の進捗は消えません。</p>'
+         + '<button onclick="setResearchConsent(false)">記録をやめて削除する</button>'
+         + '</div>';
+  }
+  html += '<div class="modal-close-bottom"><button onclick="closeModal()">とじる</button></div>';
+  modal.innerHTML = html;
+  todoReturn = false;
+  document.getElementById('modal-bg').classList.add('open');
+}
+
+function copyResearchData() {
+  const el = document.getElementById('rs-data');
+  if (!el) return;
+  el.select();
+  el.setSelectionRange(0, 999999);
+  let ok = false;
+  try { ok = document.execCommand('copy'); } catch (e) {}
+  if (!ok && navigator.clipboard) {
+    navigator.clipboard.writeText(el.value).then(function () { showToast('コピーしました', '#3F7A69'); });
+    return;
+  }
+  showToast(ok ? 'コピーしました' : 'コピーできませんでした。長押しで選択してください', ok ? '#3F7A69' : '#A55A50');
+  if (ok) gaEvent('research_copy', {});
+}
+
+function downloadResearchData() {
+  try {
+    const blob = new Blob([makeResearchExport()], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'neko-cyrillic-research-' + (research.pid || 'log') + '.json';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    showToast('保存しました', '#3F7A69');
+    gaEvent('research_download', {});
+  } catch (e) {
+    showToast('保存できませんでした。コピーをお使いください', '#A55A50');
+  }
+}
+
+// ============================================================
 // バックアップと復元（機種変更・キャッシュ削除への備え）
 // ============================================================
 // 学習データは端末の中だけに保存されます。外部に送信しません。
@@ -7908,6 +8299,7 @@ window.addEventListener('appinstalled', function () {
 });
 
 // すべての定義が済んでから初期描画する
+loadResearch();
 purgeUnknownSrs();   // 教材更新でなくなった問題を取り除く
 render();
 renderGrammarHub();
