@@ -2314,6 +2314,37 @@
     font-family: inherit; font-size: 12px; font-weight: 700; cursor: pointer;
   }
 
+
+  /* ---- アンケート ---- */
+  .sv-count {
+    background: #F5EFE8; border-radius: 10px; padding: 7px 11px; margin-bottom: 12px;
+    font-size: 11.5px; color: #7A5040; font-weight: 700; text-align: center;
+  }
+  .sv-q { margin-bottom: 16px; }
+  .sv-label {
+    display: flex; align-items: flex-start; gap: 7px;
+    font-size: 12.5px; font-weight: 800; color: #3A2318; line-height: 1.6; margin-bottom: 7px;
+  }
+  .sv-label span {
+    flex-shrink: 0; width: 19px; height: 19px; border-radius: 50%;
+    background: #A55A50; color: #fff; font-size: 10.5px;
+    display: flex; align-items: center; justify-content: center; margin-top: 1px;
+  }
+  .sv-opts { display: flex; flex-wrap: wrap; gap: 6px; }
+  .sv-opt {
+    background: #fff; border: 1.5px solid #F0DDD7; color: #7A5040;
+    border-radius: 999px; padding: 8px 13px;
+    font-family: inherit; font-size: 12px; font-weight: 700; cursor: pointer;
+  }
+  .sv-opt.on { background: #3F7A69; border-color: #3F7A69; color: #fff; }
+  .sv-opt:active { transform: scale(0.98); }
+  .sv-text {
+    width: 100%; height: 76px;
+    border: 1.5px solid #F0DDD7; border-radius: 12px; padding: 10px;
+    font-family: inherit; font-size: 12px; color: #3A2318; background: #FFFDFA;
+    resize: vertical; line-height: 1.7;
+  }
+
 </style>
 </head>
 <body>
@@ -2520,6 +2551,8 @@
       <div class="reward-todo" id="reward-todo"></div>
       <button class="reward-download-btn" id="reward-download-btn" onclick="downloadRewardPDF()" disabled=""><!--ICON:lock:lu-md--> まだ受け取れません</button>
     </div>
+
+    <div class="backup-card" id="survey-card" style="display:none;"></div>
 
     <div class="backup-card">
       <div class="bc-body">
@@ -6463,6 +6496,10 @@ function srsRecord(id, correct) {
   }
   // 一度も間違えていない問題は、キューに入れない
   saveGrammarProgress();
+  // 復習の効き目を分析できるように、間隔の状態も記録する
+  const st = srsData[id];
+  if (st) logEvent('srs', { i:id, o:correct ? 1 : 0, b:st.b, iv:st.due - today,
+                            w:st.w || 0, r:st.r || 0, m:st.m ? 1 : 0 });
 }
 
 // 今日出すべき問題のID（期限が古い順）
@@ -7367,6 +7404,7 @@ const STAIR_PAW = '<svg viewBox="0 0 24 24" fill="currentColor">'
 
 function renderRoadmap() {
   renderResearchBand();
+  renderSurveyCard();
   renderStorageWarning();
   renderReviewBand();
   const stages = stageInfo();
@@ -7876,6 +7914,7 @@ function setResearchConsent(yes) {
     logEvent('start', { d: research.device });
     gaEvent('research_consent', { granted: 1 });
     showToast('ご協力ありがとうございます', '#3F7A69');
+    setTimeout(function () { openSurvey(); }, 600);   // 続けてアンケートをお願いする
   } else {
     research = { consent: 'no', pid: null, consentAt: null, events: [], truncated: 0 };
     saveResearch();
@@ -7883,6 +7922,7 @@ function setResearchConsent(yes) {
   }
   closeModal();
   renderResearchBand();
+  renderSurveyCard();
   renderRoadmap();
 }
 
@@ -7982,9 +8022,12 @@ function makeResearchExport() {
       ans: '解答（i=問題ID, o=正誤1/0, m=場面 unit/chal/review/dict, d=解答までのミリ秒）',
       unit: 'ユニット終了（u=ユニットID, c=正解数, n=問題数, k=クリア1/0）',
       run: 'まとまった演習の終了（m=種類, c=正解数, n=問題数）',
+      srs: '復習の状態（i=問題ID, o=正誤, b=箱番号, iv=次に出るまでの日数, w=誤答回数, r=正答回数, m=卒業）',
       let: '文字カードの操作（l=文字, a=操作）', nav: '画面の切りかえ（s=画面名）',
       start: '協力の開始（d=端末の種類）'
     },
+    survey: research.survey || null,
+    surveyAt: research.surveyAt || null,
     summary: researchSummary(),
     events: research.events
   });
@@ -8015,6 +8058,8 @@ function openResearchData() {
     if (RESEARCH_FORM_URL) {
       html += '<button class="rs-yes wide" onclick="window.open(\'' + RESEARCH_FORM_URL + '\',\'_blank\')">提出フォームを開く</button>';
     }
+    html += '<button class="rs-yes wide" onclick="openSurvey()">' + icon('message', 'lu-md')
+         + ' アンケートに答える／見直す（' + surveyAnswered() + ' / ' + SURVEY.length + ' 問）</button>';
     html += '<div class="rs-stop">'
          + '<strong>協力をやめる</strong>'
          + '<p>停止すると、端末内の記録もすべて削除されます。学習の進捗は消えません。</p>'
@@ -8054,6 +8099,145 @@ function downloadResearchData() {
   } catch (e) {
     showToast('保存できませんでした。コピーをお使いください', '#A55A50');
   }
+}
+
+// ============================================================
+// アンケート（任意・同意した方のみ・学習ログと同じ匿名IDで結びつきます）
+// ============================================================
+const SURVEY = [
+  { id:'native', q:'母語は何ですか', type:'one',
+    opts:['日本語','中国語','韓国語','英語','ロシア語','その他'] },
+  { id:'exp', q:'ロシア語の学習歴', type:'one',
+    opts:['このアプリがはじめて','3か月未満','3か月〜1年','1〜3年','3年以上'] },
+  { id:'where', q:'ロシア語をどこで学んでいますか（いくつでも）', type:'many',
+    opts:['独学','大学の授業','語学学校','オンライン講座','学んでいない'] },
+  { id:'how', q:'これまでの学習方法（いくつでも）', type:'many',
+    opts:['教科書','単語帳','アプリ','動画','授業','音声教材','とくにない'] },
+  { id:'style', q:'このアプリの取り組み方に近いのは', type:'one',
+    opts:['説明は読まず、まず練習問題から','解説を読んでから練習する','ノートに書きながら学ぶ',
+          '音声を聞くことが中心','チャレンジで力試しが中心','そのときによる'] },
+  { id:'time', q:'よく取り組む時間帯', type:'one',
+    opts:['朝','昼','夕方','夜','決まっていない'] },
+  { id:'scene', q:'よく取り組む場面（いくつでも）', type:'many',
+    opts:['自宅','通学・通勤の移動中','学校・職場','待ち時間','寝る前','その他'] },
+  { id:'span', q:'1回に取り組む時間', type:'one',
+    opts:['5分未満','5〜15分','15〜30分','30分以上'] },
+  { id:'review', q:'まちがえた問題の復習について', type:'one',
+    opts:['「今日の復習」をよく使う','ときどき使う','使ったことがない','気づかなかった'] },
+  { id:'paper', q:'紙の本があれば欲しいですか', type:'one',
+    opts:['とても欲しい','欲しい','どちらでもない','必要ない'] },
+  { id:'series', q:'紙で読みたい内容（いくつでも）', type:'many',
+    opts:['キリル文字','文法','ことわざ','慣用句','会話表現','単語帳','童話・物語'] },
+  { id:'good', q:'使ってみた感想（任意）', type:'text' },
+  { id:'hard', q:'難しかったところ・こうしてほしいところ（任意）', type:'text' }
+];
+
+function surveyAnswered() {
+  const s = research.survey || {};
+  return SURVEY.filter(function (q) {
+    const v = s[q.id];
+    return v !== undefined && v !== '' && !(Array.isArray(v) && !v.length);
+  }).length;
+}
+
+function surveyPick(qid, value) {
+  if (!researchEnabled()) return;
+  research.survey = research.survey || {};
+  const def = SURVEY.filter(function (q) { return q.id === qid; })[0];
+  if (!def) return;
+  if (def.type === 'many') {
+    const cur = Array.isArray(research.survey[qid]) ? research.survey[qid] : [];
+    const i = cur.indexOf(value);
+    if (i >= 0) cur.splice(i, 1); else cur.push(value);
+    research.survey[qid] = cur;
+  } else {
+    research.survey[qid] = (research.survey[qid] === value) ? '' : value;
+  }
+  saveResearch();
+  renderSurveyBody();
+}
+
+function surveyText(qid, value) {
+  if (!researchEnabled()) return;
+  research.survey = research.survey || {};
+  research.survey[qid] = String(value || '').slice(0, 1000);
+  saveResearch();
+}
+
+function renderSurveyBody() {
+  const box = document.getElementById('survey-body');
+  if (!box) return;
+  const s = research.survey || {};
+  let html = '';
+  SURVEY.forEach(function (q, i) {
+    html += '<div class="sv-q">';
+    html += '<p class="sv-label"><span>' + (i + 1) + '</span>' + q.q + '</p>';
+    if (q.type === 'text') {
+      html += '<textarea class="sv-text" placeholder="自由にお書きください（お名前など、個人が分かる情報は書かないでください）"'
+           + ' oninput="surveyText(\'' + q.id + '\', this.value)">' + (s[q.id] || '') + '</textarea>';
+    } else {
+      html += '<div class="sv-opts">';
+      q.opts.forEach(function (o) {
+        const on = q.type === 'many'
+          ? (Array.isArray(s[q.id]) && s[q.id].indexOf(o) >= 0)
+          : (s[q.id] === o);
+        html += '<button class="sv-opt' + (on ? ' on' : '') + '" onclick="surveyPick(\'' + q.id + '\', \''
+             + o.replace(/'/g, "\\'") + '\')">' + o + '</button>';
+      });
+      html += '</div>';
+    }
+    html += '</div>';
+  });
+  box.innerHTML = html;
+  const c = document.getElementById('survey-count');
+  if (c) c.textContent = surveyAnswered() + ' / ' + SURVEY.length + ' 問に回答済み';
+}
+
+function openSurvey() {
+  const modal = document.getElementById('modal-content');
+  if (!modal) return;
+  if (!researchEnabled()) { openResearchInfo(); return; }
+  let html = '';
+  html += '<div class="modal-header"><strong style="font-size:15px;font-weight:800;color:#A55A50;display:flex;align-items:center;gap:6px;">'
+       + icon('message', 'lu-md') + ' 使い心地を教えてください</strong>'
+       + '<button class="close-btn" onclick="closeSurvey()">' + icon('close', 'lu-md') + '</button></div>';
+  html += '<p class="bk-lead">教材づくりの参考にさせてください。<b>答えたくない項目は飛ばして構いません</b>。'
+       + '回答は学習の記録と一緒に保存され、提出したときだけ研究者に渡ります。'
+       + 'お名前や連絡先は聞きません。</p>';
+  html += '<div class="sv-count" id="survey-count"></div>';
+  html += '<div id="survey-body"></div>';
+  html += '<div class="modal-close-bottom"><button onclick="closeSurvey()">保存してとじる</button></div>';
+  modal.innerHTML = html;
+  renderSurveyBody();
+  todoReturn = false;
+  document.getElementById('modal-bg').classList.add('open');
+  gaEvent('survey_open', {});
+}
+
+function closeSurvey() {
+  const n = surveyAnswered();
+  if (n) {
+    research.surveyAt = new Date().toISOString();
+    saveResearch();
+    gaEvent('survey_answer', { answered: n });
+  }
+  closeModal();
+  renderSurveyCard();
+  renderRoadmap();
+}
+
+// ホーム下部のアンケートカード（同意した方にだけ出す）
+function renderSurveyCard() {
+  const box = document.getElementById('survey-card');
+  if (!box) return;
+  if (!researchEnabled()) { box.innerHTML = ''; box.style.display = 'none'; return; }
+  const n = surveyAnswered();
+  box.style.display = 'flex';
+  box.innerHTML =
+    '<div class="bc-body"><strong>アンケート（任意・2分ほど）</strong>'
+    + '<span>' + (n ? '回答ありがとうございます（' + n + ' / ' + SURVEY.length + ' 問）。いつでも書き直せます'
+                    : '学習歴や、このアプリの使い方を教えてください。教材づくりの参考にします') + '</span></div>'
+    + '<button onclick="openSurvey()">' + (n ? '見直す' : '答える') + '</button>';
 }
 
 // ============================================================
