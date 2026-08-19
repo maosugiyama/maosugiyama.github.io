@@ -7,7 +7,7 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config',  + GA_ID + );
+  gtag('config', 'G-BBN3BWFDPK');
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -15,6 +15,14 @@
 <title>ねこと学ぶ キリル文字 - ロシア語アルファベットの森の散歩</title>
 <meta name="description" content="33匹のねこたちと一緒に、ロシア語のキリル文字33文字を楽しく学べる教材アプリ。動詞活用・6つの格・発音のルールも自然に身につきます。">
 <meta name="author" content="まおちー">
+
+<!-- PWA（ホーム画面に追加・オフライン起動） -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FEF6EC">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="キリル文字">
 
 <!-- Open Graph (SNS sharing) -->
 <meta property="og:title" content="ねこと学ぶ キリル文字">
@@ -25,7 +33,6 @@
 <!-- Favicon: inline cat-paw SVG -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 24 24&#39; fill=&#39;%23C97B72&#39;%3E%3Ccircle cx=&#39;11&#39; cy=&#39;4&#39; r=&#39;2&#39;/%3E%3Ccircle cx=&#39;18&#39; cy=&#39;8&#39; r=&#39;2&#39;/%3E%3Ccircle cx=&#39;20&#39; cy=&#39;16&#39; r=&#39;2&#39;/%3E%3Cpath d=&#39;M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z&#39;/%3E%3C/svg%3E">
 
-<link href="./ねこと学ぶ キリル文字 - ロシア語アルファベットの森の散歩_files/css2" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -2078,6 +2085,113 @@
   .stair:nth-child(3) .stair-fill { background: linear-gradient(180deg, #E0B662, #96660A); }
   .stair:nth-child(4) .stair-fill { background: linear-gradient(180deg, #8299B8, #3A5578); }
 
+
+  /* ============================================================
+     ホーム画面への追加・更新のお知らせ・バックアップ
+     ============================================================ */
+  .install-band {
+    background: #F2F7FB;
+    border: 1.5px solid #C9DBEC;
+    border-radius: 18px;
+    padding: 14px 15px;
+    margin: 0 0 20px;
+  }
+  .install-band:empty { display: none; }
+  .ib-main { display: flex; align-items: flex-start; gap: 11px; }
+  .ib-icon {
+    width: 34px; height: 34px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 11px; background: #fff; color: #3A5578;
+  }
+  .ib-body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .ib-body strong { font-size: 13.5px; font-weight: 800; color: #3A2318; }
+  .ib-body span { font-size: 11px; color: #856348; line-height: 1.7; }
+  .ib-btn {
+    width: 100%; margin-top: 11px;
+    background: #3A5578; color: #fff; border: none;
+    border-radius: 999px; padding: 11px;
+    font-family: inherit; font-size: 13.5px; font-weight: 800; cursor: pointer;
+  }
+  .ib-btn:active { transform: scale(0.99); }
+
+  /* 更新のお知らせ（画面下に出る帯） */
+  .update-banner {
+    position: fixed; left: 12px; right: 12px; bottom: 14px;
+    z-index: 9998;
+    background: #3A2318; color: #fff;
+    border-radius: 14px; padding: 12px 14px;
+    display: flex; align-items: center; gap: 9px; flex-wrap: wrap;
+    box-shadow: 0 6px 22px rgba(58,35,24,0.28);
+    font-size: 12.5px; font-weight: 700;
+    max-width: 456px; margin: 0 auto;
+  }
+  .update-banner span { flex: 1; min-width: 120px; }
+  .update-banner button {
+    background: #E6A818; color: #3A2318; border: none;
+    border-radius: 999px; padding: 8px 15px;
+    font-family: inherit; font-size: 12px; font-weight: 800; cursor: pointer;
+  }
+  .update-banner button.later { background: rgba(255,255,255,0.16); color: #fff; }
+
+  /* バックアップのカード（ホーム下部） */
+  .backup-card {
+    background: #fff;
+    border: 1px dashed #E4D3C7;
+    border-radius: 16px;
+    padding: 14px 15px;
+    margin-top: 14px;
+    display: flex; align-items: center; gap: 11px;
+  }
+  .backup-card .bc-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+  .backup-card strong { font-size: 13px; font-weight: 800; color: #3A2318; }
+  .backup-card span { font-size: 11px; color: #856348; line-height: 1.6; }
+  .backup-card button {
+    flex-shrink: 0;
+    background: #FDF5F2; border: 1.5px solid #F2C4BE; color: #A55A50;
+    border-radius: 999px; padding: 8px 14px;
+    font-family: inherit; font-size: 11.5px; font-weight: 800; cursor: pointer;
+  }
+
+  /* バックアップのモーダル */
+  .bk-lead { font-size: 11.5px; color: #7A5040; line-height: 1.8; margin-bottom: 10px; }
+  .bk-summary {
+    background: #F5EFE8; border-radius: 10px; padding: 8px 11px; margin-bottom: 10px;
+    font-size: 11.5px; color: #7A5040; font-weight: 700;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .bk-area {
+    width: 100%; height: 92px;
+    border: 1.5px solid #F0DDD7; border-radius: 12px;
+    padding: 10px; font-family: ui-monospace, Menlo, monospace; font-size: 11px;
+    color: #7A5040; background: #FFFDFA; resize: vertical;
+    word-break: break-all;
+  }
+  .bk-restore {
+    margin-top: 20px; padding-top: 16px;
+    border-top: 1px dashed #F0DDD7;
+  }
+  .bk-restore > strong {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 13px; color: #A55A50; margin-bottom: 6px;
+  }
+  .bk-restore p { font-size: 11.5px; color: #7A5040; line-height: 1.7; margin-bottom: 8px; }
+  .bk-restore-btn {
+    width: 100%; margin-top: 10px;
+    background: #A55A50; color: #fff; border: none;
+    border-radius: 999px; padding: 11px;
+    font-family: inherit; font-size: 13px; font-weight: 800; cursor: pointer;
+  }
+  .bk-msg { font-size: 11.5px; line-height: 1.7; margin-top: 9px; }
+  .bk-msg:empty { display: none; }
+  .bk-msg.ok { color: #24594A; }
+  .bk-msg.ng { color: #A8453A; }
+  .bk-go {
+    display: block; width: 100%; margin-top: 9px;
+    background: #E6A818; color: #3A2318; border: none;
+    border-radius: 999px; padding: 10px;
+    font-family: inherit; font-size: 12.5px; font-weight: 800; cursor: pointer;
+  }
+
 </style>
 </head>
 <body>
@@ -2100,6 +2214,7 @@
     <p class="roadmap-title">ねこと歩く、ロシア語の道のり</p>
     <div class="stairs-wrap" id="stairs"></div>
     <div class="review-band" id="review-band"></div>
+    <div class="install-band" id="install-band"></div>
     <div class="roadmap">
 
       <div class="road-stage" id="road-1">
@@ -2280,6 +2395,14 @@
       </div>
       <div class="reward-todo" id="reward-todo"></div>
       <button class="reward-download-btn" id="reward-download-btn" onclick="downloadRewardPDF()" disabled=""><!--ICON:lock:lu-md--> まだ受け取れません</button>
+    </div>
+
+    <div class="backup-card">
+      <div class="bc-body">
+        <strong>学習データのバックアップ</strong>
+        <span>進捗はこの端末の中だけに保存されています。機種変更やデータ削除に備えて、コードを控えておけます</span>
+      </div>
+      <button onclick="openBackup()">開く</button>
     </div>
   </div>
 
@@ -2672,6 +2795,7 @@ function switchTab(tabName) {
   if (tabName === 'challenge' && typeof renderChallengeSetup === 'function' && !chalState) renderChallengeSetup();
   if (tabName === 'dictation' && typeof renderDictationSetup === 'function' && !chalState) renderDictationSetup();
   if (tabName === 'home' && typeof updateHomeStepStatus === 'function') updateHomeStepStatus();
+  if (tabName === 'home' && typeof renderInstallBand === 'function') renderInstallBand();
   // Scroll to top when switching
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -5870,7 +5994,7 @@ const GRAMMAR_UNITS = [
 },
 
 {
-  id:'register', cat:'other', level:'上級', title:'話しことばと書きことば', sub:'相手と場面で言い方を選ぶ',
+  id:'register', cat:'story', level:'上級', title:'話しことばと書きことば', sub:'相手と場面で言い方を選ぶ',
   lesson:`
   <p>同じ内容でも、友だちに話すときと、論文や手紙に書くときでは言い方が変わります。
   <b>使い分けができると、ロシア語がぐっと自然になります。</b></p>
@@ -5903,7 +6027,10 @@ const GRAMMAR_UNITS = [
     <strong>同じ内容を、2つの言い方で</strong>
     <p>• 話：<span class="ex-inline">Я прочита́л кни́гу и пошёл спать.</span></p>
     <p>• 書：<span class="ex-inline">Прочита́в кни́гу, я пошёл спать.</span></p>
-    <p>意味は同じですが、下は文章らしい響きになります。<b>手紙や作文では下の形が好まれます。</b></p>
+    <p>どちらも意味は同じです。ちがうのは<b>出来事の並べ方</b>。<br>
+    上は「読んだ、そして寝た」と2つを<b>横に並べる</b>言い方で、話すときのリズムに合います。<br>
+    下は「読み終えたうえで」を背景に回し、伝えたい中心を「寝に行った」ひとつに<b>しぼる</b>言い方です。
+    文章は、情報に軽重をつけられる下の形を好みます。<b>手紙や作文では下の形が読みやすくなります。</b></p>
   </div>
 
   <div class="case-row">
@@ -5917,14 +6044,109 @@ const GRAMMAR_UNITS = [
     {type:'mc', q:'初対面の年上の人へのあいさつは？', say:'Здра́вствуйте', opts:['Приве́т!','Здра́вствуйте!'], a:1, ex:'Приве́т! は友人どうし。初対面やていねいな場面では Здра́вствуйте!。'},
     {type:'mc', q:'手紙の結びとして自然なのは？', opts:['С уваже́нием','Ну, пока́'], a:0, ex:'С уваже́нием（敬具）は書きことば。Пока́ は話しことばです。'},
     {type:'mc', q:'「したがって」を表す書きことばは？', opts:['зна́чит','сле́довательно'], a:1, ex:'сле́довательно は論文や報告書で使う書きことばです。'},
-    {type:'mc', q:'より文章らしいのはどちら？', opts:['Я прочита́л кни́гу и пошёл спать.','Прочита́в кни́гу, я пошёл спать.'], a:1, ex:'副動詞を使った形は書きことば寄りで、文章に向きます。'},
+    {type:'mc', q:'より文章らしいのはどちら？', opts:['Я прочита́л кни́гу и пошёл спать.','Прочита́в кни́гу, я пошёл спать.'], a:1, ex:'и でつなぐと、2つの出来事が同じ重さで横に並びます。副動詞にすると「読み終えた」が<b>背景</b>、「寝に行った」が<b>主役</b>と、文の中に主従の段差ができます。文章では、こうして情報に軽重をつけた書き方が好まれます。会話では、短い文を и で並べるほうが自然です。'},
     {type:'mc', q:'кни́жка はどんな語形？', opts:['書きことばの正式な形','話しことばでよく使う愛称形'], a:1, ex:'愛称形（指小形）です。会話ではこうした形が好んで使われます。'},
     {type:'mc', q:'相手を ты で呼んでよいのはいつ？', opts:['最初から誰にでも','相手が ты で話そうと言ってから'], a:1, ex:'まずは вы が安全です。「Дава́й на ты!」と言われてから切りかえます。'}
   ]
 },
 
 {
-  id:'reading', cat:'other', level:'上級', title:'童話や詩を読んでみる', sub:'辞書を片手に、本物のロシア語へ',
+  id:'folktales', cat:'story', level:'上級', title:'おとぎ話のことば', sub:'昔話と童話に出てくる決まり文句・登場人物・動物',
+  lesson:`
+  <p>ロシアの昔話（<b>ска́зка</b>）には、決まった始まり方と終わり方があります。
+  そこに出てくる語彙と言いまわしを知ると、絵本や童話がぐっと読みやすくなります。
+  <b>ここまで学んだ文法が、実際にどう使われているか</b>も一緒に見ていきましょう。</p>
+
+  <div class="case-row">
+    <strong>物語のはじまり</strong>
+    <p style="font-size:15px;font-weight:700;line-height:1.9;">Жи́ли-бы́ли дед да ба́ба.</p>
+    <p style="font-size:11.5px;color:#856348;">（むかしむかし、おじいさんとおばあさんがいました）</p>
+    <p style="font-size:15px;font-weight:700;line-height:1.9;">В не́котором ца́рстве, в не́котором госуда́рстве…</p>
+    <p style="font-size:11.5px;color:#856348;">（あるところの王国に、ある国に…＝「むかしむかしあるところに」）</p>
+    <p style="font-size:11px;color:#7A5040;">※ в ＋ 前置格。ца́рство → в ца́рстве、госуда́рство → в госуда́рстве です。</p>
+  </div>
+
+  <div class="case-row">
+    <strong>物語のおわり — 「めでたしめでたし」</strong>
+    <p>• <span class="ex-inline">Ста́ли жить-пожива́ть да добра́ нажива́ть.</span><br>
+    　（末永く豊かに暮らしましたとさ）— 昔話でいちばん有名な結び</p>
+    <p>• <span class="ex-inline">И жи́ли они́ до́лго и сча́стливо.</span><br>
+    　（そして二人は長く幸せに暮らしました）— 現代の童話の結び</p>
+    <p>• <span class="ex-inline">Тут и ска́зке коне́ц, а кто слу́шал — молоде́ц!</span><br>
+    　（これでお話はおしまい、聞いてくれた人はえらい！）— 語り終わりの決まり文句</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>登場人物</strong>
+    <div class="conj-table">
+      <span class="pron">царь</span><span class="form">王様　／　цари́ца　王妃</span>
+      <span class="pron">царе́вич</span><span class="form">王子　／　царе́вна　王女</span>
+      <span class="pron">коро́ль</span><span class="form">王（西欧の童話）／　короле́ва　女王</span>
+      <span class="pron">принц</span><span class="form">王子（西欧の童話）／　принце́сса　お姫さま</span>
+      <span class="pron">ма́чеха</span><span class="form">継母　／　па́дчерица　継娘</span>
+      <span class="pron">Ба́ба-яга́</span><span class="form">魔女のおばあさん（ロシア民話の名物）</span>
+      <span class="pron">Коще́й Бессме́ртный</span><span class="form">不死身のカシチェイ（悪役）</span>
+      <span class="pron">Ива́н-дура́к</span><span class="form">イワンのばか（最後に幸運をつかむ主人公）</span>
+    </div>
+    <p style="font-size:11px;color:#7A5040;">※ 男性と女性で語尾が対になっているのがわかります（царь / цари́ца、принц / принце́сса）。</p>
+  </div>
+
+  <div class="case-row">
+    <strong>動物たちと、決まったイメージ</strong>
+    <p>ロシアの昔話では、動物にほぼ決まった性格がついています。<b>形容詞は名詞の性に合わせて形を変えます</b>。</p>
+    <p>• <span class="ex-inline">хи́трая лиса́</span>（ずる賢いキツネ・女性）　• <span class="ex-inline">се́рый волк</span>（灰色オオカミ・男性）</p>
+    <p>• <span class="ex-inline">косола́пый медве́дь</span>（のっしのっし歩くクマ）　• <span class="ex-inline">тру́сливый за́яц</span>（臆病なウサギ）</p>
+    <p>• <span class="ex-inline">золото́й пету́х</span>（金の雄鶏）　• <span class="ex-inline">ма́ленькая мышь</span>（小さなネズミ）</p>
+    <p style="font-size:11px;color:#856348;">虫たち：<b>пчела́</b>（ミツバチ）・<b>мураве́й</b>（アリ）・<b>ба́бочка</b>（チョウ）・<b>кома́р</b>（カ）・<b>пау́к</b>（クモ）。
+    働き者は <b>рабо́тящий мураве́й</b>、うるさいのは <b>надое́дливый кома́р</b>。</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>おとぎ話でよく使う形容詞</strong>
+    <div class="conj-table">
+      <span class="pron">до́брый</span><span class="form">やさしい　／　злой　意地悪な</span>
+      <span class="pron">хи́трый</span><span class="form">ずる賢い　／　глу́пый　おろかな</span>
+      <span class="pron">му́дрый</span><span class="form">賢い　／　си́льный　強い</span>
+      <span class="pron">прекра́сный</span><span class="form">とても美しい　／　краси́вый　美しい</span>
+      <span class="pron">золото́й</span><span class="form">金の　／　волше́бный　魔法の</span>
+    </div>
+    <p>• <span class="ex-inline">Васили́са Прекра́сная</span>（美しのワシリーサ）— 名前の後ろに形容詞を置く昔話らしい語順です。</p>
+  </div>
+
+  <div class="case-row">
+    <strong>知っている童話を、ロシア語で</strong>
+    <p>• <b>Золу́шка</b>（シンデレラ）— зола́（灰）から。「灰かぶり」という意味です</p>
+    <p>• <b>Белосне́жка</b>（白雪姫）— бе́лый（白い）＋ снег（雪）</p>
+    <p>• <b>Кра́сная Ша́почка</b>（赤ずきん）— ша́пка（帽子）の愛称形 ша́почка</p>
+    <p>• <b>Спя́щая краса́вица</b>（眠れる森の美女）　• <b>Ру́салочка</b>（人魚姫）</p>
+    <p>ロシア独自の昔話：<b>Ре́пка</b>（おおきなかぶ）・<b>Колобо́к</b>（ころころパン）・<b>Тере́мок</b>（森の小さな家）</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>学んできた文法が、そのまま出てきます</strong>
+    <p>• <b>過去形</b>：<span class="ex-inline">Жил-был царь.</span>（王様がいました）— 男性なので -л</p>
+    <p>• <b>у ＋ 生格</b>：<span class="ex-inline">У царя́ была́ дочь.</span>（王様には娘がいました）— царь → царя́、主語 дочь が女性なので была́</p>
+    <p>• <b>最上級</b>：プーシキンの白雪姫より<br>
+    　<span class="ex-inline">Я ль на све́те всех миле́е?</span>（わたしは この世で誰よりも美しい？）— 比較級＋<b>всех</b> で「誰よりも」を表します</p>
+    <p>• <b>愛称形（指小形）</b>：зе́ркало → <b>зе́ркальце</b>（鏡よ鏡）・изба́ → <b>избу́шка</b>（小屋）・ба́ба → <b>ба́бушка</b><br>
+    　昔話は愛称形だらけです。<span class="ex-inline">избу́шка на ку́рьих но́жках</span>（鶏の足の上に建つ小屋）はババ・ヤガーの住まい。</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'昔話の結び「めでたしめでたし」にあたる決まり文句は？', opts:['Ста́ли жить-пожива́ть да добра́ нажива́ть.','В не́котором ца́рстве, в не́котором госуда́рстве…','Жи́ли-бы́ли дед да ба́ба.'], a:0, ex:'これが伝統的な結び。ほかの2つは物語の「はじまり」の決まり文句です。'},
+    {type:'mc', q:'「ずる賢いキツネ」を正しく言うと？（лиса́ は女性名詞）', say:'хи́трая лиса́', opts:['хи́трый лиса́','хи́трая лиса́','хи́трое лиса́'], a:1, ex:'形容詞は名詞の性に合わせます。лиса́ は -а で終わる女性名詞なので хи́трая。'},
+    {type:'mc', q:'「王様には娘がいました」＝ У （　） была́ дочь.', say:'У царя́ была́ дочь', opts:['царь','царя́','царю́'], a:1, ex:'前置詞 у は生格をとります。царь → царя́。動詞が была́（女性）なのは、主語の дочь が女性名詞だからです。'},
+    {type:'mc', q:'Золу́шка（シンデレラ）の名前の由来は？', opts:['зо́лото（金）','зола́（灰）','зо́нтик（傘）'], a:1, ex:'зола́（灰）から。「灰かぶり」という意味で、英語 Cinderella（cinder＝燃えがら）と同じ発想です。'},
+    {type:'mc', q:'зе́ркало（鏡）の愛称形（指小形）は？', say:'зе́ркальце', opts:['зерка́лище','зе́ркальце','зерка́лка'], a:1, ex:'зе́ркальце。プーシキンの白雪姫の「Свет мой, зе́ркальце!（鏡よ鏡）」で有名です。昔話は愛称形が多く使われます。'},
+    {type:'mc', q:'「Я ль на све́те всех миле́е?」の миле́е はどんな形？', opts:['最上級','比較級','命令形'], a:1, ex:'ми́лый の比較級 миле́е。生格の всех（すべての人より）と組み合わせて「誰よりも美しい」＝実質的な最上級になります。'},
+    {type:'mc', q:'Ба́ба-яга́ が住む「鶏の足の上に建つ小屋」は？', opts:['избу́шка на ку́рьих но́жках','золото́й пету́х','Кра́сная Ша́почка'], a:0, ex:'избу́шка（изба́ の愛称形）＋ на ＋ 前置格。ロシア民話でいちばん有名な家です。'},
+    {type:'mc', q:'「白雪姫」をロシア語で言うと？', say:'Белосне́жка', opts:['Белосне́жка','Спя́щая краса́вица','Ру́салочка'], a:0, ex:'бе́лый（白い）＋ снег（雪）から Белосне́жка。Спя́щая краса́вица は眠れる森の美女、Ру́салочка は人魚姫です。'},
+    {type:'mc', q:'ロシア独自の昔話はどれ？', opts:['Ре́пка（おおきなかぶ）','Кра́сная Ша́почка（赤ずきん）','Золу́шка（シンデレラ）'], a:0, ex:'Ре́пка はロシアの民話。おじいさんが育てた大きな ре́пка（かぶ）を、家族と動物たちが力を合わせて抜くお話です。'}
+  ]
+},
+
+{
+  id:'reading', cat:'story', level:'上級', title:'童話や詩を読んでみる', sub:'辞書を片手に、本物のロシア語へ',
   lesson:`
   <p>ここまで学んだ知識で、<b>本物のロシア語</b>に手が届きます。
   すべてを理解しようとせず、わかるところから読むのがこつです。</p>
@@ -5974,8 +6196,8 @@ const GRAMMAR_UNITS = [
   drills:[
     {type:'mc', q:'жи́ли-бы́ли はどんな形？', opts:['жить と быть の過去・複数','命令形'], a:0, ex:'жить と быть の過去複数形を並べた、昔話の決まり文句です。'},
     {type:'mc', q:'знако́мые（知り合いたち）を辞書で引くとき、戻すべき形は？', opts:['знако́мые のまま','знако́мый（主格・単数）'], a:1, ex:'名詞・形容詞は主格単数に戻してから引きます。動詞なら不定形です。'},
-    {type:'mc', q:'у лукомо́рья の лукомо́рья はどの格？', opts:['主格','生格','前置格'], a:1, ex:'前置詞 у は生格をとります。лукомо́рье → лукомо́рья。'},
-    {type:'mc', q:'на ду́бе の格は？', opts:['対格','前置格'], a:1, ex:'「〜の上にある」という場所なので前置格。дуб → на ду́бе。'},
+    {type:'mc', q:'詩の1行目 <b>«У лукомо́рья дуб зелёный»</b>。辞書形は лукомо́рье（入り江）ですが、ここでは <b>лукомо́рья</b> という形になっています。なぜでしょう？', opts:['前置詞 у が生格を求めるから','文の主語なので主格のままだから','複数形になっているから'], a:0, ex:'у は「〜のそばに」を表し、かならず生格をとります。лукомо́рье（中性・主格）→ лукомо́рья（生格）。同じしくみが «У меня́ есть кни́га.» の меня́ にも働いています。'},
+    {type:'mc', q:'続く行 <b>«Злата́я цепь на ду́бе том»</b>。дуб（樫の木）が на のあとで <b>ду́бе</b> になっています。この形が表しているのは？', opts:['場所（樫の木の上に「ある」）','方向（樫の木の上へ「動く」）'], a:0, ex:'на ＋ 前置格は「どこに あるか」を表します。動きを表すときは на ＋ 対格（на дуб＝樫の木の上へ）になり、形が変わります。'},
     {type:'mc', q:'злата́я は現代語では？', opts:['золота́я','зелёная'], a:0, ex:'золота́я（黄金の）の詩的な古い形です。'},
     {type:'mc', q:'読んでいて知らない語に出会ったら、まずどうする？', opts:['すべて辞書で調べてから先へ進む','筋がつかめるなら飛ばして先へ進む'], a:1, ex:'全部調べようとすると続きません。わかるところをつなげて読むのが上達のこつです。'}
   ]
@@ -6203,6 +6425,7 @@ const GRAMMAR_CATS = [
   { id:'prep', title:'前置詞編', sub:'どの前置詞が、どの格をとるか',        icon:'ruler',   color:'#5E8F84', tint:'#EAF4F1' },
   { id:'num',  title:'数詞編',     sub:'数と、そのあとの名詞の形',           icon:'target',  color:'#8F6300', tint:'#FFF6E0' },
   { id:'syntax',title:'文をつなぐ編', sub:'関係代名詞・形動詞・副動詞・仮定法', icon:'ruler',   color:'#3A5578', tint:'#F0F4FB' },
+  { id:'story', title:'読む・語る編', sub:'話しことばと書きことば、物語のことば', icon:'book',    color:'#8F6300', tint:'#FFF6E0' },
   { id:'other',title:'綴りと表現', sub:'正書法のルールと、きほんのフレーズ', icon:'type',    color:'#856348', tint:'#F5EFE8' }
 ];
 
@@ -7256,12 +7479,246 @@ function closeTodoList() {
   closeModal();
 }
 
+// ============================================================
+// バックアップと復元（機種変更・キャッシュ削除への備え）
+// ============================================================
+// 学習データは端末の中だけに保存されます。外部に送信しません。
+const BACKUP_PREFIX = 'NEKO1:';
+
+function collectBackup() {
+  const data = {
+    app: 'neko-cyrillic', v: 1,
+    savedAt: new Date().toISOString(),
+    progress: null, grammar: null
+  };
+  try { data.progress = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null'); } catch (e) {}
+  try { data.grammar = JSON.parse(localStorage.getItem(GRAMMAR_STORAGE_KEY) || 'null'); } catch (e) {}
+  return data;
+}
+
+// UTF-8 を安全に base64 へ／から
+function b64encode(s) { return btoa(unescape(encodeURIComponent(s))); }
+function b64decode(s) { return decodeURIComponent(escape(atob(s))); }
+
+function makeBackupCode() {
+  return BACKUP_PREFIX + b64encode(JSON.stringify(collectBackup()));
+}
+
+function backupSummary(d) {
+  const friends = d.progress && d.progress.actions
+    ? Object.keys(d.progress.actions).filter(function (k) {
+        const a = d.progress.actions[k];
+        return a && a.heardLetter && a.heardWord && a.heardSentence && a.testPassed;
+      }).length : 0;
+  const units = d.grammar && d.grammar.grammar
+    ? Object.keys(d.grammar.grammar).filter(function (k) { return d.grammar.grammar[k].cleared; }).length : 0;
+  const srs = d.grammar && d.grammar.srs ? Object.keys(d.grammar.srs).length : 0;
+  return 'なかよし ' + friends + ' 匹／クリアした文法 ' + units + ' ユニット／復習リスト ' + srs + ' 問';
+}
+
+function openBackup() {
+  const modal = document.getElementById('modal-content');
+  if (!modal) return;
+  const code = makeBackupCode();
+  const d = collectBackup();
+  let html = '';
+  html += '<div class="modal-header"><strong style="font-size:15px;font-weight:800;color:#A55A50;display:flex;align-items:center;gap:6px;">'
+       + icon('gift', 'lu-md') + ' 学習データのバックアップ</strong>'
+       + '<button class="close-btn" onclick="closeModal()">' + icon('close', 'lu-md') + '</button></div>';
+
+  html += '<p class="bk-lead">下の<b>バックアップコード</b>をコピーして、メモ帳やメールに保存しておいてください。'
+       + '機種変更のときや、ブラウザのデータを消してしまったときに、ここから元に戻せます。</p>';
+  html += '<div class="bk-summary">' + icon('paw', 'lu-md') + ' いまの記録：' + backupSummary(d) + '</div>';
+  html += '<textarea class="bk-area" id="bk-code" readonly onclick="this.select()">' + code + '</textarea>';
+  html += '<div class="drill-actions">';
+  html += '  <button class="drill-clear" onclick="downloadBackup()">ファイルに保存</button>';
+  html += '  <button class="drill-submit" onclick="copyBackup()">コードをコピー</button>';
+  html += '</div>';
+
+  html += '<div class="bk-restore">';
+  html += '  <strong>' + icon('refresh', 'lu-md') + ' バックアップから復元する</strong>';
+  html += '  <p>保存しておいたコードを貼り付けてください。<b>いまの進捗は置きかえられます。</b></p>';
+  html += '  <textarea class="bk-area" id="bk-input" placeholder="NEKO1: で始まるコードを貼り付け"></textarea>';
+  html += '  <div id="bk-msg" class="bk-msg"></div>';
+  html += '  <button class="bk-restore-btn" onclick="restoreBackup(false)">読み込む</button>';
+  html += '</div>';
+
+  html += '<div class="modal-close-bottom"><button onclick="closeModal()">とじる</button></div>';
+  modal.innerHTML = html;
+  todoReturn = false;
+  document.getElementById('modal-bg').classList.add('open');
+}
+
+function copyBackup() {
+  const el = document.getElementById('bk-code');
+  if (!el) return;
+  el.select();
+  el.setSelectionRange(0, 999999);
+  let ok = false;
+  try { ok = document.execCommand('copy'); } catch (e) {}
+  if (navigator.clipboard && !ok) {
+    navigator.clipboard.writeText(el.value).then(function () {
+      showToast('コードをコピーしました', '#3F7A69');
+    });
+    return;
+  }
+  showToast(ok ? 'コードをコピーしました' : 'コピーできませんでした。長押しで選択してください', ok ? '#3F7A69' : '#A55A50');
+}
+
+function downloadBackup() {
+  try {
+    const blob = new Blob([makeBackupCode()], { type: 'text/plain' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'neko-cyrillic-backup.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    showToast('バックアップを保存しました', '#3F7A69');
+  } catch (e) {
+    showToast('保存できませんでした。コードをコピーしてお使いください', '#A55A50');
+  }
+}
+
+// 2段階で確認してから書きこむ
+function restoreBackup(confirmed) {
+  const ta = document.getElementById('bk-input');
+  const msg = document.getElementById('bk-msg');
+  if (!ta || !msg) return;
+  const raw = (ta.value || '').trim();
+  if (!raw) { msg.className = 'bk-msg ng'; msg.textContent = 'コードを貼り付けてください。'; return; }
+  let data = null;
+  try {
+    const body = raw.indexOf(BACKUP_PREFIX) === 0 ? raw.slice(BACKUP_PREFIX.length) : raw;
+    data = JSON.parse(b64decode(body.replace(/\s+/g, '')));
+  } catch (e) { data = null; }
+  if (!data || data.app !== 'neko-cyrillic') {
+    msg.className = 'bk-msg ng';
+    msg.textContent = 'このコードは読み取れませんでした。NEKO1: から最後までを、すべて貼り付けてください。';
+    return;
+  }
+  if (!confirmed) {
+    msg.className = 'bk-msg ok';
+    msg.innerHTML = '読み取れました（' + backupSummary(data) + '）。<br>いまの進捗を置きかえて、この記録に戻します。'
+      + '<button class="bk-go" onclick="restoreBackup(true)">この記録に戻す</button>';
+    return;
+  }
+  try {
+    if (data.progress) localStorage.setItem(STORAGE_KEY, JSON.stringify(data.progress));
+    if (data.grammar) localStorage.setItem(GRAMMAR_STORAGE_KEY, JSON.stringify(data.grammar));
+    msg.className = 'bk-msg ok';
+    msg.textContent = '復元しました。画面を読み込み直します…';
+    setTimeout(function () { location.reload(); }, 900);
+  } catch (e) {
+    msg.className = 'bk-msg ng';
+    msg.textContent = '保存できませんでした（ブラウザの設定で保存が制限されている可能性があります）。';
+  }
+}
+
+// ============================================================
+// ホーム画面に追加（PWA）と、更新のお知らせ
+// ============================================================
+let deferredInstall = null;
+
+function isStandalone() {
+  return (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches)
+      || window.navigator.standalone === true;
+}
+function isIOS() {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+}
+
+function renderInstallBand() {
+  const box = document.getElementById('install-band');
+  if (!box) return;
+  if (isStandalone()) { box.innerHTML = ''; box.style.display = 'none'; return; }
+  box.style.display = 'block';
+  let html = '';
+  if (deferredInstall) {
+    html += '<div class="ib-main"><span class="ib-icon">' + icon('gift', 'lu-md') + '</span>'
+         + '<span class="ib-body"><strong>ホーム画面に追加できます</strong>'
+         + '<span>アプリのように開けて、電波がなくても使えます</span></span></div>'
+         + '<button class="ib-btn" onclick="doInstall()">追加する</button>';
+  } else if (isIOS()) {
+    html += '<div class="ib-main"><span class="ib-icon">' + icon('gift', 'lu-md') + '</span>'
+         + '<span class="ib-body"><strong>ホーム画面に追加すると便利です</strong>'
+         + '<span>下の<b>共有ボタン</b>（□に↑）→「<b>ホーム画面に追加</b>」を選んでください。'
+         + 'アプリのように開けて、電波がなくても使えます</span></span></div>';
+  } else {
+    box.innerHTML = ''; box.style.display = 'none'; return;
+  }
+  box.innerHTML = html;
+}
+
+function doInstall() {
+  if (!deferredInstall) return;
+  deferredInstall.prompt();
+  deferredInstall.userChoice.then(function () {
+    deferredInstall = null;
+    renderInstallBand();
+  });
+}
+
+function showUpdateBanner(reg) {
+  let el = document.getElementById('update-banner');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'update-banner';
+    el.className = 'update-banner';
+    document.body.appendChild(el);
+  }
+  el.innerHTML = '<span>新しいバージョンがあります</span>'
+    + '<button onclick="applyUpdate()">更新する</button>'
+    + '<button class="later" onclick="this.parentNode.remove()">あとで</button>';
+  window.__swReg = reg;
+}
+
+function applyUpdate() {
+  const reg = window.__swReg;
+  if (reg && reg.waiting) reg.waiting.postMessage({ type: 'SKIP_WAITING' });
+  const el = document.getElementById('update-banner');
+  if (el) el.textContent = '更新しています…';
+}
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('sw.js').then(function (reg) {
+      reg.addEventListener('updatefound', function () {
+        const nw = reg.installing;
+        if (!nw) return;
+        nw.addEventListener('statechange', function () {
+          // 2回目以降の訪問で、新しい版が準備できたときだけ知らせる
+          if (nw.state === 'installed' && navigator.serviceWorker.controller) showUpdateBanner(reg);
+        });
+      });
+    }).catch(function (e) { console.log('SW register failed:', e); });
+
+    let reloading = false;
+    navigator.serviceWorker.addEventListener('controllerchange', function () {
+      if (reloading) return;
+      reloading = true;
+      location.reload();
+    });
+  });
+}
+
+window.addEventListener('beforeinstallprompt', function (e) {
+  e.preventDefault();
+  deferredInstall = e;
+  renderInstallBand();
+});
+window.addEventListener('appinstalled', function () {
+  deferredInstall = null;
+  renderInstallBand();
+});
+
 // すべての定義が済んでから初期描画する
 render();
 renderGrammarHub();
 renderChallengeSetup();
 renderDictationSetup();
 updateHomeStepStatus();
+renderInstallBand();
 
 </script>
 

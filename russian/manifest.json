@@ -1,0 +1,20 @@
+{
+  "name": "ねこと学ぶ キリル文字",
+  "short_name": "キリル文字",
+  "description": "33匹のねこたちと、ロシア語のキリル文字・文法・発音を学べる教材アプリ。",
+  "lang": "ja",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "id": "/russian/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FEF6EC",
+  "theme_color": "#FEF6EC",
+  "categories": ["education"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
