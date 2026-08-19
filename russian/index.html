@@ -2192,6 +2192,62 @@
     font-family: inherit; font-size: 12.5px; font-weight: 800; cursor: pointer;
   }
 
+
+  /* ---- 音が出なかったときの案内 ---- */
+  .audio-fail {
+    background: #FFF7F5;
+    border: 1.5px solid #F2C4BE;
+    border-radius: 14px;
+    padding: 13px 14px;
+    margin-top: 12px;
+  }
+  .audio-fail strong {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 13px; color: #A55A50; margin-bottom: 5px;
+  }
+  .audio-fail p { font-size: 11.5px; color: #7A5040; line-height: 1.8; margin-bottom: 10px; }
+  .audio-fail button {
+    width: 100%; margin-top: 7px;
+    border-radius: 999px; padding: 10px;
+    font-family: inherit; font-size: 12.5px; font-weight: 800; cursor: pointer;
+  }
+  .af-help { background: #fff; border: 1.5px solid #F2C4BE; color: #A55A50; }
+  .af-skip { background: #A55A50; border: none; color: #fff; }
+
+  /* ---- 保存できないときの帯 ---- */
+  .storage-warning {
+    background: #FFF6E8;
+    border: 1.5px solid #EBC98A;
+    border-radius: 18px;
+    padding: 14px 15px;
+    margin: 0 0 20px;
+  }
+  .storage-warning:empty { display: none; }
+  .sw-main { display: flex; align-items: flex-start; gap: 11px; }
+  .sw-icon {
+    width: 34px; height: 34px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 11px; background: #fff; color: #8F6300;
+  }
+  .sw-body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .sw-body strong { font-size: 13.5px; font-weight: 800; color: #3A2318; }
+  .sw-body span { font-size: 11px; color: #7A5040; line-height: 1.8; }
+  .sw-btn {
+    width: 100%; margin-top: 11px;
+    background: #8F6300; color: #fff; border: none;
+    border-radius: 999px; padding: 10px;
+    font-family: inherit; font-size: 13px; font-weight: 800; cursor: pointer;
+  }
+
+
+  .bk-empty {
+    background: #FFF6E8; border: 1.5px solid #EBC98A; border-radius: 14px;
+    padding: 13px 14px; display: flex; flex-direction: column; gap: 4px;
+    color: #8F6300;
+  }
+  .bk-empty strong { font-size: 13px; color: #3A2318; }
+  .bk-empty span { font-size: 11.5px; color: #7A5040; line-height: 1.8; }
+
 </style>
 </head>
 <body>
@@ -2213,6 +2269,7 @@
 
     <p class="roadmap-title">ねこと歩く、ロシア語の道のり</p>
     <div class="stairs-wrap" id="stairs"></div>
+    <div class="storage-warning" id="storage-warning"></div>
     <div class="review-band" id="review-band"></div>
     <div class="install-band" id="install-band"></div>
     <div class="roadmap">
@@ -2829,25 +2886,57 @@ function switchAudioHelpTab(tab) {
   document.querySelectorAll('.ah-pane').forEach(function(p){ p.classList.toggle('active', p.id === 'ah-pane-' + tab); });
 }
 
-function speak(text) {
+// 読み上げる。onSpoke(true/false) で「実際に鳴ったか」を返す
+function speak(text, onSpoke) {
+  let settled = false;
+  const finish = function (ok) {
+    if (settled) return;
+    settled = true;
+    if (typeof onSpoke === 'function') onSpoke(ok);
+  };
+
   if (!window.speechSynthesis) {
-    showToast('<!--ICON:warning:lu-md--> 音声に対応していません。下の『音が出ないときはこちら』をご確認ください', '#C97B72');
-    return;
+    showToast('<!--ICON:warning:lu-md--> この端末では音声を再生できません。『音が出ないときはこちら』をご確認ください', '#A55A50');
+    finish(false);
+    return false;
   }
+
+  let voices = [];
+  try { voices = window.speechSynthesis.getVoices() || []; } catch (e) { voices = []; }
+  const ruVoice = voices.filter(function (v) {
+    return v && v.lang && v.lang.toLowerCase().indexOf('ru') === 0;
+  })[0];
+
   window.speechSynthesis.cancel();
   const utt = new SpeechSynthesisUtterance(text);
   utt.lang = 'ru-RU';
   utt.rate = 0.85;
-  const voices = window.speechSynthesis.getVoices();
-  const ruVoice = voices.find(v => v.lang && v.lang.toLowerCase().startsWith('ru'));
+  utt.onstart = function () { finish(true); };
+  utt.onend = function () { finish(true); };
+  utt.onerror = function (e) {
+    showToast('音声を再生できませんでした（' + ((e && e.error) || '原因不明') + '）', '#A55A50');
+    finish(false);
+  };
+
   if (ruVoice) {
-    utt.voice = ruVoice;
+    // 端末によっては voice の代入自体が失敗することがある（既定の音声で読み上げる）
+    try { utt.voice = ruVoice; } catch (e) { console.log('voice set failed:', e); }
     showToast('<span style="display:inline-block;font-size:1.1em;letter-spacing:-2px;vertical-align:-0.1em;">♩♩</span> ' + text + '（' + ruVoice.name + '）');
   } else {
-    showToast('<!--ICON:warning:lu-md--> ロシア語音声が未インストール。下の『音が出ないときはこちら』をご確認ください', '#C97B72');
+    showToast('<!--ICON:warning:lu-md--> ロシア語の音声が見つかりません。『音が出ないときはこちら』をご確認ください', '#A55A50');
   }
-  utt.onerror = function(e) { showToast('音声エラー：' + e.error, '#C97B72'); };
-  window.speechSynthesis.speak(utt);
+
+  try {
+    window.speechSynthesis.speak(utt);
+  } catch (e) {
+    finish(false);
+    return false;
+  }
+
+  // 端末によっては onstart が届かないことがあるので保険をかける
+  if (ruVoice) setTimeout(function () { finish(true); }, 2500);
+  else setTimeout(function () { finish(false); }, 1200);
+  return !!ruVoice;
 }
 
 // Preload voices (some browsers load them asynchronously)
@@ -3212,8 +3301,8 @@ function saveProgress() {
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   } catch (e) {
-    // Silently fail if storage is unavailable (e.g., privacy mode)
     console.log('Progress save failed:', e);
+    noteStorageFailure();
   }
 }
 
@@ -3341,12 +3430,20 @@ function updateRewardProgress() {
 }
 
 function downloadRewardPDF() {
-  const link = document.createElement('a');
-  link.href = REWARD_PDF_URL;
-  link.download = REWARD_PDF_FILENAME;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+    showToast('オフラインのようです。通信できるときに、もう一度お試しください', '#A55A50');
+    return;
+  }
+  try {
+    const link = document.createElement('a');
+    link.href = REWARD_PDF_URL;
+    link.download = REWARD_PDF_FILENAME;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } catch (e) {
+    showToast('うまく保存できませんでした。長押しから保存もお試しください', '#A55A50');
+  }
 }
 
 function closeCelebration() {
@@ -3537,6 +3634,20 @@ function renderCardDetail() {
     html += '</div>';
   });
   html += '</div>';
+
+  // 音が鳴らなかったときの案内（この文字で失敗したときだけ出す）
+  const failedKey = audioFailed[letter.u];
+  if (failedKey) {
+    const failedLabel = { heardLetter:'文字の音声', heardWord:'例単語の音声', heardSentence:'例文の音声' }[failedKey] || '音声';
+    html += '<div class="audio-fail">';
+    html += '  <strong><!--ICON:warning:lu-md--> 音が出ませんでしたか？</strong>';
+    html += '  <p>この端末に<b>ロシア語の音声</b>が入っていないか、音量が下がっている可能性があります。'
+         +  '記録は進めていませんので、下のどちらかをお選びください。</p>';
+    html += '  <button class="af-help" onclick="openAudioHelp()">音が出ないときはこちら</button>';
+    html += '  <button class="af-skip" onclick="markHeardManually(\'' + failedKey + '\')">'
+         +  failedLabel + 'は聞いたことにして進める</button>';
+    html += '</div>';
+  }
 
   html += '<p style="font-size:10px;color:#856348;text-align:center;margin-top:10px;"><span style="display:inline-block;font-size:1.1em;letter-spacing:-2px;vertical-align:-0.1em;">♩♩</span> ボタンは何度でも押せます。なかよし度 4/4 達成後も学習を続けられます</p>';
 
@@ -3999,17 +4110,36 @@ function doAction(actionKey) {
     startQuiz();
     return;
   } else if (actionKey === 'heardLetter') {
-    speak(letter.u.toLowerCase());
-    actions[letter.u].heardLetter = true;
+    speakForAction(letter, 'heardLetter', letter.u.toLowerCase());
   } else if (actionKey === 'heardWord') {
-    speak(currentEx);
-    actions[letter.u].heardWord = true;
+    speakForAction(letter, 'heardWord', currentEx);
   } else if (actionKey === 'heardSentence') {
-    if (currentExSent) {
-      speak(currentExSent);
-      actions[letter.u].heardSentence = true;
-    }
+    if (currentExSent) speakForAction(letter, 'heardSentence', currentExSent);
   }
+}
+
+// 音が鳴らなかった文字を覚えておく（どの項目で失敗したか）
+const audioFailed = {};
+
+function speakForAction(letter, key, text) {
+  speak(text, function (ok) {
+    if (ok) {
+      actions[letter.u][key] = true;
+      audioFailed[letter.u] = null;
+    } else {
+      audioFailed[letter.u] = key;      // 記録はせず、案内を出す
+    }
+    saveProgress();
+    if (currentLetter && currentLetter.u === letter.u) renderCardDetail();
+    render();
+  });
+}
+
+// 音が出ない端末のための逃げ道（利用者が自分で選んで進める）
+function markHeardManually(key) {
+  if (!currentLetter) return;
+  actions[currentLetter.u][key] = true;
+  audioFailed[currentLetter.u] = null;
   saveProgress();
   renderCardDetail();
   render();
@@ -6317,13 +6447,31 @@ function questionById(id) {
   return null;
 }
 
+// 教材の更新でなくなった問題が残っていたら、静かに取り除く
+function purgeUnknownSrs() {
+  let removed = 0;
+  Object.keys(srsData).forEach(function (id) {
+    if (!questionById(id)) { delete srsData[id]; removed++; }
+  });
+  if (removed) saveGrammarProgress();
+  return removed;
+}
+
 // ---- 復習セッション ----
 const REVIEW_LIMIT = 20;
 
 function startReview() {
   const ids = srsDueIds().slice(0, REVIEW_LIMIT);
   const qs = ids.map(questionById).filter(Boolean);
-  if (!qs.length) return;
+  if (!qs.length) {
+    // 件数はあるのに中身が作れない＝古いIDが残っている状態
+    if (ids.length) {
+      purgeUnknownSrs();
+      renderReviewBand();
+      showToast('復習リストを整理しました', '#3F7A69');
+    }
+    return;
+  }
   switchTab('challenge');
   startChallenge(qs, 'review');
 }
@@ -6388,7 +6536,7 @@ function saveGrammarProgress() {
       dictDone: dictDone,
       savedAt: new Date().toISOString()
     }));
-  } catch (e) { console.log('Grammar progress save failed:', e); }
+  } catch (e) { console.log('Grammar progress save failed:', e); noteStorageFailure(); }
 }
 
 function loadGrammarProgress() {
@@ -7126,6 +7274,7 @@ const STAIR_PAW = '<svg viewBox="0 0 24 24" fill="currentColor">'
   + '</svg>';
 
 function renderRoadmap() {
+  renderStorageWarning();
   renderReviewBand();
   const stages = stageInfo();
 
@@ -7480,6 +7629,43 @@ function closeTodoList() {
 }
 
 // ============================================================
+// エラーへの対応（保存できない／音が出ない／予期しない不具合）
+// ============================================================
+let storageBroken = false;
+
+function noteStorageFailure() {
+  if (storageBroken) return;      // 何度も知らせない
+  storageBroken = true;
+  showToast('この端末に進捗を保存できませんでした', '#A55A50');
+  renderStorageWarning();
+}
+
+function renderStorageWarning() {
+  const box = document.getElementById('storage-warning');
+  if (!box) return;
+  if (!storageBroken) { box.innerHTML = ''; box.style.display = 'none'; return; }
+  box.style.display = 'block';
+  box.innerHTML =
+    '<div class="sw-main"><span class="sw-icon">' + icon('warning', 'lu-md') + '</span>'
+    + '<span class="sw-body"><strong>進捗をこの端末に保存できません</strong>'
+    + '<span>ブラウザのプライベートモードや、保存容量の設定が原因のことがあります。'
+    + 'いまの学習は続けられますが、<b>画面を閉じると記録が消えます</b>。'
+    + '下の「学習データのバックアップ」からコードを控えておくと安心です</span></span></div>'
+    + '<button class="sw-btn" onclick="openBackup()">バックアップを開く</button>';
+}
+
+// 予期しない不具合を、利用者に一度だけやさしく伝える
+let errorNoticeShown = false;
+function handleGlobalError(msg) {
+  try { console.log('App error:', msg); } catch (e) {}
+  if (errorNoticeShown) return;
+  errorNoticeShown = true;
+  showToast('うまく動かない部分がありました。ページを開き直すと直ることがあります', '#A55A50');
+}
+window.addEventListener('error', function (e) { handleGlobalError(e && (e.message || e.type)); });
+window.addEventListener('unhandledrejection', function (e) { handleGlobalError(e && e.reason); });
+
+// ============================================================
 // バックアップと復元（機種変更・キャッシュ削除への備え）
 // ============================================================
 // 学習データは端末の中だけに保存されます。外部に送信しません。
@@ -7526,14 +7712,23 @@ function openBackup() {
        + icon('gift', 'lu-md') + ' 学習データのバックアップ</strong>'
        + '<button class="close-btn" onclick="closeModal()">' + icon('close', 'lu-md') + '</button></div>';
 
-  html += '<p class="bk-lead">下の<b>バックアップコード</b>をコピーして、メモ帳やメールに保存しておいてください。'
-       + '機種変更のときや、ブラウザのデータを消してしまったときに、ここから元に戻せます。</p>';
-  html += '<div class="bk-summary">' + icon('paw', 'lu-md') + ' いまの記録：' + backupSummary(d) + '</div>';
-  html += '<textarea class="bk-area" id="bk-code" readonly onclick="this.select()">' + code + '</textarea>';
-  html += '<div class="drill-actions">';
-  html += '  <button class="drill-clear" onclick="downloadBackup()">ファイルに保存</button>';
-  html += '  <button class="drill-submit" onclick="copyBackup()">コードをコピー</button>';
-  html += '</div>';
+  if (!d.progress && !d.grammar) {
+    // 保存データが1つも読み取れない＝空のコードを「保存できた」と誤解させない
+    html += '<div class="bk-empty">' + icon('warning', 'lu-md')
+         + '<strong>控えられる記録がまだありません</strong>'
+         + '<span>学習を始めるとここに記録が現れます。'
+         + 'すでに学習しているのにこの表示が出る場合は、ブラウザが保存を制限している可能性があります'
+         + '（プライベートモードなど）。</span></div>';
+  } else {
+    html += '<p class="bk-lead">下の<b>バックアップコード</b>をコピーして、メモ帳やメールに保存しておいてください。'
+         + '機種変更のときや、ブラウザのデータを消してしまったときに、ここから元に戻せます。</p>';
+    html += '<div class="bk-summary">' + icon('paw', 'lu-md') + ' いまの記録：' + backupSummary(d) + '</div>';
+    html += '<textarea class="bk-area" id="bk-code" readonly onclick="this.select()">' + code + '</textarea>';
+    html += '<div class="drill-actions">';
+    html += '  <button class="drill-clear" onclick="downloadBackup()">ファイルに保存</button>';
+    html += '  <button class="drill-submit" onclick="copyBackup()">コードをコピー</button>';
+    html += '</div>';
+  }
 
   html += '<div class="bk-restore">';
   html += '  <strong>' + icon('refresh', 'lu-md') + ' バックアップから復元する</strong>';
@@ -7713,6 +7908,7 @@ window.addEventListener('appinstalled', function () {
 });
 
 // すべての定義が済んでから初期描画する
+purgeUnknownSrs();   // 教材更新でなくなった問題を取り除く
 render();
 renderGrammarHub();
 renderChallengeSetup();
