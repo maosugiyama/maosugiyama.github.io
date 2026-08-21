@@ -2373,6 +2373,12 @@
   .rs-pid b { font-family: ui-monospace, Menlo, monospace; font-size: 13px; color: #A55A50; }
   .rs-pid span { font-size: 10.5px; color: #856348; }
 
+
+  .rs-minor {
+    background: #fff; border-radius: 10px; padding: 8px 11px; margin-top: 10px;
+    font-size: 10.5px; color: #7A5040; line-height: 1.75;
+  }
+
 </style>
 </head>
 <body>
@@ -7965,6 +7971,8 @@ function renderResearchBand() {
     + '<span class="rs-body"><strong>この教材づくりに、力を貸していただけませんか</strong>'
     + '<span>この教材は、ロシア語教育の研究として作られています。学習の記録（どの問題に正解したかなど）を'
     + '<b>匿名で</b>研究に役立てさせてください。お名前や連絡先は一切集めません。</span></span></div>'
+    + '<p class="rs-minor">18歳未満の方は、<b>ご協力いただける場合のみ</b>、保護者の方にご確認ください'
+    + '（学習だけのご利用なら確認は不要です）</p>'
     + '<button class="rs-more" onclick="openResearchInfo()">くわしい説明を読む</button>'
     + '<div class="rs-actions">'
     + '  <button class="rs-no" onclick="setResearchConsent(false)">協力しない</button>'
@@ -8006,6 +8014,11 @@ function openResearchInfo() {
   html += '<p>記録はまず<b>あなたの端末の中だけ</b>に貯まります。研究者に渡るのは、'
        + 'あなたが「研究用データを提出する」を押して送ってくださったときだけです。'
        + '個人が特定できない形（ランダムな記号）で集計し、統計的な結果のみを公表します。</p>';
+
+  html += '<h4>18歳未満の方へ</h4>';
+  html += '<p><b>この研究にご協力いただける場合は</b>、保護者の方に確認してから「協力する」を'
+       + 'お選びください。<br><b>学習だけのご利用なら、確認は必要ありません。</b>'
+       + '教材のすべての機能を、どなたでも自由にお使いいただけます。</p>';
 
   html += '<h4>いつでもやめられます</h4>';
   html += '<p>ホーム下部の「研究への協力」からいつでも停止でき、そのとき端末内の記録も削除されます。'
