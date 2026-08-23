@@ -2492,6 +2492,51 @@
     .ps-foot { font-size: 8pt; color: #444; margin-top: 3mm; }
   }
 
+
+  /* ============================================================
+     表紙（1ページ目）
+     ============================================================ */
+  .cover-actions {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 12px; margin: 4px 0 26px;
+  }
+  .cover-start {
+    width: 100%;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: linear-gradient(135deg, #C07068, #A55A50);
+    color: #fff; border: none;
+    border-radius: 999px; padding: 18px;
+    font-family: inherit; font-size: 17px; font-weight: 800; letter-spacing: 0.04em;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(165,90,80,0.28);
+  }
+  .cover-start:active { transform: scale(0.99); }
+  .cs-paw { width: 24px; height: 24px; display: flex; }
+  .cs-paw svg { width: 100%; height: 100%; }
+
+  .cover-review {
+    font-size: 12px; color: #A55A50; font-weight: 700;
+    display: none; align-items: center; gap: 5px;
+    background: #FDF0EE; border-radius: 999px; padding: 7px 14px;
+  }
+  .cover-review b { font-size: 14px; }
+
+  .cover-survey {
+    display: flex; align-items: center; justify-content: center; gap: 7px;
+    width: 100%;
+    background: #fff; border: 1.5px solid #CBE0D6; color: #3F7A69;
+    border-radius: 999px; padding: 13px;
+    font-family: inherit; font-size: 13.5px; font-weight: 800; cursor: pointer;
+  }
+  .cover-survey:active { transform: scale(0.99); }
+
+  .back-to-cover { text-align: center; margin-top: 18px; }
+  .back-to-cover button {
+    background: transparent; border: none; color: #856348;
+    font-family: inherit; font-size: 11.5px; font-weight: 700;
+    cursor: pointer; text-decoration: underline; padding: 8px;
+  }
+
 </style>
 </head>
 <body>
@@ -2511,6 +2556,19 @@
       </div>
     </div>
 
+    <div class="cover-actions" id="cover-actions">
+      <button class="cover-start" onclick="enterRoad()">
+        <span class="cs-paw"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6.6" cy="9.2" rx="2" ry="2.6" transform="rotate(-18 6.6 9.2)"></ellipse><ellipse cx="11.9" cy="6.9" rx="2.05" ry="2.85"></ellipse><ellipse cx="17.2" cy="9.2" rx="2" ry="2.6" transform="rotate(18 17.2 9.2)"></ellipse><path d="M12 11.3c3.1 0 5.4 2.3 5.4 5 0 2.2-1.8 3.7-4.2 3.7h-2.4c-2.4 0-4.2-1.5-4.2-3.7 0-2.7 2.3-5 5.4-5z"></path></svg></span>
+        はじめる
+      </button>
+      <p class="cover-review" id="cover-review"></p>
+      <button class="cover-survey" id="cover-survey" onclick="openSurvey()" style="display:none;">
+        <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 20h9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path></svg>
+        アンケートに答える
+      </button>
+    </div>
+
+    <div id="home-road" style="display:none;">
     <p class="roadmap-title">ねこと歩く、ロシア語の道のり</p>
     <div class="stairs-wrap" id="stairs"></div>
     <div class="research-band" id="research-band"></div>
@@ -2748,6 +2806,9 @@
         <span>進捗はこの端末の中だけに保存されています。機種変更やデータ削除に備えて、コードを控えておけます</span>
       </div>
       <button onclick="openBackup()">開く</button>
+    </div>
+
+    <p class="back-to-cover"><button onclick="backToCover()">← 表紙にもどる</button></p>
     </div>
   </div>
 
@@ -3242,7 +3303,16 @@ function switchTab(tabName) {
   if (tabName === 'grammar' && typeof renderGrammarHub === 'function' && !currentUnitId) renderGrammarHub();
   if (tabName === 'challenge' && typeof renderChallengeSetup === 'function' && !chalState) renderChallengeSetup();
   if (tabName === 'dictation' && typeof renderDictationSetup === 'function' && !chalState) renderDictationSetup();
-  if (tabName === 'home' && typeof updateHomeStepStatus === 'function') updateHomeStepStatus();
+  if (tabName === 'home') {
+    // ほかの画面から戻ったときは、表紙ではなく道のりのページへ
+    const cover = document.getElementById('cover-actions');
+    const road = document.getElementById('home-road');
+    if (road && road.style.display === 'none' && cover) {
+      cover.style.display = 'none';
+      road.style.display = 'block';
+    }
+    if (typeof updateHomeStepStatus === 'function') updateHomeStepStatus();
+  }
   if (tabName === 'home' && typeof renderInstallBand === 'function') renderInstallBand();
   // Scroll to top when switching
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -8547,6 +8617,50 @@ function printNoteSheet() {
   }
 }
 
+// ============================================================
+// 表紙（1ページ目）と、道のりのページの切りかえ
+// ============================================================
+function enterRoad() {
+  const cover = document.getElementById('cover-actions');
+  const road = document.getElementById('home-road');
+  if (cover) cover.style.display = 'none';
+  if (road) road.style.display = 'block';
+  renderRoadmap();
+  updateHomeStepStatus();
+  logScreen('road');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function backToCover() {
+  const cover = document.getElementById('cover-actions');
+  const road = document.getElementById('home-road');
+  if (road) road.style.display = 'none';
+  if (cover) cover.style.display = 'block';
+  renderCover();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// 表紙の表示を整える（復習の件数と、アンケートのボタン）
+function renderCover() {
+  const rev = document.getElementById('cover-review');
+  if (rev) {
+    const c = srsCounts();
+    if (c.due > 0) {
+      rev.style.display = 'block';
+      rev.innerHTML = icon('refresh', 'lu-md') + ' 今日の復習が <b>' + c.due + '</b> 問あります';
+    } else {
+      rev.style.display = 'none';
+      rev.innerHTML = '';
+    }
+  }
+  const sv = document.getElementById('cover-survey');
+  if (sv) {
+    // 研究に協力していて、まだアンケートに答えていない方にだけ出す
+    const show = researchEnabled() && !research.surveyAt;
+    sv.style.display = show ? 'flex' : 'none';
+  }
+}
+
 // ホームの「ひと足先に読めます」から、文法ユニットを直接開く
 function openUnitFromHome(id) {
   switchTab('grammar');
@@ -8865,6 +8979,7 @@ function setResearchConsent(yes) {
   closeModal();
   renderResearchBand();
   renderSurveyCard();
+  renderCover();
   renderRoadmap();
 }
 
@@ -9194,6 +9309,7 @@ function closeSurvey() {
   }
   closeModal();
   renderSurveyCard();
+  renderCover();
   renderRoadmap();
 }
 
@@ -9462,6 +9578,7 @@ renderChallengeSetup();
 renderDictationSetup();
 updateHomeStepStatus();
 renderInstallBand();
+renderCover();          // 1ページ目は表紙
 
 </script>
 
