@@ -2379,6 +2379,110 @@
     font-size: 10.5px; color: #7A5040; line-height: 1.75;
   }
 
+
+  /* ---- 並べ替え作文 ---- */
+  .ord-line {
+    min-height: 54px;
+    background: #F5EFE8;
+    border-radius: 12px;
+    padding: 9px 10px;
+    display: flex; flex-wrap: wrap; gap: 6px; align-items: center;
+  }
+  .ord-line.empty { justify-content: center; }
+  .ord-hint { font-size: 11.5px; color: #7A6656; }
+  .ord-pool {
+    display: flex; flex-wrap: wrap; gap: 7px;
+    margin-top: 12px; padding: 11px 10px;
+    background: #fff; border: 1.5px dashed #E4D3C7; border-radius: 12px;
+    justify-content: center;
+  }
+  .ord-chip {
+    background: #fff; border: 1.5px solid #D9C6BB; color: #3A2318;
+    border-radius: 10px; padding: 9px 13px;
+    font-family: inherit; font-size: 15px; font-weight: 700; cursor: pointer;
+  }
+  .ord-chip:active { transform: scale(0.97); }
+  .ord-chip.placed { background: #A55A50; border-color: #A55A50; color: #fff; }
+  .ord-chip:disabled { cursor: default; }
+  .ord-nuance {
+    background: rgba(255,255,255,0.6); border-radius: 9px;
+    padding: 7px 9px; margin-top: 6px !important;
+    font-size: 11.5px !important; line-height: 1.8 !important;
+    display: flex; align-items: flex-start; gap: 5px;
+  }
+  .ord-others {
+    margin-top: 10px; padding-top: 9px; border-top: 1px dashed rgba(0,0,0,0.10);
+  }
+  .ord-others strong { font-size: 11.5px; display: block; margin-bottom: 4px; }
+  .ord-others p { margin: 4px 0 !important; font-size: 12px !important; }
+  .ord-others span { display: block; font-size: 11px; opacity: 0.85; margin-top: 1px; }
+
+
+  /* ---- ノートの作り方 ---- */
+  .note-guide {
+    background: #fff; border: 1px solid #F0DDD7; border-radius: 16px;
+    margin-top: 14px; overflow: hidden;
+  }
+  .ng-toggle {
+    width: 100%; padding: 13px 15px; background: transparent; border: none;
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    font-family: inherit; font-size: 13px; font-weight: 800; color: #A55A50;
+    cursor: pointer; text-align: left;
+  }
+  .ng-arrow { font-size: 10px; transition: transform 0.2s; }
+  .note-guide.open .ng-arrow { transform: rotate(180deg); }
+  .ng-content { display: none; padding: 0 15px 15px; }
+  .note-guide.open .ng-content { display: block; }
+  .ng-content p { font-size: 11.5px; color: #3A2318; line-height: 1.9; margin: 6px 0; }
+  .ng-content h4 { font-size: 12.5px; color: #A55A50; font-weight: 800; margin: 14px 0 5px; }
+  .ng-list { list-style: none; padding: 0; margin: 4px 0 0; }
+  .ng-list li {
+    font-size: 11.5px; color: #3A2318; line-height: 1.9;
+    padding-left: 15px; position: relative; margin-bottom: 5px;
+  }
+  .ng-list li::before {
+    content: ''; position: absolute; left: 3px; top: 9px;
+    width: 5px; height: 5px; border-radius: 50%; background: #C9A88F;
+  }
+  .ng-print {
+    width: 100%; margin-top: 14px;
+    background: #A55A50; color: #fff; border: none;
+    border-radius: 999px; padding: 12px;
+    font-family: inherit; font-size: 13px; font-weight: 800; cursor: pointer;
+  }
+  .ng-note { font-size: 10.5px !important; color: #856348 !important; margin-top: 7px !important; }
+
+  /* ---- 印刷用シート ---- */
+  .print-sheet { display: none; }
+  @media print {
+    body.printing .container,
+    body.printing .modal-bg,
+    body.printing .celebration-bg,
+    body.printing .update-banner { display: none !important; }
+    body.printing .print-sheet { display: block; }
+    body.printing { background: #fff; padding: 0; }
+    .ps-page { page-break-after: always; padding: 10mm 8mm; }
+    .ps-page:last-child { page-break-after: auto; }
+    .ps-page h1 {
+      font-size: 15pt; color: #000; margin-bottom: 2mm;
+      display: flex; align-items: baseline; justify-content: space-between;
+    }
+    .ps-page h1 span { font-size: 7.5pt; font-weight: 400; color: #666; }
+    .ps-lead { font-size: 8.5pt; color: #444; margin-bottom: 4mm; }
+    .ps-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+    .print-sheet table { width: 100%; border-collapse: collapse; margin-bottom: 5mm; }
+    .print-sheet th, .print-sheet td {
+      border: 0.4mm solid #000; padding: 2.2mm 2mm;
+      font-size: 9pt; height: 8mm; vertical-align: bottom;
+    }
+    .print-sheet th { background: #f0f0f0; font-size: 8.5pt; text-align: left; }
+    .ps-title { text-align: left !important; }
+    .ps-p { width: 26%; color: #333; font-size: 8.5pt; background: #fafafa; }
+    .ps-words td { height: 9mm; }
+    .ps-words th:nth-child(1) { width: 32%; }
+    .ps-words th:nth-child(2) { width: 22%; }
+  }
+
 </style>
 </head>
 <body>
@@ -2584,6 +2688,38 @@
       </div>
       <div class="reward-todo" id="reward-todo"></div>
       <button class="reward-download-btn" id="reward-download-btn" onclick="downloadRewardPDF()" disabled=""><!--ICON:lock:lu-md--> まだ受け取れません</button>
+    </div>
+
+    <div class="note-guide" id="note-guide">
+      <button class="ng-toggle" onclick="document.getElementById('note-guide').classList.toggle('open')">
+        <span><svg viewBox="0 0 24 24" width="16" height="16" style="display:inline-block;vertical-align:middle;color:#A55A50;margin-right:6px;"><path d="M12 20h9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>ノートの作り方（机で学ぶ方へ）</span>
+        <span class="ng-arrow">▼</span>
+      </button>
+      <div class="ng-content">
+        <p>アプリは<b>音と反復</b>が得意です。いっぽうノートは<b>手を動かして整理する</b>のが得意。
+        両方を組み合わせると、定着が早くなります。</p>
+
+        <h4>見開きを3つに分ける</h4>
+        <ul class="ng-list">
+          <li><b>左ページ＝表</b>　活用表・格変化表を、そのまま書き写します。<b>色は2色まで</b>（語尾だけ色を変えると、規則が目に入ります）</li>
+          <li><b>右上＝例文</b>　アプリの例文を1文ずつ。日本語訳は<b>右端に小さく</b>、隠せるように</li>
+          <li><b>右下＝まちがえた語</b>　「今日の復習」に出た語だけを集めます。ここが自分専用の弱点集になります</li>
+        </ul>
+
+        <h4>書き写す価値があるのは「表」です</h4>
+        <p>解説文を丸写しする必要はありません。<b>青い枠の表（活用・格変化）</b>だけを写し、
+        あとは<b>声に出しながら</b>書くと、耳と手の両方から入ります。</p>
+
+        <h4>3日後にもう一度</h4>
+        <p>書いた表は、<b>3日後に何も見ずに書き直して</b>みてください。書けなかった欄が、
+        あなたの弱点です。アプリの「今日の復習」と同じ考え方を、紙の上でもやってみましょう。</p>
+
+        <button class="ng-print" onclick="printNoteSheet()">
+          <svg viewBox="0 0 24 24" width="15" height="15" style="display:inline-block;vertical-align:-2px;margin-right:5px;"><polyline points="6 9 6 2 18 2 18 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="6" y="14" width="12" height="8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          書き込み用シートを印刷する（A4）
+        </button>
+        <p class="ng-note">印刷ボタンから「PDFとして保存」も選べます。活用表・格変化表・まちがえた語の3枚組です。</p>
+      </div>
     </div>
 
     <div class="backup-card" id="survey-card" style="display:none;"></div>
@@ -2890,6 +3026,83 @@
 
     <div style="text-align:center;margin-top:16px;"><button onclick="switchTab(&#39;home&#39;)" title="ホームに戻る" class="back-to-home-btn" style="margin-bottom:0;"><span class="lu lu-lg"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span></button></div>
   </div>
+</div>
+
+<!-- 印刷用シート（画面には表示せず、印刷ボタンを押したときだけ出ます） -->
+<div class="print-sheet" id="print-sheet">
+  <section class="ps-page">
+    <h1>動詞の活用表<span>ねこと学ぶ キリル文字 — maosugiyama.github.io/russian</span></h1>
+    <p class="ps-lead">不定形と意味を書き、6つの形を埋めましょう。語尾だけ色を変えると、規則が見えてきます。</p>
+    <div class="ps-grid2">
+      <table class="ps-verb"><tr><th colspan="2" class="ps-title">不定形　　　　　　　　　　意味</th></tr>
+        <tr><td class="ps-p">я</td><td></td></tr><tr><td class="ps-p">ты</td><td></td></tr>
+        <tr><td class="ps-p">он / она́</td><td></td></tr><tr><td class="ps-p">мы</td><td></td></tr>
+        <tr><td class="ps-p">вы</td><td></td></tr><tr><td class="ps-p">они́</td><td></td></tr>
+        <tr><td class="ps-p">過去</td><td></td></tr></table>
+      <table class="ps-verb"><tr><th colspan="2" class="ps-title">不定形　　　　　　　　　　意味</th></tr>
+        <tr><td class="ps-p">я</td><td></td></tr><tr><td class="ps-p">ты</td><td></td></tr>
+        <tr><td class="ps-p">он / она́</td><td></td></tr><tr><td class="ps-p">мы</td><td></td></tr>
+        <tr><td class="ps-p">вы</td><td></td></tr><tr><td class="ps-p">они́</td><td></td></tr>
+        <tr><td class="ps-p">過去</td><td></td></tr></table>
+      <table class="ps-verb"><tr><th colspan="2" class="ps-title">不定形　　　　　　　　　　意味</th></tr>
+        <tr><td class="ps-p">я</td><td></td></tr><tr><td class="ps-p">ты</td><td></td></tr>
+        <tr><td class="ps-p">он / она́</td><td></td></tr><tr><td class="ps-p">мы</td><td></td></tr>
+        <tr><td class="ps-p">вы</td><td></td></tr><tr><td class="ps-p">они́</td><td></td></tr>
+        <tr><td class="ps-p">過去</td><td></td></tr></table>
+      <table class="ps-verb"><tr><th colspan="2" class="ps-title">不定形　　　　　　　　　　意味</th></tr>
+        <tr><td class="ps-p">я</td><td></td></tr><tr><td class="ps-p">ты</td><td></td></tr>
+        <tr><td class="ps-p">он / она́</td><td></td></tr><tr><td class="ps-p">мы</td><td></td></tr>
+        <tr><td class="ps-p">вы</td><td></td></tr><tr><td class="ps-p">они́</td><td></td></tr>
+        <tr><td class="ps-p">過去</td><td></td></tr></table>
+    </div>
+  </section>
+
+  <section class="ps-page">
+    <h1>格変化表<span>ねこと学ぶ キリル文字 — maosugiyama.github.io/russian</span></h1>
+    <p class="ps-lead">名詞・形容詞を1語ずつ選び、6つの格を埋めましょう。単数と複数を分けて書くと整理できます。</p>
+    <table class="ps-case">
+      <tr><th class="ps-title">単数：　　　　　　　</th><th>男性</th><th>女性</th><th>中性</th><th>複数</th></tr>
+      <tr><td class="ps-p">主格（〜が）</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="ps-p">生格（〜の）</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="ps-p">与格（〜に）</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="ps-p">対格（〜を）</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="ps-p">造格（〜で）</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="ps-p">前置格（〜で）</td><td></td><td></td><td></td><td></td></tr>
+    </table>
+    <table class="ps-case">
+      <tr><th class="ps-title">単数：　　　　　　　</th><th>男性</th><th>女性</th><th>中性</th><th>複数</th></tr>
+      <tr><td class="ps-p">主格（〜が）</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="ps-p">生格（〜の）</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="ps-p">与格（〜に）</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="ps-p">対格（〜を）</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="ps-p">造格（〜で）</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="ps-p">前置格（〜で）</td><td></td><td></td><td></td><td></td></tr>
+    </table>
+  </section>
+
+  <section class="ps-page">
+    <h1>まちがえた語ノート<span>ねこと学ぶ キリル文字 — maosugiyama.github.io/russian</span></h1>
+    <p class="ps-lead">「今日の復習」に出た語を書きためましょう。3日後に、右側を隠して思い出せるか試します。</p>
+    <table class="ps-words">
+      <tr><th>ロシア語（アクセントつき）</th><th>意味</th><th>使った文・気づいたこと</th></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+    </table>
+  </section>
 </div>
 
 <div class="modal-bg" id="modal-bg">
@@ -6273,6 +6486,136 @@ const GRAMMAR_UNITS = [
 },
 
 {
+  id:'read-short', cat:'story', level:'中級', title:'短い文章を読む①', sub:'会話とメッセージを、辞書なしで',
+  lesson:`
+  <p>ここまでの文法だけで、短い文章はもう読めます。<b>知らない語があっても止まらない</b>——
+  それが読む力の第一歩です。</p>
+
+  <div class="case-row">
+    <strong>① 短い会話</strong>
+    <p style="font-size:14.5px;line-height:2.1;">
+    — Приве́т! Что ты де́лаешь?<br>
+    — Я чита́ю кни́гу. А ты?<br>
+    — Я пью чай с молоко́м. Хо́чешь ча́ю?<br>
+    — Да, спаси́бо!
+    </p>
+    <p style="font-size:11.5px;color:#856348;">（やあ！ 何してるの／本を読んでるよ。きみは？／ミルクティーを飲んでるんだ。お茶いる？／うん、ありがとう！）</p>
+    <p style="font-size:11px;color:#7A5040;">• <b>А ты?</b>＝「きみは？」　会話でとてもよく使います<br>
+    • <b>Хо́чешь ча́ю?</b> — 「少し」の意味を表すとき、飲み物は生格になることがあります（ча́ю は чай の生格の古い形）</p>
+  </div>
+
+  <div class="case-row">
+    <strong>② メッセージ</strong>
+    <p style="font-size:14.5px;line-height:2.1;">
+    Приве́т, Ма́ша!<br>
+    За́втра я е́ду в Москву́. Бу́ду там три дня.<br>
+    Пото́м напишу́ тебе́.<br>
+    Пока́!
+    </p>
+    <p style="font-size:11.5px;color:#856348;">（やあマーシャ！ 明日モスクワへ行くよ。3日いる予定。あとで手紙を書くね。またね！）</p>
+    <p style="font-size:11px;color:#7A5040;">• <b>е́ду</b>（乗り物で行く）＋ <b>в Москву́</b>（в＋対格＝方向）<br>
+    • <b>Бу́ду там три дня.</b> — бу́ду＝быть の未来形。три дня は「2・3・4＋生格単数」<br>
+    • <b>напишу́</b>＝完了体の未来「書き上げるつもり」　• <b>тебе́</b>＝ты の与格</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>読むときのコツ</strong>
+    <p>① 動詞を見つけて、<b>誰の動作か</b>（語尾）を確かめる<br>
+    ② 名詞の<b>語尾</b>を見て、主語か目的語かを見分ける<br>
+    ③ 前置詞は、後ろの名詞とセットで意味をとる<br>
+    ④ 分からない語は飛ばして、<b>文の骨組み</b>だけ拾う</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'会話文で、お茶を飲んでいるのはどちらの人ですか？',
+     opts:['本を読んでいる人','「Я пью чай с молоко́м.」と言った人'], a:1,
+     ex:'пью は「я（私）」の形。自分のことを言っています。'},
+    {type:'mc', q:'「За́втра я е́ду в Москву́.」— どうやってモスクワへ行きますか？',
+     opts:['歩いて','乗り物で'], a:1,
+     ex:'е́хать は乗り物での移動。歩いて行くなら иду́（идти́）を使います。'},
+    {type:'mc', q:'「в Москву́」の格は？', opts:['対格（方向）','前置格（場所）'], a:0,
+     ex:'в ＋ 対格で「〜へ」。「モスクワで」なら в Москве́（前置格）になります。'},
+    {type:'mc', q:'「Бу́ду там три дня.」の три дня はなぜこの形ですか？',
+     opts:['2・3・4 の後は生格・単数だから','複数主格だから'], a:0,
+     ex:'день → дня（生格単数）。пять дней なら生格複数です。'},
+    {type:'mc', q:'「напишу́」が表すのは？', opts:['いま書いている','これから書き上げる'], a:1,
+     ex:'完了体 написа́ть の活用形は未来を表します。不完了体なら бу́ду писа́ть。'},
+    {type:'mc', q:'「А ты?」の意味は？', opts:['きみは？','いいえ'], a:0,
+     ex:'а は「ところで・一方」。会話で相手に話を振るときの決まり文句です。'}
+  ]
+},
+
+{
+  id:'read-tale', cat:'story', level:'上級', title:'短い文章を読む②', sub:'昔話『おおきなかぶ』を原文で',
+  lesson:`
+  <p>ロシアでいちばん有名な昔話のひとつ <b>«Ре́пка»</b>（おおきなかぶ）。
+  くり返しが多く、<b>はじめて読む原文</b>にちょうどよい作品です。</p>
+
+  <div class="case-row">
+    <strong>書き出し</strong>
+    <p style="font-size:15px;font-weight:700;line-height:2.1;">
+    Посади́л дед ре́пку.<br>
+    Вы́росла ре́пка больша́я-преболь­ша́я.<br>
+    Стал дед ре́пку из земли́ тяну́ть.<br>
+    Тя́нет-потя́нет, вы́тянуть не мо́жет.
+    </p>
+    <p style="font-size:11.5px;color:#856348;">（おじいさんがかぶを植えました。かぶは大きな大きなかぶになりました。おじいさんはかぶを土から引っぱりはじめました。引っぱっても引っぱっても、抜くことができません。）</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>ひとつずつ、ほどいてみる</strong>
+    <div class="conj-table">
+      <span class="pron">Посади́л дед</span><span class="form">「植えた＋おじいさん」— 動詞が先。昔話らしい語り出しです</span>
+      <span class="pron">ре́пку</span><span class="form">ре́пка の対格。植えられた側です</span>
+      <span class="pron">Вы́росла</span><span class="form">вы́расти（育つ）の過去・女性形。主語 ре́пка が女性だから</span>
+      <span class="pron">больша́я-преболь­ша́я</span><span class="form">пре- を重ねて「大きな大きな」。強調のくり返し</span>
+      <span class="pron">из земли́</span><span class="form">из ＋ 生格「〜の中から」。земля́ → земли́</span>
+      <span class="pron">не мо́жет</span><span class="form">мочь の3人称単数＋не。「〜できない」</span>
+    </div>
+  </div>
+
+  <div class="rule-row">
+    <strong>この物語の続き</strong>
+    <p>おじいさんはおばあさん（<b>ба́бка</b>）を呼び、おばあさんは孫娘（<b>вну́чка</b>）を、
+    孫娘は犬（<b>Жу́чка</b>）を、犬はねこ（<b>ко́шка</b>）を、そしてねこは<b>ネズミ（мы́шка）</b>を呼びます。
+    最後にネズミが加わって、ようやくかぶが抜けます。</p>
+    <p style="font-size:11.5px;color:#856348;">小さな力が加わって、はじめて事が成る——という昔話です。
+    同じ文型がくり返されるので、<b>音読の教材として最適</b>です。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>昔話でよく出る語り方</strong>
+    <p>• <b>動詞が文頭に来る</b>：Посади́л дед…／Вы́росла ре́пка…（出来事から語りはじめる）<br>
+    • <b>くり返し</b>：Тя́нет-потя́нет（引っぱって、引っぱって）<br>
+    • <b>指小形</b>：ре́пка・ба́бка・вну́чка・мы́шка（親しみをこめた形）</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'「Посади́л дед ре́пку.」— 植えたのは誰ですか？',
+     opts:['дед（おじいさん）','ре́пка（かぶ）'], a:0,
+     ex:'дед が主格、ре́пку が対格。動詞が文頭に来ていますが、役割は語尾で分かります。'},
+    {type:'mc', q:'「Вы́росла」が女性形なのはなぜ？',
+     opts:['主語の ре́пка が女性名詞だから','おばあさんの話だから'], a:0,
+     ex:'過去形は主語の性と数に合わせます。ре́пка は -а で終わる女性名詞です。'},
+    {type:'mc', q:'「из земли́」の格と意味は？',
+     opts:['生格・〜の中から','前置格・〜の中で'], a:0,
+     ex:'из は生格をとり、「〜から」を表します。земля́ → земли́。'},
+    {type:'mc', q:'больша́я-преболь­ша́я は何を表していますか？',
+     opts:['2つの別々のかぶ','「大きな大きな」という強調'], a:1,
+     ex:'接頭辞 пре- を付けて重ねると、程度の強調になります。昔話に多い言い回しです。'},
+    {type:'mc', q:'мы́шка・вну́чка・ба́бка に共通するのは？',
+     opts:['指小形（親しみをこめた形）','複数形'], a:0,
+     ex:'昔話は指小形が多用されます。мышь → мы́шка、вну́чка（вну́ка の指小）など。'},
+    {type:'order', q:'「おじいさんがかぶを植えました」を、昔話らしい語順で組み立ててください',
+     tokens:['Посади́л','дед','ре́пку'],
+     accept:[{o:'Посади́л дед ре́пку', n:'原文の語順。動詞から始めると、昔話らしい語り口になります'},
+             {o:'Дед посади́л ре́пку', n:'現代の中立的な語順。意味は同じで、より説明的な響きになります'}],
+     hint:'昔話は、出来事から語りはじめます',
+     ex:'どちらも正しい文です。動詞を文頭に置くと物語の語り口、主語を先に置くと報告的な語り口になります。'}
+  ]
+},
+
+{
   id:'register', cat:'story', level:'上級', title:'話しことばと書きことば', sub:'相手と場面で言い方を選ぶ',
   lesson:`
   <p>同じ内容でも、友だちに話すときと、論文や手紙に書くときでは言い方が変わります。
@@ -6479,6 +6822,298 @@ const GRAMMAR_UNITS = [
     {type:'mc', q:'続く行 <b>«Злата́я цепь на ду́бе том»</b>。дуб（樫の木）が на のあとで <b>ду́бе</b> になっています。この形が表しているのは？', opts:['場所（樫の木の上に「ある」）','方向（樫の木の上へ「動く」）'], a:0, ex:'на ＋ 前置格は「どこに あるか」を表します。動きを表すときは на ＋ 対格（на дуб＝樫の木の上へ）になり、形が変わります。'},
     {type:'mc', q:'злата́я は現代語では？', opts:['золота́я','зелёная'], a:0, ex:'золота́я（黄金の）の詩的な古い形です。'},
     {type:'mc', q:'読んでいて知らない語に出会ったら、まずどうする？', opts:['すべて辞書で調べてから先へ進む','筋がつかめるなら飛ばして先へ進む'], a:1, ex:'全部調べようとすると続きません。わかるところをつなげて読むのが上達のこつです。'}
+  ]
+},
+
+{
+  id:'order-basic', cat:'write', level:'中級', title:'語順のきほん', sub:'自由なのに、無秩序ではない',
+  lesson:`
+  <p>ロシア語は語順が自由だと言われます。たしかに、語の順番を入れかえても文は壊れません。
+  <b>格語尾が「誰が・誰を」を示している</b>からです。</p>
+  <p>けれども<b>「どの順でも同じ」ではありません</b>。順番を変えると、<b>話し手が何を伝えたいか</b>が変わります。</p>
+
+  <div class="rule-row">
+    <strong>いちばん大事な原則：<u>文末が、いちばん言いたいこと</u></strong>
+    <p>ロシア語では、<b>すでに分かっていること</b>を前に、<b>新しく伝えたいこと</b>を後ろに置きます。
+    文の最後が、話し手の「ここを聞いてほしい」の位置です。</p>
+  </div>
+
+  <div class="case-row">
+    <strong>同じ語で、伝わり方が変わる</strong>
+    <p>• <span class="ex-inline">Я чита́ю кни́гу.</span>（私は<b>本を</b>読んでいます）<br>
+    　「私が何をしているか」を伝える、いちばん自然な順番</p>
+    <p>• <span class="ex-inline">Кни́гу чита́ю я.</span>（その本を読んでいるのは<b>私です</b>）<br>
+    　「誰が読んでいるの？」への答え。новое ＝ я を文末に置いています</p>
+    <p style="font-size:11px;color:#856348;">どちらも文法的に正しく、意味も同じ。ちがうのは<b>光の当て方</b>です。</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>迷ったら、この並びから</strong>
+    <div class="conj-table">
+      <span class="pron">中立の語順</span><span class="form">主語 → 動詞 → 目的語・補語</span>
+      <span class="pron">例</span><span class="form">Я（主語） хочу́（動詞） арбу́з（目的語）.</span>
+    </div>
+    <p style="font-size:11px;color:#3A5578;">はじめのうちは、この順で組み立てれば失敗しません。
+    慣れてきたら、伝えたい語を文末に動かしてみてください。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>前置詞は、名詞から離しません</strong>
+    <p>語順は自由でも、<b>前置詞と、それが支配する名詞は必ずセット</b>で動きます。</p>
+    <p>• ○ <span class="ex-inline">Мы идём <b>в цирк</b>.</span>　○ <span class="ex-inline"><b>В цирк</b> мы идём.</span></p>
+    <p>• ✕ В мы идём цирк.（前置詞だけ離すことはできません）</p>
+    <p style="font-size:11px;color:#A05A00;">この練習でも、<b>「в цирк」「с молоко́м」はひとまとまりのカード</b>で出てきます。</p>
+  </div>
+  `,
+  drills:[
+    {type:'order', q:'「私はスイカがほしいです」を組み立ててください',
+     tokens:['Я','хочу́','арбу́з'],
+     accept:[{o:'Я хочу́ арбу́з', n:'いちばん自然な語順です。「何がほしいのか」＝арбу́з が文末に来ています'},
+             {o:'Арбу́з я хочу́', n:'「（ほかでもなく）スイカが」と対象を際立たせる語順。「何がほしいの？」と聞かれた場面などで使えます'}],
+     hint:'主語 → 動詞 → 目的語 の順が基本です',
+     ex:'ロシア語では、伝えたい新しい情報を文末に置きます。ふつうに「スイカがほしい」と言うなら Я хочу́ арбу́з.'},
+
+    {type:'order', q:'「私たちはサーカスへ行きます」を組み立ててください',
+     tokens:['Мы','идём','в цирк'],
+     accept:[{o:'Мы идём в цирк', n:'中立の語順。「どこへ行くのか」が文末で示されます'},
+             {o:'В цирк мы идём', n:'「サーカスへはね、行くよ」と行き先を先に持ち出す語順。話しことばで使われます'}],
+     hint:'「в цирк」はひとまとまりです',
+     ex:'前置詞 в と цирк は離せません。行き先を表す в ＋ 対格は、まとめて動かします。'},
+
+    {type:'order', q:'「これは私の本です」を組み立ててください',
+     tokens:['Э́то','моя́','кни́га'],
+     accept:[{o:'Э́то моя́ кни́га', n:'紹介の型「Э́то …」。所有代名詞は名詞の前に置きます'}],
+     hint:'Э́то で始めます',
+     ex:'моя́ кни́га の語順は動かしません。形容詞や所有代名詞は、修飾する名詞の直前に置くのがふつうです。'},
+
+    {type:'order', q:'「私はミルク入りのお茶を飲みます」を組み立ててください',
+     tokens:['Я','пью','чай','с молоко́м'],
+     accept:[{o:'Я пью чай с молоко́м', n:'自然な語順。с молоко́м が чай を後ろから説明しています'}],
+     hint:'「с молоко́м」は чай の説明です',
+     ex:'「с ＋ 造格」は、説明する名詞のすぐ後ろに置きます。чай с молоко́м でひとつのまとまりです。'},
+
+    {type:'order', q:'「ハリネズミは小さいです」を組み立ててください',
+     tokens:['Ёж','ма́ленький'],
+     accept:[{o:'Ёж ма́ленький', n:'「〜は…だ」の文。現在形では быть を言いません'},
+             {o:'Ма́ленький ёж', n:'これは文ではなく「小さいハリネズミ」という語のまとまりになります。文にするなら Ёж ма́ленький.'}],
+     hint:'主語を先に置きます',
+     ex:'述語として使うときは名詞の後ろ（Ёж ма́ленький.＝ハリネズミは小さい）、修飾語として使うときは前（ма́ленький ёж＝小さいハリネズミ）。位置で役割が変わります。'},
+
+    {type:'mc', q:'ロシア語で、話し手がいちばん伝えたい語はどこに置かれますか？',
+     opts:['文の先頭','文の最後','動詞のすぐ前'], a:1,
+     ex:'新しい情報・伝えたいことは文末に置きます。すでに分かっていることは前に置きます。'}
+  ]
+},
+
+{
+  id:'order-case', cat:'write', level:'中級', title:'格を手がかりに組み立てる', sub:'順番ではなく、語尾が役割を決める',
+  lesson:`
+  <p>英語や日本語では、語順が変わると意味が変わります。ロシア語では<b>語尾が役割を決める</b>ので、
+  順番を変えても「誰が誰を」は入れかわりません。この感覚をつかむと、作文がぐっと楽になります。</p>
+
+  <div class="case-row">
+    <strong>順番を変えても、意味は同じ</strong>
+    <p>• <span class="ex-inline">Кот ви́дит соба́ку.</span>（ねこが犬を見ている）</p>
+    <p>• <span class="ex-inline">Соба́ку ви́дит кот.</span>（犬を見ているのは、ねこだ）</p>
+    <p>どちらも<b>見ているのは кот</b>です。кот が主格、соба́к<b>у</b> が対格だからです。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>語尾が変われば、意味が変わります</strong>
+    <p>• <span class="ex-inline">Соба́ка ви́дит кота́.</span>（犬が<b>ねこを</b>見ている）</p>
+    <p>соба́ка が主格、кот<b>а́</b> が対格になりました。<b>順番ではなく語尾</b>が意味を決めています。</p>
+    <p style="font-size:11px;color:#A05A00;">だからこそ、作文では<b>語順よりも格を先に決める</b>のが近道です。</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>組み立ての手順</strong>
+    <div class="conj-table">
+      <span class="pron">① 動詞を決める</span><span class="form">купи́л（買った）</span>
+      <span class="pron">② 誰が → 主格</span><span class="form">он</span>
+      <span class="pron">③ 何を → 対格</span><span class="form">буке́т</span>
+      <span class="pron">④ 誰に → 与格</span><span class="form">ма́ме</span>
+      <span class="pron">⑤ 並べる</span><span class="form">Он купи́л буке́т ма́ме.</span>
+    </div>
+    <p style="font-size:11px;color:#3A5578;">格さえ合っていれば、並べ方は文脈で選べます。</p>
+  </div>
+  `,
+  drills:[
+    {type:'order', q:'「彼はお母さんに花束を買いました」を組み立ててください',
+     tokens:['Он','купи́л','буке́т','ма́ме'],
+     accept:[{o:'Он купи́л буке́т ма́ме', n:'中立の語順。「誰に買ったか」が文末で示されます'},
+             {o:'Он купи́л ма́ме буке́т', n:'「何を買ったか」を伝えたいときの語順。буке́т が文末に来ます'}],
+     hint:'買った物は対格、あげた相手は与格です',
+     ex:'буке́т（対格）と ма́ме（与格）は、どちらを先に置いても意味は変わりません。文末に置いたほうが「伝えたいこと」になります。'},
+
+    {type:'order', q:'「これはサイの角です」を組み立ててください',
+     tokens:['Э́то','рог','носоро́га'],
+     accept:[{o:'Э́то рог носоро́га', n:'「〜の」を表す生格は、修飾する名詞の<b>後ろ</b>に置きます'}],
+     hint:'日本語と語順が逆になります',
+     ex:'日本語は「サイの角」ですが、ロシア語は「角＋サイ（生格）」の順。носоро́га が後ろに来ます。'},
+
+    {type:'order', q:'「キツネは森にいます」を組み立ててください',
+     tokens:['Лиса́','в лесу́'],
+     accept:[{o:'Лиса́ в лесу́', n:'「キツネはどこにいるか」を伝える語順。場所が文末に来ます'},
+             {o:'В лесу́ лиса́', n:'「森には、キツネがいる」。場所を先に示し、そこに何がいるかを伝える語順です'}],
+     hint:'「в лесу́」はひとまとまりです',
+     ex:'いる場所を伝えるなら Лиса́ в лесу́、その場所に何がいるかを伝えるなら В лесу́ лиса́。どちらも正しく、視点がちがいます。'},
+
+    {type:'mc', q:'Соба́ку ви́дит кот. の意味は？', say:'Соба́ку ви́дит кот',
+     opts:['犬がねこを見ている','ねこが犬を見ている'], a:1,
+     ex:'соба́ку は対格（見られる側）、кот は主格（見る側）。語順ではなく語尾が役割を決めます。'},
+
+    {type:'mc', q:'「犬がねこを見ている」を正しく表すのは？',
+     opts:['Соба́ка ви́дит кота́.','Соба́ку ви́дит кот.'], a:0,
+     ex:'соба́ка が主格、кота́ が対格。動物性のある男性名詞は、対格が生格と同じ形（кота́）になります。'},
+
+    {type:'input', q:'кот を対格にして綴ってください（「ねこを」の形）', a:'кота',
+     hint:'生きものの男性名詞は、対格＝生格', ex:'кота́。Соба́ка ви́дит кота́.（犬がねこを見ている）'}
+  ]
+},
+
+{
+  id:'order-nuance', cat:'write', level:'上級', title:'語順で答えが決まる', sub:'質問に合わせて、文末の語を選ぶ',
+  lesson:`
+  <p>語順の使い分けが、いちばんはっきり現れるのが<b>質問への答え</b>です。
+  <b>聞かれたことを文末に置く</b>——これだけで、答えが自然になります。</p>
+
+  <div class="case-row">
+    <strong>同じ内容でも、質問が変われば語順が変わる</strong>
+    <p><b>Кто пьёт чай?</b>（誰がお茶を飲んでいますか）<br>
+    → <span class="ex-inline">Чай пьёт <b>ма́ма</b>.</span>（お茶を飲んでいるのは<b>ママ</b>です）</p>
+    <p><b>Что пьёт ма́ма?</b>（ママは何を飲んでいますか）<br>
+    → <span class="ex-inline">Ма́ма пьёт <b>чай</b>.</span>（ママが飲んでいるのは<b>お茶</b>です）</p>
+    <p style="font-size:11px;color:#856348;">聞かれた語（＝新しい情報）が、どちらも文末に来ています。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>「誰が来たの？」への答え方</strong>
+    <p>• <b>Кто пришёл?</b> → <span class="ex-inline">Пришёл Ива́н.</span>（来たのはイワンです）<br>
+    　主語が新しい情報なので、<b>動詞のあと</b>に置きます</p>
+    <p>• <b>Что сде́лал Ива́н?</b> → <span class="ex-inline">Ива́н пришёл.</span>（イワンは来ました）<br>
+    　イワンは既知。新しいのは「来た」なので文末に</p>
+    <p style="font-size:11px;color:#A05A00;">日本語の「〜が」「〜は」の使い分けと、よく似た働きをしています。</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>時を表す語は、前に置くのがふつう</strong>
+    <div class="conj-table">
+      <span class="pron">自然</span><span class="form">Вчера́ я чита́л кни́гу.（昨日、私は本を読んだ）</span>
+      <span class="pron">強調</span><span class="form">Кни́гу я чита́л вчера́.（その本を読んだのは昨日だ）</span>
+    </div>
+    <p style="font-size:11px;color:#7A5040;">вчера́・сего́дня・за́втра などは、文頭に置くと「いつの話か」の枠を先に示せます。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>書きことばでは、中立の語順が基本</strong>
+    <p>強調の語順は、会話や文学作品でよく使われます。<b>論文や手紙では、中立の語順（主語→動詞→目的語）</b>を選ぶと読みやすくなります。</p>
+  </div>
+  `,
+  drills:[
+    {type:'order', q:'<b>Кто пьёт чай?</b>（誰がお茶を飲んでいますか）— この質問に答えてください',
+     tokens:['Чай','пьёт','ма́ма'],
+     accept:[{o:'Чай пьёт ма́ма', n:'聞かれた「誰が」＝ма́ма を文末に置いた、質問にかみ合う答えです'},
+             {o:'Ма́ма пьёт чай', n:'文としては正しいのですが、この質問への答えとしては「何を飲むか」を答えた形になり、かみ合いません'}],
+     hint:'聞かれている語を、文末に置きます',
+     ex:'「誰が」と聞かれたら、答えにあたる語（ма́ма）を文末に。これがロシア語の答え方です。'},
+
+    {type:'order', q:'<b>Что пьёт ма́ма?</b>（ママは何を飲んでいますか）— この質問に答えてください',
+     tokens:['Ма́ма','пьёт','чай'],
+     accept:[{o:'Ма́ма пьёт чай', n:'聞かれた「何を」＝чай が文末。この質問にはこの語順です'}],
+     hint:'今度は「何を」が聞かれています',
+     ex:'同じ3語でも、質問が変われば置き方が変わります。ма́ма は既知なので前に、чай は新情報なので後ろに。'},
+
+    {type:'order', q:'<b>Кто пришёл?</b>（誰が来ましたか）— この質問に答えてください',
+     tokens:['Пришёл','Ива́н'],
+     accept:[{o:'Пришёл Ива́н', n:'主語が新しい情報なので、動詞の後ろへ。「来たのはイワンです」'}],
+     hint:'新しい情報は文末です',
+     ex:'Ива́н пришёл. は「イワンは来ました」で、「何をしたか」への答え。「誰が」への答えなら Пришёл Ива́н. です。'},
+
+    {type:'order', q:'「昨日、私は本を読みました」を、いちばん自然な語順で組み立ててください',
+     tokens:['Вчера́','я','чита́л','кни́гу'],
+     accept:[{o:'Вчера́ я чита́л кни́гу', n:'時を表す語を文頭に置き、「いつの話か」の枠を先に示す自然な語順です'},
+             {o:'Я чита́л кни́гу вчера́', n:'「（読んだのは）昨日だ」と、時のほうを際立たせる語順になります'}],
+     hint:'時を表す語は前に置くのがふつうです',
+     ex:'вчера́ を文頭に置くと物語の導入らしくなり、文末に置くと「いつ」を強調した答えになります。'},
+
+    {type:'mc', q:'「Ива́н пришёл.」は、どの質問への答えとして自然ですか？',
+     opts:['Кто пришёл?（誰が来たの）','Что сде́лал Ива́н?（イワンは何をしたの）'], a:1,
+     ex:'文末が пришёл なので、新しい情報は「来た」という動作。「イワンは何をしたか」への答えです。'},
+
+    {type:'mc', q:'論文や正式な手紙で選ぶとよい語順は？',
+     opts:['強調のために語を入れかえた語順','中立の語順（主語→動詞→目的語）'], a:1,
+     ex:'書きことばでは中立の語順が読みやすく、誤解も生みません。強調の語順は会話や文学で活きます。'}
+  ]
+},
+
+{
+  id:'vocab-basic', cat:'vocab', level:'初級', title:'よく使う語をまとめて', sub:'家族・数・色・時間・身のまわり',
+  lesson:`
+  <p>文法が分かってきたら、次は語彙です。ここでは<b>会話でも読解でもよく出る語</b>を、
+  性ごとに整理して覚えます。<b>性が分かれば、形容詞も所有代名詞も自動的に決まります。</b></p>
+
+  <div class="verb-row">
+    <strong>家族</strong>
+    <div class="conj-table">
+      <span class="pron">男性</span><span class="form">оте́ц（父）／брат（兄弟）／сын（息子）／де́душка（祖父・語尾は -а でも男性）</span>
+      <span class="pron">女性</span><span class="form">мать（母）／сестра́（姉妹）／дочь（娘）／ба́бушка（祖母）</span>
+      <span class="pron">話しことば</span><span class="form">па́па（パパ・男性）／ма́ма（ママ）</span>
+    </div>
+    <p>• <span class="ex-inline">Э́то моя́ сестра́.（これは私の姉妹です）</span> <span class="ex-inline">У меня́ есть брат.（兄弟がいます）</span></p>
+  </div>
+
+  <div class="verb-row">
+    <strong>身のまわり</strong>
+    <div class="conj-table">
+      <span class="pron">男性</span><span class="form">дом（家）／стол（机）／телефо́н（電話）／го́род（町）</span>
+      <span class="pron">女性</span><span class="form">шко́ла（学校）／маши́на（車）／рабо́та（仕事）／у́лица（通り）</span>
+      <span class="pron">中性</span><span class="form">окно́（窓）／письмо́（手紙）／мо́ре（海）／вре́мя（時間・特殊）</span>
+    </div>
+  </div>
+
+  <div class="verb-row">
+    <strong>色</strong>
+    <div class="conj-table">
+      <span class="pron">形容詞</span><span class="form">бе́лый（白）／чёрный（黒）／кра́сный（赤）／си́ний（青）／зелёный（緑）／жёлтый（黄）</span>
+    </div>
+    <p>• <span class="ex-inline">кра́сная маши́на（赤い車）</span> <span class="ex-inline">бе́лое окно́（白い窓）</span> — 名詞の性に合わせます</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>時をあらわす語</strong>
+    <div class="conj-table">
+      <span class="pron">日</span><span class="form">сего́дня（今日）／вчера́（昨日）／за́втра（明日）</span>
+      <span class="pron">時の区切り</span><span class="form">у́тро（朝）／день（昼）／ве́чер（夕）／ночь（夜・女性）</span>
+      <span class="pron">あいさつ</span><span class="form">До́брое у́тро!／До́брый день!／До́брый ве́чер!</span>
+    </div>
+    <p style="font-size:11px;color:#7A5040;">あいさつの形容詞が変わるのは、у́тро が中性、день・ве́чер が男性だからです。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>覚え方のこつ</strong>
+    <p>単語だけを覚えるより、<b>「性が分かる形」でまとめて</b>覚えると、あとの格変化が楽になります。<br>
+    ノートに書くときは、<b>男性・女性・中性の3列</b>に分けて書き写すのがおすすめです。</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'сестра́（姉妹）の性は？', say:'сестра́', opts:['男性','女性','中性'], a:1,
+     ex:'-а で終わるので女性名詞。моя́ сестра́ となります。'},
+    {type:'mc', q:'де́душка（祖父）の性は？', opts:['男性','女性'], a:0,
+     ex:'語尾は -а ですが、意味が男性なので男性名詞。мой де́душка と言います。'},
+    {type:'mc', q:'「赤い車」を正しく言うと？', say:'кра́сная маши́на',
+     opts:['кра́сный маши́на','кра́сная маши́на','кра́сное маши́на'], a:1,
+     ex:'маши́на は女性名詞なので кра́сная。'},
+    {type:'mc', q:'「おはよう」は？', say:'До́брое у́тро', opts:['До́брый у́тро!','До́брое у́тро!'], a:1,
+     ex:'у́тро は中性名詞なので До́брое。昼は До́брый день!（день は男性）。'},
+    {type:'mc', q:'ночь（夜）の性は？', opts:['男性','女性'], a:1,
+     ex:'-ь で終わりますが女性名詞。ж, ш, ч, щ ＋ ь の語は女性が多い、という手がかりも使えます。'},
+    {type:'order', q:'「これは私の姉妹です」を組み立ててください',
+     tokens:['Э́то','моя́','сестра́'],
+     accept:[{o:'Э́то моя́ сестра́', n:'紹介の型。所有代名詞は名詞の直前に置きます'}],
+     hint:'сестра́ は女性名詞です',
+     ex:'моя́（女性形）＋ сестра́。мой sestra とはなりません。'},
+    {type:'input', q:'「今日」をロシア語で綴ってください', a:'сегодня', hint:'се… で始まります',
+     ex:'сего́дня。発音は「シヴォードニャ」— г が /в/ の音になる、数少ない語のひとつです。'}
   ]
 }
 ];
@@ -6726,6 +7361,8 @@ const GRAMMAR_CATS = [
   { id:'prep', title:'前置詞編', sub:'どの前置詞が、どの格をとるか',        icon:'ruler',   color:'#5E8F84', tint:'#EAF4F1' },
   { id:'num',  title:'数詞編',     sub:'数と、そのあとの名詞の形',           icon:'target',  color:'#8F6300', tint:'#FFF6E0' },
   { id:'syntax',title:'文をつなぐ編', sub:'関係代名詞・形動詞・副動詞・仮定法', icon:'ruler',   color:'#3A5578', tint:'#F0F4FB' },
+  { id:'vocab', title:'語彙編',     sub:'よく使う語を、性ごとにまとめて',      icon:'search',  color:'#5E8F84', tint:'#EAF4F1' },
+  { id:'write', title:'文を組み立てる編', sub:'語順とニュアンス・作文の練習',    icon:'pencil',  color:'#7A3B33', tint:'#FBEFEC' },
   { id:'story', title:'読む・語る編', sub:'話しことばと書きことば、物語のことば', icon:'book',    color:'#8F6300', tint:'#FFF6E0' },
   { id:'other',title:'綴りと表現', sub:'正書法のルールと、きほんのフレーズ', icon:'type',    color:'#856348', tint:'#F5EFE8' }
 ];
@@ -6895,12 +7532,35 @@ function backToGrammarHub() {
 // ------------------------------------------------------------
 // 選択肢をシャッフルして正解位置を付け替える
 function shuffleQuestion(d) {
+  if (d.type === 'order') {
+    // 語カードは毎回ちがう並びで出す（答えの順に並んで出ないように）
+    return Object.assign({}, d, { tokens: shuffleArr(d.tokens || []) });
+  }
   if (d.type !== 'mc') return Object.assign({}, d);
   const pairs = d.opts.map(function(o, i){ return { o:o, ok:(i === d.a) }; });
   const mixed = shuffleArr(pairs);
   let a = 0;
   mixed.forEach(function(p, i){ if (p.ok) a = i; });
   return Object.assign({}, d, { opts: mixed.map(function(p){ return p.o; }), a: a });
+}
+
+// 並べ替えの比較用（アクセント記号・句読点・大小文字・余分な空白を無視する）
+function normalizeOrder(s) {
+  return stripStress(String(s || '')).toLowerCase()
+    .replace(/[.,!?;:—–-]/g, ' ')
+    .replace(/\s+/g, ' ').trim();
+}
+
+// 並べた語順が、許容される語順のどれかに一致するか調べる
+// ロシア語は語順が自由なので、正解は1つとは限りません。
+// 一致したものを返す（見つからなければ null）
+function checkOrder(q, arr) {
+  const got = normalizeOrder(arr.join(' '));
+  const list = q.accept || [];
+  for (let i = 0; i < list.length; i++) {
+    if (normalizeOrder(list[i].o) === got) return list[i];
+  }
+  return null;
 }
 
 function normalizeAnswer(s) {
@@ -6929,6 +7589,53 @@ function renderInputKeyboard(mode) {
 }
 
 function activeRunner(mode) { return mode === 'chal' ? chalState : drillState; }
+
+// ---- 並べ替えの操作 ----
+function orderRedraw(mode) { if (mode === 'chal') renderChallengeQ(); else renderUnitDrill(); }
+
+function orderAdd(mode, token) {
+  const s = activeRunner(mode);
+  if (!s || s.answered !== null) return;
+  s.order = (s.order || []).concat([token]);
+  orderRedraw(mode);
+}
+function orderRemove(mode, i) {
+  const s = activeRunner(mode);
+  if (!s || s.answered !== null) return;
+  s.order = (s.order || []);
+  s.order.splice(i, 1);
+  orderRedraw(mode);
+}
+function orderClear(mode) {
+  const s = activeRunner(mode);
+  if (!s || s.answered !== null) return;
+  s.order = [];
+  orderRedraw(mode);
+}
+
+function gradeOrder(s, mode) {
+  const q = s.qs[s.i];
+  const hit = checkOrder(q, s.order || []);
+  s.answered = 1;
+  s.matched = hit;
+  s.lastCorrect = !!hit;
+  srsRecord(q.id, s.lastCorrect);
+  logAnswer(q.id, s.lastCorrect, mode === 'chal' ? (s.mode || 'chal') : 'unit');
+  if (s.lastCorrect) s.correct++; else s.wrong.push(q);
+}
+
+function submitUnitOrder() {
+  const s = drillState;
+  if (!s || s.answered !== null) return;
+  gradeOrder(s, 'unit');
+  renderUnitDrill();
+}
+function submitChallengeOrder() {
+  const s = chalState;
+  if (!s || s.answered !== null) return;
+  gradeOrder(s, 'chal');
+  renderChallengeQ();
+}
 
 function inputKey(mode, ch) {
   const s = activeRunner(mode);
@@ -6972,6 +7679,37 @@ function questionCardHtml(q, s, mode) {
       html += '<button class="' + cls + '" onclick="' + fn + '"' + dis + '>' + o + '</button>';
     });
     html += '</div>';
+  } else if (q.type === 'order') {
+    const placed = s.order || [];
+    const pool = (q.tokens || []).slice();
+    // 置いた語をカードの山から取り除く（同じ語が複数あってもよいように1つずつ消す）
+    placed.forEach(function (t) {
+      const k = pool.indexOf(t);
+      if (k >= 0) pool.splice(k, 1);
+    });
+
+    html += '<div class="ord-line' + (placed.length ? '' : ' empty') + '">';
+    if (!placed.length) html += '<span class="ord-hint">下の語を、意味が通る順に並べてください</span>';
+    placed.forEach(function (t, i) {
+      html += '<button class="ord-chip placed" ' + (s.answered !== null ? 'disabled' : 'onclick="orderRemove(\'' + mode + '\',' + i + ')"') + '>' + t + '</button>';
+    });
+    html += '</div>';
+
+    if (s.answered === null) {
+      html += '<div class="ord-pool">';
+      pool.forEach(function (t) {
+        html += '<button class="ord-chip" onclick="orderAdd(\'' + mode + '\',\'' + String(t).replace(/'/g, "\\'") + '\')">' + t + '</button>';
+      });
+      html += '</div>';
+      if (q.hint) {
+        html += '<div class="drill-hint">' + (s.showHint ? icon('lightbulb','lu-md') + ' ' + q.hint : '<button onclick="toggleDrillHint(\'' + mode + '\')">ヒントを見る</button>') + '</div>';
+      }
+      const fnO = mode === 'chal' ? 'submitChallengeOrder()' : 'submitUnitOrder()';
+      html += '<div class="drill-actions">';
+      html += '<button class="drill-clear" onclick="orderClear(\'' + mode + '\')">やり直す</button>';
+      html += '<button class="drill-submit" onclick="' + fnO + '"' + (pool.length ? ' disabled' : '') + '>こたえる</button>';
+      html += '</div>';
+    }
   } else {
     const shown = s.input || '';
     html += '<div class="drill-input-box">' + (shown ? shown : '<span style="color:#C0B0A5;">下のキーボードで入力してください</span>') + '</div>';
@@ -6992,7 +7730,28 @@ function questionCardHtml(q, s, mode) {
     const ok = s.lastCorrect;
     html += '<div class="drill-fb ' + (ok ? 'ok' : 'ng') + '">';
     html += '<strong>' + (ok ? icon('smile','lu-md') + ' 正解！' : icon('paw','lu-md') + ' おしい！') + '</strong>';
-    if (!ok) {
+    if (q.type === 'order') {
+      if (ok && s.matched) {
+        html += '<p class="drill-ans">あなたの語順：<b>' + s.matched.o + '</b></p>';
+        if (s.matched.n) html += '<p class="ord-nuance">' + icon('lightbulb','lu-md') + ' ' + s.matched.n + '</p>';
+      } else if (!ok) {
+        const nat = (q.accept && q.accept[0]) ? q.accept[0] : null;
+        if (nat) {
+          html += '<p class="drill-ans">もっとも自然な語順：<b>' + nat.o + '</b></p>';
+          if (nat.n) html += '<p class="ord-nuance">' + icon('lightbulb','lu-md') + ' ' + nat.n + '</p>';
+        }
+      }
+      // ほかに認められる語順も見せる（語順の自由さを体験してもらうため）
+      if (q.accept && q.accept.length > 1) {
+        html += '<div class="ord-others"><strong>ほかにも自然な語順</strong>';
+        q.accept.forEach(function (v, i) {
+          if (s.matched && v.o === s.matched.o) return;
+          if (!ok && i === 0) return;
+          html += '<p><b>' + v.o + '</b>' + (v.n ? '<span>' + v.n + '</span>' : '') + '</p>';
+        });
+        html += '</div>';
+      }
+    } else if (!ok) {
       const ans = q.type === 'mc' ? q.opts[q.a] : q.a;
       html += '<p class="drill-ans">正解：<b>' + ans + '</b></p>';
     }
@@ -7027,7 +7786,7 @@ function startUnitDrill(id) {
     unitId: id,
     qs: u.drills.map(function(d, i){ return shuffleQuestion(Object.assign({}, d, { id: 'g:' + id + ':' + i })); }),
     i: 0, correct: 0, answered: null, lastCorrect: false,
-    input: '', showHint: false, wrong: []
+    input: '', showHint: false, wrong: [], order: [], matched: null
   };
   markQuestionShown();
   renderUnitDrill();
@@ -7086,6 +7845,8 @@ function nextUnitDrill() {
   s.answered = null;
   s.input = '';
   s.showHint = false;
+  s.order = [];
+  s.matched = null;
   markQuestionShown();
   renderUnitDrill();
 }
@@ -7124,7 +7885,7 @@ function renderUnitDrillResult() {
   if (s.wrong.length) {
     html += '<div class="drill-review"><strong>' + icon('lightbulb','lu-md') + ' まちがえた問題</strong>';
     s.wrong.forEach(function(q) {
-      const ans = q.type === 'mc' ? q.opts[q.a] : q.a;
+      const ans = q.type === 'mc' ? q.opts[q.a] : (q.type === 'order' ? (q.accept && q.accept[0] ? q.accept[0].o : '') : q.a);
       html += '<div class="drill-review-item"><p class="rq">' + q.q + '</p><p class="ra">→ <b>' + ans + '</b></p>' + (q.ex ? '<p class="rx">' + q.ex + '</p>' : '') + '</div>';
     });
     html += '</div>';
@@ -7253,7 +8014,7 @@ function startChallenge(customQs, mode, viewId) {
   if (!qs.length) return;
   chalState = {
     qs: qs, i: 0, correct: 0, answered: null, lastCorrect: false,
-    input: '', showHint: false, wrong: [], mode: mode || 'normal',
+    input: '', showHint: false, wrong: [], order: [], matched: null, mode: mode || 'normal',
     view: viewId || 'challenge-view'
   };
   markQuestionShown();
@@ -7316,6 +8077,8 @@ function nextChallengeQ() {
   s.answered = null;
   s.input = '';
   s.showHint = false;
+  s.order = [];
+  s.matched = null;
   markQuestionShown();
   renderChallengeQ();
 }
@@ -7363,7 +8126,7 @@ function renderChallengeResult() {
   if (s.wrong.length) {
     html += '<div class="drill-review"><strong>' + icon('lightbulb','lu-md') + ' まちがえた ' + s.wrong.length + ' 問</strong>';
     s.wrong.forEach(function(q) {
-      const ans = q.type === 'mc' ? q.opts[q.a] : q.a;
+      const ans = q.type === 'mc' ? q.opts[q.a] : (q.type === 'order' ? (q.accept && q.accept[0] ? q.accept[0].o : '') : q.a);
       html += '<div class="drill-review-item">' + (q.src ? '<span class="drill-src">' + q.src + '</span>' : '') + '<p class="rq">' + q.q + '</p><p class="ra">→ <b>' + ans + '</b></p>' + (q.ex ? '<p class="rx">' + q.ex + '</p>' : '') + '</div>';
     });
     html += '</div>';
@@ -7637,6 +8400,22 @@ function startDictation() {
   if (dictConfig.count > 0) qs = qs.slice(0, dictConfig.count);
   if (!qs.length) return;
   startChallenge(qs, 'dict', 'dictation-view');
+}
+
+// 書き込み用シートを印刷する（画面はそのまま、印刷のときだけシートに差し替える）
+function printNoteSheet() {
+  try {
+    document.body.classList.add('printing');
+    gaEvent('print_note_sheet', {});
+    logEvent('print', {});
+    const done = function () { document.body.classList.remove('printing'); };
+    if (window.onafterprint !== undefined) window.addEventListener('afterprint', done, { once: true });
+    setTimeout(done, 3000);      // 念のため戻す
+    window.print();
+  } catch (e) {
+    document.body.classList.remove('printing');
+    showToast('印刷を開けませんでした。ブラウザのメニューから印刷をお試しください', '#A55A50');
+  }
 }
 
 // ホームの「ひと足先に読めます」から、文法ユニットを直接開く
