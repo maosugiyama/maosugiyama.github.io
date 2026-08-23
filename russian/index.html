@@ -2483,6 +2483,15 @@
     .ps-words th:nth-child(2) { width: 22%; }
   }
 
+
+  @media print {
+    .ps-nouns th { font-size: 8.5pt; }
+    .ps-nouns th span { font-weight: 400; font-size: 7.5pt; color: #555; }
+    .ps-nouns td { height: 9.5mm; width: 33.3%; }
+    .ps-sample td { color: #888; font-size: 8.5pt; background: #fafafa; }
+    .ps-foot { font-size: 8pt; color: #444; margin-top: 3mm; }
+  }
+
 </style>
 </head>
 <body>
@@ -2704,6 +2713,7 @@
           <li><b>左ページ＝表</b>　活用表・格変化表を、そのまま書き写します。<b>色は2色まで</b>（語尾だけ色を変えると、規則が目に入ります）</li>
           <li><b>右上＝例文</b>　アプリの例文を1文ずつ。日本語訳は<b>右端に小さく</b>、隠せるように</li>
           <li><b>右下＝まちがえた語</b>　「今日の復習」に出た語だけを集めます。ここが自分専用の弱点集になります</li>
+          <li><b>別ページ＝名詞メモ</b>　新しい名詞を「数えられる／数えられない／複数だけ」の3列に分けて書きためます。性も一緒に書いておくと、複数形や数詞で迷わなくなります</li>
         </ul>
 
         <h4>書き写す価値があるのは「表」です</h4>
@@ -2718,7 +2728,7 @@
           <svg viewBox="0 0 24 24" width="15" height="15" style="display:inline-block;vertical-align:-2px;margin-right:5px;"><polyline points="6 9 6 2 18 2 18 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="6" y="14" width="12" height="8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
           書き込み用シートを印刷する（A4）
         </button>
-        <p class="ng-note">印刷ボタンから「PDFとして保存」も選べます。活用表・格変化表・まちがえた語の3枚組です。</p>
+        <p class="ng-note">印刷ボタンから「PDFとして保存」も選べます。活用表・格変化表・<b>名詞メモ</b>・まちがえた語の4枚組です。</p>
       </div>
     </div>
 
@@ -3078,6 +3088,31 @@
       <tr><td class="ps-p">造格（〜で）</td><td></td><td></td><td></td><td></td></tr>
       <tr><td class="ps-p">前置格（〜で）</td><td></td><td></td><td></td><td></td></tr>
     </table>
+  </section>
+
+  <section class="ps-page">
+    <h1>名詞メモ<span>ねこと学ぶ キリル文字 — maosugiyama.github.io/russian</span></h1>
+    <p class="ps-lead">新しい名詞に出会ったら、どのグループかを決めてから書き写しましょう。性（男・女・中）も忘れずに。</p>
+    <table class="ps-nouns">
+      <tr><th>① 数えられる名詞<br><span>単数 → 複数 ／ 性</span></th>
+          <th>② 数えられない名詞<br><span>いつも単数 ／ 量の言い方</span></th>
+          <th>③ 複数だけで使う名詞<br><span>単数の形がない</span></th></tr>
+      <tr class="ps-sample"><td>кни́га → кни́ги（女）</td><td>чай（ча́шка ча́я）</td><td>де́ньги（お金）</td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td></tr>
+    </table>
+    <p class="ps-foot">※ ②は「入れ物・分量＋生格」で量を表します（стака́н воды́）。③は動詞も所有代名詞も複数形にします（Часы́ иду́т.）。</p>
   </section>
 
   <section class="ps-page">
@@ -4666,6 +4701,81 @@ const GRAMMAR_UNITS = [
     {type:'mc', q:'челове́к（人）の複数形は？', opts:['челове́ки','лю́ди','челове́ка'], a:1, ex:'челове́к の複数はまったく別の語 лю́ди（人々）。よく使うので丸ごと覚えましょう。'},
     {type:'mc', q:'「私はねこが好きです」（ねこという動物が好き）は？', say:'Я люблю́ ко́шек', opts:['Я люблю́ ко́шку.','Я люблю́ ко́шек.'], a:1, ex:'種類全体を指すときは複数形。ко́шка → ко́шек（生きものなので、複数対格は複数生格と同じ形）。Я люблю́ ко́шку. は「（その）ねこが好き」と、特定の1匹を指します。'},
     {type:'mc', q:'「私はお茶が好きです」は？', opts:['Я люблю́ чай.','Я люблю́ чаи́.'], a:0, ex:'чай は数えられない名詞なので単数のまま。молоко́・му́зыка・моро́женое も同じです。'}
+  ]
+},
+
+{
+  id:'noun-count', cat:'noun', level:'基礎', title:'数えられる名詞・数えられない名詞', sub:'3つのグループに分けて覚える',
+  lesson:`
+  <p>ロシア語の名詞は、<b>数え方によって3つのグループ</b>に分かれます。
+  日本語は数をあまり意識しない言語なので、ここは意識して仕分けておくと、あとがとても楽になります。</p>
+
+  <div class="case-row">
+    <strong>① 数えられる名詞 — 単数と複数がある</strong>
+    <p>ほとんどの名詞がこのグループです。1つ、2つ…と数えられます。</p>
+    <p>• <span class="ex-inline">кни́га → кни́ги</span>（本）　<span class="ex-inline">оре́х → оре́хи</span>（くるみ）
+    　<span class="ex-inline">ко́шка → ко́шки</span>（ねこ）</p>
+    <p style="font-size:11px;color:#856348;">「〜が好き」と種類全体を言うときは複数形にします：Я люблю́ ко́шек.</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>② 数えられない名詞 — いつも単数のまま</strong>
+    <p>液体・材料・抽象的なものなど、<b>形が決まっていないもの</b>です。</p>
+    <p>• 物質：<span class="ex-inline">чай</span>（お茶）<span class="ex-inline">вода́</span>（水）<span class="ex-inline">молоко́</span>（牛乳）
+    <span class="ex-inline">хлеб</span>（パン）<span class="ex-inline">са́хар</span>（砂糖）<span class="ex-inline">мя́со</span>（肉）</p>
+    <p>• 抽象：<span class="ex-inline">му́зыка</span>（音楽）<span class="ex-inline">любо́вь</span>（愛）
+    <span class="ex-inline">сча́стье</span>（幸せ）<span class="ex-inline">вре́мя</span>（時間）</p>
+    <p style="font-size:11px;color:#A05A00;">× Я люблю́ чаи́ とは言いません。○ <b>Я люблю́ чай.</b></p>
+  </div>
+
+  <div class="verb-row">
+    <strong>量を言うときは「入れ物・分量 ＋ 生格」</strong>
+    <div class="conj-table">
+      <span class="pron">一杯のお茶</span><span class="form">ча́шка ча́я</span>
+      <span class="pron">コップ一杯の水</span><span class="form">стака́н воды́</span>
+      <span class="pron">ひと切れのパン</span><span class="form">кусо́к хле́ба</span>
+      <span class="pron">たくさんの砂糖</span><span class="form">мно́го са́хара</span>
+      <span class="pron">お茶を2杯</span><span class="form">две ча́шки ча́я</span>
+    </div>
+    <p style="font-size:11px;color:#3A5578;">数えているのは<b>入れ物のほう</b>です（ча́шка が2つ）。中身は生格のまま変わりません。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>③ 複数だけで使う名詞 — 単数の形がない</strong>
+    <p>1つのものでも、<b>いつも複数形</b>で言う名詞があります。ペアや集まりでできているものに多く見られます。</p>
+    <div class="conj-table">
+      <span class="pron">де́ньги</span><span class="form">お金　／　часы́　時計</span>
+      <span class="pron">очки́</span><span class="form">めがね　／　брю́ки　ズボン</span>
+      <span class="pron">но́жницы</span><span class="form">はさみ　／　ша́хматы　チェス</span>
+      <span class="pron">кани́кулы</span><span class="form">（学校の）休み　／　воро́та　門</span>
+    </div>
+    <p>動詞も形容詞も、かならず<b>複数</b>に合わせます。</p>
+    <p>• <span class="ex-inline">Часы́ иду́т.</span>（時計が動いています）← × Час идёт.</p>
+    <p>• <span class="ex-inline">Где мои́ очки́?</span>（私のめがねはどこ？）← мои́（複数）</p>
+    <p>• <span class="ex-inline">Э́то мои́ де́ньги.</span>（これは私のお金です）</p>
+    <p style="font-size:11px;color:#A05A00;">※ <b>часы́</b>（時計）と <b>час</b>（1時間・1時）は別の語です。
+    数えるときは「ペア」を使います：две па́ры брюк（ズボン2本）。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>ノートに3列で書きためましょう</strong>
+    <p>新しい名詞に出会ったら、<b>どのグループか</b>を決めてから書き写すと、複数形や数詞で迷わなくなります。</p>
+    <p style="font-size:11px;color:#7A5040;">ホームの「ノートの作り方」から、この3列の<b>書き込み用シート</b>を印刷できます。</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'чай（お茶）はどのグループ？', opts:['数えられる名詞','数えられない名詞','複数だけで使う名詞'], a:1, ex:'液体なので数えられません。量を言うときは ча́шка ча́я（一杯のお茶）のように、入れ物と生格を使います。'},
+    {type:'mc', q:'「一杯のお茶」＝ ча́шка （　）', say:'ча́шка ча́я', opts:['чай','ча́я','чаи́'], a:1, ex:'入れ物のあとは生格。чай → ча́я です。数えているのは ча́шка のほうです。'},
+    {type:'mc', q:'де́ньги（お金）はどのグループ？', say:'де́ньги', opts:['数えられる名詞','数えられない名詞','複数だけで使う名詞'], a:2, ex:'де́ньги は単数の形がありません。動詞も複数に合わせます：Э́то мои́ де́ньги.'},
+    {type:'mc', q:'「時計が動いています」を正しく言うと？', say:'Часы́ иду́т', opts:['Час идёт.','Часы́ иду́т.'], a:1, ex:'часы́（時計）は複数だけの名詞なので、動詞も複数形 иду́т。час は「1時間・1時」という別の語です。'},
+    {type:'mc', q:'「私のめがねはどこ？」の（　）は？　Где （　） очки́?', opts:['мой','моя́','мои́'], a:2, ex:'очки́ は複数だけの名詞なので、所有代名詞も複数形 мои́ になります。'},
+    {type:'mc', q:'数えられない名詞はどれ？', opts:['кни́га','му́зыка','оре́х'], a:1, ex:'му́зыка（音楽）は抽象名詞で、ふつう単数のまま使います。кни́га と оре́х は数えられます。'},
+    {type:'input', q:'вода́（水）を生格にして綴ってください（стака́н ___ の形）', a:'воды', hint:'-а → -ы', ex:'воды́。стака́н воды́（コップ一杯の水）。'},
+    {type:'order', q:'「これは私のお金です」を組み立ててください',
+     tokens:['Э́то','мои́','де́ньги'],
+     accept:[{o:'Э́то мои́ де́ньги', n:'де́ньги は複数だけの名詞。所有代名詞も мои́（複数）になります'}],
+     hint:'де́ньги に合わせる形を選びます',
+     ex:'× Э́то моя́ де́ньги とはなりません。複数だけの名詞は、かかる語もすべて複数形にします。'}
   ]
 },
 
