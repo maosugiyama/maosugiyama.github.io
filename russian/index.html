@@ -14,7 +14,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ねこと学ぶ キリル文字 - ロシア語アルファベットの森の散歩</title>
 <meta name="description" content="33匹のねこたちと一緒に、ロシア語のキリル文字33文字を楽しく学べる教材アプリ。動詞活用・6つの格・発音のルールも自然に身につきます。">
-<meta name="author" content="まおちー">
+<meta name="author" content="杉山真央">
 
 <!-- PWA（ホーム画面に追加・オフライン起動） -->
 <link rel="manifest" href="manifest.json">
@@ -2636,6 +2636,68 @@
   }
   .back-to-cover button + button { margin-left: 12px; }
 
+
+  /* ---- ディクテーションの正解に添えるイラスト ---- */
+  .drill-pic {
+    display: flex; align-items: center; gap: 13px;
+    background: #fff; border: 1px solid #F0DDD7; border-radius: 14px;
+    padding: 10px 13px; margin: 10px 0;
+  }
+  .drill-pic img {
+    width: 76px; height: 76px; border-radius: 11px;
+    object-fit: cover; flex-shrink: 0; background: #FBEFEC;
+  }
+  .drill-pic p { display: flex; flex-direction: column; gap: 2px; }
+  .drill-pic em {
+    font-style: normal; font-size: 10px; font-weight: 700; color: #A08070;
+  }
+  .drill-pic b { font-size: 17px; font-weight: 800; color: #3A2318; }
+  .drill-pic span { font-size: 12px; color: #7A5040; }
+
+  /* ---- 目次 ---- */
+  .toc-lead { font-size: 11.5px; color: #7A5040; line-height: 1.9; margin-bottom: 14px; }
+  .toc-step {
+    display: flex; align-items: center; gap: 9px;
+    margin: 18px 0 8px; padding-bottom: 7px;
+    border-bottom: 1.5px solid #F0DDD7;
+  }
+  .toc-step:first-of-type { margin-top: 4px; }
+  .toc-no {
+    width: 21px; height: 21px; border-radius: 50%;
+    background: #A55A50; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 800; flex-shrink: 0;
+  }
+  .toc-step.done .toc-no { background: #4E8B6E; }
+  .toc-step.plain { border-bottom-style: dashed; }
+  .toc-step b { font-size: 14px; font-weight: 800; color: #3A2318; flex: 1; }
+  .toc-step em {
+    font-style: normal; font-size: 10.5px; font-weight: 700; color: #856348;
+  }
+  .toc-lv {
+    display: flex; align-items: baseline; gap: 8px;
+    margin: 12px 0 4px; padding-left: 2px;
+  }
+  .toc-lv b { font-size: 11.5px; font-weight: 800; color: #A55A50; letter-spacing: 0.08em; }
+  .toc-lv em { font-style: normal; font-size: 10px; color: #9A7563; }
+  .toc-row {
+    display: flex; align-items: center; gap: 10px; width: 100%;
+    background: transparent; border: none; border-bottom: 1px dotted #EFE0DA;
+    padding: 9px 2px; cursor: pointer; text-align: left;
+    font-family: inherit;
+  }
+  .toc-row:last-child { border-bottom: none; }
+  .toc-row:active { background: #FDF6F4; }
+  .toc-i {
+    width: 17px; flex-shrink: 0; text-align: center;
+    font-size: 10.5px; font-weight: 700; color: #B09A8E;
+  }
+  .toc-t { flex: 1; display: flex; flex-direction: column; gap: 1px; }
+  .toc-t b { font-size: 12.5px; font-weight: 700; color: #3A2318; }
+  .toc-t span { font-size: 10.5px; color: #856348; line-height: 1.6; }
+  .toc-row.done .toc-t b { color: #3F7A69; }
+  .toc-ck { flex-shrink: 0; color: #4E8B6E; }
+
 </style>
 </head>
 <body>
@@ -2687,7 +2749,7 @@
           </div>
         </div>
 
-        <!-- ここから、まおちーからのメッセージ（自由に書きかえてください） -->
+        <!-- ここから、つくった人からのメッセージ（自由に書きかえてください） -->
         <div class="intro-msg">
           <p>ロシア語を学びはじめた人の多くが、いちばん最初につまずくのが<b>文字</b>です。
           「見たことのない形が33個もある」——そこで止まってしまうのは、とてももったいないことだと思っていました。</p>
@@ -2742,6 +2804,8 @@
 
         <p class="intro-note">操作の手順は、次のページの「はじめての方へ」でくわしく説明しています。</p>
       </div>
+
+      <div class="intro-card" id="intro-toc"></div>
 
       <button class="intro-start" onclick="enterRoad()">
         <span class="cs-paw"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6.6" cy="9.2" rx="2" ry="2.6" transform="rotate(-18 6.6 9.2)"></ellipse><ellipse cx="11.9" cy="6.9" rx="2.05" ry="2.85"></ellipse><ellipse cx="17.2" cy="9.2" rx="2" ry="2.6" transform="rotate(18 17.2 9.2)"></ellipse><path d="M12 11.3c3.1 0 5.4 2.3 5.4 5 0 2.2-1.8 3.7-4.2 3.7h-2.4c-2.4 0-4.2-1.5-4.2-3.7 0-2.7 2.3-5 5.4-5z"></path></svg></span>
@@ -8352,6 +8416,15 @@ function questionCardHtml(q, s, mode) {
     } else if (!ok) {
       html += '<p class="drill-ans">正解：<b>' + q.a + '</b></p>';
     }
+    // ディクテーションでは、答えあわせのときにもう一度イラストを見せる
+    // （音 → 綴り で終わらせず、絵と語を結びつけ直してもらうため）
+    if (q.pic) {
+      html += '<div class="drill-pic">';
+      html += '<img src="' + q.pic + '" alt="' + q.picMean + '">';
+      html += '<p>' + (q.picNote ? '<em>' + q.picNote + '</em>' : '')
+           + '<b>' + q.picWord + '</b><span>' + q.picMean + '</span></p>';
+      html += '</div>';
+    }
     if (q.ex) html += '<p>' + q.ex + '</p>';
     html += '</div>';
   }
@@ -8902,7 +8975,8 @@ function dictQuestion(l, kind) {
       say:l.ex,
       a:plain,
       hint:'「' + l.exm + '」／' + plain.length + '文字・最初は ' + plain.charAt(0),
-      ex:l.ex + '（' + l.exm + '）— ' + l.u + ' の単語です。'
+      pic:l.img || '', picWord:l.ex, picMean:l.exm,
+      ex:'「' + l.u + '」の単語です。'
     };
   }
   const ex = LETTERS_EX_DATA[l.u] || {};
@@ -8917,6 +8991,7 @@ function dictQuestion(l, kind) {
     say:ex.exSent,
     a:plain,
     hint:plain.length + '文字・最初は ' + plain.charAt(0),
+    pic:l.img || '', picWord:l.ex, picMean:l.exm, picNote:'この文に出てくる語',
     ex:ex.exSent + '（' + (ex.exSentJp || '') + '）'
   };
 }
@@ -9018,6 +9093,84 @@ function printNoteSheet() {
 // ============================================================
 // 表紙（1ページ目）と、道のりのページの切りかえ
 // ============================================================
+
+// ------------------------------------------------------------
+// 目次 — 教材の全体像を1枚で見わたす（紙の教材の目次にあたるもの）
+// ------------------------------------------------------------
+// 中身は GRAMMAR_UNITS と stageInfo() から作るので、
+// ユニットを足せば目次も自動でついてきます。
+function renderIntroToc() {
+  const box = document.getElementById('intro-toc');
+  if (!box) return;
+  const stages = stageInfo();
+  const totalQ = GRAMMAR_UNITS.reduce(function(n, u) { return n + (u.drills ? u.drills.length : 0); }, 0);
+
+  let html = '<h3>目次</h3>';
+  html += '<p class="toc-lead">この教材にあるものを、ぜんぶ並べました。'
+       + '<b>' + GRAMMAR_UNITS.length + 'ユニット・' + totalQ + '問</b>と、33文字のねこ図鑑があります。'
+       + '行をおすと、そこへ移れます。</p>';
+
+  // ---- 1段目：文字と音 ----
+  const s1 = stages[0];
+  html += tocStage(s1, s1.done + ' / ' + s1.total + ' 匹');
+  html += tocRow('tocGoTab(\'alphabet\')', '', 'キリル文字（ねこ図鑑）', '33文字を、絵・音声・例文・テストで1文字ずつ', false);
+  html += tocRow('tocGoTab(\'dictation\')', '', '聞いて綴る（ディクテーション）', '音を聞いてキリル文字で書きとる 66問', false);
+  html += tocRow('tocGoTab(\'pronunciation\')', '', '発音のお約束', '無声音化・母音の弱化・硬音と軟音', false);
+
+  // ---- 2〜4段目：文法ユニット ----
+  for (let i = 1; i < stages.length; i++) {
+    const st = stages[i];
+    html += tocStage(st, st.done + ' / ' + st.total + ' ユニット');
+    (st.levels || []).forEach(function(lv) {
+      const us = GRAMMAR_UNITS.filter(function(u) { return u.level === lv; });
+      if (!us.length) return;
+      if ((st.levels || []).length > 1) {
+        const cl = us.filter(function(u) { return unitProg(u.id).cleared; }).length;
+        html += '<div class="toc-lv"><b>' + lv + '</b><em>' + cl + ' / ' + us.length + '</em></div>';
+      }
+      us.forEach(function(u, k) {
+        const done = unitProg(u.id).cleared;
+        html += tocRow('tocGoUnit(\'' + u.id + '\')', (k + 1), u.title, u.sub, done);
+      });
+    });
+  }
+
+  // ---- いつでも使えるもの ----
+  html += '<div class="toc-step plain"><b>いつでも</b><em>ためす・見直す</em></div>';
+  html += tocRow('tocGoTab(\'challenge\')', '', 'チャレンジ', '出題範囲・順番・問題数をえらんで力だめし', false);
+  html += tocRow('tocGoTab(\'home\')', '', '今日の復習', 'まちがえた問題が、日をあけて出てきます', false);
+  html += tocRow('tocGoTab(\'home\')', '', 'ノートと印刷', '活用表・格変化表・まちがえた語ノートをA4で印刷', false);
+
+  box.innerHTML = html;
+}
+
+function tocStage(st, meter) {
+  return '<div class="toc-step' + (st.complete ? ' done' : '') + '">'
+       + '<span class="toc-no">' + st.n + '</span>'
+       + '<b>' + st.name + '</b><em>' + meter + '</em></div>';
+}
+
+function tocRow(fn, no, title, sub, done) {
+  return '<button class="toc-row' + (done ? ' done' : '') + '" onclick="' + fn + '">'
+       + '<span class="toc-i">' + (no || '・') + '</span>'
+       + '<span class="toc-t"><b>' + title + '</b><span>' + sub + '</span></span>'
+       + (done ? '<span class="toc-ck">' + icon('check', 'lu-sm') + '</span>' : '')
+       + '</button>';
+}
+
+// 目次から移動する（はじめにのページを閉じてから移る）
+function tocGoTab(name) {
+  enterRoad();
+  switchTab(name);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function tocGoUnit(id) {
+  enterRoad();
+  switchTab('grammar');
+  openGrammarUnit(id);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 function openIntro() {
   const cover = document.getElementById('cover-actions');
   const intro = document.getElementById('home-intro');
@@ -9025,6 +9178,7 @@ function openIntro() {
   if (cover) cover.style.display = 'none';
   if (road) road.style.display = 'none';
   if (intro) intro.style.display = 'block';
+  renderIntroToc();
   logScreen('intro');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
