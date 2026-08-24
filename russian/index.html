@@ -2730,6 +2730,13 @@
           <small>この教材の使い方と、つくった人から</small>
         </span>
       </button>
+      <button class="cover-intro" onclick="openToc()">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path><path d="M3.5 6h.01M3.5 12h.01M3.5 18h.01" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"></path></svg>
+        <span class="ci-text">
+          <b>目次</b>
+          <small>この教材にあるもの、ぜんぶ</small>
+        </span>
+      </button>
       <button class="cover-survey" id="cover-survey" onclick="openSurvey()" style="display:none;">
         <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 20h9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path></svg>
         アンケートに答える
@@ -2805,8 +2812,15 @@
         <p class="intro-note">操作の手順は、次のページの「はじめての方へ」でくわしく説明しています。</p>
       </div>
 
-      <div class="intro-card" id="intro-toc"></div>
+      <button class="intro-start" onclick="enterRoad()">
+        <span class="cs-paw"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6.6" cy="9.2" rx="2" ry="2.6" transform="rotate(-18 6.6 9.2)"></ellipse><ellipse cx="11.9" cy="6.9" rx="2.05" ry="2.85"></ellipse><ellipse cx="17.2" cy="9.2" rx="2" ry="2.6" transform="rotate(18 17.2 9.2)"></ellipse><path d="M12 11.3c3.1 0 5.4 2.3 5.4 5 0 2.2-1.8 3.7-4.2 3.7h-2.4c-2.4 0-4.2-1.5-4.2-3.7 0-2.7 2.3-5 5.4-5z"></path></svg></span>
+        はじめる
+      </button>
+    </div>
 
+    <div id="home-toc" style="display:none;">
+      <p class="intro-back"><button onclick="backToCover()">← 表紙にもどる</button></p>
+      <div class="intro-card" id="intro-toc"></div>
       <button class="intro-start" onclick="enterRoad()">
         <span class="cs-paw"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6.6" cy="9.2" rx="2" ry="2.6" transform="rotate(-18 6.6 9.2)"></ellipse><ellipse cx="11.9" cy="6.9" rx="2.05" ry="2.85"></ellipse><ellipse cx="17.2" cy="9.2" rx="2" ry="2.6" transform="rotate(18 17.2 9.2)"></ellipse><path d="M12 11.3c3.1 0 5.4 2.3 5.4 5 0 2.2-1.8 3.7-4.2 3.7h-2.4c-2.4 0-4.2-1.5-4.2-3.7 0-2.7 2.3-5 5.4-5z"></path></svg></span>
         はじめる
@@ -3054,6 +3068,7 @@
     </div>
 
     <p class="back-to-cover"><button onclick="openIntro()">はじめに読む</button>
+    <button onclick="openToc()">目次</button>
     <button onclick="backToCover()">← 表紙にもどる</button></p>
     </div>
   </div>
@@ -3551,14 +3566,8 @@ function switchTab(tabName) {
   if (tabName === 'dictation' && typeof renderDictationSetup === 'function' && !chalState) renderDictationSetup();
   if (tabName === 'home') {
     // ほかの画面から戻ったときは、表紙ではなく道のりのページへ
-    const cover = document.getElementById('cover-actions');
-    const intro = document.getElementById('home-intro');
     const road = document.getElementById('home-road');
-    if (road && road.style.display === 'none' && cover) {
-      cover.style.display = 'none';
-      if (intro) intro.style.display = 'none';
-      road.style.display = 'block';
-    }
+    if (road && road.style.display === 'none') showHomeView('road');
     if (typeof updateHomeStepStatus === 'function') updateHomeStepStatus();
   }
   if (tabName === 'home' && typeof renderInstallBand === 'function') renderInstallBand();
@@ -9339,25 +9348,30 @@ function tocGoUnit(id) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+// 表紙・はじめに・目次・道のり の4画面を出し分ける
+function showHomeView(which) {
+  const ids = { cover:'cover-actions', intro:'home-intro', toc:'home-toc', road:'home-road' };
+  Object.keys(ids).forEach(function(k) {
+    const el = document.getElementById(ids[k]);
+    if (el) el.style.display = (k === which) ? 'block' : 'none';
+  });
+}
+
 function openIntro() {
-  const cover = document.getElementById('cover-actions');
-  const intro = document.getElementById('home-intro');
-  const road = document.getElementById('home-road');
-  if (cover) cover.style.display = 'none';
-  if (road) road.style.display = 'none';
-  if (intro) intro.style.display = 'block';
-  renderIntroToc();
+  showHomeView('intro');
   logScreen('intro');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+function openToc() {
+  renderIntroToc();
+  showHomeView('toc');
+  logScreen('toc');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 function enterRoad() {
-  const cover = document.getElementById('cover-actions');
-  const intro = document.getElementById('home-intro');
-  const road = document.getElementById('home-road');
-  if (cover) cover.style.display = 'none';
-  if (intro) intro.style.display = 'none';
-  if (road) road.style.display = 'block';
+  showHomeView('road');
   renderRoadmap();
   updateHomeStepStatus();
   logScreen('road');
@@ -9365,12 +9379,7 @@ function enterRoad() {
 }
 
 function backToCover() {
-  const cover = document.getElementById('cover-actions');
-  const intro = document.getElementById('home-intro');
-  const road = document.getElementById('home-road');
-  if (road) road.style.display = 'none';
-  if (intro) intro.style.display = 'none';
-  if (cover) cover.style.display = 'block';
+  showHomeView('cover');
   renderCover();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
