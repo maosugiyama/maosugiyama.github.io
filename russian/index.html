@@ -2556,6 +2556,75 @@
   }
   .drill-others b { margin-right: 5px; }
 
+
+  /* ============================================================
+     はじめに（この教材について）
+     ============================================================ */
+  .cover-intro {
+    display: flex; align-items: center; justify-content: center; gap: 7px;
+    background: transparent; border: none; color: #856348;
+    font-family: inherit; font-size: 12.5px; font-weight: 700;
+    cursor: pointer; padding: 6px 10px; text-decoration: underline;
+  }
+  .cover-intro:active { transform: scale(0.99); }
+
+  .intro-back { margin-bottom: 12px; }
+  .intro-back button {
+    background: #fff; border: 1.5px solid #F0DDD7; color: #A55A50;
+    border-radius: 999px; padding: 8px 15px;
+    font-family: inherit; font-size: 12px; font-weight: 700; cursor: pointer;
+  }
+  .intro-card {
+    background: #fff; border: 1px solid #F0DDD7; border-radius: 20px;
+    padding: 20px 18px; margin-bottom: 14px;
+    box-shadow: 0 2px 14px rgba(201,123,114,0.06);
+  }
+  .intro-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .intro-face {
+    width: 96px; height: 96px; border-radius: 50%;
+    object-fit: cover; flex-shrink: 0;
+    border: 2px solid #FBEFEC;
+  }
+  .intro-eyebrow {
+    font-size: 11px; font-weight: 800; color: #A55A50;
+    letter-spacing: 0.1em; margin-bottom: 3px;
+  }
+  .intro-head h2 { font-size: 17px; font-weight: 800; color: #3A2318; line-height: 1.5; }
+  .intro-msg p {
+    font-size: 12.5px; color: #3A2318; line-height: 2.1; margin: 12px 0;
+  }
+  .intro-sign {
+    text-align: right; font-weight: 800; color: #A55A50;
+    margin-top: 16px !important;
+  }
+  .intro-card h3 {
+    font-size: 16px; font-weight: 800; color: #A55A50; margin-bottom: 14px;
+  }
+  .intro-tip { display: flex; gap: 11px; margin-bottom: 14px; }
+  .it-num {
+    flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+    background: #FDF0EE; color: #A55A50;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 800; margin-top: 1px;
+  }
+  .intro-tip strong { font-size: 13.5px; font-weight: 800; color: #3A2318; }
+  .intro-tip p { font-size: 11.5px; color: #7A5040; line-height: 1.9; margin-top: 3px; }
+  .intro-note {
+    font-size: 11px; color: #856348; line-height: 1.8;
+    padding-top: 12px; border-top: 1px dashed #F0DDD7;
+  }
+  .intro-start {
+    width: 100%;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: linear-gradient(135deg, #C07068, #A55A50);
+    color: #fff; border: none;
+    border-radius: 999px; padding: 16px;
+    font-family: inherit; font-size: 16px; font-weight: 800; letter-spacing: 0.04em;
+    cursor: pointer; margin-bottom: 8px;
+    box-shadow: 0 5px 18px rgba(165,90,80,0.26);
+  }
+  .back-to-cover button + button { margin-left: 12px; }
+
 </style>
 </head>
 <body>
@@ -2581,9 +2650,88 @@
         はじめる
       </button>
       <p class="cover-review" id="cover-review"></p>
+      <button class="cover-intro" onclick="openIntro()">
+        <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"></path></svg>
+        はじめに — この教材について
+      </button>
       <button class="cover-survey" id="cover-survey" onclick="openSurvey()" style="display:none;">
         <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 20h9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path></svg>
         アンケートに答える
+      </button>
+    </div>
+
+
+    <div id="home-intro" style="display:none;">
+      <p class="intro-back"><button onclick="backToCover()">← 表紙にもどる</button></p>
+
+      <div class="intro-card">
+        <div class="intro-head">
+          <img class="intro-face" src="profile.jpg" alt="まおちー" width="96" height="96">
+          <div>
+            <p class="intro-eyebrow">はじめに</p>
+            <h2>この教材をつくった人から</h2>
+          </div>
+        </div>
+
+        <!-- ここから、まおちーからのメッセージ（自由に書きかえてください） -->
+        <div class="intro-msg">
+          <p>ロシア語を学びはじめた人の多くが、いちばん最初につまずくのが<b>文字</b>です。
+          「見たことのない形が33個もある」——そこで止まってしまうのは、とてももったいないことだと思っていました。</p>
+
+          <p>けれど文字は、壁ではなく<b>入口</b>です。ひとつずつ顔を覚えていけば、ある日とつぜん、
+          看板や絵本の文字が「読める言葉」に変わります。あの瞬間の驚きを、たくさんの人に味わってほしくて、
+          この教材をつくりました。</p>
+
+          <p>ねこたちがいるのは、ひとりで机に向かうのは、すこし心細いからです。
+          33匹が1文字ずつ連れてきてくれます。<b>忘れてしまっても大丈夫。いつでも会いに来てください。</b></p>
+
+          <p>完璧に覚えてから次へ進む必要はありません。行きつ戻りつしながら、
+          あなたのペースで森を歩いてもらえたら嬉しいです。</p>
+
+          <p class="intro-sign">まおちー（杉山 真央）</p>
+        </div>
+        <!-- メッセージここまで -->
+      </div>
+
+      <div class="intro-card">
+        <h3>効果的な使い方 — 5つのこつ</h3>
+
+        <div class="intro-tip">
+          <span class="it-num">1</span>
+          <div><strong>1日5分でいい。毎日ひらく</strong>
+          <p>まとめて1時間より、5分を7日のほうが残ります。表紙に「今日の復習が◯問」と出ていたら、それだけでも十分です。</p></div>
+        </div>
+
+        <div class="intro-tip">
+          <span class="it-num">2</span>
+          <div><strong>かならず声に出す</strong>
+          <p>音声を聞いたら、真似して言ってみてください。耳と口を通った言葉は、目だけで見た言葉より深く残ります。</p></div>
+        </div>
+
+        <div class="intro-tip">
+          <span class="it-num">3</span>
+          <div><strong>まちがえたところが、宝物</strong>
+          <p>まちがえた問題は「今日の復習」に自動で集まり、日をあけて出てきます。<b>まちがえるほど、あなた専用の教材になります。</b></p></div>
+        </div>
+
+        <div class="intro-tip">
+          <span class="it-num">4</span>
+          <div><strong>表は、手で書き写す</strong>
+          <p>活用表や格変化表は、アプリで眺めるだけでなくノートに書くと定着します。書き込み用のシートを印刷できます。</p></div>
+        </div>
+
+        <div class="intro-tip">
+          <span class="it-num">5</span>
+          <div><strong>順番どおりでなくていい</strong>
+          <p>気になる扉から入って構いません。わからなくなったら、ひとつ前の段に戻れば大丈夫です。</p></div>
+        </div>
+
+        <p class="intro-note">操作の手順は、次のページの「はじめての方へ」でくわしく説明しています。</p>
+      </div>
+
+      <button class="intro-start" onclick="enterRoad()">
+        <span class="cs-paw"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6.6" cy="9.2" rx="2" ry="2.6" transform="rotate(-18 6.6 9.2)"></ellipse><ellipse cx="11.9" cy="6.9" rx="2.05" ry="2.85"></ellipse><ellipse cx="17.2" cy="9.2" rx="2" ry="2.6" transform="rotate(18 17.2 9.2)"></ellipse><path d="M12 11.3c3.1 0 5.4 2.3 5.4 5 0 2.2-1.8 3.7-4.2 3.7h-2.4c-2.4 0-4.2-1.5-4.2-3.7 0-2.7 2.3-5 5.4-5z"></path></svg></span>
+        はじめる
       </button>
     </div>
 
@@ -2827,7 +2975,8 @@
       <button onclick="openBackup()">開く</button>
     </div>
 
-    <p class="back-to-cover"><button onclick="backToCover()">← 表紙にもどる</button></p>
+    <p class="back-to-cover"><button onclick="openIntro()">はじめに — この教材について</button>
+    <button onclick="backToCover()">← 表紙にもどる</button></p>
     </div>
   </div>
 
@@ -3325,9 +3474,11 @@ function switchTab(tabName) {
   if (tabName === 'home') {
     // ほかの画面から戻ったときは、表紙ではなく道のりのページへ
     const cover = document.getElementById('cover-actions');
+    const intro = document.getElementById('home-intro');
     const road = document.getElementById('home-road');
     if (road && road.style.display === 'none' && cover) {
       cover.style.display = 'none';
+      if (intro) intro.style.display = 'none';
       road.style.display = 'block';
     }
     if (typeof updateHomeStepStatus === 'function') updateHomeStepStatus();
@@ -8744,10 +8895,23 @@ function printNoteSheet() {
 // ============================================================
 // 表紙（1ページ目）と、道のりのページの切りかえ
 // ============================================================
-function enterRoad() {
+function openIntro() {
   const cover = document.getElementById('cover-actions');
+  const intro = document.getElementById('home-intro');
   const road = document.getElementById('home-road');
   if (cover) cover.style.display = 'none';
+  if (road) road.style.display = 'none';
+  if (intro) intro.style.display = 'block';
+  logScreen('intro');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function enterRoad() {
+  const cover = document.getElementById('cover-actions');
+  const intro = document.getElementById('home-intro');
+  const road = document.getElementById('home-road');
+  if (cover) cover.style.display = 'none';
+  if (intro) intro.style.display = 'none';
   if (road) road.style.display = 'block';
   renderRoadmap();
   updateHomeStepStatus();
@@ -8757,8 +8921,10 @@ function enterRoad() {
 
 function backToCover() {
   const cover = document.getElementById('cover-actions');
+  const intro = document.getElementById('home-intro');
   const road = document.getElementById('home-road');
   if (road) road.style.display = 'none';
+  if (intro) intro.style.display = 'none';
   if (cover) cover.style.display = 'block';
   renderCover();
   window.scrollTo({ top: 0, behavior: 'smooth' });
