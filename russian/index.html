@@ -9143,6 +9143,12 @@ function splitLastWord(sent) {
   };
 }
 
+// 文字の絵を1枚返す。Ш のように絵が複数ある文字は、1枚目を使う
+function letterPic(l) {
+  if (!l) return '';
+  return l.img || (l.imgs && l.imgs[0]) || '';
+}
+
 function dictQuestion(l, kind) {
   if (kind === 'w') {
     const plain = stripStress(l.ex);
@@ -9152,7 +9158,7 @@ function dictQuestion(l, kind) {
       say:l.ex,
       a:plain,
       hint:'「' + l.exm + '」／' + plain.length + '文字・最初は ' + plain.charAt(0),
-      pic:l.img || '', picWord:l.ex, picMean:l.exm,
+      pic:letterPic(l), picWord:l.ex, picMean:l.exm,
       ex:'「' + l.u + '」の単語です。'
     };
   }
@@ -9168,7 +9174,7 @@ function dictQuestion(l, kind) {
     say:ex.exSent,
     a:plain,
     hint:plain.length + '文字・最初は ' + plain.charAt(0),
-    pic:l.img || '', picWord:l.ex, picMean:l.exm, picNote:'この文に出てくる語',
+    pic:letterPic(l), picWord:l.ex, picMean:l.exm, picNote:'この文に出てくる語',
     ex:ex.exSent + '（' + (ex.exSentJp || '') + '）'
   };
 }
