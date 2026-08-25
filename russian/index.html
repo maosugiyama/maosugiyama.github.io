@@ -48,7 +48,7 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Nunito', 'Hiragino Sans', 'Yu Gothic', sans-serif;
-    background: #F6EADF;
+    background: #F5F3E7;
     color: #3A2318;
     padding: 20px 16px;
     min-height: 100vh;
@@ -2785,6 +2785,38 @@
   }
   .pair-list .jp { font-size: 11px; color: #7A5040; line-height: 1.8; margin-bottom: 1px; }
   .toc-ck { flex-shrink: 0; color: #4E8B6E; }
+
+
+  /* ============================================================
+     背景 — 光のさす森の道
+     ============================================================ */
+  /* 地の色は body に残しておく（読みこみ中や印刷のときの受け皿） */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: -2;
+    pointer-events: none;
+    background:
+      radial-gradient(120% 70% at 50% -8%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 62%),
+      radial-gradient(70% 45% at 88% 12%, rgba(241,246,226,0.75) 0%, rgba(241,246,226,0) 70%),
+      radial-gradient(60% 40% at 8% 30%, rgba(247,242,227,0.7) 0%, rgba(247,242,227,0) 72%),
+      linear-gradient(180deg, #FAF6EC 0%, #F6F4E9 38%, #F2F4E7 70%, #EFF3E4 100%);
+  }
+  /* 木もれ日と、ねこの足あと */
+  body::after {
+    content: '';
+    position: fixed; inset: 0; z-index: -1;
+    pointer-events: none;
+    opacity: 0.22;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22160%22%20height%3D%22160%22%20viewBox%3D%220%200%20160%20160%22%3E%20%3Cg%20fill%3D%22none%22%20stroke%3D%22%235E8F84%22%20stroke-width%3D%221.6%22%20stroke-linecap%3D%22round%22%20opacity%3D%220.5%22%3E%20%3Cpath%20d%3D%22M22%2030c10-12%2026-12%2034%200-8%2012-24%2012-34%200z%22%2F%3E%3Cpath%20d%3D%22M22%2030h34%22%2F%3E%20%3Cpath%20d%3D%22M112%2096c9-11%2024-11%2031%200-7%2011-22%2011-31%200z%22%2F%3E%3Cpath%20d%3D%22M112%2096h31%22%2F%3E%20%3Cpath%20d%3D%22M60%20128c8-10%2021-10%2027%200-6%2010-19%2010-27%200z%22%2F%3E%3Cpath%20d%3D%22M60%20128h27%22%2F%3E%20%3C%2Fg%3E%20%3Cg%20fill%3D%22%237BAE9E%22%20opacity%3D%220.42%22%3E%20%3Cellipse%20cx%3D%22118%22%20cy%3D%2230%22%20rx%3D%223%22%20ry%3D%224%22%20transform%3D%22rotate%28-18%20118%2030%29%22%2F%3E%20%3Cellipse%20cx%3D%22126%22%20cy%3D%2226%22%20rx%3D%223.1%22%20ry%3D%224.3%22%2F%3E%20%3Cellipse%20cx%3D%22134%22%20cy%3D%2230%22%20rx%3D%223%22%20ry%3D%224%22%20transform%3D%22rotate%2818%20134%2030%29%22%2F%3E%20%3Cpath%20d%3D%22M126%2034c4.6%200%208%203.4%208%207.4%200%203.2-2.7%205.4-6.2%205.4h-3.6c-3.5%200-6.2-2.2-6.2-5.4%200-4%203.4-7.4%208-7.4z%22%2F%3E%20%3C%2Fg%3E%20%3Cg%20fill%3D%22%237BAE9E%22%20opacity%3D%220.34%22%3E%20%3Cellipse%20cx%3D%2226%22%20cy%3D%2292%22%20rx%3D%222.6%22%20ry%3D%223.4%22%20transform%3D%22rotate%28-18%2026%2092%29%22%2F%3E%20%3Cellipse%20cx%3D%2233%22%20cy%3D%2289%22%20rx%3D%222.7%22%20ry%3D%223.7%22%2F%3E%20%3Cellipse%20cx%3D%2240%22%20cy%3D%2292%22%20rx%3D%222.6%22%20ry%3D%223.4%22%20transform%3D%22rotate%2818%2040%2092%29%22%2F%3E%20%3Cpath%20d%3D%22M33%2096c4%200%207%202.9%207%206.4%200%202.8-2.3%204.7-5.4%204.7h-3.2c-3.1%200-5.4-1.9-5.4-4.7%200-3.5%203-6.4%207-6.4z%22%2F%3E%20%3C%2Fg%3E%20%3C%2Fsvg%3E");
+    background-repeat: repeat;
+    background-size: 250px 250px;
+  }
+  @media print {
+    body::before, body::after { display: none !important; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    body::after { opacity: 0.15; }
+  }
 
 </style>
 </head>
