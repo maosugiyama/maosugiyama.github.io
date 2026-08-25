@@ -2730,6 +2730,18 @@
   .toc-t b { font-size: 12.5px; font-weight: 700; color: #3A2318; }
   .toc-t span { font-size: 10.5px; color: #856348; line-height: 1.6; }
   .toc-row.done .toc-t b { color: #3F7A69; }
+  .toc-search { display: flex; gap: 7px; margin: 12px 0 6px; }
+  .toc-search input {
+    flex: 1; min-width: 0;
+    background: #fff; border: 1.5px solid #EBD9D2; border-radius: 999px;
+    padding: 10px 15px; font-family: inherit; font-size: 12.5px; color: #3A2318;
+  }
+  .toc-search input:focus { outline: none; border-color: #C9A096; }
+  .toc-clear {
+    background: #FDF0EE; border: none; color: #A55A50; border-radius: 999px;
+    padding: 0 14px; font-family: inherit; font-size: 11.5px; font-weight: 700; cursor: pointer;
+  }
+  .toc-none { font-size: 11.5px; color: #856348; line-height: 1.9; padding: 10px 2px; }
   .toc-ck { flex-shrink: 0; color: #4E8B6E; }
 
 </style>
@@ -6284,6 +6296,31 @@ const GRAMMAR_UNITS = [
     <strong>前置詞の後の代名詞には н がつく</strong>
     <p>у него́（彼のところに）・с ней（彼女と）・к ним（彼らのところへ）</p>
   </div>
+
+  <div class="rule-row">
+    <strong>前置詞が1文字ふえるとき — во・со・ко・обо</strong>
+    <p>子音1つだけの前置詞は、<b>そのままでは続けて言いにくい</b>とき、
+    うしろに <b>о</b> がついて2文字になります。意味は変わりません。</p>
+    <div class="conj-table">
+      <span class="pron">в → во</span><span class="form">во Фра́нции／во вто́рник／во сне／во рту</span>
+      <span class="pron">с → со</span><span class="form">со мной／со стола́／со сне́гом／со все́ми</span>
+      <span class="pron">к → ко</span><span class="form">ко мне／ко всем／ко второ́му</span>
+      <span class="pron">о → об／обо</span><span class="form">об оре́хах／обо мне／обо всём</span>
+      <span class="pron">из → изо</span><span class="form">изо всех сил／изо рта</span>
+      <span class="pron">над → надо</span><span class="form">надо мной</span>
+      <span class="pron">под → подо</span><span class="form">подо мной</span>
+    </div>
+    <p>目安は次の3つです。</p>
+    <p>• <b>同じ・似た子音が続くとき</b>：в ＋ <b>в</b>то́рник → во вто́рник／с ＋ <b>с</b>тола́ → со стола́</p>
+    <p>• <b>мной・всём・всех の前</b>：со мной・ко мне・обо мне・изо всех сил</p>
+    <p>• <b>子音が3つ以上ぶつかるとき</b>：во рту（口の中で）・во сне（夢の中で）</p>
+    <p style="font-size:11px;color:#A05A00;"><b>母音で始まる語の前では、в のままです。</b>
+    <span class="ex-inline">в очка́х</span>（めがねをかけて）
+    <span class="ex-inline">в а́вгусте</span>（8月に）——во очка́х とはなりません。
+    во になるのは、うしろが<b>子音</b>で始まって言いにくいときです。</p>
+    <p style="font-size:11px;color:#856348;">о だけは逆で、<b>母音の前で об</b> になります
+    （<b>об</b> оре́хах・<b>об</b> э́том）。言いにくさを避けるという目的は同じです。</p>
+  </div>
   `,
   drills:[
     {type:'mc', q:'「у」がとる格は？', opts:['生格','与格','造格'], a:0, ex:'у ＋ 生格。У меня́ / У тебя́。'},
@@ -6292,7 +6329,11 @@ const GRAMMAR_UNITS = [
     {type:'mc', q:'「わたしたちはサーカスにいます」は？', opts:['Мы в цирк.','Мы в ци́рке.'], a:1, ex:'場所は в ＋ 前置格。'},
     {type:'mc', q:'「彼女と一緒に」は？', opts:['с её','с ней','с она́'], a:1, ex:'с ＋ 造格、さらに前置詞の後なので н がついて ней。'},
     {type:'mc', q:'「日本から来ました」の（　）は？　Я из （　）.', opts:['Япо́ния','Япо́нии','Япо́нию'], a:1, ex:'из ＋ 生格。Япо́ния → Япо́нии。'},
-    {type:'mc', q:'「木の上に」を表すのは？', opts:['в де́рево','на де́реве','к де́реву'], a:1, ex:'表面の上は на ＋ 前置格。на де́реве。'}
+    {type:'mc', q:'「木の上に」を表すのは？', opts:['в де́рево','на де́реве','к де́реву'], a:1, ex:'表面の上は на ＋ 前置格。на де́реве。'},
+    {type:'mc', q:'「めがねをかけた女性」の（　）は？　де́вушка （　） очка́х', say:'де́вушка в очка́х', opts:['в','во','с'], a:0,
+     ex:'母音で始まる語の前では в のままです。во になるのは、うしろが子音で言いにくいとき（во вто́рник・во сне）。'},
+    {type:'mc', q:'「火曜日に」を正しく言うと？', say:'во вто́рник', opts:['в вто́рник','во вто́рник'], a:1,
+     ex:'в と в- が続いて言いにくいので во になります。同じ理由で со стола́・ко мне も о がつきます。'}
   ]
 },
 
@@ -8985,6 +9026,8 @@ const WHY = {
   'prepositions:4': ['её は生格・対格の形です。造格は ей で、前置詞のあとでは н- がついて ней になります', '', 'она́ は主格です。前置詞のあとで主格は使いません'],
   'prepositions:5': ['из のあとは生格です。Япо́ния は主格のままです', '', 'Япо́нию は対格です。из は生格をとります'],
   'prepositions:6': ['в ＋ 対格は「木の中へ」という移動になります', '', 'к ＋ 与格は「木のほうへ」と近づく動きを表します'],
+  'prepositions:7': ['', 'во になるのは、うしろが子音で始まって言いにくいときです。очка́х は母音で始まります', 'с ＋ 造格は「〜と一緒に」。身につけたものは в ＋ 前置格で表します'],
+  'prepositions:8': ['в と в- が続いて言いにくいので、о がついて во になります', ''],
 
   // ---- よく使う語 ----
   'vocab-basic:0': ['-а で終わり、意味も女性なので男性名詞ではありません', '', '中性は -о / -е で終わる語です'],
@@ -10141,6 +10184,117 @@ function printNoteSheet() {
 // 表紙（1ページ目）と、道のりのページの切りかえ
 // ============================================================
 
+
+// ------------------------------------------------------------
+// さくいん — 「あれはどこ？」を引けるようにする
+// ------------------------------------------------------------
+// t:見出し／u:ユニットid／k:検索用の別のことば（かな・ロシア語）
+const TOPIC_INDEX = [
+  { t:'名詞の性（男性・女性・中性）', u:'noun-gender', k:'せい おとこ おんな 中性' },
+  { t:'名詞の複数形', u:'noun-plural', k:'ふくすう たち' },
+  { t:'数えられない名詞', u:'noun-count', k:'かぞえられない чай' },
+  { t:'複数だけで使う名詞', u:'noun-count', k:'де́ньги очки́ духи́ ふくすうのみ' },
+  { t:'集合名詞（оде́жда のなかま）', u:'noun-count', k:'しゅうごう оде́жда ме́бель посу́да 衣服' },
+  { t:'ду́хи と духи́（アクセントで意味が変わる）', u:'noun-count', k:'こうすい せいれい' },
+  { t:'正書法（к・г・х のあとは и）', u:'orthography', k:'せいしょほう жи ши つづり' },
+  { t:'人称代名詞（я・ты・он…）', u:'pron-personal', k:'にんしょう だいめいし' },
+  { t:'所有代名詞（мой・твой…）', u:'possessive', k:'しょゆう мой моя́' },
+  { t:'形容詞のきほん（性・数の一致）', u:'adjective', k:'けいようし いっち' },
+  { t:'э́то と э́та のちがい', u:'phrases', k:'これは しょうかい' },
+  { t:'у меня́ есть（持っている）', u:'phrases', k:'もっている しょゆう' },
+  { t:'乾杯のことば（за ＋ 対格）', u:'phrases', k:'かんぱい тост здоро́вье' },
+  { t:'На здоро́вье! と Пожа́луйста', u:'phrases', k:'どういたしまして れいのかえし' },
+  { t:'あいさつ・自己紹介', u:'phrases', k:'здра́вствуйте приве́т なまえ' },
+
+  { t:'動詞・第1変化（е変化）', u:'verb-e', k:'かつよう だい1' },
+  { t:'動詞・第2変化（и変化）', u:'verb-i', k:'かつよう だい2' },
+  { t:'不規則な動詞（хоте́ть・есть…）', u:'verb-irr', k:'ふきそく' },
+  { t:'運動の動詞（идти́ と ходи́ть）', u:'verb-motion', k:'うんどう いく' },
+  { t:'動詞の過去形', u:'verb-past', k:'かこ -л' },
+  { t:'格とは何か（6つの格）', u:'case-intro', k:'かく паде́ж ぜんたい' },
+  { t:'対格（〜を）', u:'case-acc', k:'たいかく を' },
+  { t:'活動体・不活動体', u:'case-acc', k:'かつどうたい труп ку́кла кто что' },
+  { t:'生格（〜の・ない）', u:'case-gen', k:'せいかく の' },
+  { t:'与格（〜に）', u:'case-dat', k:'よかく に нра́вится' },
+  { t:'造格（〜で・〜と）', u:'case-inst', k:'ぞうかく で いっしょ' },
+  { t:'前置格（〜で・〜について）', u:'case-prep', k:'ぜんちかく о лесу́' },
+  { t:'前置詞と格の対応', u:'prepositions', k:'ぜんちし в на у к с' },
+  { t:'во・со・ко・обо（前置詞が1文字ふえる）', u:'prepositions', k:'во вто́рник ко мне обо мне' },
+  { t:'家族・数・色・時間のことば', u:'vocab-basic', k:'ごい かぞく' },
+
+  { t:'色のなまえ（12色の見本）', u:'color-shape', k:'いろ цвет кра́сный си́ний あか あお' },
+  { t:'голубо́й と си́ний（青が2つ）', u:'color-shape', k:'あお みずいろ' },
+  { t:'形のなまえ（まる・さんかく・しかく）', u:'color-shape', k:'かたち круг квадра́т треуго́льник' },
+  { t:'色 ＋ 名詞の一致', u:'color-shape', k:'いろ いっち кра́сная' },
+  { t:'Кра́сная пло́щадь（赤い広場）', u:'color-shape', k:'あかのひろば うつくしい' },
+  { t:'外見の описание（вне́шность）', u:'appearance', k:'がいけん すがた' },
+  { t:'есть を言うとき・言わないとき', u:'appearance', k:'есть しょゆう' },
+  { t:'髪（во́лосы）のいろ・ながさ', u:'appearance', k:'かみ дли́нные ры́жие' },
+  { t:'目（глаза́）のいろ・ка́рие', u:'appearance', k:'め ка́рие голубы́е' },
+  { t:'背の高さ（высо́кого ро́ста）', u:'appearance', k:'せ рост たかい' },
+  { t:'с ＋ 造格 と в ＋ 前置格（描写）', u:'appearance', k:'очка́х глаза́ми びょうしゃ' },
+
+  { t:'複数形の格変化（入門）', u:'plural-cases', k:'ふくすう かくへんか' },
+  { t:'動詞の体（アスペクト）', u:'aspect', k:'たい かんりょう ふかんりょう' },
+  { t:'複数形の格変化（くわしく）', u:'plural-cases-full', k:'ふくすう せいかく друзе́й' },
+  { t:'否定生格（нет ＋ 生格）', u:'negation-gen', k:'ひてい ない нет не́ было' },
+  { t:'Чего́ то́лько нет!（裏返しの言い方）', u:'negation-gen', k:'かんようく нет слов ことわざ' },
+  { t:'ことわざ（Нет ды́ма без огня́）', u:'negation-gen', k:'ことわざ かくげん' },
+  { t:'形容詞の格変化', u:'adj-cases', k:'けいようし かくへんか но́вую' },
+  { t:'数詞と数え方（2・3・4／5以上）', u:'numbers', k:'すうし かず три пять' },
+  { t:'完了体・不完了体の使い分け', u:'aspect-use', k:'たい つかいわけ' },
+  { t:'運動の動詞と接頭辞（при-・у-・под-…）', u:'verb-motion-pref', k:'せっとうじ прийти́ уйти́ ほうこう' },
+  { t:'命令形と未来形', u:'imperative-future', k:'めいれい みらい' },
+  { t:'比較級・最上級', u:'comparative', k:'ひかく さいじょう лу́чше' },
+  { t:'短い文章を読む①', u:'read-short', k:'どっかい かいわ' },
+  { t:'語順のきほん', u:'order-basic', k:'ごじゅん' },
+  { t:'格を手がかりに組み立てる', u:'order-case', k:'ごじゅん さくぶん' },
+
+  { t:'関係代名詞 кото́рый', u:'relative', k:'かんけい つなぐ' },
+  { t:'形動詞（причастие）', u:'participles', k:'けいどうし чита́ющий' },
+  { t:'副動詞（деепричастие）', u:'gerunds', k:'ふくどうし чита́я' },
+  { t:'仮定法 бы とていねいな言い方', u:'conditional', k:'かてい бы что́бы' },
+  { t:'おおきなかぶを読む', u:'read-tale', k:'ре́пка むかしばなし' },
+  { t:'話しことばと書きことば', u:'register', k:'ぶんたい ていねい ты вы' },
+  { t:'おとぎ話のことば', u:'folktales', k:'ба́ба-яга́ Золу́шка むかしばなし' },
+  { t:'童話や詩を読む', u:'reading', k:'し пу́шкин よむ' },
+  { t:'語順で答えが決まる', u:'order-nuance', k:'ごじゅん きょうちょう' }
+];
+
+// 「さがす」欄の中身
+let tocQuery = '';
+function setTocQuery(v) { tocQuery = String(v || ''); renderIntroToc(); }
+function clearTocQuery() {
+  tocQuery = '';
+  renderIntroToc();
+  const el = document.getElementById('toc-q');
+  if (el) el.focus();
+}
+
+// ひらがな・カタカナ・大小文字・アクセント記号のちがいを吸収する
+function tocNorm(s) {
+  return String(s || '').replace(/́/g, '').toLowerCase()
+    .replace(/[ァ-ヶ]/g, function(c){ return String.fromCharCode(c.charCodeAt(0) - 0x60); });
+}
+
+function tocMatches(q) {
+  const n = tocNorm(q);
+  if (!n) return null;
+  const seen = {};
+  const rows = [];
+  TOPIC_INDEX.forEach(function(e) {
+    const u = unitById(e.u);
+    if (!u) return;
+    const hay = tocNorm(e.t + ' ' + (e.k || '') + ' ' + u.title + ' ' + u.sub + ' ' + u.level);
+    if (hay.indexOf(n) < 0) return;
+    const key = e.t + '|' + e.u;
+    if (seen[key]) return;
+    seen[key] = 1;
+    rows.push({ t: e.t, u: u });
+  });
+  return rows;
+}
+
 // ------------------------------------------------------------
 // 目次 — 教材の全体像を1枚で見わたす（紙の教材の目次にあたるもの）
 // ------------------------------------------------------------
@@ -10156,6 +10310,34 @@ function renderIntroToc() {
   html += '<p class="toc-lead">この教材にあるものを、ぜんぶ並べました。'
        + '<b>' + GRAMMAR_UNITS.length + 'ユニット・' + totalQ + '問</b>と、33文字のねこ図鑑があります。'
        + '行をおすと、そこへ移れます。</p>';
+
+  // さがす欄（「あれはどこ？」を引くため）
+  html += '<div class="toc-search">';
+  html += '<input id="toc-q" type="search" placeholder="さがす（例：色・かたち・否定・во）"'
+       + ' value="' + String(tocQuery).replace(/"/g, '&quot;') + '"'
+       + ' oninput="setTocQuery(this.value)">';
+  if (tocQuery) html += '<button class="toc-clear" onclick="clearTocQuery()">消す</button>';
+  html += '</div>';
+
+  const found = tocMatches(tocQuery);
+  if (found) {
+    if (!found.length) {
+      html += '<p class="toc-none">「' + tocQuery + '」に当たる項目は見つかりませんでした。'
+           + 'ことばを変えて、もう一度おためしください。</p>';
+    } else {
+      html += '<p class="toc-lv"><b>さがした結果</b><em>' + found.length + '件</em></p>';
+      found.forEach(function(r) {
+        const done = unitProg(r.u.id).cleared;
+        html += '<button class="toc-row' + (done ? ' done' : '') + '" onclick="tocGoUnit(\'' + r.u.id + '\')">'
+             + '<span class="toc-i">・</span>'
+             + '<span class="toc-t"><b>' + r.t + '</b><span>' + r.u.level + '　' + r.u.title + '</span></span>'
+             + (done ? '<span class="toc-ck">' + icon('check', 'lu-sm') + '</span>' : '')
+             + '</button>';
+      });
+    }
+    box.innerHTML = html;
+    return;
+  }
 
   // ---- 1段目：文字と音 ----
   const s1 = stages[0];
