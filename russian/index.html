@@ -2744,6 +2744,21 @@
   }
   .toc-none { font-size: 11.5px; color: #856348; line-height: 1.9; padding: 10px 2px; }
 
+  /* ---- つづきから ---- */
+  .resume-btn {
+    display: flex; align-items: center; gap: 9px; width: 100%;
+    background: #fff; border: 1.5px solid #E8CFC8; border-radius: 999px;
+    padding: 10px 16px; margin-top: 9px; cursor: pointer;
+    font-family: inherit; text-align: left;
+  }
+  .resume-btn:active { transform: scale(0.99); }
+  .rb-label {
+    flex-shrink: 0; font-size: 10.5px; font-weight: 800; color: #fff;
+    background: #A55A50; border-radius: 999px; padding: 3px 9px;
+  }
+  .rb-title { flex: 1; font-size: 12.5px; font-weight: 700; color: #3A2318; }
+  .rb-arrow { flex-shrink: 0; color: #A55A50; font-weight: 800; }
+
   /* ---- 押すと音が出る見本 ---- */
   .cs-tap { cursor: pointer; }
   .cs-tap:active { opacity: 0.55; }
@@ -4250,6 +4265,7 @@ let currentFlipped = false;
 let currentImgVariant = 0;  // For letters with multiple images (e.g., Ш)
 
 function openCardDetail(letter) {
+  noteVisit(1, '');
   currentLetter = letter;
   currentFlipped = false;
   // For letters with multiple images, shuffle to a random one
@@ -9169,10 +9185,32 @@ let grammarProgress = {};
 let challengeStats = { runs:0, best:0, last:null };
 let challengeConfig = { scopes:['alpha','基礎','初級','中級','上級'], order:'random', count:10 };
 
+// 最後に手をつけた段と、最後に開いたユニット。
+// 「いまここ」を、まだ終わっていない段ではなく
+// 実際に取り組んでいる場所に合わせるために使う。
+let lastStage = 0;
+let lastUnitId = '';
+
+// レベルから段の番号を出す（1＝文字、2＝基礎と初級、3＝中級、4＝上級）
+function stageOfLevel(level) {
+  if (level === '中級') return 3;
+  if (level === '上級') return 4;
+  return 2;
+}
+
+function noteVisit(stageNo, unitId) {
+  if (!stageNo) return;
+  lastStage = stageNo;
+  lastUnitId = unitId || '';
+  saveGrammarProgress();
+}
+
 function saveGrammarProgress() {
   try {
     localStorage.setItem(GRAMMAR_STORAGE_KEY, JSON.stringify({
       grammar: grammarProgress,
+      lastStage: lastStage,
+      lastUnitId: lastUnitId,
       challenge: challengeStats,
       config: challengeConfig,
       srs: srsData,
@@ -9194,6 +9232,8 @@ function loadGrammarProgress() {
     if (d.srs) srsData = d.srs;
     if (d.dict) dictConfig = Object.assign(dictConfig, d.dict);
     if (d.dictDone) dictDone = d.dictDone;
+    if (d.lastStage) lastStage = d.lastStage;
+    if (d.lastUnitId) lastUnitId = d.lastUnitId;
   } catch (e) { console.log('Grammar progress load failed:', e); }
 }
 loadGrammarProgress();
@@ -9368,6 +9408,7 @@ function openGrammarUnit(id, origin) {
   if (!u) return;
   unitOrigin = origin === 'toc' ? 'toc' : 'hub';
   currentUnitId = id;
+  noteVisit(stageOfLevel(u.level), id);
   const p = unitProg(id);
   grammarProgress[id] = { read:true, best:p.best || 0, total:p.total || 0, cleared:!!p.cleared };
   saveGrammarProgress();
@@ -10540,12 +10581,26 @@ function stageInfo() {
     s.pct = s.total ? Math.round(s.done / s.total * 100) : 0;
     s.complete = s.total > 0 && s.done >= s.total;
   });
-  // 現在地＝まだ終わっていない最初の段（どちらも終わっていれば初級のとびら）
+  // 現在地＝最後に手をつけた段。
+  // まだ何もしていないとき、またはその段が終わっているときは、
+  // 終わっていない最初の段（＝次にやるところ）を指す。
   let cur = null;
-  list.forEach(function(s){ if (!cur && !s.complete) cur = s; });
+  if (lastStage) {
+    const seen = list.filter(function(s){ return s.n === lastStage; })[0];
+    if (seen && !seen.complete) cur = seen;
+  }
+  if (!cur) list.forEach(function(s){ if (!cur && !s.complete) cur = s; });
   if (!cur) cur = list[1];
   list.forEach(function(s){ s.current = (s === cur); });
   return list;
+}
+
+// 最後に開いたユニットへ戻る
+function resumeLastUnit() {
+  if (!lastUnitId || !unitById(lastUnitId)) return;
+  switchTab('grammar');
+  openGrammarUnit(lastUnitId);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // 難易度の目安：初級＝猫1匹、中級＝2匹、上級＝3匹
@@ -10590,13 +10645,19 @@ function renderRoadmap() {
 
     const cur = stages.filter(function(s){ return s.current; })[0];
     let now = '<p class="stairs-now"><span class="now-tag">いまここ</span> <b>' + cur.name + '</b>';
-    if (true) {
-      now += '<span class="now-sub">' + cur.what + ' ' + cur.done + ' / ' + cur.total + ' ' + cur.unit;
-      if (cur.complete) now += '　→ この段は達成しました';
-      else now += '　あと ' + (cur.total - cur.done) + ' ' + cur.unit;
-      now += '</span>';
+    now += '<span class="now-sub">' + cur.what + ' ' + cur.done + ' / ' + cur.total + ' ' + cur.unit;
+    if (cur.complete) now += '　→ この段は達成しました';
+    else now += '　あと ' + (cur.total - cur.done) + ' ' + cur.unit;
+    now += '</span></p>';
+
+    // 最後に開いたユニットへ、そのまま戻れるようにする
+    const lastU = lastUnitId ? unitById(lastUnitId) : null;
+    if (lastU) {
+      now += '<button class="resume-btn" onclick="resumeLastUnit()">'
+           + '<span class="rb-label">つづきから</span>'
+           + '<span class="rb-title">' + lastU.title + '</span>'
+           + '<span class="rb-arrow">→</span></button>';
     }
-    now += '</p>';
     box.innerHTML = html + now;
   }
 
