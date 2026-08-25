@@ -8290,6 +8290,40 @@ const GRAMMAR_UNITS = [
     </div>
   </div>
 
+
+  <div class="rule-row">
+    <strong>濃さ・明るさを足す — тёмно- / све́тло- / я́рко-</strong>
+    <p>色の前にひとことつけるだけで、<b>言える色が何倍にも増えます</b>。
+    ハイフンでつなぐのがきまりです。</p>
+    <div class="conj-table">
+      <span class="pron">тёмно-</span><span class="form">濃い・暗い　тёмно-си́ний（紺）тёмно-зелёный（深緑）</span>
+      <span class="pron">све́тло-</span><span class="form">薄い・明るい　све́тло-зелёный（若草色）све́тло-кори́чневый</span>
+      <span class="pron">я́рко-</span><span class="form">あざやかな　я́рко-кра́сный（真っ赤）я́рко-жёлтый</span>
+      <span class="pron">бле́дно-</span><span class="form">淡い　бле́дно-ро́зовый（淡いピンク）</span>
+    </div>
+    <p style="font-size:11px;color:#A05A00;">形が変わるのは<b>うしろの色のほうだけ</b>です。
+    тёмно- は動きません。<br>
+    тёмно-си́н<b>ий</b> шарф（男）／тёмно-си́н<b>яя</b> ю́бка（女）／тёмно-си́н<b>ее</b> мо́ре（中）</p>
+    <p style="font-size:11px;color:#856348;">2つの色をまぜたときも、同じくハイフンでつなぎます。
+    <span class="ex-inline">се́ро-голубо́й</span>（灰色がかった青）
+    <span class="ex-inline">чёрно-бе́лый</span>（白黒の）</p>
+  </div>
+
+  <div class="case-row">
+    <strong>「〜がかった」— -ова́тый</strong>
+    <p>はっきりその色ではないとき、語尾を <b>-ова́тый</b> に変えると
+    「<b>少し〜がかった</b>」になります。</p>
+    <div class="conj-table">
+      <span class="pron">кра́сный → краснова́тый</span><span class="form">赤みがかった</span>
+      <span class="pron">си́ний → синева́тый</span><span class="form">青みがかった</span>
+      <span class="pron">зелёный → зеленова́тый</span><span class="form">緑がかった</span>
+      <span class="pron">жёлтый → желтова́тый</span><span class="form">黄色みがかった</span>
+      <span class="pron">бе́лый → белова́тый</span><span class="form">白っぽい</span>
+    </div>
+    <p style="font-size:11px;color:#3A5578;">тёмно- が<b>濃さ</b>を、-ова́тый が<b>あいまいさ</b>を足します。
+    この2つを覚えるだけで、12色が何十通りにも広がります。</p>
+  </div>
+
   <div class="case-row">
     <strong>色 ＋ 形 — 名詞の性に合わせる</strong>
     <p>色も形容詞なので、<b>うしろの名詞に語尾をそろえます</b>。同じ「赤い」でも4つの形になります。</p>
@@ -8347,6 +8381,14 @@ const GRAMMAR_UNITS = [
      ex:'動物の毛や人の髪の赤茶色は ры́жий を使います。кра́сный は使いません。'},
     {type:'input', q:'зелёный を女性形にして綴ってください（зелёный → ___ трава́）', a:'зеленая', hint:'-ый → -ая',
      ex:'зелёная。※ ё にアクセントがあるので、зелёная と綴ります。'},
+    {type:'mc', q:'「紺色（濃い青）」を正しく言うと？', say:'тёмно-си́ний', opts:['тёмно-си́ний','тёмный си́ний','тёмно си́ний'], a:0,
+     ex:'тёмно- と色は、ハイフンでつなぎます。тёмно-си́ний です。'},
+    {type:'mc', q:'тёмно-си́ний を女性名詞につけると？', say:'тёмно-си́няя ю́бка', opts:['тёмная-си́няя','тёмно-си́няя','тёмноя-си́ний'], a:1,
+     ex:'形が変わるのは、うしろの色のほうだけ。тёмно- は動きません。тёмно-си́няя ю́бка。'},
+    {type:'mc', q:'「あざやかな赤」を表すのは？', opts:['я́рко-кра́сный','бле́дно-кра́сный','све́тло-кра́сный'], a:0,
+     ex:'я́рко- が「あざやかな」。бле́дно- は「淡い」、све́тло- は「明るい・薄い」です。'},
+    {type:'mc', q:'-ова́тый をつけると、どんな意味になりますか？', opts:['もっと濃くなる','少しその色がかった感じになる'], a:1,
+     ex:'краснова́тый（赤みがかった）синева́тый（青みがかった）。はっきりその色ではないときに使います。'},
     {type:'order', q:'「青い四角」を組み立ててください',
      tokens:['си́ний','квадра́т'],
      accept:[{o:'си́ний квадра́т', n:'形容詞は名詞の前。квадра́т は男性名詞なので си́ний になります'}],
@@ -9210,9 +9252,34 @@ function renderGrammarHub() {
 // ------------------------------------------------------------
 let currentUnitId = null;
 
-function openGrammarUnit(id) {
+// ユニットをどこから開いたか（'hub' 文法メニュー ／ 'toc' 目次）。
+// 戻り先を、来た道と同じにするために覚えておく。
+let unitOrigin = 'hub';
+function unitBackLabel(long) {
+  return unitOrigin === 'toc'
+    ? (long ? '← 目次に戻る' : '← 目次')
+    : (long ? '← 文法メニューに戻る' : '← 文法メニュー');
+}
+function unitBackFn() { return unitOrigin === 'toc' ? 'backToUnitOrigin()' : 'backToGrammarHub()'; }
+
+// 目次から来たときは、目次へ戻す
+function backToUnitOrigin() {
+  if (unitOrigin !== 'toc') { backToGrammarHub(); return; }
+  currentUnitId = null;
+  drillState = null;
+  const view = document.getElementById('grammar-unit');
+  if (view) { view.style.display = 'none'; view.innerHTML = ''; }
+  const hub = document.getElementById('grammar-hub');
+  if (hub) hub.style.display = 'block';
+  unitOrigin = 'hub';
+  switchTab('home');
+  openToc();
+}
+
+function openGrammarUnit(id, origin) {
   const u = unitById(id);
   if (!u) return;
+  unitOrigin = origin === 'toc' ? 'toc' : 'hub';
   currentUnitId = id;
   const p = unitProg(id);
   grammarProgress[id] = { read:true, best:p.best || 0, total:p.total || 0, cleared:!!p.cleared };
@@ -9224,7 +9291,7 @@ function openGrammarUnit(id) {
 
   let html = '';
   html += '<div class="unit-head">';
-  html += '  <button class="unit-back" onclick="backToGrammarHub()">← 文法メニュー</button>';
+  html += '  <button class="unit-back" onclick="' + unitBackFn() + '">' + unitBackLabel(false) + '</button>';
   html += '  <span class="unit-level">' + u.level + '</span>';
   html += '</div>';
   html += '<div class="info-card">';
@@ -9237,7 +9304,7 @@ function openGrammarUnit(id) {
   html += '  <button onclick="startUnitDrill(\'' + u.id + '\')">' + icon('pencil', 'lu-md') + ' 練習してみる</button>';
   html += '</div>';
   html += '<div id="unit-drill-area"></div>';
-  html += '<div style="text-align:center;margin-top:16px;"><button class="unit-back" onclick="backToGrammarHub()">← 文法メニューに戻る</button></div>';
+  html += '<div style="text-align:center;margin-top:16px;"><button class="unit-back" onclick="' + unitBackFn() + '">' + unitBackLabel(true) + '</button></div>';
 
   view.innerHTML = html;
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -9246,6 +9313,7 @@ function openGrammarUnit(id) {
 function backToGrammarHub() {
   currentUnitId = null;
   drillState = null;
+  unitOrigin = 'hub';
   const view = document.getElementById('grammar-unit');
   if (view) { view.style.display = 'none'; view.innerHTML = ''; }
   const hub = document.getElementById('grammar-hub');
@@ -9568,6 +9636,10 @@ const WHY = {
   'color-shape:4': ['круг は名詞の「まる」です。名詞を修飾するときは形容詞にします', '', 'кругу́ は与格・前置格の形です'],
   'color-shape:5': ['いまは色の名前ですが、この広場の名前が生まれたころは別の意味でした', ''],
   'color-shape:6': ['кра́сный は動物の毛色には使いません', ''],
+  'color-shape:8': ['', 'тёмный と си́ний を並べては言いません。тёмно- の形にしてハイフンでつなぎます', 'ハイフンが必要です。тёмно си́ний とは書きません'],
+  'color-shape:9': ['前の тёмно- は形を変えません', '', 'тёмноя という形はありません'],
+  'color-shape:10': ['', 'бле́дно- は「淡い」で、あざやかさとは逆の方向です', 'све́тло- は「明るい・薄い」で、あざやかさとは別です'],
+  'color-shape:11': ['濃さを足すのは тёмно- のほうです', ''],
   // ---- 外見をあらわす ----
   'appearance:0': ['髪があることは当たり前なので、есть は言いません', ''],
   'appearance:1': ['', 'есть がないと「その車、きみのもの？」のような、別のたずね方になります'],
@@ -10091,7 +10163,7 @@ function renderUnitDrillResult() {
   }
   html += '<div class="drill-actions end">';
   html += '<button class="drill-retry" onclick="startUnitDrill(\'' + s.unitId + '\')">もう一度</button>';
-  html += '<button class="drill-submit" onclick="backToGrammarHub()">文法メニューへ</button>';
+  html += '<button class="drill-submit" onclick="' + unitBackFn() + '">' + (unitOrigin === 'toc' ? '目次へ' : '文法メニューへ') + '</button>';
   html += '</div></div>';
   area.innerHTML = html;
   area.scrollIntoView({ behavior:'smooth', block:'start' });
@@ -10672,6 +10744,8 @@ const TOPIC_INDEX = [
   { t:'形のなまえ（まる・さんかく・しかく）', u:'color-shape', k:'かたち круг квадра́т треуго́льник' },
   { t:'色 ＋ 名詞の一致', u:'color-shape', k:'いろ いっち кра́сная' },
   { t:'Кра́сная пло́щадь（赤い広場）', u:'color-shape', k:'あかのひろば うつくしい' },
+  { t:'тёмно-／све́тло-／я́рко-（色の濃さ）', u:'color-shape', k:'こい うすい あざやか тёмно-си́ний' },
+  { t:'-ова́тый（〜がかった色）', u:'color-shape', k:'краснова́тый がかった あいまい' },
   { t:'外見の описание（вне́шность）', u:'appearance', k:'がいけん すがた' },
   { t:'есть を言うとき・言わないとき', u:'appearance', k:'есть しょゆう' },
   { t:'髪（во́лосы）のいろ・ながさ', u:'appearance', k:'かみ дли́нные ры́жие' },
@@ -10868,7 +10942,7 @@ function tocGoTab(name) {
 function tocGoUnit(id) {
   enterRoad();
   switchTab('grammar');
-  openGrammarUnit(id);
+  openGrammarUnit(id, 'toc');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
