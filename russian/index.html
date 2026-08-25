@@ -2570,6 +2570,8 @@
   .pm-p { fill: #5A4C82; }
   .pm-house { font-size: 13px; font-weight: 700; fill: #7A5040; }
   .ng-ru { font-size: 11.5px; font-weight: 800; fill: #3A2318; letter-spacing: -0.02em; }
+  .cs-ru { font-size: 9.5px; font-weight: 800; fill: #3A2318; letter-spacing: -0.02em; }
+  .cs-jp { font-size: 9px; fill: #856348; }
   .pm-note { font-size: 10.5px; fill: #856348; }
   .pm-cap {
     font-size: 12px; font-weight: 800; color: #A55A50;
@@ -8040,6 +8042,273 @@ const GRAMMAR_UNITS = [
      ex:'сего́дня。発音は「シヴォードニャ」— г が /в/ の音になる、数少ない語のひとつです。'}
   ]
 }
+,
+
+{
+  id:'color-shape', cat:'vocab', level:'初級', title:'色と形 — 見て覚える', sub:'見本を見ながら、名詞に形を合わせる',
+  lesson:`
+  <p>色と形は、<b>見ながら覚えるのがいちばん</b>です。
+  見本を見て、声に出して、そのあと名詞に合わせて語尾を変える——この順で進めましょう。</p>
+
+  <div class="rule-row">
+    <strong>色のみほん（辞書形＝男性形）</strong>
+    <svg class="pref-map" viewBox="0 0 400 300" role="img" aria-labelledby="csT csD">
+      <title id="csT">色の見本</title>
+      <desc id="csD">12色の見本と、そのロシア語名を並べた図です。</desc>
+      <rect x="28" y="12" width="44" height="44" rx="10" fill="#D6402F" stroke="#B9A79C" stroke-width="1"></rect>
+      <text x="50" y="72" text-anchor="middle" class="cs-ru">кра́сный</text>
+      <text x="50" y="88" text-anchor="middle" class="cs-jp">赤</text>
+      <rect x="128" y="12" width="44" height="44" rx="10" fill="#E8842A" stroke="#B9A79C" stroke-width="1"></rect>
+      <text x="150" y="72" text-anchor="middle" class="cs-ru">ора́нжевый</text>
+      <text x="150" y="88" text-anchor="middle" class="cs-jp">オレンジ</text>
+      <rect x="228" y="12" width="44" height="44" rx="10" fill="#EFC53F" stroke="#B9A79C" stroke-width="1"></rect>
+      <text x="250" y="72" text-anchor="middle" class="cs-ru">жёлтый</text>
+      <text x="250" y="88" text-anchor="middle" class="cs-jp">黄</text>
+      <rect x="328" y="12" width="44" height="44" rx="10" fill="#4E9A5B" stroke="#B9A79C" stroke-width="1"></rect>
+      <text x="350" y="72" text-anchor="middle" class="cs-ru">зелёный</text>
+      <text x="350" y="88" text-anchor="middle" class="cs-jp">緑</text>
+      <rect x="28" y="112" width="44" height="44" rx="10" fill="#6FB6E8" stroke="#B9A79C" stroke-width="1"></rect>
+      <text x="50" y="172" text-anchor="middle" class="cs-ru">голубо́й</text>
+      <text x="50" y="188" text-anchor="middle" class="cs-jp">水色</text>
+      <rect x="128" y="112" width="44" height="44" rx="10" fill="#2E5FA3" stroke="#B9A79C" stroke-width="1"></rect>
+      <text x="150" y="172" text-anchor="middle" class="cs-ru">си́ний</text>
+      <text x="150" y="188" text-anchor="middle" class="cs-jp">青</text>
+      <rect x="228" y="112" width="44" height="44" rx="10" fill="#7A5CA8" stroke="#B9A79C" stroke-width="1"></rect>
+      <text x="250" y="172" text-anchor="middle" class="cs-ru">фиоле́товый</text>
+      <text x="250" y="188" text-anchor="middle" class="cs-jp">紫</text>
+      <rect x="328" y="112" width="44" height="44" rx="10" fill="#E58FB0" stroke="#B9A79C" stroke-width="1"></rect>
+      <text x="350" y="172" text-anchor="middle" class="cs-ru">ро́зовый</text>
+      <text x="350" y="188" text-anchor="middle" class="cs-jp">ピンク</text>
+      <rect x="28" y="212" width="44" height="44" rx="10" fill="#8A5B3A" stroke="#B9A79C" stroke-width="1"></rect>
+      <text x="50" y="272" text-anchor="middle" class="cs-ru">кори́чневый</text>
+      <text x="50" y="288" text-anchor="middle" class="cs-jp">茶</text>
+      <rect x="128" y="212" width="44" height="44" rx="10" fill="#9A9A9A" stroke="#B9A79C" stroke-width="1"></rect>
+      <text x="150" y="272" text-anchor="middle" class="cs-ru">се́рый</text>
+      <text x="150" y="288" text-anchor="middle" class="cs-jp">灰</text>
+      <rect x="228" y="212" width="44" height="44" rx="10" fill="#2C2C2C" stroke="#B9A79C" stroke-width="1"></rect>
+      <text x="250" y="272" text-anchor="middle" class="cs-ru">чёрный</text>
+      <text x="250" y="288" text-anchor="middle" class="cs-jp">黒</text>
+      <rect x="328" y="212" width="44" height="44" rx="10" fill="#FFFFFF" stroke="#B9A79C" stroke-width="1"></rect>
+      <text x="350" y="272" text-anchor="middle" class="cs-ru">бе́лый</text>
+      <text x="350" y="288" text-anchor="middle" class="cs-jp">白</text>
+    </svg>
+    <p style="font-size:11px;color:#A05A00;"><b>ロシア語には「青」が2つあります。</b>
+    <b>голубо́й</b>（明るい水色）と <b>си́ний</b>（濃い青）は、
+    日本語の「赤」と「ピンク」くらい<b>別の色</b>として区別されます。
+    どちらかを使えばよい、という関係ではありません。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>形のみほん</strong>
+    <svg class="pref-map" viewBox="0 0 400 230" role="img" aria-labelledby="shT shD">
+      <title id="shT">形の見本</title>
+      <desc id="shD">円・正方形・三角形・長方形・楕円・星の6つの形と、そのロシア語名を並べた図です。</desc>
+      <circle cx="66" cy="48" r="30" fill="#D6402F" stroke="#B9A79C" stroke-width="1"></circle>
+      <text x="66" y="98" text-anchor="middle" class="cs-ru">круг</text>
+      <text x="66" y="114" text-anchor="middle" class="cs-jp">まる</text>
+
+      <rect x="170" y="18" width="60" height="60" rx="4" fill="#2E5FA3" stroke="#B9A79C" stroke-width="1"></rect>
+      <text x="200" y="98" text-anchor="middle" class="cs-ru">квадра́т</text>
+      <text x="200" y="114" text-anchor="middle" class="cs-jp">しかく</text>
+
+      <polygon points="334,18 364,78 304,78" fill="#4E9A5B" stroke="#B9A79C" stroke-width="1" stroke-linejoin="round"></polygon>
+      <text x="334" y="98" text-anchor="middle" class="cs-ru">треуго́льник</text>
+      <text x="334" y="114" text-anchor="middle" class="cs-jp">さんかく</text>
+
+      <rect x="24" y="142" width="84" height="44" rx="4" fill="#EFC53F" stroke="#B9A79C" stroke-width="1"></rect>
+      <text x="66" y="206" text-anchor="middle" class="cs-ru">прямоуго́льник</text>
+      <text x="66" y="222" text-anchor="middle" class="cs-jp">ながしかく</text>
+
+      <ellipse cx="200" cy="164" rx="42" ry="24" fill="#7A5CA8" stroke="#B9A79C" stroke-width="1"></ellipse>
+      <text x="200" y="206" text-anchor="middle" class="cs-ru">ова́л</text>
+      <text x="200" y="222" text-anchor="middle" class="cs-jp">だえん</text>
+
+      <polygon points="333,122 340,143 362,143 344,156 350,177 333,164 316,177 322,156 304,143 326,143" fill="#E8842A" stroke="#B9A79C" stroke-width="1" stroke-linejoin="round"></polygon>
+      <text x="333" y="206" text-anchor="middle" class="cs-ru">звезда́</text>
+      <text x="333" y="222" text-anchor="middle" class="cs-jp">ほし</text>
+    </svg>
+    <p>形を「〜い」と言うときは、形容詞にします。</p>
+    <div class="conj-table">
+      <span class="pron">круг → 丸い</span><span class="form">кру́глый（кру́глый стол＝丸テーブル）</span>
+      <span class="pron">квадра́т → 四角い</span><span class="form">квадра́тный</span>
+      <span class="pron">треуго́льник → 三角の</span><span class="form">треуго́льный</span>
+      <span class="pron">ова́л → 楕円の</span><span class="form">ова́льный</span>
+    </div>
+  </div>
+
+  <div class="case-row">
+    <strong>色 ＋ 形 — 名詞の性に合わせる</strong>
+    <p>色も形容詞なので、<b>うしろの名詞に語尾をそろえます</b>。同じ「赤い」でも4つの形になります。</p>
+    <div class="conj-table">
+      <span class="pron">男性</span><span class="form">кра́сн<b>ый</b> круг（赤いまる）</span>
+      <span class="pron">女性</span><span class="form">кра́сн<b>ая</b> звезда́（赤いほし）</span>
+      <span class="pron">中性</span><span class="form">кра́сн<b>ое</b> со́лнце（赤いたいよう）</span>
+      <span class="pron">複数</span><span class="form">кра́сн<b>ые</b> круги́（赤いまるたち）</span>
+    </div>
+    <p style="font-size:11px;color:#856348;">形が名詞、色が形容詞——という組み合わせがふつうです。
+    <span class="ex-inline">си́ний квадра́т</span>（青い四角）
+    <span class="ex-inline">зелёный треуго́льник</span>（緑の三角）
+    <span class="ex-inline">жёлтая звезда́</span>（黄色い星）</p>
+  </div>
+
+  <div class="case-row">
+    <strong>知っている語に、色をつけてみる</strong>
+    <p>ねこ図鑑で出会った語に色を足すと、そのまま使える表現になります。</p>
+    <div class="conj-table">
+      <span class="pron">зелёный арбу́з</span><span class="form">緑のスイカ（外側）／中は кра́сный</span>
+      <span class="pron">ры́жая лиса́</span><span class="form">赤茶色のキツネ　※動物の毛色は ры́жий</span>
+      <span class="pron">бе́лое молоко́</span><span class="form">白い牛乳（молоко́ は中性）</span>
+      <span class="pron">жёлтый сыр</span><span class="form">黄色いチーズ</span>
+      <span class="pron">зелёный горо́х</span><span class="form">緑のえんどう豆</span>
+      <span class="pron">кори́чневый оре́х</span><span class="form">茶色いくるみ</span>
+    </div>
+  </div>
+
+  <div class="column-box">
+    <p class="cb-head">コラム — 「赤い広場」は赤くない</p>
+    <p><b>Кра́сная пло́щадь</b> を「赤の広場」と訳しますが、
+    この кра́сный はもともと<b>「美しい」</b>という意味の語でした。
+    краси́вый（美しい）と同じ根から来ています。</p>
+    <p>昔のことばには <b>кра́сная де́вица</b>（美しい乙女）という言い方も残っていて、
+    ここでも「赤い娘」ではありません。色の名前として使われるようになったのは、
+    もっとあとのことです。</p>
+    <p>広場の名前は、革命の色とも、れんがの色とも関係がありません。
+    「うつくしい広場」——そう思って眺めると、少し見え方が変わります。</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'кра́сн（　） звезда́（赤い星）', say:'кра́сная звезда́', opts:['кра́сный','кра́сная','кра́сное'], a:1,
+     ex:'звезда́ は女性名詞なので、形容詞も女性形 кра́сная にそろえます。'},
+    {type:'mc', q:'「白い牛乳」を正しく言うと？', say:'бе́лое молоко́', opts:['бе́лый молоко́','бе́лое молоко́','бе́лая молоко́'], a:1,
+     ex:'молоко́ は -о で終わる中性名詞。形容詞も中性形 бе́лое になります。'},
+    {type:'mc', q:'голубо́й と си́ний のちがいは？', opts:['голубо́й＝水色、си́ний＝濃い青','голубо́й＝濃い青、си́ний＝水色','どちらも同じ意味'], a:0,
+     ex:'ロシア語では明るい青と濃い青を別の色として扱います。голубо́е не́бо（青空）／си́нее мо́ре（紺の海）。'},
+    {type:'mc', q:'「三角形」はどれ？', say:'треуго́льник', opts:['круг','квадра́т','треуго́льник'], a:2,
+     ex:'треуго́льник。три（3）＋ у́гол（角）＝「3つの角」からできた語です。'},
+    {type:'mc', q:'「丸いテーブル」の（　）は？　（　） стол', say:'кру́глый стол', opts:['круг','кру́глый','кругу́'], a:1,
+     ex:'круг は名詞「まる」。「丸い」と修飾するときは形容詞の кру́глый にします。'},
+    {type:'mc', q:'Кра́сная пло́щадь の кра́сная は、もともとどんな意味？', opts:['赤い','美しい'], a:1,
+     ex:'краси́вый と同じ根の語で、古くは「美しい」の意味。кра́сная де́вица（美しい乙女）にも残っています。'},
+    {type:'mc', q:'「キツネの毛色（赤茶）」を表すのは？', opts:['кра́сная лиса́','ры́жая лиса́'], a:1,
+     ex:'動物の毛や人の髪の赤茶色は ры́жий を使います。кра́сный は使いません。'},
+    {type:'input', q:'зелёный を女性形にして綴ってください（зелёный → ___ трава́）', a:'зеленая', hint:'-ый → -ая',
+     ex:'зелёная。※ ё にアクセントがあるので、зелёная と綴ります。'},
+    {type:'order', q:'「青い四角」を組み立ててください',
+     tokens:['си́ний','квадра́т'],
+     accept:[{o:'си́ний квадра́т', n:'形容詞は名詞の前。квадра́т は男性名詞なので си́ний になります'}],
+     hint:'形容詞が先です',
+     ex:'си́ний квадра́т。女性名詞なら си́няя、中性なら си́нее になります。'}
+  ]
+},
+
+{
+  id:'appearance', cat:'vocab', level:'初級', title:'人を描く — вне́шность', sub:'есть を言うとき、言わないとき',
+  lesson:`
+  <p>人の外見を言うときは、<b>у ＋ 生格</b>を使います。
+  「持っている」の形と同じですが、<b>есть を言いません</b>。
+  この使い分けが分かると、ロシア語がぐっと自然になります。</p>
+
+  <div class="rule-row">
+    <strong>есть を言うとき / 言わないとき</strong>
+    <p><b>есть を言う</b>のは、<b>「ある・いる」こと自体</b>が新しい情報のとき。</p>
+    <p>• <span class="ex-inline">У тебя́ есть маши́на?</span>（車、持ってる？）— 持っているかどうかを聞いている</p>
+    <p>• <span class="ex-inline">У меня́ есть брат.</span>（兄弟がいます）— いることを伝えている</p>
+    <p>• <span class="ex-inline">У вас есть вопро́сы?</span>（質問はありますか）</p>
+    <p style="margin-top:10px;"><b>есть を言わない</b>のは、<b>あることは分かっていて</b>、
+    <b>どんなふうか</b>を言うとき。</p>
+    <p>• <span class="ex-inline">У неё дли́нные во́лосы.</span>（彼女は長い髪をしている）</p>
+    <p>• <span class="ex-inline">У него́ голубы́е глаза́.</span>（彼は青い目をしている）</p>
+    <p>• <span class="ex-inline">У меня́ высо́кая температу́ра.</span>（熱があります）</p>
+    <div class="conj-table">
+      <span class="pron">есть あり</span><span class="form">У тебя́ <b>есть</b> соба́ка?　犬を飼っているの？</span>
+      <span class="pron">есть なし</span><span class="form">У тебя́ хоро́шая соба́ка.　いい犬だね</span>
+    </div>
+    <p style="font-size:11px;color:#A05A00;">髪や目があるのは当たり前なので、
+    「髪が<b>ある</b>」とは言いません。言いたいのは<b>長さや色</b>のほうです。
+    形容詞がついたら есть は落ちる——と覚えておくと、ほぼ当たります。</p>
+    <p style="font-size:11px;color:#856348;">※ 否定はいつも <b>нет ＋ 生格</b>です。
+    есть のあるなしに関係なく、У меня́ <b>нет</b> маши́ны. となります。</p>
+  </div>
+
+  <div class="case-row">
+    <strong>髪 — во́лосы（いつも複数）</strong>
+    <p>во́лосы は複数形で使うので、<b>形容詞も複数形</b>にします（во́лос は「髪の毛1本」）。</p>
+    <div class="conj-table">
+      <span class="pron">長い髪</span><span class="form">дли́нные во́лосы</span>
+      <span class="pron">短い髪</span><span class="form">коро́ткие во́лосы</span>
+      <span class="pron">明るい髪・金髪</span><span class="form">све́тлые во́лосы</span>
+      <span class="pron">暗い髪</span><span class="form">тёмные во́лосы</span>
+      <span class="pron">黒い髪</span><span class="form">чёрные во́лосы</span>
+      <span class="pron">赤毛</span><span class="form">ры́жие во́лосы　※ кра́сные とは言いません</span>
+      <span class="pron">白髪</span><span class="form">седы́е во́лосы</span>
+      <span class="pron">くせ毛</span><span class="form">кудря́вые во́лосы</span>
+    </div>
+    <p>• <span class="ex-inline">У неё дли́нные све́тлые во́лосы.</span>（彼女は長い金髪です）</p>
+    <p style="font-size:11px;color:#856348;">「長い」「明るい」と2つ並べるときは、
+    <b>長さ → 色</b>の順が自然です。日本語と同じ並びです。</p>
+  </div>
+
+  <div class="case-row">
+    <strong>目 — глаза́（これも複数）</strong>
+    <div class="conj-table">
+      <span class="pron">青い目</span><span class="form">голубы́е глаза́</span>
+      <span class="pron">茶色い目</span><span class="form">ка́рие глаза́　※ кори́чневые とは言いません</span>
+      <span class="pron">緑の目</span><span class="form">зелёные глаза́</span>
+      <span class="pron">灰色の目</span><span class="form">се́рые глаза́</span>
+      <span class="pron">黒い目</span><span class="form">чёрные глаза́</span>
+      <span class="pron">大きな目</span><span class="form">больши́е глаза́</span>
+    </div>
+    <p style="font-size:11px;color:#A05A00;"><b>ка́рий</b> は「目の茶色」だけに使う特別な語です
+    （馬の毛色にも使います）。机やくるみの茶色は кори́чневый。
+    同じ「茶色」でも語を選び分けます。</p>
+  </div>
+
+  <div class="case-row">
+    <strong>背の高さ — рост</strong>
+    <p>背の高さは <b>у ＋ 生格</b>ではなく、ふつうに「彼は〜だ」と言います。</p>
+    <div class="conj-table">
+      <span class="pron">背が高い</span><span class="form">Он высо́кий.／Она́ высо́кая.</span>
+      <span class="pron">背が低め</span><span class="form">Он невысо́кий.（やわらかい言い方）</span>
+      <span class="pron">中くらい</span><span class="form">Он сре́днего ро́ста.（生格で「〜の背丈の」）</span>
+    </div>
+  </div>
+
+  <div class="rule-row">
+    <strong>まとめて一人を描いてみる</strong>
+    <p><span class="ex-inline">Э́то Ма́ша. Она́ высо́кая. У неё дли́нные тёмные во́лосы и ка́рие глаза́.</span></p>
+    <p style="font-size:11px;color:#856348;">（こちらはマーシャです。背が高くて、長い黒髪と茶色い目をしています）</p>
+    <p style="font-size:11px;color:#3A5578;">この3文だけで、人の紹介ができます。
+    Э́то ＋ 名前 → 全体の印象 → 細かい特徴、の順で並べるのが自然です。</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'「彼女は長い髪をしています」は？', say:'У неё дли́нные во́лосы', opts:['У неё есть дли́нные во́лосы.','У неё дли́нные во́лосы.'], a:1,
+     ex:'髪があるのは当たり前なので есть は言いません。есть は「ある・ない」こと自体が新しい情報のときに使います。'},
+    {type:'mc', q:'相手が車を持っているかどうか、たずねるなら？', say:'У тебя́ есть маши́на?', opts:['У тебя́ есть маши́на?','У тебя́ маши́на?'], a:0,
+     ex:'持っているかどうかを聞いているので есть を使います。'},
+    {type:'mc', q:'У неё （　） глаза́.（彼女は茶色い目をしている）', say:'У неё ка́рие глаза́', opts:['ка́рие','кори́чневые','ка́рий'], a:0,
+     ex:'目の茶色は ка́рий を使います。кори́чневый はものの茶色です。глаза́ は複数なので ка́рие。'},
+    {type:'mc', q:'「短い髪」を正しく言うと？', opts:['коро́ткий во́лос','коро́ткие во́лосы'], a:1,
+     ex:'во́лосы はいつも複数。形容詞も複数形にします。во́лос は「髪の毛1本」です。'},
+    {type:'mc', q:'「兄弟がいます」は？', say:'У меня́ есть брат', opts:['У меня́ брат.','У меня́ есть брат.'], a:1,
+     ex:'いること自体を伝えているので есть を使います。'},
+    {type:'mc', q:'「車を持っていません」は？', say:'У меня́ нет маши́ны', opts:['У меня́ не есть маши́ны.','У меня́ нет маши́ны.'], a:1,
+     ex:'否定はいつも нет ＋ 生格。не есть という形はありません。'},
+    {type:'mc', q:'У него́ （　） во́лосы.（彼は金髪です）', opts:['све́тлый','све́тлые','све́тлая'], a:1,
+     ex:'во́лосы は複数なので、形容詞も複数形 све́тлые になります。'},
+    {type:'mc', q:'есть を言わないのは、どんなとき？', opts:['あることは分かっていて、どんなふうかを言うとき','ものが1つしかないとき'], a:0,
+     ex:'形容詞がついて「どんなふうか」を言うときは есть が落ちます。У неё краси́вые глаза́.（目がきれい）。'},
+    {type:'mc', q:'「赤毛」を表すのはどれ？', opts:['кра́сные во́лосы','ры́жие во́лосы'], a:1,
+     ex:'髪や動物の毛の赤茶色は ры́жий。кра́сный は使いません。'},
+    {type:'input', q:'「髪」をロシア語で綴ってください（いつも複数形）', a:'волосы', hint:'во… で始まります',
+     ex:'во́лосы。単数の во́лос は「髪の毛1本」を指します。'},
+    {type:'order', q:'「彼女は青い目をしています」を組み立ててください',
+     tokens:['У неё','голубы́е','глаза́'],
+     accept:[{o:'У неё голубы́е глаза́', n:'у ＋ 生格 ＋ 形容詞 ＋ 名詞。есть は入れません'}],
+     hint:'есть は使いません',
+     ex:'У неё голубы́е глаза́. 目があることは当たり前なので、есть は言わずに色だけを伝えます。'}
+  ]
+}
 ];
 
 
@@ -8752,6 +9021,24 @@ const WHY = {
   'negation-gen:7': ['и́мя は主格（対格も同じ形）です。ここは生格の и́мени が自然です', ''],
   'negation-gen:8': ['主格は ничто́ です。ничего́ とはなりません', '', '対格も ничто́ の形をとります。ничего́ は生格です'],
   'negation-gen:9': ['語順の問題ではありません。変わるのは名詞の形（格）です', ''],
+  // ---- 色と形 ----
+  'color-shape:0': ['кра́сный は男性形です。звезда́ は女性名詞なので合いません', '', 'кра́сное は中性形です'],
+  'color-shape:1': ['бе́лый は男性形です。молоко́ は中性名詞です', '', 'бе́лая は女性形です'],
+  'color-shape:2': ['', '逆です。голубо́й が明るい水色、си́ний が濃い青です', 'ロシア語ではこの2つを別の色として区別します'],
+  'color-shape:3': ['круг は「まる」です', 'квадра́т は「しかく」です', ''],
+  'color-shape:4': ['круг は名詞の「まる」です。名詞を修飾するときは形容詞にします', '', 'кругу́ は与格・前置格の形です'],
+  'color-shape:5': ['いまは色の名前ですが、この広場の名前が生まれたころは別の意味でした', ''],
+  'color-shape:6': ['кра́сный は動物の毛色には使いません', ''],
+  // ---- 外見をあらわす ----
+  'appearance:0': ['髪があることは当たり前なので、есть は言いません', ''],
+  'appearance:1': ['', 'есть がないと「その車、きみのもの？」のような、別のたずね方になります'],
+  'appearance:2': ['', 'кори́чневый はものの茶色です。目には ка́рий を使います', 'ка́рий は単数・男性形です。глаза́ は複数なので ка́рие にします'],
+  'appearance:3': ['во́лос は「髪の毛1本」です。髪はいつも複数形で言います', ''],
+  'appearance:4': ['いること自体を伝えているので、есть が必要です', ''],
+  'appearance:5': ['не есть という形はありません。否定は нет ＋ 生格です', ''],
+  'appearance:6': ['све́тлый は男性・単数の形です。во́лосы は複数です', '', 'све́тлая は女性・単数の形です'],
+  'appearance:7': ['', '数の問題ではありません。есть が落ちるのは「どんなふうか」を言うときです'],
+  'appearance:8': ['кра́сный は髪や毛の色には使いません', ''],
 
   // ---- 関係代名詞 кото́рый ----
   'relative:0': ['кото́рая は主格です。関係文の中では чита́ю の目的語にあたるので、対格にします', '', 'кото́рой は生格・与格・造格・前置格の形です'],
