@@ -2744,6 +2744,22 @@
   }
   .toc-none { font-size: 11.5px; color: #7E5C42; line-height: 1.9; padding: 10px 2px; }
 
+  /* ---- 写真 ---- */
+  .photo { margin: 12px 0 6px; }
+  .photo img {
+    display: block; width: 100%; height: auto;
+    border-radius: 14px; border: 1px solid #E4D0C4;
+    box-shadow: 0 3px 14px rgba(140,90,70,0.13);
+  }
+  .photo figcaption { display: flex; flex-direction: column; gap: 2px; padding: 8px 4px 0; }
+  .photo figcaption b { font-size: 13px; font-weight: 800; color: #3A2318; }
+  .photo figcaption span { font-size: 11.5px; color: #6B4636; line-height: 1.8; }
+  .photo figcaption .ph-note { font-size: 11px; color: #7E5C42; }
+  .photo figcaption em {
+    font-style: normal; font-size: 10px; color: #7A5A48;
+    letter-spacing: 0.06em; margin-top: 2px;
+  }
+
   /* ---- つづきから ---- */
   .resume-btn {
     display: flex; align-items: center; gap: 9px; width: 100%;
@@ -6420,6 +6436,22 @@ const GRAMMAR_UNITS = [
     <p>у него́（彼のところに）・с ней（彼女と）・к ним（彼らのところへ）</p>
   </div>
 
+  <div class="case-row">
+    <strong>写真の中の前置詞をさがす</strong>
+    <p>1枚の写真の中にも、前置詞はいくつも隠れています。
+    どこに何があるかを言うだけで、格の練習になります。</p>
+    <figure class="photo"><img src="ph-park.jpg" alt="モスクワの公園。草の上にアカツクシガモが並び、奥に池とベンチ、三色の旗の飾りがある" loading="lazy"><figcaption><b>у́тки в па́рке</b><span>公園のかもたち</span><em>撮影：杉山真央</em></figcaption></figure>
+    <div class="conj-table">
+      <span class="pron">У́тки <b>на</b> траве́.</span><span class="form">かもたちは草の上に　на ＋ 前置格</span>
+      <span class="pron">Скаме́йки <b>у</b> пруда́.</span><span class="form">ベンチは池のそばに　у ＋ 生格</span>
+      <span class="pron">Флажки́ <b>над</b> доро́жкой.</span><span class="form">小旗は小道の上に　над ＋ 造格</span>
+      <span class="pron">Дере́вья <b>вокру́г</b> пруда́.</span><span class="form">木は池のまわりに　вокру́г ＋ 生格</span>
+      <span class="pron">Мы гуля́ем <b>в</b> па́рке.</span><span class="form">公園を散歩する　в ＋ 前置格</span>
+    </div>
+    <p style="font-size:11px;color:#7E5C42;">※ 写真の鳥は <b>ога́рь</b>（アカツクシガモ）。
+    モスクワの公園でよく見かける、у́тка のなかまです。</p>
+  </div>
+
   <div class="rule-row">
     <strong>前置詞が1文字ふえるとき — во・со・ко・обо</strong>
     <p>子音1つだけの前置詞は、<b>そのままでは続けて言いにくい</b>とき、
@@ -7728,6 +7760,7 @@ const GRAMMAR_UNITS = [
     <p style="font-size:11px;color:#7A5040;">• <b>е́ду</b>（乗り物で行く）＋ <b>в Москву́</b>（в＋対格＝方向）<br>
     • <b>Бу́ду там три дня.</b> — бу́ду＝быть の未来形。три дня は「2・3・4＋生格単数」<br>
     • <b>напишу́</b>＝完了体の未来「書き上げるつもり」　• <b>тебе́</b>＝ты の与格</p>
+    <figure class="photo"><img src="ph-river.jpg" alt="夕暮れのモスクワ川。遊覧船が行き交い、奥にピョートル大帝の像が立つ" loading="lazy"><figcaption><b>Москва́-река́ ве́чером</b><span>夕暮れのモスクワ川</span><span class="ph-note">メッセージの相手が向かう先は、こんな街です。</span><em>撮影：杉山真央</em></figcaption></figure>
   </div>
 
   <div class="rule-row">
@@ -7947,6 +7980,18 @@ const GRAMMAR_UNITS = [
     <p>• <span class="ex-inline">Васили́са Прекра́сная</span>（美しのワシリーサ）— 名前の後ろに形容詞を置く昔話らしい語順です。</p>
   </div>
 
+  <div class="column-box">
+    <p class="cb-head">コラム — Чебура́шка（チェブラーシカ）</p>
+    <p>むかしの昔話だけでなく、ソ連時代のアニメも、いまのロシアの人が
+    子どものころから知っている「共通のことば」です。
+    その代表が <b>Чебура́шка</b> と、相棒の <b>крокоди́л Ге́на</b>。</p>
+    <p>名前は <b>чебура́хнуться</b>（ころんと転がる）から来ています。
+    箱から出てきては、すぐころんと転んでしまったから——という設定です。</p>
+    <p>ゲーナが弾いているのは <b>гармо́шка</b>（гармо́нь の愛称形）。
+    誕生日の歌「Пусть бегу́т неуклю́же…」は、いまも子どもたちが歌います。</p>
+    <figure class="photo"><img src="ph-cheburashka.jpg" alt="アコーディオンを弾くワニのゲーナと、その前に立つチェブラーシカの銅像" loading="lazy"><figcaption><b>Чебура́шка и крокоди́л Ге́на</b><span>チェブラーシカとワニのゲーナ</span><span class="ph-note">モスクワの公園に立つ銅像。ゲーナの手にあるのが гармо́шка です。</span><em>撮影：杉山真央</em></figcaption></figure>
+  </div>
+
   <div class="case-row">
     <strong>知っている童話を、ロシア語で</strong>
     <p>• <b>Золу́шка</b>（シンデレラ）— зола́（灰）から。「灰かぶり」という意味です</p>
@@ -7975,6 +8020,8 @@ const GRAMMAR_UNITS = [
     {type:'mc', q:'「Я ль на све́те всех миле́е?」の миле́е はどんな形？', opts:['最上級','比較級','命令形'], a:1, ex:'ми́лый の比較級 миле́е。生格の всех（すべての人より）と組み合わせて「誰よりも美しい」＝実質的な最上級になります。'},
     {type:'mc', q:'Ба́ба-яга́ が住む「鶏の足の上に建つ小屋」は？', opts:['избу́шка на ку́рьих но́жках','золото́й пету́х','Кра́сная Ша́почка'], a:0, ex:'избу́шка（изба́ の愛称形）＋ на ＋ 前置格。ロシア民話でいちばん有名な家です。'},
     {type:'mc', q:'「白雪姫」をロシア語で言うと？', say:'Белосне́жка', opts:['Белосне́жка','Спя́щая краса́вица','Руса́лочка'], a:0, ex:'бе́лый（白い）＋ снег（雪）から Белосне́жка。Спя́щая краса́вица は眠れる森の美女、Руса́лочка は人魚姫です。'},
+    {type:'mc', q:'крокоди́л Ге́на が弾いている楽器は？', opts:['гармо́шка（アコーディオン）','бараба́н（たいこ）','скри́пка（バイオリン）'], a:0,
+     ex:'гармо́шка は гармо́нь の愛称形。誕生日の歌をひきながら歌う場面が、いちばん知られています。'},
     {type:'mc', q:'ロシア独自の昔話はどれ？', opts:['Ре́пка（おおきなかぶ）','Кра́сная Ша́почка（赤ずきん）','Золу́шка（シンデレラ）'], a:0, ex:'Ре́пка はロシアの民話。おじいさんが育てた大きな ре́пка（かぶ）を、家族と動物たちが力を合わせて抜くお話です。'}
   ]
 },
@@ -8490,6 +8537,10 @@ const GRAMMAR_UNITS = [
     <p style="font-size:11px;color:#7E5C42;">2つの色をまぜたときも、同じくハイフンでつなぎます。
     <span class="ex-inline">се́ро-голубо́й</span>（灰色がかった青）
     <span class="ex-inline">чёрно-бе́лый</span>（白黒の）</p>
+    <p>3色ならびも同じです。ロシアの国旗は上から
+    <b>бе́лый</b>・<b>си́ний</b>・<b>кра́сный</b>——まとめて
+    <span class="ex-inline">бе́ло-си́не-кра́сный флаг</span>と言います。</p>
+    <figure class="photo"><img src="ph-rossiya.jpg" alt="РОССИЯ という大きな立体文字と、白・青・赤の三色" loading="lazy"><figcaption><b>бе́ло-си́не-кра́сный</b><span>白・青・赤の三色</span><span class="ph-note">最後の кра́сный だけが形を変え、前の2つは -о / -е でつながります。</span><em>撮影：杉山真央</em></figcaption></figure>
   </div>
 
   <div class="case-row">
@@ -8545,6 +8596,7 @@ const GRAMMAR_UNITS = [
     もっとあとのことです。</p>
     <p>広場の名前は、革命の色とも、れんがの色とも関係がありません。
     「うつくしい広場」——そう思って眺めると、少し見え方が変わります。</p>
+    <figure class="photo"><img src="ph-square.jpg" alt="赤の広場。奥に聖ワシリイ大聖堂とクレムリンの塔が見える" loading="lazy"><figcaption><b>Кра́сная пло́щадь</b><span>モスクワ・赤の広場</span><span class="ph-note">右がクレムリンの壁、正面が聖ワシリイ大聖堂です。</span><em>撮影：杉山真央</em></figcaption></figure>
   </div>
   `,
   drills:[
@@ -9957,7 +10009,8 @@ const WHY = {
   'folktales:5': ['最上級なら са́мая ми́лая のような形になります', '', '命令形ではありません。-ее は比較級の語尾です'],
   'folktales:6': ['', 'золото́й пету́х は「金の雄鶏」で、別の物語に出てきます', 'Кра́сная Ша́почка は「赤ずきん」で、小屋の名前ではありません'],
   'folktales:7': ['', 'Спя́щая краса́вица は「眠れる森の美女」です', 'Руса́лочка は「人魚姫」です'],
-  'folktales:8': ['', '「赤ずきん」はフランスやドイツから伝わった話です', '「シンデレラ」もヨーロッパ各地に伝わる話で、ロシア独自のものではありません'],
+  'folktales:8': ['', 'бараба́н は「たいこ」です', 'скри́пка は「バイオリン」です'],
+  'folktales:9': ['', '「赤ずきん」はフランスやドイツから伝わった話です', '「シンデレラ」もヨーロッパ各地に伝わる話で、ロシア独自のものではありません'],
 
   // ---- 童話や詩を読む ----
   'reading:0': ['', '命令形なら живи́те・бу́дьте となります。-ли は過去・複数の語尾です'],
