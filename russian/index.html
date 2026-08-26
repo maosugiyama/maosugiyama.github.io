@@ -2818,6 +2818,29 @@
     body::after { opacity: 0.15; }
   }
 
+
+  /* ---- 森の地図 ---- */
+  .forest-map {
+    background: linear-gradient(180deg, #FFFDF8, #FBF6EC);
+    border: 1px solid #EFDFD2;
+    border-radius: 18px;
+    padding: 10px 8px 6px;
+    box-shadow: 0 3px 14px rgba(140,90,70,0.09);
+  }
+  .forest-map svg { display: block; width: 100%; height: auto; }
+  .forest-map text { font-family: inherit; }
+  /* 地図の文字は、小道や木の上に重なっても読めるよう白でふちどる */
+  .fm-name, .fm-pct {
+    paint-order: stroke fill;
+    stroke: #FFFDF8; stroke-width: 3.4px; stroke-linejoin: round;
+  }
+  .fm-name { font-size: 10.5px; font-weight: 800; fill: #5C4433; }
+  .fm-pct  { font-size: 10px; fill: #6E5747; }
+  .fm-stop { cursor: pointer; }
+  .fm-stop:active { opacity: 0.7; }
+  .fm-stop.now .fm-name { fill: #9F544A; }
+  .fm-stop.done .fm-name { fill: #35705C; }
+
 </style>
 </head>
 <body>
@@ -10649,6 +10672,95 @@ const STAIR_PAW = '<svg viewBox="0 0 24 24" fill="currentColor">'
   + '<path d="M12 11.3c3.1 0 5.4 2.3 5.4 5 0 2.2-1.8 3.7-4.2 3.7h-2.4c-2.4 0-4.2-1.5-4.2-3.7 0-2.7 2.3-5 5.4-5z"></path>'
   + '</svg>';
 
+
+// ------------------------------------------------------------
+// 森の地図 — 「ねこと歩く、ロシア語の道のり」を、道と目じるしで描く
+// ------------------------------------------------------------
+// 4つの段を、左下から右上へのびる小道の上に置く。
+// 輪の欠け具合がその段の進みぐあい、足あとが「いまここ」。
+const MAP_PTS = [[56,150],[150,104],[250,132],[344,66]];
+const MAP_TRAIL = 'M 4,178 C 22,172 38,162 56,150 C 90,146 114,104 150,104 '
+                + 'C 186,104 214,132 250,132 C 286,132 308,66 344,66 C 362,56 378,48 396,44';
+
+// 目じるしの絵（森の入口・とびら・丘・塔）
+function mapIcon(n, cx, cy, done) {
+  const ink = done ? '#3F7A69' : '#8A7768';
+  const g = function (inner) {
+    return '<g transform="translate(' + (cx - 12) + ',' + (cy - 12) + ')" fill="none" stroke="' + ink
+         + '" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">' + inner + '</g>';
+  };
+  if (n === 1) return g('<path d="M7 17 L11 6 L15 17 Z"/><path d="M11 17 v3"/><path d="M16 18 L19 11 L22 18 Z"/>');
+  if (n === 2) return g('<path d="M7 20 V10 a5 5 0 0 1 10 0 v10 z"/><circle cx="14" cy="15" r="1.1" fill="' + ink + '" stroke="none"/>');
+  if (n === 3) return g('<path d="M3 19 C7 11 10 11 13 15 C16 19 19 13 22 19 Z"/>');
+  return g('<path d="M8 20 V8 l4-4 4 4 v12 z"/><path d="M8 12 h8"/>');
+}
+
+function forestMapHtml(stages) {
+  let s = '<div class="forest-map">';
+  s += '<svg viewBox="0 0 400 210" role="img" aria-labelledby="fmT fmD">';
+  s += '<title id="fmT">ロシア語の道のりの地図</title>';
+  s += '<desc id="fmD">左下から右上へのびる小道に、4つの目じるしが並んでいます。'
+     + 'それぞれの輪の欠け具合が、その段の進みぐあいを表します。</desc>';
+
+  // 木立（地図の雰囲気。読むものではないので薄く）
+  const trees = [[26,108],[104,58],[196,54],[300,178],[380,148],[132,178],[222,182]];
+  trees.forEach(function (t) {
+    s += '<g opacity="0.5" fill="none" stroke="#9BBFAF" stroke-width="1.5" stroke-linejoin="round">'
+       + '<path d="M' + t[0] + ' ' + (t[1] + 9) + ' L' + (t[0] + 4) + ' ' + (t[1] - 1)
+       + ' L' + (t[0] + 8) + ' ' + (t[1] + 9) + ' Z"/></g>';
+  });
+
+  // 小道
+  s += '<path d="' + MAP_TRAIL + '" fill="none" stroke="#E3D3C2" stroke-width="7" stroke-linecap="round"/>';
+  s += '<path d="' + MAP_TRAIL + '" fill="none" stroke="#B9997C" stroke-width="1.7" stroke-linecap="round" stroke-dasharray="1 7"/>';
+
+  stages.forEach(function (st, i) {
+    const p = MAP_PTS[i], cx = p[0], cy = p[1];
+    const R = 15, C = 2 * Math.PI * R;
+    const on = Math.max(0, Math.min(100, st.pct)) / 100 * C;
+
+    s += '<g class="fm-stop' + (st.current ? ' now' : '') + (st.complete ? ' done' : '') + '"'
+       + ' role="button" tabindex="0" onclick="gotoStage(' + st.n + ')"'
+       + ' aria-label="' + st.name + '　' + st.done + ' / ' + st.total + ' ' + st.unit + '">';
+    s += '<circle cx="' + cx + '" cy="' + cy + '" r="' + (R + 6) + '" fill="#FFFDF8" opacity="0.92"/>';
+    s += '<circle cx="' + cx + '" cy="' + cy + '" r="' + R + '" fill="none" stroke="#EBDCCB" stroke-width="3.4"/>';
+    if (on > 0.5) {
+      s += '<circle cx="' + cx + '" cy="' + cy + '" r="' + R + '" fill="none"'
+         + ' stroke="' + (st.complete ? '#4E8B6E' : '#C97B72') + '" stroke-width="3.4" stroke-linecap="round"'
+         + ' stroke-dasharray="' + on.toFixed(1) + ' ' + (C - on).toFixed(1) + '"'
+         + ' transform="rotate(-90 ' + cx + ' ' + cy + ')"/>';
+    }
+    s += mapIcon(st.n, cx, cy, st.complete);
+    if (st.current) {
+      s += '<g class="fm-paw" transform="translate(' + (cx - 9) + ',' + (cy - R - 34) + ') scale(0.78)">'
+         + STAIR_PAW.replace('<svg viewBox="0 0 24 24" fill="currentColor">', '<g fill="#A55A50">').replace('</svg>', '</g>')
+         + '</g>';
+    }
+    s += '<text x="' + cx + '" y="' + (cy + R + 17) + '" text-anchor="middle" class="fm-name">' + st.short + '</text>';
+    s += '<text x="' + cx + '" y="' + (cy + R + 30) + '" text-anchor="middle" class="fm-pct">' + st.pct + '%</text>';
+    // むずかしさの目やす（猫の足あとの数）
+    for (let k = 0; k < (st.cats || 0); k++) {
+      const px = cx - ((st.cats - 1) * 5) + k * 10;
+      s += '<g transform="translate(' + (px - 3.6) + ',' + (cy - R - 13) + ') scale(0.3)" fill="#C9A78F">'
+         + '<ellipse cx="6.6" cy="9.2" rx="2" ry="2.6" transform="rotate(-18 6.6 9.2)"></ellipse>'
+         + '<ellipse cx="11.9" cy="6.9" rx="2.05" ry="2.85"></ellipse>'
+         + '<ellipse cx="17.2" cy="9.2" rx="2" ry="2.6" transform="rotate(18 17.2 9.2)"></ellipse>'
+         + '<path d="M12 11.3c3.1 0 5.4 2.3 5.4 5 0 2.2-1.8 3.7-4.2 3.7h-2.4c-2.4 0-4.2-1.5-4.2-3.7 0-2.7 2.3-5 5.4-5z"></path>'
+         + '</g>';
+    }
+    s += '</g>';
+  });
+
+  s += '</svg></div>';
+  return s;
+}
+
+// 地図の目じるしを押したら、その段の案内へ
+function gotoStage(n) {
+  const row = document.getElementById('road-' + n);
+  if (row) row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
 function renderRoadmap() {
   renderResearchBand();
   renderSurveyCard();
@@ -10656,25 +10768,10 @@ function renderRoadmap() {
   renderReviewBand();
   const stages = stageInfo();
 
-  // ---- 階段メーター（左から右へ、だんだん高くなる）----
+  // ---- 森の地図（道は左下から右上へ。4つの目じるしを歩く）----
   const box = document.getElementById('stairs');
   if (box) {
-    let html = '<div class="stairs">';
-    stages.forEach(function(s, i) {
-      let cls = 'stair';
-      if (s.complete) cls += ' done';
-      if (s.pct >= 20) cls += ' has-fill';
-      if (s.current) cls += ' current';
-      html += '<div class="' + cls + '" style="--step:' + (i + 1) + ';">';
-      html += '  <span class="stair-mark">' + (s.current ? STAIR_PAW : '') + '</span>';
-      html += '  <span class="stair-cats">' + catMarks(s.cats) + '</span>';
-      html += '  <span class="stair-block"><span class="stair-fill" style="height:' + s.pct + '%;"></span></span>';
-      html += '  <span class="stair-name">' + s.short + '</span>';
-      html += '  <span class="stair-pct">' + s.pct + '%</span>';
-      html += '</div>';
-    });
-    html += '</div>';
-
+    const map = forestMapHtml(stages);
     const cur = stages.filter(function(s){ return s.current; })[0];
     let now = '<p class="stairs-now"><span class="now-tag">いまここ</span> <b>' + cur.name + '</b>';
     now += '<span class="now-sub">' + cur.what + ' ' + cur.done + ' / ' + cur.total + ' ' + cur.unit;
@@ -10690,7 +10787,7 @@ function renderRoadmap() {
            + '<span class="rb-title">' + lastU.title + '</span>'
            + '<span class="rb-arrow">→</span></button>';
     }
-    box.innerHTML = html + now;
+    box.innerHTML = map + now;
   }
 
   // ---- 各段の見出しに「いまここ／達成／建設中」を出す ----
