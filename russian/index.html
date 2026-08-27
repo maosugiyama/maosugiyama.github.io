@@ -2966,6 +2966,26 @@
   .len-t > span { font-size: 10.5px; color: #6B4636; line-height: 1.6; }
   .len-t .len-ex { font-size: 10.5px; color: #7E5C42; }
 
+
+  /* ---- 曜日（七曜の色） ---- */
+  .wd-list { margin: 10px 0 6px; }
+  .wd-row {
+    display: flex; align-items: center; gap: 11px;
+    padding: 7px 2px 7px 9px; border-left: 3px solid var(--wd);
+    border-bottom: 1px dotted #EFE0DA;
+  }
+  .wd-row:last-child { border-bottom: none; }
+  .wd-chip {
+    flex-shrink: 0; width: 26px; height: 26px; border-radius: 8px;
+    background: var(--wd); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 800;
+  }
+  .wd-t { display: flex; flex-direction: column; gap: 1px; min-width: 0; overflow-wrap: anywhere; }
+  .wd-t b { font-size: 12.5px; font-weight: 800; color: var(--wd); }
+  .wd-in { font-size: 11px; color: #3A2318; }
+  .wd-why { font-size: 10px; color: #7E5C42; }
+
 </style>
 </head>
 <body>
@@ -9001,6 +9021,44 @@ const GRAMMAR_UNITS = [
   </div>
 
   <div class="rule-row">
+    <strong>なぜ пять лет なのに、2026年は год なのか</strong>
+    <p>「5以上は лет」と覚えたのに、2026年は
+    <b>две ты́сячи два́дцать шесто́й год</b>。26なのに год です。
+    ここでつまずく人はとても多いのですが、<b>この2つは別のしくみ</b>で動いています。</p>
+    <div class="pair-list">
+      <p><b>数えるとき</b><span class="jp">数詞 ＋ 名詞　→ 1／2〜4／5以上 の規則が働く</span>
+      <span>пять <b>лет</b>（5年間・5歳）　два́дцать шесть <b>лет</b>（26歳）</span></p>
+      <p><b>順番を言うとき</b><span class="jp">序数 ＝ 形容詞　→ 名詞は主格・単数のまま</span>
+      <span>два́дцать шесто́й <b>год</b>（26番目の年 ＝ 2026年）</span></p>
+    </div>
+    <p style="font-size:11px;color:#9D5700;">序数は<b>形容詞のなかま</b>です。
+    形容詞のうしろの名詞は、いくつであろうと形が変わりません——
+    <b>но́вый год</b>（新年）と<b>まったく同じ構造</b>です。
+    「26個の年」ではなく「<b>26番目の</b>年」だから год のまま、というわけです。</p>
+    <div class="conj-table">
+      <span class="pron">26歳</span><span class="form">два́дцать шесть <b>лет</b>　※ 数えている</span>
+      <span class="pron">2026年</span><span class="form">две ты́сячи два́дцать шесто́й <b>год</b>　※ 順番</span>
+      <span class="pron">26年間</span><span class="form">два́дцать шесть <b>лет</b>　※ 数えている</span>
+      <span class="pron">2026年に</span><span class="form">в две ты́сячи два́дцать шесто́м <b>году́</b>　※ 順番</span>
+    </div>
+    <p style="font-size:11px;color:#7E5C42;">見分け方は<b>数字の形</b>です。
+    <b>шесть</b>（六）なら数えている、<b>шесто́й</b>（六番目）なら順番。
+    数字の形を見れば、うしろの名詞がどうなるかも決まります。</p>
+
+    <p style="margin-top:12px;"><b>◆ おまけ — лет は「夏」からきています</b></p>
+    <p>じつは <b>лет</b> は год の形ではありません。
+    <b>ле́то</b>（夏）の複数生格です。</p>
+    <p style="font-size:11px;color:#7E5C42;">昔のロシアでは、年を<b>「夏」の数</b>で数えていました。
+    冬を越して夏を迎えるたびに一つ年をとる——その名残が、
+    いまも「пять <b>лет</b>」として残っています。
+    <span class="ex-inline">Ско́лько тебе́ лет?</span> は、直訳すれば
+    「あなたは<b>いくつの夏</b>を過ごしましたか」。</p>
+    <p style="font-size:11px;color:#9D5700;">だから год は、単数と「1・2〜4」のときだけ顔を出します
+    （оди́н год／два го́да）。5以上になると、ле́то から借りてきた лет に交代します。</p>
+  </div>
+
+
+  <div class="rule-row">
     <strong>誕生日 — 自分のことを言ってみる</strong>
     <div class="pair-list">
       <p><b>Когда́ у тебя́ день рожде́ния?</b><span class="jp">誕生日はいつですか</span>
@@ -9024,21 +9082,33 @@ const GRAMMAR_UNITS = [
 
   <div class="case-row">
     <strong>曜日 — 7つと、その「〜に」</strong>
-    <div class="conj-table">
-      <span class="pron">понеде́льник</span><span class="form">月　в понеде́льник</span>
-      <span class="pron">вто́рник</span><span class="form">火　<b>во</b> вто́рник　※ в が во に</span>
-      <span class="pron">среда́</span><span class="form">水　в сре́ду　※ アクセントが前に移る</span>
-      <span class="pron">четве́рг</span><span class="form">木　в четве́рг</span>
-      <span class="pron">пя́тница</span><span class="form">金　в пя́тницу</span>
-      <span class="pron">суббо́та</span><span class="form">土　в суббо́ту</span>
-      <span class="pron">воскресе́нье</span><span class="form">日　в воскресе́нье</span>
-    </div>
+<div class="wd-list"><div class="wd-row" style="--wd:#6A4E93;"><span class="wd-chip" aria-hidden="true">月</span><span class="wd-t"><b>понеде́льник</b><span class="wd-in">в понеде́льник</span><span class="wd-why">неде́ля（週）のあと</span></span></div><div class="wd-row" style="--wd:#B0521C;"><span class="wd-chip" aria-hidden="true">火</span><span class="wd-t"><b>вто́рник</b><span class="wd-in"><b>во</b> вто́рник</span><span class="wd-why">второ́й（2番目）から</span></span></div><div class="wd-row" style="--wd:#1F6A8C;"><span class="wd-chip" aria-hidden="true">水</span><span class="wd-t"><b>среда́</b><span class="wd-in">в <b>сре́ду</b></span><span class="wd-why">「まんなか」の意味</span></span></div><div class="wd-row" style="--wd:#2F7145;"><span class="wd-chip" aria-hidden="true">木</span><span class="wd-t"><b>четве́рг</b><span class="wd-in">в четве́рг</span><span class="wd-why">четвёртый（4番目）から</span></span></div><div class="wd-row" style="--wd:#8A6510;"><span class="wd-chip" aria-hidden="true">金</span><span class="wd-t"><b>пя́тница</b><span class="wd-in">в <b>пя́тницу</b></span><span class="wd-why">пя́тый（5番目）から</span></span></div><div class="wd-row" style="--wd:#7A5533;"><span class="wd-chip" aria-hidden="true">土</span><span class="wd-t"><b>суббо́та</b><span class="wd-in">в <b>суббо́ту</b></span><span class="wd-why">ヘブライ語 шабба́т から</span></span></div><div class="wd-row" style="--wd:#B0332F;"><span class="wd-chip" aria-hidden="true">日</span><span class="wd-t"><b>воскресе́нье</b><span class="wd-in">в воскресе́нье</span><span class="wd-why">воскресе́ние（復活）から</span></span></div></div>
     <p style="font-size:11px;color:#7E5C42;">曜日は<b>в ＋ 対格</b>。女性名詞は語尾が -у / -ю に変わります
     （среда́ → в сре́ду、пя́тница → в пя́тницу）。</p>
-    <p style="font-size:11px;color:#7E5C42;">名前の由来もおもしろいところです。
-    <b>понеде́льник</b> は「неде́ля（週）のあと」、
-    <b>среда́</b> は「まんなか」、<b>четве́рг</b> は「4番目」、
-    <b>пя́тница</b> は「5番目」、<b>воскресе́нье</b> は「復活」。</p>
+    <p style="font-size:11px;color:#7E5C42;">色は日本の<b>七曜</b>（日＝太陽・月＝月・火＝火…）に合わせてあります。
+    意味と色が結びつくと、7つの長い語も覚えやすくなります。</p>
+    <p style="font-size:11px;color:#7E5C42;">名前の由来も、そのまま数字や意味につながっています。
+    <b>воскресе́нье</b>（日曜）は「復活」——復活祭 <b>Па́сха</b> と同じ語根です。</p>
+  </div>
+  <div class="column-box">
+    <p class="cb-head">コラム — 国の祝日と、街で配られるもの</p>
+    <p>ロシアには、季節の節目に大きな祝日があります。</p>
+    <div class="conj-table">
+      <span class="pron">1月1日</span><span class="form">Но́вый год　新年（いちばん大きい）</span>
+      <span class="pron">1月7日</span><span class="form">Рождество́　正教のクリスマス</span>
+      <span class="pron">2月23日</span><span class="form">День защи́тника Оте́чества　祖国防衛者の日</span>
+      <span class="pron">3月8日</span><span class="form">Междунаро́дный же́нский день　国際女性デー</span>
+      <span class="pron">5月9日</span><span class="form">День Побе́ды　戦勝記念日</span>
+      <span class="pron">6月12日</span><span class="form">День Росси́и　ロシアの日</span>
+      <span class="pron">8月22日</span><span class="form">День Госуда́рственного фла́га　国旗の日</span>
+    </div>
+    <p><b>День Росси́и</b>（6月12日）と <b>День фла́га</b>（8月22日）には、
+    街のあちこちで<b>三色の小旗やリボンが無料で配られます</b>。
+    «Росси́йский трико́лор» という取り組みで、2007年から続いているものです。</p>
+    <p>広場では屋台が出て、地方の食べものがふるまわれることもあります。
+    パンをさし出す <b>хлеб-соль</b>（パンと塩）は、
+    もともとお客を迎えるときのいちばん丁寧なもてなしでした。</p>
+    <figure class="photo"><img src="ph-flag.jpg" alt="紙袋に入った大きなパンと、手に持たれたロシアの三色旗" loading="lazy"><figcaption><b>хлеб и флажо́к</b><span>パンと小旗</span><span class="ph-note">флажо́к は флаг の指小形。「小さな旗」です。</span><em>撮影：杉山真央</em></figcaption></figure>
   </div>
 
   <div class="rule-row">
@@ -9088,66 +9158,6 @@ const GRAMMAR_UNITS = [
   </div>
 
   <div class="case-row">
-    <strong>зима́ — 冬のことば</strong>
-    <div class="conj-table">
-      <span class="pron">зима́</span><span class="form">冬　зимо́й（冬に）</span>
-      <span class="pron">снег</span><span class="form">雪　Идёт снег.（雪が降っている）</span>
-      <span class="pron">моро́з</span><span class="form">きびしい寒さ</span>
-      <span class="pron">снегови́к</span><span class="form">雪だるま</span>
-      <span class="pron">ёлка</span><span class="form">もみの木・クリスマスツリー</span>
-    </div>
-    <figure class="photo il"><img src="il-snow.jpg" alt="雪だるまをはさんで、あたたかい服を着た2匹のねこ" loading="lazy"><figcaption><b>Ко́шки де́лают снегови́ка.</b><span>ねこたちが雪だるまを作っています</span><span class="ph-note">снегови́к は生き物あつかい（活動体）なので、対格が снегови́ка になります。</span><em>絵：杉山真央</em></figcaption></figure>
-  </div>
-
-  <div class="column-box">
-    <p class="cb-head">コラム — Дед Моро́з は12月31日に来る</p>
-    <p>ロシアで一年でいちばん大きなお祝いは <b>Но́вый год</b>（新年）です。
-    プレゼントを持ってくるのは <b>Дед Моро́з</b>（マロース爺さん）。
-    青や紺の長いコートを着て、杖を持っています。</p>
-    <p>ひとりではありません。孫娘の <b>Снегу́рочка</b>（雪娘）が一緒に来ます。
-    サンタクロースにはいない、ロシアだけの相棒です。</p>
-    <p>そして来るのは<b>クリスマスではなく、12月31日の夜</b>。
-    正教のクリスマス（<b>Рождество́</b>）は<b>1月7日</b>で、
-    こちらは静かに祝う日です。順番が日本と逆になります。</p>
-    <p>ツリーは <b>ёлка</b>。クリスマスツリーというより<b>新年の木</b>で、
-    年が明けてしばらく飾られています。</p>
-    <figure class="photo il"><img src="il-christmas.jpg" alt="もみの木のまわりで、リボンの下に集まる4匹のねこ。上に С Рождеством! の文字" loading="lazy"><figcaption><b>С Рождество́м!</b><span>クリスマスおめでとう</span><span class="ph-note">お祝いは с ＋ 造格。Рождество́ → с Рождество́м です。</span><em>絵：杉山真央</em></figcaption></figure>
-  </div>
-
-  <div class="column-box">
-    <p class="cb-head">コラム — Ма́сленица（バターの週）と блины́</p>
-    <p>冬の終わりに、まるくて薄い <b>блины́</b>（ブリヌイ）を焼いて食べる一週間があります。
-    <b>Ма́сленица</b>——「ма́сло（バター）の週」という名前です。</p>
-    <p>блин がまるくて黄色いのは、<b>太陽</b>をかたどっているから。
-    長い冬を送り出し、春の太陽を呼ぶための食べものです。</p>
-    <p>最後の日曜には、藁で作った冬の人形（<b>чу́чело</b>）を燃やして冬を見送ります。
-    その日は <b>Прощёное воскресе́нье</b>（許しの日曜）——
-    たがいに「ごめんね」と言い合う日でもあります。</p>
-    <figure class="photo"><img src="ph-bliny.jpg" alt="三角に折りたたまれたブリヌイと、はちみつの小鉢、カプチーノ" loading="lazy"><figcaption><b>блины́ с мёдом</b><span>はちみつをそえたブリヌイ</span><span class="ph-note">мёд（はちみつ）は с ＋ 造格 で мёдом。смета́на（サワークリーム）や икра́（イクラ）もよく合わせます。</span><em>撮影：杉山真央</em></figcaption></figure>
-  </div>
-
-  <div class="column-box">
-    <p class="cb-head">コラム — 国の祝日と、街で配られるもの</p>
-    <p>ロシアには、季節の節目に大きな祝日があります。</p>
-    <div class="conj-table">
-      <span class="pron">1月1日</span><span class="form">Но́вый год　新年（いちばん大きい）</span>
-      <span class="pron">1月7日</span><span class="form">Рождество́　正教のクリスマス</span>
-      <span class="pron">2月23日</span><span class="form">День защи́тника Оте́чества　祖国防衛者の日</span>
-      <span class="pron">3月8日</span><span class="form">Междунаро́дный же́нский день　国際女性デー</span>
-      <span class="pron">5月9日</span><span class="form">День Побе́ды　戦勝記念日</span>
-      <span class="pron">6月12日</span><span class="form">День Росси́и　ロシアの日</span>
-      <span class="pron">8月22日</span><span class="form">День Госуда́рственного фла́га　国旗の日</span>
-    </div>
-    <p><b>День Росси́и</b>（6月12日）と <b>День фла́га</b>（8月22日）には、
-    街のあちこちで<b>三色の小旗やリボンが無料で配られます</b>。
-    «Росси́йский трико́лор» という取り組みで、2007年から続いているものです。</p>
-    <p>広場では屋台が出て、地方の食べものがふるまわれることもあります。
-    パンをさし出す <b>хлеб-соль</b>（パンと塩）は、
-    もともとお客を迎えるときのいちばん丁寧なもてなしでした。</p>
-    <figure class="photo"><img src="ph-flag.jpg" alt="紙袋に入った大きなパンと、手に持たれたロシアの三色旗" loading="lazy"><figcaption><b>хлеб и флажо́к</b><span>パンと小旗</span><span class="ph-note">флажо́к は флаг の指小形。「小さな旗」です。</span><em>撮影：杉山真央</em></figcaption></figure>
-  </div>
-
-  <div class="case-row">
     <strong>ле́то — 夏のことば</strong>
     <div class="conj-table">
       <span class="pron">ле́то</span><span class="form">夏　ле́том（夏に）</span>
@@ -9176,6 +9186,103 @@ const GRAMMAR_UNITS = [
     森へきのこ狩りに出かけることを <b>ходи́ть за гриба́ми</b> と言います。
     <b>за ＋ 造格</b>で「〜を取りに」——買い物なら <b>за хле́бом</b>（パンを買いに）です。</p>
   </div>
+  <div class="case-row">
+    <strong>зима́ — 冬のことば</strong>
+    <div class="conj-table">
+      <span class="pron">зима́</span><span class="form">冬　зимо́й（冬に）</span>
+      <span class="pron">снег</span><span class="form">雪　Идёт снег.（雪が降っている）</span>
+      <span class="pron">моро́з</span><span class="form">きびしい寒さ</span>
+      <span class="pron">снегови́к</span><span class="form">雪だるま</span>
+      <span class="pron">ёлка</span><span class="form">もみの木・クリスマスツリー</span>
+    </div>
+    <figure class="photo il"><img src="il-snow.jpg" alt="雪だるまをはさんで、あたたかい服を着た2匹のねこ" loading="lazy"><figcaption><b>Ко́шки де́лают снегови́ка.</b><span>ねこたちが雪だるまを作っています</span><span class="ph-note">снегови́к は生き物あつかい（活動体）なので、対格が снегови́ка になります。</span><em>絵：杉山真央</em></figcaption></figure>
+  </div>
+
+  <div class="column-box">
+    <p class="cb-head">コラム — Дед Моро́з は12月31日に来る</p>
+    <p>ロシアで一年でいちばん大きなお祝いは <b>Но́вый год</b>（新年）です。
+    プレゼントを持ってくるのは <b>Дед Моро́з</b>（マロース爺さん）。
+    青や紺の長いコートを着て、杖を持っています。</p>
+    <p>ひとりではありません。孫娘の <b>Снегу́рочка</b>（雪娘）が一緒に来ます。
+    サンタクロースにはいない、ロシアだけの相棒です。</p>
+    <p>そして来るのは<b>クリスマスではなく、12月31日の夜</b>。
+    正教のクリスマス（<b>Рождество́</b>）は<b>1月7日</b>で、
+    こちらは静かに祝う日です。順番が日本と逆になります。</p>
+    <p>ツリーは <b>ёлка</b>。クリスマスツリーというより<b>新年の木</b>で、
+    年が明けてしばらく飾られています。</p>
+    <figure class="photo il"><img src="il-christmas.jpg" alt="もみの木のまわりで、リボンの下に集まる4匹のねこ。上に С Рождеством! の文字" loading="lazy"><figcaption><b>С Рождество́м!</b><span>クリスマスおめでとう</span><span class="ph-note">お祝いは с ＋ 造格。Рождество́ → с Рождество́м です。</span><em>絵：杉山真央</em></figcaption></figure>
+  </div>
+
+  <div class="case-row">
+    <strong>お祝いの決まり文句 — с ＋ 造格</strong>
+    <p>ロシア語のお祝いは、ほとんどが <b>с ＋ 造格</b>の一つの型です。</p>
+    <div class="conj-table">
+      <span class="pron">С Но́вым го́дом!</span><span class="form">あけましておめでとう</span>
+      <span class="pron">С Рождество́м!</span><span class="form">クリスマスおめでとう</span>
+      <span class="pron">С восьмы́м ма́рта!</span><span class="form">3月8日おめでとう</span>
+      <span class="pron">С днём рожде́ния!</span><span class="form">お誕生日おめでとう</span>
+      <span class="pron">С Днём Побе́ды!</span><span class="form">戦勝記念日おめでとう</span>
+      <span class="pron">С пра́здником!</span><span class="form">（何の祝日にも使える）おめでとう</span>
+    </div>
+    <p style="font-size:11px;color:#9D5700;">言われたときの返し方は
+    <span class="ex-inline">Спаси́бо! И вас та́кже!</span>（ありがとう、あなたも）。
+    <b>вас</b> は対格です。</p>
+    <p style="font-size:11px;color:#7E5C42;">この型は、もともと
+    <b>Поздравля́ю вас с …</b>（〜をお祝い申し上げます）の省略です。
+    だから с ＋ 造格 の部分だけが残っています。</p>
+  </div>
+  <div class="column-box">
+    <p class="cb-head">コラム — Ма́сленица（バターの週）と блины́</p>
+    <p>冬の終わりに、まるくて薄い <b>блины́</b>（ブリヌイ）を焼いて食べる一週間があります。
+    <b>Ма́сленица</b>——「ма́сло（バター）の週」という名前です。</p>
+    <p>блин がまるくて黄色いのは、<b>太陽</b>をかたどっているから。
+    長い冬を送り出し、春の太陽を呼ぶための食べものです。</p>
+    <p>最後の日曜には、藁で作った冬の人形（<b>чу́чело</b>）を燃やして冬を見送ります。
+    その日は <b>Прощёное воскресе́нье</b>（許しの日曜）——
+    たがいに「ごめんね」と言い合う日でもあります。</p>
+    <figure class="photo"><img src="ph-bliny.jpg" alt="三角に折りたたまれたブリヌイと、はちみつの小鉢、カプチーノ" loading="lazy"><figcaption><b>блины́ с мёдом</b><span>はちみつをそえたブリヌイ</span><span class="ph-note">мёд（はちみつ）は с ＋ 造格 で мёдом。смета́на（サワークリーム）や икра́（イクラ）もよく合わせます。</span><em>撮影：杉山真央</em></figcaption></figure>
+  </div>
+
+  <div class="column-box">
+    <p class="cb-head">コラム — Па́сха と、決まり文句のやりとり</p>
+    <p>ロシアで一年のうちもっとも大きな宗教の祝日が <b>Па́сха</b>（復活祭）です。
+    日付は毎年変わり、たいてい4月から5月にかけての日曜日にあたります。</p>
+    <p>この日、人々は会うと決まったことばを交わします。
+    <b>片方が言い、もう片方が答える</b>——形が決まっているやりとりです。</p>
+    <div class="pair-list">
+      <p><b>— Христо́с воскре́се!</b><span class="jp">キリストは復活しました！</span>
+      <span><b>— Вои́стину воскре́се!</b>　まことに復活しました！</span></p>
+    </div>
+    <p style="font-size:11px;color:#7E5C42;">воскре́се は古い教会スラヴ語の形で、
+    この挨拶にだけ残っています。ふつうのロシア語なら
+    <span class="ex-inline">Христо́с воскре́с! — Вои́стину воскре́с!</span>。
+    どちらも使われます。</p>
+    <p style="font-size:11px;color:#9D5700;"><b>воскре́с</b>（復活した）と
+    <b>воскресе́нье</b>（日曜日）は同じ語根です。
+    ロシア語の日曜は、もともと「復活の日」なのです。</p>
+    <p style="margin-top:12px;"><b>◆ 食卓にならぶもの</b></p>
+    <div class="conj-table">
+      <span class="pron">кули́ч</span><span class="form">背の高い丸いパン。上に白い衣をかける</span>
+      <span class="pron">па́сха</span><span class="form">カッテージチーズの菓子（祝日と同じ名前）</span>
+      <span class="pron">кра́шеные я́йца</span><span class="form">色をつけたゆで卵。赤が定番</span>
+    </div>
+    <p style="font-size:11px;color:#7E5C42;">卵を持ち寄って、たがいにぶつけ合う遊びもあります。
+    割れなかったほうが勝ち——子どもたちの楽しみです。</p>
+    <p style="margin-top:10px;"><b>◆ 冬から春へ、行事はつながっています</b></p>
+    <p style="font-size:11px;color:#7E5C42;">
+    <b>Ма́сленица</b>（冬送り・ブリヌイの週）→
+    <b>Вели́кий пост</b>（大斎・肉や乳を控える約7週間）→
+    <b>Па́сха</b>（復活祭）。<br>
+    ブリヌイをたくさん食べるのは、このあと長い節制が続くからでもあります。</p>
+  </div>
+
+
+
+
+
+
+
+
   `,
   drills:[
     {type:'mc', q:'「冬に」を正しく言うと？', say:'зимо́й', opts:['в зиме́','зимо́й','на зиму́'], a:1,
@@ -9218,8 +9325,22 @@ const GRAMMAR_UNITS = [
      ex:'11〜14 は例外で、いつも лет。「1で終わる数」でも 11 は лет です。'},
     {type:'mc', q:'話し手が女性のとき「わたしは5月に生まれました」は？', say:'Я родила́сь в ма́е', opts:['Я роди́лся в ма́е.','Я родила́сь в ма́е.'], a:1,
      ex:'роди́ться の過去は主語の性に合わせます。女性なら родила́сь です。'},
+    {type:'mc', q:'26歳なのに「2026年」が год のままなのは、なぜ？', opts:['серия の数が26だから','序数は形容詞なので、うしろの名詞が変わらないから','год が例外的な名詞だから'], a:1,
+     ex:'два́дцать шесто́й は「26番目の」という形容詞。но́вый год と同じで、名詞は主格・単数のままです。'},
+    {type:'mc', q:'「26年間」を正しく言うと？', opts:['два́дцать шесто́й год','два́дцать шесть лет'], a:1,
+     ex:'期間は「数えている」ので数詞 ＋ лет。順番を言うときだけ序数 ＋ год になります。'},
+    {type:'mc', q:'лет は、もともと何の形？', opts:['год の複数生格','ле́то（夏）の複数生格','лета́ть（飛ぶ）から'], a:1,
+     ex:'昔は年を「夏」の数で数えました。Ско́лько тебе́ лет? は「いくつの夏を過ごしたか」という言い方です。'},
     {type:'mc', q:'「お誕生日おめでとう」は？', say:'С днём рожде́ния!', opts:['С день рожде́ние!','С днём рожде́ния!','В день рожде́ния!'], a:1,
      ex:'お祝いは с ＋ 造格。день → днём、рожде́ния は生格のままです。'},
+    {type:'mc', q:'「Христо́с воскре́се!」への決まった答えは？', say:'Вои́стину воскре́се!', opts:['Вои́стину воскре́се!','Спаси́бо, и вам!','С пра́здником!'], a:0,
+     ex:'復活祭の掛け合いは形が決まっています。Христо́с воскре́се! — Вои́стину воскре́се!（まことに復活しました）。'},
+    {type:'mc', q:'воскресе́нье（日曜日）は、どの語と同じ語根？', opts:['воскре́с（復活した）','вос́ток（東）','весна́（春）'], a:0,
+     ex:'ロシア語の日曜は「復活の日」。復活祭 Па́сха と同じ語根です。'},
+    {type:'mc', q:'復活祭に焼く、背の高い丸いパンは？', opts:['кули́ч','блин','карава́й'], a:0,
+     ex:'кули́ч。上に白い衣をかけます。блины́ は Ма́сленица、карава́й は客を迎えるときのパンです。'},
+    {type:'mc', q:'「あけましておめでとう」は？', say:'С Но́вым го́дом!', opts:['С Но́вый год!','С Но́вым го́дом!','В Но́вом году́!'], a:1,
+     ex:'お祝いは с ＋ 造格。Но́вый год → с Но́вым го́дом です。'},
     {type:'input', q:'「夏に」を綴ってください（ле́то を造格に）', a:'летом', hint:'-о → -ом',
      ex:'ле́том。季節の「〜に」は造格、前置詞なしです。'},
     {type:'order', q:'「春にはチューリップが咲きます」を組み立ててください',
@@ -10592,7 +10713,14 @@ const WHY = {
   'seasons:17': ['год は「1歳」のときの形です', '', 'лет は5以上のときの形です'],
   'seasons:18': ['11〜14 は「1で終わる数」の例外です', ''],
   'seasons:19': ['роди́лся は男性形です', ''],
-  'seasons:20': ['с のあとは造格です。день は主格のままです', '', 'в ＋ 対格 では「誕生日に」という別の意味になります'],
+  'seasons:20': ['数の大きさは関係ありません。数字の形が序数か数詞かで決まります', '', 'год は特別な名詞ではありません。ふつうの男性名詞です'],
+  'seasons:21': ['два́дцать шесто́й год は「2026年」という順番の言い方です。期間なら数えるので лет です', ''],
+  'seasons:22': ['год の複数生格は годо́в で、いまはほとんど使いません', '', 'лета́ть（飛ぶ）とは関係がありません'],
+  'seasons:23': ['с のあとは造格です。день は主格のままです', '', 'в ＋ 対格 では「誕生日に」という別の意味になります'],
+  'seasons:24': ['', 'ふつうのお礼で、復活祭の決まった答えではありません', 'どの祝日にも使える言い方で、この掛け合いの答えではありません'],
+  'seasons:25': ['', 'вос́ток（東）とは語根がちがいます', 'весна́（春）とも語根がちがいます'],
+  'seasons:26': ['', 'блин は Ма́сленица に焼くうすいパンケーキです', 'карава́й は客を迎えるときの丸いパンです'],
+  'seasons:27': ['с のあとは造格です。Но́вый год は主格のままです', '', 'в ＋ 前置格 では「新年に」という別の意味になります'],
   // ---- 服のことば ----
   'clothes:0': ['', 'с ＋ 造格 は「〜がついた」で、柄には使いません', 'そのような形容詞はありません。柄は в ＋ 対格で表します'],
   'clothes:1': ['кле́тке は前置格です。柄は対格にします', '', 'кле́тка は主格のままです'],
@@ -11859,10 +11987,14 @@ const TOPIC_INDEX = [
   { t:'日にちの言い方（пе́рвое ма́рта）', u:'seasons', k:'ひづけ にち じょすう число́' },
   { t:'年の言い方（в 2026 году́）', u:'seasons', k:'ねん とし году́ せいれき' },
   { t:'年齢（Ско́лько тебе́ лет?）', u:'seasons', k:'ねんれい なんさい год го́да лет' },
+  { t:'пять лет と 2026 год のちがい', u:'seasons', k:'かぞえる じゅんばん じょすう なつ ле́то' },
   { t:'誕生日（день рожде́ния）', u:'seasons', k:'たんじょうび うまれた роди́лся С днём' },
   { t:'ミモザの日（8 Ма́рта）', u:'seasons', k:'みもざ じょせい мимо́за 3月8日' },
   { t:'Дед Моро́з と Снегу́рочка', u:'seasons', k:'しんねん Но́вый год クリスマス' },
   { t:'Ма́сленица と блины́', u:'seasons', k:'まースレニツァ ブリヌイ はるをよぶ' },
+  { t:'Па́сха と Христо́с воскре́се!', u:'seasons', k:'ふっかつさい イースター кули́ч たまご' },
+  { t:'お祝いの決まり文句（с ＋ 造格）', u:'seasons', k:'おめでとう С Но́вым го́дом пра́здником' },
+  { t:'曜日の色と名前の由来', u:'seasons', k:'ようび しちよう いろ воскресе́нье' },
   { t:'国の祝日（День Росси́и ほか）', u:'seasons', k:'しゅくじつ 6月12日 флаг トリコロール' },
   { t:'夏のことば（подсо́лнух・да́ча）', u:'seasons', k:'なつ ひまわり べっそう' },
   { t:'秋のことば（листопа́д・грибы́）', u:'seasons', k:'あき おちば きのこ за гриба́ми' },
