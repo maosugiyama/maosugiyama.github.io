@@ -2882,19 +2882,62 @@
   @media print { .cover-map { display: none !important; } }
 
 
-  /* ---- 服のねこたち ---- */
+  /* ---- 服のねこたち（おすと裏返るカード） ---- */
   .cl-grid {
     display: grid; grid-template-columns: repeat(2, 1fr);
     gap: 10px; margin: 10px 0 6px;
   }
   .cl-card {
-    background: #fff; border: 1px solid #EBD8CF; border-radius: 14px;
-    padding: 8px 6px 10px; text-align: center;
+    perspective: 900px; cursor: pointer;
+    background: none; border: none; padding: 0;
+    font-family: inherit; text-align: center;
   }
-  .cl-card img { display: block; width: 100%; height: auto; max-height: 168px; object-fit: contain; }
-  .cl-card figcaption { display: flex; flex-direction: column; gap: 1px; margin-top: 4px; }
-  .cl-card figcaption b { font-size: 12px; font-weight: 800; color: #3A2318; }
-  .cl-card figcaption span { font-size: 10.5px; color: #6B4636; }
+  .cl-card:focus-visible { outline: 2px solid #9F544A; outline-offset: 3px; border-radius: 16px; }
+  /* 表と裏を同じマスに重ねる。高さは中身の多いほうに合うので、
+     狭い画面でも裏の字があふれない。 */
+  .cl-inner {
+    display: grid; min-height: 268px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(.2,.7,.3,1);
+  }
+  .cl-card.on .cl-inner { transform: rotateY(180deg); }
+  .cl-front, .cl-back {
+    grid-area: 1 / 1;
+    backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    background: #fff; border: 1px solid #EBD8CF; border-radius: 14px;
+    display: flex; flex-direction: column;
+  }
+  .cl-front { align-items: center; justify-content: flex-start; padding: 8px 6px 6px; }
+  .cl-front img { display: block; width: 100%; height: 178px; object-fit: contain; flex-shrink: 0; }
+  .clf-ru { font-size: 12px; font-weight: 800; color: #3A2318; margin-top: 3px; line-height: 1.4; }
+  .clf-jp { font-size: 10.5px; color: #6B4636; }
+  .cl-hint {
+    margin-top: auto; font-size: 9.5px; font-weight: 700; color: #9F544A;
+    background: #FDF0EE; border-radius: 999px; padding: 2px 9px;
+  }
+  .cl-back {
+    transform: rotateY(180deg);
+    padding: 11px 11px 26px; text-align: left; gap: 4px;
+    position: relative;
+  }
+  .clb-head { font-size: 12.5px; font-weight: 800; color: #9F544A; line-height: 1.4; }
+  .clb-row { display: flex; gap: 5px; align-items: baseline; }
+  .clb-row b { font-size: 11px; font-weight: 800; color: #3A2318; }
+  .clb-row > span { font-size: 9.5px; color: #6B4636; }
+  .clb-ex { font-size: 11px; font-weight: 700; color: #3A2318; line-height: 1.55; margin-top: 3px; }
+  .clb-exjp { font-size: 9.5px; color: #6B4636; line-height: 1.5; }
+  .clb-say {
+    margin-top: auto; align-self: flex-start;
+    background: #EFF6F2; border: none; color: #35705C; border-radius: 999px;
+    padding: 4px 11px; font-family: inherit; font-size: 10px; font-weight: 700; cursor: pointer;
+  }
+  .cl-back-hint {
+    position: absolute; right: 9px; bottom: 9px;
+    font-size: 9.5px; font-weight: 700; color: #9F544A;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cl-inner { transition: none; }
+  }
 
 </style>
 </head>
@@ -9062,8 +9105,8 @@ const GRAMMAR_UNITS = [
 
   <div class="rule-row">
     <strong>ねこたちの服</strong>
-    <div class="cl-grid"><figure class="cl-card"><img src="cl-blouse.png" alt="水色のブラウスを着たオレンジのねこ。襟にリボンがついている" loading="lazy"><figcaption><b>блу́зка</b><span>ブラウス</span></figcaption></figure><figure class="cl-card"><img src="cl-jeans.png" alt="しま模様のシャツと青いジーンズのねこ" loading="lazy"><figcaption><b>руба́шка и джи́нсы</b><span>シャツとジーンズ</span></figcaption></figure><figure class="cl-card"><img src="cl-skirt.png" alt="白いTシャツと黄色いチェックのスカートのねこ" loading="lazy"><figcaption><b>футбо́лка и ю́бка</b><span>Tシャツとスカート</span></figcaption></figure><figure class="cl-card"><img src="cl-dress.png" alt="水玉のワンピースを着て、バッグを持ったねこ" loading="lazy"><figcaption><b>пла́тье и су́мка</b><span>ワンピースとバッグ</span></figcaption></figure><figure class="cl-card"><img src="cl-hoodie.png" alt="フードつきのパーカーを着たねこ" loading="lazy"><figcaption><b>толсто́вка</b><span>パーカー</span></figcaption></figure><figure class="cl-card"><img src="cl-jacket.png" alt="ねこの足あとがついた黄色いジャンパーのねこ" loading="lazy"><figcaption><b>ку́ртка</b><span>ジャンパー</span></figcaption></figure><figure class="cl-card"><img src="cl-scarf.png" alt="緑のマフラーを巻き、赤い靴下をはいたねこ" loading="lazy"><figcaption><b>шарф и носки́</b><span>マフラーと靴下</span></figcaption></figure><figure class="cl-card"><img src="cl-valenki.png" alt="緑のミトンを持ち、青いフェルトのブーツをはいたねこ" loading="lazy"><figcaption><b>ва́ленки и варе́жки</b><span>フェルトの長ぐつとミトン</span></figcaption></figure></div>
-    <p style="font-size:11px;color:#7E5C42;">絵：杉山真央</p>
+    <div class="cl-grid"><div class="cl-card" role="button" tabindex="0" aria-expanded="false" aria-label="блу́зка ブラウス — おすと、関連することばが出ます" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}"><div class="cl-inner"><div class="cl-front"><img src="cl-blouse.png" alt="水色のブラウスを着たオレンジのねこ。襟にリボンがついている" loading="lazy"><span class="clf-ru">блу́зка</span><span class="clf-jp">ブラウス</span><span class="cl-hint">おす</span></div><div class="cl-back"><span class="clb-head">блу́зка</span><span class="clb-row"><b>блу́зка</b><span>女性名詞</span></span><span class="clb-row"><b>воротни́к</b><span>えり</span></span><span class="clb-row"><b>бант</b><span>リボン</span></span><span class="clb-ex">голуба́я блу́зка с ба́нтом</span><span class="clb-exjp">リボンのついた水色のブラウス</span><button class="clb-say" onclick="event.stopPropagation();speak('блу́зка')" aria-label="блу́зка の発音を聞く">&#9834; 聞く</button><span class="cl-back-hint">もどす</span></div></div></div><div class="cl-card" role="button" tabindex="0" aria-expanded="false" aria-label="руба́шка и джи́нсы シャツとジーンズ — おすと、関連することばが出ます" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}"><div class="cl-inner"><div class="cl-front"><img src="cl-jeans.png" alt="しま模様のシャツと青いジーンズのねこ" loading="lazy"><span class="clf-ru">руба́шка и джи́нсы</span><span class="clf-jp">シャツとジーンズ</span><span class="cl-hint">おす</span></div><div class="cl-back"><span class="clb-head">руба́шка и джи́нсы</span><span class="clb-row"><b>руба́шка</b><span>シャツ・女性</span></span><span class="clb-row"><b>джи́нсы</b><span>複数だけ</span></span><span class="clb-row"><b>в поло́ску</b><span>しま模様の</span></span><span class="clb-ex">руба́шка в поло́ску и си́ние джи́нсы</span><span class="clb-exjp">しまのシャツと青いジーンズ</span><button class="clb-say" onclick="event.stopPropagation();speak('руба́шка и джи́нсы')" aria-label="руба́шка и джи́нсы の発音を聞く">&#9834; 聞く</button><span class="cl-back-hint">もどす</span></div></div></div><div class="cl-card" role="button" tabindex="0" aria-expanded="false" aria-label="футбо́лка и ю́бка Tシャツとスカート — おすと、関連することばが出ます" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}"><div class="cl-inner"><div class="cl-front"><img src="cl-skirt.png" alt="白いTシャツと黄色いチェックのスカートのねこ" loading="lazy"><span class="clf-ru">футбо́лка и ю́бка</span><span class="clf-jp">Tシャツとスカート</span><span class="cl-hint">おす</span></div><div class="cl-back"><span class="clb-head">футбо́лка и ю́бка</span><span class="clb-row"><b>футбо́лка</b><span>Tシャツ・女性</span></span><span class="clb-row"><b>ю́бка</b><span>スカート・女性</span></span><span class="clb-row"><b>в кле́тку</b><span>チェックの</span></span><span class="clb-ex">футбо́лка и ю́бка в кле́тку</span><span class="clb-exjp">Tシャツとチェックのスカート</span><button class="clb-say" onclick="event.stopPropagation();speak('футбо́лка и ю́бка')" aria-label="футбо́лка и ю́бка の発音を聞く">&#9834; 聞く</button><span class="cl-back-hint">もどす</span></div></div></div><div class="cl-card" role="button" tabindex="0" aria-expanded="false" aria-label="пла́тье и су́мка ワンピースとバッグ — おすと、関連することばが出ます" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}"><div class="cl-inner"><div class="cl-front"><img src="cl-dress.png" alt="水玉のワンピースを着て、バッグを持ったねこ" loading="lazy"><span class="clf-ru">пла́тье и су́мка</span><span class="clf-jp">ワンピースとバッグ</span><span class="cl-hint">おす</span></div><div class="cl-back"><span class="clb-head">пла́тье и су́мка</span><span class="clb-row"><b>пла́тье</b><span>中性名詞</span></span><span class="clb-row"><b>су́мка</b><span>かばん・女性</span></span><span class="clb-row"><b>в горо́шек</b><span>水玉の</span></span><span class="clb-ex">си́нее пла́тье в горо́шек</span><span class="clb-exjp">青い水玉のワンピース</span><button class="clb-say" onclick="event.stopPropagation();speak('пла́тье и су́мка')" aria-label="пла́тье и су́мка の発音を聞く">&#9834; 聞く</button><span class="cl-back-hint">もどす</span></div></div></div><div class="cl-card" role="button" tabindex="0" aria-expanded="false" aria-label="толсто́вка パーカー — おすと、関連することばが出ます" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}"><div class="cl-inner"><div class="cl-front"><img src="cl-hoodie.png" alt="フードつきのパーカーを着たねこ" loading="lazy"><span class="clf-ru">толсто́вка</span><span class="clf-jp">パーカー</span><span class="cl-hint">おす</span></div><div class="cl-back"><span class="clb-head">толсто́вка</span><span class="clb-row"><b>толсто́вка</b><span>女性名詞</span></span><span class="clb-row"><b>капюшо́н</b><span>フード</span></span><span class="clb-row"><b>карма́н</b><span>ポケット</span></span><span class="clb-ex">толсто́вка с капюшо́ном</span><span class="clb-exjp">フードつきのパーカー</span><button class="clb-say" onclick="event.stopPropagation();speak('толсто́вка')" aria-label="толсто́вка の発音を聞く">&#9834; 聞く</button><span class="cl-back-hint">もどす</span></div></div></div><div class="cl-card" role="button" tabindex="0" aria-expanded="false" aria-label="ку́ртка ジャンパー — おすと、関連することばが出ます" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}"><div class="cl-inner"><div class="cl-front"><img src="cl-jacket.png" alt="ねこの足あとがついた黄色いジャンパーのねこ" loading="lazy"><span class="clf-ru">ку́ртка</span><span class="clf-jp">ジャンパー</span><span class="cl-hint">おす</span></div><div class="cl-back"><span class="clb-head">ку́ртка</span><span class="clb-row"><b>ку́ртка</b><span>女性名詞</span></span><span class="clb-row"><b>пу́говица</b><span>ボタン</span></span><span class="clb-row"><b>ла́па</b><span>足・肉球</span></span><span class="clb-ex">жёлтая ку́ртка с пу́говицами</span><span class="clb-exjp">ボタンのついた黄色いジャンパー</span><button class="clb-say" onclick="event.stopPropagation();speak('ку́ртка')" aria-label="ку́ртка の発音を聞く">&#9834; 聞く</button><span class="cl-back-hint">もどす</span></div></div></div><div class="cl-card" role="button" tabindex="0" aria-expanded="false" aria-label="шарф и носки́ マフラーと靴下 — おすと、関連することばが出ます" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}"><div class="cl-inner"><div class="cl-front"><img src="cl-scarf.png" alt="緑のマフラーを巻き、赤い靴下をはいたねこ" loading="lazy"><span class="clf-ru">шарф и носки́</span><span class="clf-jp">マフラーと靴下</span><span class="cl-hint">おす</span></div><div class="cl-back"><span class="clb-head">шарф и носки́</span><span class="clb-row"><b>шарф</b><span>男性名詞</span></span><span class="clb-row"><b>носки́</b><span>単数は носо́к</span></span><span class="clb-row"><b>тёплый</b><span>あたたかい</span></span><span class="clb-ex">зелёный шарф и кра́сные носки́</span><span class="clb-exjp">緑のマフラーと赤い靴下</span><button class="clb-say" onclick="event.stopPropagation();speak('шарф и носки́')" aria-label="шарф и носки́ の発音を聞く">&#9834; 聞く</button><span class="cl-back-hint">もどす</span></div></div></div><div class="cl-card" role="button" tabindex="0" aria-expanded="false" aria-label="ва́ленки и варе́жки 長ぐつとミトン — おすと、関連することばが出ます" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}"><div class="cl-inner"><div class="cl-front"><img src="cl-valenki.png" alt="緑のミトンを持ち、青いフェルトのブーツをはいたねこ" loading="lazy"><span class="clf-ru">ва́ленки и варе́жки</span><span class="clf-jp">長ぐつとミトン</span><span class="cl-hint">おす</span></div><div class="cl-back"><span class="clb-head">ва́ленки и варе́жки</span><span class="clb-row"><b>ва́ленки</b><span>足・複数だけ</span></span><span class="clb-row"><b>варе́жки</b><span>手・ミトン</span></span><span class="clb-row"><b>перча́тки</b><span>指の分かれた手袋</span></span><span class="clb-ex">ва́ленки и варе́жки из ше́рсти</span><span class="clb-exjp">羊毛のフェルト長ぐつとミトン</span><button class="clb-say" onclick="event.stopPropagation();speak('ва́ленки и варе́жки')" aria-label="ва́ленки и варе́жки の発音を聞く">&#9834; 聞く</button><span class="cl-back-hint">もどす</span></div></div></div></div>
+    <p class="tap-hint">カードをおすと、うらに関連することばが出ます。</p><p style="font-size:11px;color:#7E5C42;">絵：杉山真央</p>
   </div>
 
   <div class="case-row">
@@ -11290,6 +11333,17 @@ function forestMapHtml(stages) {
 
   s += '</svg></div>';
   return s;
+}
+
+
+// ------------------------------------------------------------
+// 絵のカードを裏返す（服のことばのユニット）
+// ------------------------------------------------------------
+function flipCard(el) {
+  if (!el) return;
+  const on = el.classList.contains('on');
+  if (on) el.classList.remove('on'); else el.classList.add('on');
+  el.setAttribute('aria-expanded', on ? 'false' : 'true');
 }
 
 // 地図の目じるしを押したら、その段の案内へ
