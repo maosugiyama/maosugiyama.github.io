@@ -2948,9 +2948,23 @@
   }
   .pat-row:last-child { border-bottom: none; }
   .pat-sw { flex-shrink: 0; width: 76px; height: 28px; display: block; }
-  .pat-t { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .pat-t { display: flex; flex-direction: column; gap: 1px; min-width: 0; overflow-wrap: anywhere; }
   .pat-t b { font-size: 12px; font-weight: 800; color: #3A2318; }
   .pat-t > span { font-size: 10.5px; color: #6B4636; line-height: 1.6; }
+
+
+  /* ---- 長さの見本 ---- */
+  .len-list { margin: 10px 0 6px; }
+  .len-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 7px 2px; border-bottom: 1px dotted #EFE0DA;
+  }
+  .len-row:last-child { border-bottom: none; }
+  .len-sw { flex-shrink: 0; width: 76px; height: 54px; display: block; }
+  .len-t { display: flex; flex-direction: column; gap: 1px; min-width: 0; overflow-wrap: anywhere; }
+  .len-t b { font-size: 12.5px; font-weight: 800; color: #3A2318; }
+  .len-t > span { font-size: 10.5px; color: #6B4636; line-height: 1.6; }
+  .len-t .len-ex { font-size: 10.5px; color: #7E5C42; }
 
 </style>
 </head>
@@ -9199,12 +9213,10 @@ const GRAMMAR_UNITS = [
 
   <div class="rule-row">
     <strong>長い・短い、そして「着ている」</strong>
-    <div class="conj-table">
-      <span class="pron">дли́нный</span><span class="form">長い　дли́нная ю́бка（ロングスカート）</span>
-      <span class="pron">коро́ткий</span><span class="form">短い　коро́ткая ю́бка（ミニスカート）</span>
-      <span class="pron">коро́ткий рука́в</span><span class="form">半そで　футбо́лка с коро́ткими рукава́ми</span>
-      <span class="pron">дли́нный рука́в</span><span class="form">長そで</span>
-    </div>
+<div class="len-list"><div class="len-row"><svg class="len-sw" viewBox="0 0 76 54" role="img" aria-label="丈の長いスカートの図"><path d="M27 13 L49 13 L53 46 L23 46 Z" fill="#EFC53F" stroke="#9C8A7C" stroke-width="1.2" stroke-linejoin="round"/><rect x="26" y="8" width="24" height="5" rx="2" fill="#EFC53F" stroke="#9C8A7C" stroke-width="1.2"/><path d="M32 15 L30 44" stroke="#9C8A7C" stroke-width="0.9" opacity="0.65"/><path d="M38 15 L38 44" stroke="#9C8A7C" stroke-width="0.9" opacity="0.65"/><path d="M44 15 L46 44" stroke="#9C8A7C" stroke-width="0.9" opacity="0.65"/></svg><span class="len-t"><b>дли́нная ю́бка</b><span>ロングスカート</span><span class="len-ex">дли́нный（長い）＋ ю́бка</span></span></div><div class="len-row"><svg class="len-sw" viewBox="0 0 76 54" role="img" aria-label="丈の短いスカートの図"><path d="M27 13 L49 13 L49 28 L27 28 Z" fill="#EFC53F" stroke="#9C8A7C" stroke-width="1.2" stroke-linejoin="round"/><rect x="26" y="8" width="24" height="5" rx="2" fill="#EFC53F" stroke="#9C8A7C" stroke-width="1.2"/><path d="M32 15 L30 26" stroke="#9C8A7C" stroke-width="0.9" opacity="0.65"/><path d="M38 15 L38 26" stroke="#9C8A7C" stroke-width="0.9" opacity="0.65"/><path d="M44 15 L46 26" stroke="#9C8A7C" stroke-width="0.9" opacity="0.65"/></svg><span class="len-t"><b>коро́ткая ю́бка</b><span>ミニスカート</span><span class="len-ex">коро́ткий（短い）＋ ю́бка</span></span></div><div class="len-row"><svg class="len-sw" viewBox="0 0 76 54" role="img" aria-label="長そでの服の図"><path d="M28 14 L20 16 L14 38 L24 40 Z" fill="#6FB6E8" stroke="#9C8A7C" stroke-width="1.2" stroke-linejoin="round"/><path d="M48 14 L56 16 L62 38 L52 40 Z" fill="#6FB6E8" stroke="#9C8A7C" stroke-width="1.2" stroke-linejoin="round"/><rect x="28" y="13" width="20" height="27" rx="3" fill="#6FB6E8" stroke="#9C8A7C" stroke-width="1.2"/><path d="M33 13 q5 5 10 0" fill="none" stroke="#9C8A7C" stroke-width="1.2"/></svg><span class="len-t"><b>дли́нный рука́в</b><span>長そで</span><span class="len-ex">блу́зка с дли́нными рукава́ми</span></span></div><div class="len-row"><svg class="len-sw" viewBox="0 0 76 54" role="img" aria-label="半そでの服の図"><path d="M28 14 L20 16 L14 24 L24 26 Z" fill="#6FB6E8" stroke="#9C8A7C" stroke-width="1.2" stroke-linejoin="round"/><path d="M48 14 L56 16 L62 24 L52 26 Z" fill="#6FB6E8" stroke="#9C8A7C" stroke-width="1.2" stroke-linejoin="round"/><rect x="28" y="13" width="20" height="27" rx="3" fill="#6FB6E8" stroke="#9C8A7C" stroke-width="1.2"/><path d="M33 13 q5 5 10 0" fill="none" stroke="#9C8A7C" stroke-width="1.2"/></svg><span class="len-t"><b>коро́ткий рука́в</b><span>半そで</span><span class="len-ex">футбо́лка с коро́ткими рукава́ми</span></span></div></div>
+    <p style="font-size:11px;color:#7E5C42;">そで（<b>рука́в</b>）は2本あるので、
+    「〜そでの」と言うときは<b>複数の造格</b>になります——
+    с дли́нн<b>ыми</b> рукав<b>а́ми</b>／с коро́тк<b>ими</b> рукав<b>а́ми</b>。</p>
     <p style="margin-top:10px;"><b>◆「着ている」の3つの言い方</b></p>
     <div class="pair-list">
       <p><b>в ＋ 前置格</b><span class="jp">いま着ている状態（いちばんよく使います）</span>
