@@ -2881,6 +2881,21 @@
   }
   @media print { .cover-map { display: none !important; } }
 
+
+  /* ---- 服のねこたち ---- */
+  .cl-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 10px; margin: 10px 0 6px;
+  }
+  .cl-card {
+    background: #fff; border: 1px solid #EBD8CF; border-radius: 14px;
+    padding: 8px 6px 10px; text-align: center;
+  }
+  .cl-card img { display: block; width: 100%; height: auto; max-height: 168px; object-fit: contain; }
+  .cl-card figcaption { display: flex; flex-direction: column; gap: 1px; margin-top: 4px; }
+  .cl-card figcaption b { font-size: 12px; font-weight: 800; color: #3A2318; }
+  .cl-card figcaption span { font-size: 10.5px; color: #6B4636; }
+
 </style>
 </head>
 <body>
@@ -9040,6 +9055,167 @@ const GRAMMAR_UNITS = [
 },
 
 {
+  id:'clothes', cat:'vocab', level:'初級', title:'服のことば — 何を着ているか', sub:'色・柄・部分、そして「着ている」の言い方',
+  lesson:`
+  <p>服は、<b>色と柄と形</b>がそろって初めて言い表せます。
+  ここまでに習った<b>色の一致</b>と<b>в ＋ 前置格</b>が、そのまま役に立ちます。</p>
+
+  <div class="rule-row">
+    <strong>ねこたちの服</strong>
+    <div class="cl-grid"><figure class="cl-card"><img src="cl-blouse.png" alt="水色のブラウスを着たオレンジのねこ。襟にリボンがついている" loading="lazy"><figcaption><b>блу́зка</b><span>ブラウス</span></figcaption></figure><figure class="cl-card"><img src="cl-jeans.png" alt="しま模様のシャツと青いジーンズのねこ" loading="lazy"><figcaption><b>руба́шка и джи́нсы</b><span>シャツとジーンズ</span></figcaption></figure><figure class="cl-card"><img src="cl-skirt.png" alt="白いTシャツと黄色いチェックのスカートのねこ" loading="lazy"><figcaption><b>футбо́лка и ю́бка</b><span>Tシャツとスカート</span></figcaption></figure><figure class="cl-card"><img src="cl-dress.png" alt="水玉のワンピースを着て、バッグを持ったねこ" loading="lazy"><figcaption><b>пла́тье и су́мка</b><span>ワンピースとバッグ</span></figcaption></figure><figure class="cl-card"><img src="cl-hoodie.png" alt="フードつきのパーカーを着たねこ" loading="lazy"><figcaption><b>толсто́вка</b><span>パーカー</span></figcaption></figure><figure class="cl-card"><img src="cl-jacket.png" alt="ねこの足あとがついた黄色いジャンパーのねこ" loading="lazy"><figcaption><b>ку́ртка</b><span>ジャンパー</span></figcaption></figure><figure class="cl-card"><img src="cl-scarf.png" alt="緑のマフラーを巻き、赤い靴下をはいたねこ" loading="lazy"><figcaption><b>шарф и носки́</b><span>マフラーと靴下</span></figcaption></figure><figure class="cl-card"><img src="cl-valenki.png" alt="緑のミトンを持ち、青いフェルトのブーツをはいたねこ" loading="lazy"><figcaption><b>ва́ленки и варе́жки</b><span>フェルトの長ぐつとミトン</span></figcaption></figure></div>
+    <p style="font-size:11px;color:#7E5C42;">絵：杉山真央</p>
+  </div>
+
+  <div class="case-row">
+    <strong>上に着るもの</strong>
+    <div class="conj-table">
+      <span class="pron">блу́зка</span><span class="form">ブラウス（女）</span>
+      <span class="pron">руба́шка</span><span class="form">シャツ（女）</span>
+      <span class="pron">футбо́лка</span><span class="form">Tシャツ（女）※ футбо́л から来た語</span>
+      <span class="pron">толсто́вка</span><span class="form">パーカー・トレーナー（女）</span>
+      <span class="pron">сви́тер</span><span class="form">セーター（男）</span>
+      <span class="pron">ку́ртка</span><span class="form">ジャンパー・上着（女）</span>
+      <span class="pron">пальто́</span><span class="form">コート（中）※ <b>形が変わりません</b></span>
+    </div>
+    <p style="font-size:11px;color:#9D5700;"><b>пальто́</b> は外来語で、格変化しません
+    （в пальто́・с пальто́）。同じ仲間に <b>метро́</b>・<b>кино́</b>・<b>ко́фе</b> があります。</p>
+  </div>
+
+  <div class="case-row">
+    <strong>下に着るもの・小もの</strong>
+    <div class="conj-table">
+      <span class="pron">ю́бка</span><span class="form">スカート（女）</span>
+      <span class="pron">брю́ки</span><span class="form">ズボン　※ <b>複数だけ</b></span>
+      <span class="pron">джи́нсы</span><span class="form">ジーンズ　※ <b>複数だけ</b></span>
+      <span class="pron">пла́тье</span><span class="form">ワンピース（中）</span>
+      <span class="pron">носки́</span><span class="form">靴下　単数 носо́к</span>
+      <span class="pron">шарф</span><span class="form">マフラー（男）</span>
+      <span class="pron">ша́пка</span><span class="form">帽子（女）</span>
+      <span class="pron">су́мка</span><span class="form">かばん（女）</span>
+      <span class="pron">о́бувь</span><span class="form">履きもの　※ まとめて1つの集合名詞</span>
+    </div>
+    <p style="font-size:11px;color:#9D5700;"><b>брю́ки・джи́нсы</b> は
+    очки́・но́жницы と同じ<b>複数だけの名詞</b>。
+    「新しいジーンズ」は <b>но́вые джи́нсы</b> と、形容詞も複数にします。</p>
+  </div>
+
+  <div class="case-row">
+    <strong>手と足のロシア語 — ва́ленки と варе́жки</strong>
+    <div class="conj-table">
+      <span class="pron">ва́ленки</span><span class="form">フェルトの長ぐつ　※ 複数だけ</span>
+      <span class="pron">варе́жки</span><span class="form">ミトン（指が分かれていない手袋）</span>
+      <span class="pron">перча́тки</span><span class="form">手袋（指が分かれているもの）</span>
+      <span class="pron">сапоги́</span><span class="form">ブーツ　単数 сапо́г</span>
+      <span class="pron">ту́фли</span><span class="form">くつ（かかとのあるもの）</span>
+    </div>
+    <p style="font-size:11px;color:#9D5700;"><b>ва́ленки</b> と <b>варе́жки</b> は
+    音が似ていて混ざりやすい組です。<b>ва́ленки は足、варе́жки は手</b>。
+    どちらも <b>шерсть</b>（羊毛）から作る、ロシアの冬の定番です。</p>
+    <p style="font-size:11px;color:#7E5C42;"><b>варе́жки</b> と <b>перча́тки</b> の違いは、
+    <b>指が分かれているかどうか</b>。варе́жки は親指だけ独立した形、
+    перча́тки は5本とも分かれています。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>柄は в ＋ 対格</strong>
+    <p>柄の言い方は<b>ひとつの型</b>で覚えられます。</p>
+    <div class="conj-table">
+      <span class="pron">в горо́шек</span><span class="form">水玉の　пла́тье в горо́шек</span>
+      <span class="pron">в поло́ску</span><span class="form">しま模様の　руба́шка в поло́ску</span>
+      <span class="pron">в кле́тку</span><span class="form">チェックの　ю́бка в кле́тку</span>
+      <span class="pron">в цвето́чек</span><span class="form">花柄の</span>
+      <span class="pron">одноцве́тный</span><span class="form">無地の（形容詞）</span>
+    </div>
+    <p style="font-size:11px;color:#9D5700;">どれも <b>в ＋ 対格</b>で、
+    <b>名詞のうしろ</b>に置きます。色の形容詞は前、柄はうしろ——
+    <span class="ex-inline">си́нее пла́тье в горо́шек</span>（青い水玉のワンピース）。</p>
+  </div>
+
+  <div class="case-row">
+    <strong>服の部分</strong>
+    <div class="conj-table">
+      <span class="pron">воротни́к</span><span class="form">えり</span>
+      <span class="pron">капюшо́н</span><span class="form">フード</span>
+      <span class="pron">рука́в</span><span class="form">そで　複数 рукава́</span>
+      <span class="pron">карма́н</span><span class="form">ポケット</span>
+      <span class="pron">пу́говица</span><span class="form">ボタン</span>
+      <span class="pron">бант</span><span class="form">リボン（結んだもの）</span>
+    </div>
+    <p>• <span class="ex-inline">блу́зка с воротнико́м и ба́нтом</span>（えりとリボンのついたブラウス）</p>
+    <p>• <span class="ex-inline">толсто́вка с капюшо́ном</span>（フードつきのパーカー）</p>
+    <p style="font-size:11px;color:#7E5C42;">ついているものは <b>с ＋ 造格</b>。
+    人の外見のときと同じ形です（де́вушка с голубы́ми глаза́ми）。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>長い・短い、そして「着ている」</strong>
+    <div class="conj-table">
+      <span class="pron">дли́нный</span><span class="form">長い　дли́нная ю́бка（ロングスカート）</span>
+      <span class="pron">коро́ткий</span><span class="form">短い　коро́ткая ю́бка（ミニスカート）</span>
+      <span class="pron">коро́ткий рука́в</span><span class="form">半そで　футбо́лка с коро́ткими рукава́ми</span>
+      <span class="pron">дли́нный рука́в</span><span class="form">長そで</span>
+    </div>
+    <p style="margin-top:10px;"><b>◆「着ている」の3つの言い方</b></p>
+    <div class="pair-list">
+      <p><b>в ＋ 前置格</b><span class="jp">いま着ている状態（いちばんよく使います）</span>
+      <span>Ко́шка в жёлтой ку́ртке.（ねこは黄色いジャンパーを着ている）</span></p>
+      <p><b>носи́ть ＋ 対格</b><span class="jp">いつも身につけている（習慣）</span>
+      <span>Я ношу́ очки́.（めがねをかけています）</span></p>
+      <p><b>надева́ть / наде́ть ＋ 対格</b><span class="jp">身につける（動作）</span>
+      <span>Я надева́ю ку́ртку.（ジャンパーを着る）</span></p>
+    </div>
+    <p style="font-size:11px;color:#9D5700;">日本語の「着る」は、ロシア語では
+    <b>状態か・習慣か・動作か</b>で分かれます。
+    写真や絵を説明するときは、ほとんどが <b>в ＋ 前置格</b>です。</p>
+  </div>
+
+  <div class="case-row">
+    <strong>絵を、ことばにしてみる</strong>
+    <p>色（形容詞・前）＋ 名詞 ＋ 柄（в ＋ 対格・うしろ）の順に並べます。</p>
+    <div class="conj-table">
+      <span class="pron">青い水玉のワンピース</span><span class="form">си́нее пла́тье в горо́шек</span>
+      <span class="pron">黄色いチェックのスカート</span><span class="form">жёлтая ю́бка в кле́тку</span>
+      <span class="pron">オレンジのしまのシャツ</span><span class="form">ора́нжевая руба́шка в поло́ску</span>
+      <span class="pron">緑のマフラー</span><span class="form">зелёный шарф</span>
+      <span class="pron">水色のブラウス</span><span class="form">голуба́я блу́зка</span>
+    </div>
+    <p>• <span class="ex-inline">Ко́шка в си́нем пла́тье в горо́шек.</span>（ねこは青い水玉のワンピースを着ている）</p>
+    <p style="font-size:11px;color:#7E5C42;">в のあとなので пла́тье は前置格 пла́тье（中性は形が同じ）、
+    形容詞は си́нем になります。柄の в горо́шек は形が変わりません。</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'「水玉のワンピース」を正しく言うと？', say:'пла́тье в горо́шек', opts:['пла́тье в горо́шек','пла́тье с горо́шком','горо́шковое пла́тье'], a:0,
+     ex:'柄は в ＋ 対格 で、名詞のうしろに置きます。в поло́ску・в кле́тку も同じ形です。'},
+    {type:'mc', q:'「チェックのスカート」は？', say:'ю́бка в кле́тку', opts:['ю́бка в кле́тке','ю́бка в кле́тку','ю́бка кле́тка'], a:1,
+     ex:'в ＋ 対格。кле́тка → в кле́тку です。'},
+    {type:'mc', q:'手にはめるほうはどっち？', opts:['ва́ленки','варе́жки'], a:1,
+     ex:'варе́жки はミトン（手）、ва́ленки はフェルトの長ぐつ（足）。音が似ているので注意します。'},
+    {type:'mc', q:'指が5本とも分かれている手袋は？', opts:['варе́жки','перча́тки'], a:1,
+     ex:'перча́тки。варе́жки は親指だけ独立したミトンです。'},
+    {type:'mc', q:'「新しいジーンズ」を正しく言うと？', opts:['но́вый джи́нсы','но́вые джи́нсы','но́вая джи́нсы'], a:1,
+     ex:'джи́нсы は複数だけの名詞なので、形容詞も複数形 но́вые にします。'},
+    {type:'mc', q:'「フードつきのパーカー」の（　）は？　толсто́вка （　） капюшо́ном', say:'толсто́вка с капюшо́ном', opts:['в','с','на'], a:1,
+     ex:'ついているものは с ＋ 造格。с воротнико́м（えりつき）も同じ形です。'},
+    {type:'mc', q:'пальто́（コート）について正しいのは？', opts:['格変化しない','女性名詞である','複数だけで使う'], a:0,
+     ex:'外来語で、どの格でも пальто́ のまま。метро́・кино́・ко́фе と同じ仲間です。'},
+    {type:'mc', q:'「ねこは黄色いジャンパーを着ている」は？', say:'Ко́шка в жёлтой ку́ртке', opts:['Ко́шка в жёлтой ку́ртке.','Ко́шка но́сит жёлтую ку́ртку.','Ко́шка надева́ет жёлтую ку́ртку.'], a:0,
+     ex:'いま着ている状態は в ＋ 前置格。носи́ть は習慣、надева́ть は着るという動作です。'},
+    {type:'mc', q:'「ミニスカート」を表すのは？', opts:['дли́нная ю́бка','коро́ткая ю́бка'], a:1,
+     ex:'коро́ткий（短い）↔ дли́нный（長い）。коро́ткий рука́в なら半そでです。'},
+    {type:'mc', q:'футбо́лка は、もともと誰が着ていた服？', opts:['サッカーをする人','船に乗る人','山に登る人'], a:0,
+     ex:'футбо́л（サッカー）から生まれた語。選手が着ていたシャツが名前のもとです。'},
+    {type:'input', q:'「マフラー」をロシア語で綴ってください', a:'шарф', hint:'ш で始まる4文字',
+     ex:'шарф。男性名詞です。зелёный шарф（緑のマフラー）。'},
+    {type:'order', q:'「ねこは青い水玉のワンピースを着ています」を組み立ててください',
+     tokens:['Ко́шка','в си́нем пла́тье','в горо́шек'],
+     accept:[{o:'Ко́шка в си́нем пла́тье в горо́шек', n:'色は名詞の前、柄は名詞のうしろ。в ＋ 前置格 で「着ている」を表します'}],
+     hint:'色が先、柄があと',
+     ex:'си́нем は前置格。柄の в горо́шек は形が変わりません。'}
+  ]
+},
+
+{
   id:'reflexive', cat:'verb', level:'上級', title:'-ся のつく動詞', sub:'自分に返ってくる動き、ひとりでに起こる動き',
   lesson:`
   <p>動詞のうしろに <b>-ся</b>（母音のあとは <b>-сь</b>）がつくと、意味が変わります。
@@ -10190,6 +10366,17 @@ const WHY = {
   'seasons:11': ['', '8月22日は День фла́га（国旗の日）です', '5月9日は День Побе́ды（戦勝記念日）です'],
   'seasons:12': ['', 'пода́рок（贈り物）とは関係がありません', 'по́ле（野原）でもありません'],
   'seasons:13': ['', 'на ＋ 対格 は「〜へ」で、目的のものを表しません', 'с ＋ 造格 は「〜と一緒に」です'],
+  // ---- 服のことば ----
+  'clothes:0': ['', 'с ＋ 造格 は「〜がついた」で、柄には使いません', 'そのような形容詞はありません。柄は в ＋ 対格で表します'],
+  'clothes:1': ['кле́тке は前置格です。柄は対格にします', '', 'кле́тка は主格のままです'],
+  'clothes:2': ['ва́ленки は足にはくフェルトの長ぐつです', ''],
+  'clothes:3': ['варе́жки は親指だけが独立したミトンです', ''],
+  'clothes:4': ['но́вый は男性・単数の形です。джи́нсы は複数だけの名詞です', '', 'но́вая は女性・単数の形です'],
+  'clothes:5': ['в ＋ 前置格 は「着ている」を表す形です', '', 'на ＋ 前置格 は「〜の上に」です'],
+  'clothes:6': ['', 'пальто́ は中性名詞です', '複数だけの名詞ではありません。単数でも使います'],
+  'clothes:7': ['', 'носи́ть は「いつも身につけている」という習慣を表します', 'надева́ть は「身につける」という動作です'],
+  'clothes:8': ['дли́нная は「長い」です', ''],
+  'clothes:9': ['', '船乗りの服は тельня́шка（しま模様のシャツ）です', '山の服から来た語ではありません'],
   // ---- -ся のつく動詞 ----
   'reflexive:0': ['母音のあとは -сь です。учу́ся とはなりません', '', 'учи́ юсь という形はありません。я の形は учу́сь です'],
   'reflexive:1': ['', 'ь のあとは -ся です。-сь にはなりません', 'ь を落として сс とは書きません'],
@@ -11432,6 +11619,12 @@ const TOPIC_INDEX = [
   { t:'国の祝日（День Росси́и ほか）', u:'seasons', k:'しゅくじつ 6月12日 флаг トリコロール' },
   { t:'夏のことば（подсо́лнух・да́ча）', u:'seasons', k:'なつ ひまわり べっそう' },
   { t:'秋のことば（листопа́д・грибы́）', u:'seasons', k:'あき おちば きのこ за гриба́ми' },
+  { t:'服のことば（блу́зка・ку́ртка ほか）', u:'clothes', k:'ふく いふく きもの одежда' },
+  { t:'柄の言い方（в горо́шек・в кле́тку）', u:'clothes', k:'がら みずたま しま ちぇっく в поло́ску' },
+  { t:'ва́ленки と варе́жки', u:'clothes', k:'ながぐつ みとん てぶくろ перча́тки' },
+  { t:'服の部分（воротни́к・капюшо́н・рука́в）', u:'clothes', k:'えり ふーど そで ぼたん' },
+  { t:'「着ている」の3つの言い方', u:'clothes', k:'きる носи́ть надева́ть в ＋前置格' },
+  { t:'дли́нный と коро́ткий（長い・短い）', u:'clothes', k:'ながい みじかい はんそで' },
   { t:'乗り物の言い方（на авто́бусе）', u:'verb-motion', k:'のりもの バス ちかてつ метро́' },
   { t:'語順で答えが決まる', u:'order-nuance', k:'ごじゅん きょうちょう' }
 ];
