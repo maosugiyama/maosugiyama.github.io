@@ -2967,6 +2967,32 @@
   .len-t .len-ex { font-size: 10.5px; color: #7E5C42; }
 
 
+  /* ---- 性格のものさし ---- */
+  .trait-scale { margin: 10px 0 4px; }
+  .trait-line {
+    display: grid; grid-template-columns: 1fr 30px 1fr;
+    align-items: center; gap: 6px; min-width: 0;
+    padding: 9px 0; border-bottom: 1px dotted #EFE0DA;
+  }
+  .trait-line:last-child { border-bottom: none; }
+  .trait-line > div { min-width: 0; }
+  .trait-line .tl { text-align: right; }
+  .trait-line b {
+    display: block; font-size: 11.5px; font-weight: 800; color: #3A2318;
+    line-height: 1.45; overflow-wrap: anywhere; word-break: break-word;
+  }
+  .trait-line i {
+    display: block; font-style: normal; font-size: 10px; color: #7A5040;
+    line-height: 1.55; overflow-wrap: anywhere;
+  }
+  .trait-bar { height: 7px; border-radius: 5px; background: linear-gradient(90deg, var(--ta), var(--tb)); }
+  .trait-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 4px; }
+  .tchip {
+    background: #fff; border: 1px solid #F0DDD7; border-left: 3px solid var(--tc);
+    border-radius: 9px; padding: 5px 9px; font-size: 11.5px; color: #3A2318; line-height: 1.6;
+  }
+  .tchip i { display: block; font-style: normal; font-size: 10.5px; color: #7A5040; }
+
   /* ---- 曜日（七曜の色） ---- */
   .wd-list { margin: 10px 0 6px; }
   .wd-row {
@@ -7545,9 +7571,45 @@ const GRAMMAR_UNITS = [
   </div>
 
   <div class="rule-row">
-    <strong>命令形と体の関係</strong>
-    <p>• お願い・一回の依頼 → <b>完了体</b>：<b>Прочита́йте</b> э́то письмо́.</p>
-    <p>• 禁止・くり返しの指示 → <b>不完了体</b>：<b>Не открыва́йте</b> окно́!／Всегда́ <b>говори́те</b> пра́вду.</p>
+    <strong>命令形と体 ①　「〜して」と言うとき</strong>
+    <p><b>完了体</b>＝<b>一回きりの依頼</b>。結果がほしいときに使います。</p>
+    <p><span class="ex-inline">Прочита́йте э́то письмо́.（この手紙を読んでください）</span>
+    <span class="ex-inline">Купи́ хлеб.（パンを買ってきて）</span></p>
+    <p style="margin-top:8px;"><b>不完了体</b>＝<b>くり返し・一般的な指示</b>、そして<b>すすめる・招き入れる</b>とき。</p>
+    <p><span class="ex-inline">Всегда́ говори́те пра́вду.（いつも本当のことを言いなさい）</span>
+    <span class="ex-inline">Проходи́те!（どうぞお入りください）</span>
+    <span class="ex-inline">Сади́тесь!（おかけください）</span></p>
+    <p style="font-size:11px;color:#7E5C42;margin-top:8px;">お客さまに「どうぞ」とすすめるときは<b>不完了体</b>です。
+    不完了体の <b>Сади́тесь!</b> ではなく完了体の <b>Ся́дьте!</b> と言うと、「座りなさい」という指示に聞こえてしまいます。
+    <b>すすめる＝不完了体</b>と覚えておくと、失礼になりません。</p>
+  </div>
+
+  <div class="rule-row" style="background:#FCF2D9;border-left-color:#E0AE3C;">
+    <strong>命令形と体 ②　Не をつけると、意味が入れかわります</strong>
+    <p>ここが<b>いちばん見おとされるところ</b>です。否定の命令では、
+    肯定のときとちょうど<b>逆の体</b>を使います。</p>
+    <div class="pair-list">
+      <p><b>Не ＋ 不完了体 ＝ 禁止（〜するな）</b>
+      <span class="jp">その動作そのものをやめさせる</span>
+      <span>Не <b>открыва́йте</b> окно́!（窓を開けないでください）</span>
+      <span>Не <b>кури́те</b> здесь.（ここでたばこを吸わないで）</span>
+      <span>Не <b>опа́здывай</b>!（遅刻ぐせを直しなさい＝ふだんのこと）</span></p>
+      <p><b>Не ＋ 完了体 ＝ 警告（うっかり〜しないでね）</b>
+      <span class="jp">そうなってしまわないか心配している</span>
+      <span>Не <b>упади́</b>!（転ばないでね）</span>
+      <span>Не <b>забу́дь</b>!（忘れないでね）</span>
+      <span>Не <b>опозда́й</b>!（遅れないでね＝今日のこと）</span>
+      <span>Не <b>простуди́сь</b>!（風邪をひかないでね）</span></p>
+    </div>
+    <p style="font-size:11px;color:#7E5C42;"><b>覚えかた</b>——
+    <b>禁止</b>は「その動作をするな」ですから、動作そのもの＝<b>過程</b>をあらわす<b>不完了体</b>。
+    <b>警告</b>は「そうなってしまわないように」ですから、<b>結果</b>を心配する<b>完了体</b>。
+    同じ動詞でも <b>Не опа́здывай!</b>（いつも遅刻するね、直しなさい）と
+    <b>Не опозда́й!</b>（今日は遅れないでね）で、伝わることがまるで変わります。</p>
+    <p style="font-size:11px;color:#7E5C42;"><b>нельзя́ も同じしくみ</b>です。
+    <b>Здесь нельзя́ кури́ть.</b>（不完了体＝ここは禁煙です）に対して、
+    <b>Э́ту дверь нельзя́ откры́ть.</b>（完了体＝どうしても開かない＝不可能）。
+    禁止か、できないか——体が教えてくれます。</p>
   </div>
 
   <div class="verb-row">
@@ -7575,7 +7637,19 @@ const GRAMMAR_UNITS = [
     {type:'mc', q:'「明日、読書をします（過程）」は？', opts:['За́втра я прочита́ю.','За́втра я бу́ду чита́ть.'], a:1, ex:'過程を言うなら不完了体の未来 бу́ду ＋ 不定形。'},
     {type:'mc', q:'完了体 купи́ть の「я」の形 куплю́ が表すのは？', opts:['現在','未来'], a:1, ex:'完了体に現在形はありません。куплю́ は「買うでしょう」という未来です。'},
     {type:'mc', q:'「サーカスに行きましょう」は？', opts:['Дава́йте пойдём в цирк!','Дава́йте пошли́ в цирк!'], a:0, ex:'誘いは дава́йте ＋ мы の未来形。пойдём です。'},
-    {type:'input', q:'дать の命令形（ていねい）を綴ってください', a:'дайте', hint:'да… で始まる4文字＋те', ex:'да́йте。Да́йте, пожа́луйста, чай.（お茶をください）'}
+    {type:'input', q:'дать の命令形（ていねい）を綴ってください', a:'дайте', hint:'да… で始まる4文字＋те', ex:'да́йте。Да́йте, пожа́луйста, чай.（お茶をください）'},
+    {type:'mc', q:'「窓を開けないでください」（禁止）は？', say:'Не открыва́йте окно́',
+     opts:['Не открыва́йте окно́!','Не откро́йте окно́!','Не открыва́ть окно́!'], a:0,
+     ex:'禁止は Не ＋ 不完了体。動作そのものをやめさせる言い方です。'},
+    {type:'mc', q:'「遅れないでね」と、心配して声をかけるなら？', say:'Не опозда́й',
+     opts:['Не опозда́й!','Не опа́здывай!'], a:0,
+     ex:'今日そうなってしまわないか心配しているので、完了体を使います。Не опа́здывай! は「遅刻ぐせを直しなさい」という注意になります。'},
+    {type:'mc', q:'お客さまに「どうぞお入りください」とすすめるなら？', say:'Проходи́те, пожа́луйста',
+     opts:['Проходи́те, пожа́луйста!','Пройди́те, пожа́луйста!'], a:0,
+     ex:'すすめる・招き入れるときは不完了体です。完了体だと事務的な指示に聞こえます。'},
+    {type:'mc', q:'Э́ту дверь нельзя́ откры́ть. の意味は？',
+     opts:['このドアはどうしても開かない','このドアを開けてはいけない'], a:0,
+     ex:'нельзя́ ＋ 完了体は「不可能」。禁止なら нельзя́ ＋ 不完了体で Э́ту дверь нельзя́ открыва́ть. となります。'}
   ]
 },
 
@@ -9002,6 +9076,194 @@ const GRAMMAR_UNITS = [
 },
 
 {
+  id:'character', cat:'vocab', level:'初級', title:'人がら — хара́ктер', sub:'内面をあらわすことば',
+  lesson:`
+  <p>外見のつぎは、<b>内面</b>です。「どんな人？」に答えられるようになると、
+  話せることが一気に増えます。
+  性格をあらわす形容詞は<b>反対語と対にする</b>と覚えが早いので、
+  ものさしの形で並べました。</p>
+
+  <div class="rule-row">
+    <strong>「どんな人ですか」とたずねる</strong>
+    <p>• <span class="ex-inline">Како́й он челове́к?（彼はどんな人ですか）</span></p>
+    <p>• <span class="ex-inline">Что он за челове́к?（彼っていったいどんな人？）</span></p>
+    <p>• <span class="ex-inline">Кака́я она́ по хара́ктеру?（彼女は性格的にはどんな人？）</span></p>
+    <p style="font-size:11px;color:#7E5C42;"><b>хара́ктер</b> は「性格」。
+    <b>по ＋ 与格</b>で <b>по хара́ктеру</b>＝「性格の点では」。
+    答えるときは <b>Он по хара́ктеру споко́йный.</b>（彼は落ち着いた性格です）のように言います。
+    <b>У неё лёгкий хара́ктер.</b> は「彼女はつきあいやすい人だ」——
+    直訳すると「軽い性格をもっている」です。</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>性格のものさし</strong>
+    <p style="font-size:11px;color:#7E5C42;">左と右が反対の意味です。
+    どちらか一方だけ覚えるより、対で覚えるほうがずっと早く身につきます。</p>
+    <div class="trait-scale">
+    <div class="trait-line">
+      <div class="tl"><b>акти́вный</b><i>積極的な</i></div>
+      <div class="trait-bar" style="--ta:#A45324;--tb:#386E9A;"></div>
+      <div class="tr"><b>пасси́вный</b><i>消極的な</i></div>
+    </div>
+    <div class="trait-line">
+      <div class="tl"><b>общи́тельный</b><i>社交的な</i></div>
+      <div class="trait-bar" style="--ta:#B44453;--tb:#386E9A;"></div>
+      <div class="tr"><b>за́мкнутый</b><i>打ちとけない</i></div>
+    </div>
+    <div class="trait-line">
+      <div class="tl"><b>уве́ренный</b><i>自信のある</i></div>
+      <div class="trait-bar" style="--ta:#7A6922;--tb:#8C52A4;"></div>
+      <div class="tr"><b>засте́нчивый</b><i>恥ずかしがり屋の</i></div>
+    </div>
+    <div class="trait-line">
+      <div class="tl"><b>любозна́тельный</b><i>好奇心のある</i></div>
+      <div class="trait-bar" style="--ta:#2B7847;--tb:#806452;"></div>
+      <div class="tr"><b>равноду́шный</b><i>無関心な</i></div>
+    </div>
+    <div class="trait-line">
+      <div class="tl"><b>скро́мный</b><i>控えめな</i></div>
+      <div class="trait-bar" style="--ta:#8C52A4;--tb:#A45324;"></div>
+      <div class="tr"><b>хвастли́вый</b><i>自慢好きな</i></div>
+    </div>
+    <div class="trait-line">
+      <div class="tl"><b>до́брый</b><i>やさしい</i></div>
+      <div class="trait-bar" style="--ta:#AC486A;--tb:#7A5040;"></div>
+      <div class="tr"><b>злой</b><i>意地悪な</i></div>
+    </div>
+    <div class="trait-line">
+      <div class="tl"><b>весёлый</b><i>陽気な</i></div>
+      <div class="trait-bar" style="--ta:#7A6922;--tb:#3A708B;"></div>
+      <div class="tr"><b>гру́стный</b><i>ふさぎがちな</i></div>
+    </div>
+    <div class="trait-line">
+      <div class="tl"><b>трудолюби́вый</b><i>働き者の</i></div>
+      <div class="trait-bar" style="--ta:#2B7847;--tb:#806452;"></div>
+      <div class="tr"><b>лени́вый</b><i>なまけものの</i></div>
+    </div>
+    <div class="trait-line">
+      <div class="tl"><b>терпели́вый</b><i>がまん強い</i></div>
+      <div class="trait-bar" style="--ta:#3A708B;--tb:#B44453;"></div>
+      <div class="tr"><b>вспы́льчивый</b><i>すぐカッとなる</i></div>
+    </div>
+    </div>
+  </div>
+
+  <div class="rule-row" style="background:#FCF2D9;border-left-color:#E0AE3C;">
+    <strong>любозна́тельный と любопы́тный —— どちらも「好奇心」ですが</strong>
+    <p>• <b>любозна́тельный</b>＝<b>知りたがり</b>。学ぶことへの好奇心で、<b>ほめことば</b>です。</p>
+    <p><span class="ex-inline">Он о́чень любозна́тельный ребёнок.（とても知りたがりの子です）</span></p>
+    <p style="margin-top:8px;">• <b>любопы́тный</b>＝<b>もの好き・詮索好き</b>。
+    人のことを知りたがる方向で、<b>皮肉に響くことがあります</b>。</p>
+    <p><span class="ex-inline">Не будь таки́м любопы́тным.（そんなに詮索しないで）</span></p>
+    <p style="font-size:11px;color:#7E5C42;">ただし <b>любопы́тный</b> は、ものについて言えば
+    「興味深い」というよい意味になります（<b>любопы́тный факт</b>＝面白い事実）。
+    人に使うか、ものに使うかで印象が変わるのです。
+    <b>зна́ть</b>（知る）が入っている любозна́тельный のほうが<b>学びの好奇心</b>——
+    そう覚えておけば迷いません。</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>「恥ずかしがる」は -ся 動詞で</strong>
+    <div class="conj-table">
+      <span class="pron">засте́нчивый</span><span class="form">恥ずかしがり屋の（もって生まれた性質）</span>
+      <span class="pron">стесни́тельный</span><span class="form">はにかみ屋の（ほぼ同じ。話しことば寄り）</span>
+      <span class="pron">стесня́ться</span><span class="form">（いま）恥ずかしがる・遠慮する</span>
+    </div>
+    <p>• <span class="ex-inline">Он засте́нчивый.（彼は恥ずかしがり屋だ＝いつも）</span></p>
+    <p>• <span class="ex-inline">Она́ стесня́ется говори́ть по-ру́сски.（彼女はロシア語を話すのを恥ずかしがっている）</span></p>
+    <p>• <span class="ex-inline">Не стесня́йтесь!（どうぞ遠慮なさらないで）</span></p>
+    <p style="font-size:11px;color:#7E5C42;"><b>形容詞は「そういう人」</b>、
+    <b>-ся 動詞は「いま恥ずかしがっている」</b>——この住み分けです。
+    <b>Не стесня́йтесь!</b> は食卓ですすめられたときの決まり文句でもあります。
+    形は <b>Не ＋ 不完了体の命令形</b>。「命令形と未来形」で見た、あの形です。</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>もっと使える性格のことば</strong>
+    <div class="trait-chips">
+      <div class="tchip" style="--tc:#B44453;">у́мный<i>賢い</i></div>
+      <div class="tchip" style="--tc:#8C52A4;">че́стный<i>正直な</i></div>
+      <div class="tchip" style="--tc:#A45324;">серьёзный<i>まじめな</i></div>
+      <div class="tchip" style="--tc:#386E9A;">споко́йный<i>落ち着いた</i></div>
+      <div class="tchip" style="--tc:#2B7847;">внима́тельный<i>気がきく</i></div>
+      <div class="tchip" style="--tc:#7A6922;">отзы́вчивый<i>思いやりのある</i></div>
+      <div class="tchip" style="--tc:#806452;">реши́тельный<i>決断力のある</i></div>
+      <div class="tchip" style="--tc:#B44453;">надёжный<i>頼りになる</i></div>
+      <div class="tchip" style="--tc:#8C52A4;">ще́дрый<i>気前のよい</i></div>
+      <div class="tchip" style="--tc:#A45324;">жа́дный<i>けちな</i></div>
+      <div class="tchip" style="--tc:#386E9A;">упря́мый<i>頑固な</i></div>
+      <div class="tchip" style="--tc:#2B7847;">стро́гий<i>厳しい</i></div>
+      <div class="tchip" style="--tc:#7A6922;">мя́гкий<i>おだやかな</i></div>
+      <div class="tchip" style="--tc:#806452;">стра́нный<i>変わった</i></div>
+    </div>
+  </div>
+
+  <div class="rule-row">
+    <strong>どのくらい？ —— 程度をそえる</strong>
+    <p><b>о́чень</b> とても ／ <b>дово́льно</b> なかなか ／ <b>сли́шком</b> 〜すぎる ／ <b>немно́го</b> 少し</p>
+    <p>• <span class="ex-inline">Она́ о́чень до́брая.（彼女はとてもやさしい）</span></p>
+    <p>• <span class="ex-inline">Он дово́льно скро́мный.（彼はなかなか控えめだ）</span></p>
+    <p>• <span class="ex-inline">Ты сли́шком серьёзный.（きみはまじめすぎる）</span></p>
+    <p style="font-size:11px;color:#7E5C42;">性格の形容詞も、かかる人の<b>性・数に合わせます</b>。
+    Он до́брый ／ Она́ до́брая ／ Они́ до́брые。
+    「形容詞のきほん」で覚えた語尾が、そのまま生きてきます。</p>
+  </div>
+
+  <div class="rule-row" style="background:#F3EEE6;border-left-color:#806452;">
+    <strong>☕ コーヒーブレイク —— широ́кая душа́</strong>
+    <p>ロシア語で人を語るとき、たびたび出てくるのが <b>душа́</b>（魂・心）です。
+    <b>широ́кая душа́</b>（広い心）は、気前がよく情に厚い人をほめることば。
+    <b>душа́ компа́нии</b> は「その場をぱっと明るくする人」——
+    直訳すると「集まりの魂」です。</p>
+    <p>反対に、心の動かない人には <b>У него́ нет души́.</b>（彼には心がない）と言うこともあります。
+    <b>души́</b> は生格。<b>нет ＋ 生格</b>の形ですね。</p>
+    <p style="font-size:11px;color:#7E5C42;">性格を <b>хара́ктер</b>（もって生まれた気質）で語るか、
+    <b>душа́</b>（人としての深み）で語るか——
+    ロシア語には、人を見る「ものさし」が2本あります。</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'子どもをほめて「好奇心おうせいな子です」と言うなら？', say:'любозна́тельный ребёнок',
+     opts:['любозна́тельный ребёнок','любопы́тный ребёнок'], a:0,
+     ex:'любозна́тельный は学びへの好奇心で、ほめことばです。'},
+    {type:'mc', q:'「どうぞ遠慮なさらないで」は？', say:'Не стесня́йтесь',
+     opts:['Не стесня́йтесь!','Не постесня́йтесь!','Стесня́йтесь!'], a:0,
+     ex:'Не ＋ 不完了体の命令形。すすめるときの決まり文句です。'},
+    {type:'mc', q:'общи́тельный（社交的な）の反対は？',
+     opts:['за́мкнутый','акти́вный','до́брый'], a:0,
+     ex:'за́мкнутый は「閉じた」。人づきあいに閉じている、内にこもった性格です。'},
+    {type:'mc', q:'Она́ о́чень （　）.（彼女はとてもやさしい）', say:'Она́ о́чень до́брая',
+     opts:['до́брая','до́брый','до́брое'], a:0,
+     ex:'она́ は女性なので、形容詞も女性形 до́брая にします。'},
+    {type:'mc', q:'「控えめな・遠慮がちな」は？', say:'скро́мный',
+     opts:['скро́мный','хвастли́вый','лени́вый'], a:0,
+     ex:'скро́мный は控えめで出しゃばらない性格。ほめことばとして使えます。'},
+    {type:'mc', q:'Он （　） хара́ктеру споко́йный.（彼は性格的には落ち着いている）', say:'Он по хара́ктеру споко́йный',
+     opts:['по','в','с'], a:0,
+     ex:'по ＋ 与格で по хара́ктеру。「性格の点では」という言い方です。'},
+    {type:'mc', q:'「働き者の」は？', say:'трудолюби́вый',
+     opts:['трудолюби́вый','лени́вый','терпели́вый'], a:0,
+     ex:'труд（労働）＋ люби́ть（好む）で「働くのが好き」＝働き者。'},
+    {type:'mc', q:'душа́ компа́нии が指すのは？',
+     opts:['その場をぱっと明るくする人','会社の社長','ひとりでいるのが好きな人'], a:0,
+     ex:'直訳は「集まりの魂」。みんなを楽しくさせる人のことです。'},
+    {type:'mc', q:'Она́ （　） говори́ть по-ру́сски.（彼女はロシア語を話すのを恥ずかしがっている）', say:'Она́ стесня́ется говори́ть по-ру́сски',
+     opts:['стесня́ется','стесня́ет','засте́нчивая'], a:0,
+     ex:'いま恥ずかしがっている、という動きは -ся 動詞であらわします。'},
+    {type:'mc', q:'Ты （　） серьёзный.（きみはまじめすぎる）', say:'Ты сли́шком серьёзный',
+     opts:['сли́шком','о́чень','немно́го'], a:0,
+     ex:'「〜すぎる」は сли́шком。度をこしている、というひとことです。'},
+    {type:'input', q:'「がまん強い」をあらわす形容詞を綴ってください（アクセント記号なしでOK）',
+     a:'терпеливый', hint:'терп… ではじまります', ex:'терпели́вый。терпе́ние（がまん）と同じ仲間です。'},
+    {type:'order', q:'「彼はとても控えめな人です」を組み立ててください',
+     tokens:['Он','о́чень','скро́мный','челове́к'],
+     accept:[{o:'Он о́чень скро́мный челове́к', n:'程度の о́чень は形容詞の前、形容詞は名詞の前に置きます'}],
+     hint:'Он から始めます',
+     ex:'Он о́чень скро́мный челове́к. 語順は日本語と同じ流れで並びます。'}
+  ]
+},
+
+{
   id:'seasons', cat:'vocab', level:'初級', title:'一年のことば — 季節・月・曜日', sub:'いつのことかを言えるようにする',
   lesson:`
   <p>季節・月・曜日は、どれも<b>「いつ」を言うため</b>のことばです。
@@ -9020,7 +9282,7 @@ const GRAMMAR_UNITS = [
 
   <div class="case-row">
     <strong>季節 — 4つと、その「〜に」</strong>
-<div class="wd-list"><div class="wd-row" style="--wd:#057DA4;"><span class="wd-chip" aria-hidden="true">冬</span><span class="wd-t"><b>зима́</b><span class="wd-in">зимо́й（〜に）</span><span class="wd-why">12・1・2月</span></span></div><div class="wd-row" style="--wd:#D81B7A;"><span class="wd-chip" aria-hidden="true">春</span><span class="wd-t"><b>весна́</b><span class="wd-in">весно́й（〜に）</span><span class="wd-why">3・4・5月</span></span></div><div class="wd-row" style="--wd:#288509;"><span class="wd-chip" aria-hidden="true">夏</span><span class="wd-t"><b>ле́то</b><span class="wd-in">ле́том（〜に）</span><span class="wd-why">6・7・8月</span></span></div><div class="wd-row" style="--wd:#B75901;"><span class="wd-chip" aria-hidden="true">秋</span><span class="wd-t"><b>о́сень</b><span class="wd-in">о́сенью（〜に）</span><span class="wd-why">9・10・11月</span></span></div></div>
+<div class="wd-list"><div class="wd-row" style="--wd:#3A708B;"><span class="wd-chip" aria-hidden="true">冬</span><span class="wd-t"><b>зима́</b><span class="wd-in">зимо́й（〜に）</span><span class="wd-why">12・1・2月</span></span></div><div class="wd-row" style="--wd:#AC486A;"><span class="wd-chip" aria-hidden="true">春</span><span class="wd-t"><b>весна́</b><span class="wd-in">весно́й（〜に）</span><span class="wd-why">3・4・5月</span></span></div><div class="wd-row" style="--wd:#3D7732;"><span class="wd-chip" aria-hidden="true">夏</span><span class="wd-t"><b>ле́то</b><span class="wd-in">ле́том（〜に）</span><span class="wd-why">6・7・8月</span></span></div><div class="wd-row" style="--wd:#8F6036;"><span class="wd-chip" aria-hidden="true">秋</span><span class="wd-t"><b>о́сень</b><span class="wd-in">о́сенью（〜に）</span><span class="wd-why">9・10・11月</span></span></div></div>
     <p style="font-size:11px;color:#7E5C42;">「〜に」は<b>造格</b>で、前置詞をつけません。
     <span class="ex-inline">Зимо́й хо́лодно.</span>（冬は寒い）
     <span class="ex-inline">Ле́том жа́рко.</span>（夏は暑い）</p>
@@ -9179,7 +9441,7 @@ const GRAMMAR_UNITS = [
 
   <div class="case-row">
     <strong>曜日 — 7つと、その「〜に」</strong>
-<div class="wd-list"><div class="wd-row" style="--wd:#7D1FB5;"><span class="wd-chip" aria-hidden="true">月</span><span class="wd-t"><b>понеде́льник</b><span class="wd-in">в понеде́льник</span><span class="wd-why">неде́ля（週）のあと</span></span></div><div class="wd-row" style="--wd:#D24000;"><span class="wd-chip" aria-hidden="true">火</span><span class="wd-t"><b>вто́рник</b><span class="wd-in"><b>во</b> вто́рник</span><span class="wd-why">второ́й（2番目）から</span></span></div><div class="wd-row" style="--wd:#0A79C4;"><span class="wd-chip" aria-hidden="true">水</span><span class="wd-t"><b>среда́</b><span class="wd-in">в <b>сре́ду</b></span><span class="wd-why">「まんなか」の意味</span></span></div><div class="wd-row" style="--wd:#0B8529;"><span class="wd-chip" aria-hidden="true">木</span><span class="wd-t"><b>четве́рг</b><span class="wd-in">в четве́рг</span><span class="wd-why">четвёртый（4番目）から</span></span></div><div class="wd-row" style="--wd:#9D6900;"><span class="wd-chip" aria-hidden="true">金</span><span class="wd-t"><b>пя́тница</b><span class="wd-in">в <b>пя́тницу</b></span><span class="wd-why">пя́тый（5番目）から</span></span></div><div class="wd-row" style="--wd:#7A4A21;"><span class="wd-chip" aria-hidden="true">土</span><span class="wd-t"><b>суббо́та</b><span class="wd-in">в <b>суббо́ту</b></span><span class="wd-why">ヘブライ語 шабба́т から</span></span></div><div class="wd-row" style="--wd:#E01010;"><span class="wd-chip" aria-hidden="true">日</span><span class="wd-t"><b>воскресе́нье</b><span class="wd-in">в воскресе́нье</span><span class="wd-why">воскресе́ние（復活）から</span></span></div></div>
+<div class="wd-list"><div class="wd-row" style="--wd:#8C52A4;"><span class="wd-chip" aria-hidden="true">月</span><span class="wd-t"><b>понеде́льник</b><span class="wd-in">в понеде́льник</span><span class="wd-why">неде́ля（週）のあと</span></span></div><div class="wd-row" style="--wd:#A45324;"><span class="wd-chip" aria-hidden="true">火</span><span class="wd-t"><b>вто́рник</b><span class="wd-in"><b>во</b> вто́рник</span><span class="wd-why">второ́й（2番目）から</span></span></div><div class="wd-row" style="--wd:#386E9A;"><span class="wd-chip" aria-hidden="true">水</span><span class="wd-t"><b>среда́</b><span class="wd-in">в <b>сре́ду</b></span><span class="wd-why">「まんなか」の意味</span></span></div><div class="wd-row" style="--wd:#2B7847;"><span class="wd-chip" aria-hidden="true">木</span><span class="wd-t"><b>четве́рг</b><span class="wd-in">в четве́рг</span><span class="wd-why">четвёртый（4番目）から</span></span></div><div class="wd-row" style="--wd:#7A6922;"><span class="wd-chip" aria-hidden="true">金</span><span class="wd-t"><b>пя́тница</b><span class="wd-in">в <b>пя́тницу</b></span><span class="wd-why">пя́тый（5番目）から</span></span></div><div class="wd-row" style="--wd:#806452;"><span class="wd-chip" aria-hidden="true">土</span><span class="wd-t"><b>суббо́та</b><span class="wd-in">в <b>суббо́ту</b></span><span class="wd-why">ヘブライ語 шабба́т から</span></span></div><div class="wd-row" style="--wd:#B44453;"><span class="wd-chip" aria-hidden="true">日</span><span class="wd-t"><b>воскресе́нье</b><span class="wd-in">в воскресе́нье</span><span class="wd-why">воскресе́ние（復活）から</span></span></div></div>
     <p style="font-size:11px;color:#7E5C42;">曜日は<b>в ＋ 対格</b>。女性名詞は語尾が -у / -ю に変わります
     （среда́ → в сре́ду、пя́тница → в пя́тницу）。</p>
     <p style="font-size:11px;color:#7E5C42;">色は日本の<b>七曜</b>（日＝太陽・月＝月・火＝火…）に合わせてあります。
@@ -9917,6 +10179,58 @@ const GRAMMAR_UNITS = [
   </div>
 
   <div class="case-row">
+    <strong>②-2　до́лжен と на́до・ну́жно のちがい</strong>
+    <p><b>до́лжен</b> は無人称ではありません。<b>主語は主格</b>で、
+    形容詞のように<b>主語に合わせて形が変わります</b>。ここが на́до・ну́жно との大きな違いです。</p>
+    <div class="conj-table">
+      <span class="pron">он до́лжен</span><span class="form">彼は〜しなければならない</span>
+      <span class="pron">она́ должна́</span><span class="form">彼女は〜しなければならない</span>
+      <span class="pron">оно́ должно́</span><span class="form">それは〜のはずだ</span>
+      <span class="pron">они́ должны́</span><span class="form">彼らは〜しなければならない</span>
+    </div>
+    <div class="pair-list">
+      <p><b>до́лжен ＝ 責任・約束（自分が負っている）</b>
+      <span class="jp">主格 ＋ до́лжен ＋ 不定形</span>
+      <span><b>Я до́лжен</b> верну́ть кни́гу.（本を返さなければならない＝返す約束をした）</span>
+      <span><b>Она́ должна́</b> прийти́ в семь.（彼女は7時に来るはずだ）</span></p>
+      <p><b>на́до・ну́жно ＝ 状況からくる必要</b>
+      <span class="jp">与格 ＋ на́до／ну́жно ＋ 不定形（主語なし）</span>
+      <span><b>Мне на́до</b> верну́ть кни́гу.（本を返さなくちゃ）</span>
+      <span><b>Нам ну́жно</b> идти́.（もう行かないと）</span></p>
+    </div>
+    <p style="font-size:11px;color:#7E5C42;">日本語にするとどちらも「〜しなければ」ですが、
+    <b>до́лжен</b> は<b>その人の責任</b>、<b>на́до</b> は<b>そうせざるをえない状況</b>を指します。
+    до́лжен のほうが硬く、書きことばや約束ごとでよく使われます。</p>
+    <p style="font-size:11px;color:#7E5C42;">過去・未来もそれぞれの形で作ります。
+    <b>Я до́лжен был идти́.</b>（был は主語に合わせる）／
+    <b>Мне на́до бы́ло идти́.</b>（бы́ло は中性のまま）。
+    無人称文は主語がないので、いつも中性・単数——ここでも同じ規則です。</p>
+    <p style="font-size:11px;color:#7E5C42;"><b>необходи́мо</b> は「どうしても必要だ・不可欠だ」。
+    на́до よりずっと強く、かたい言い方です（<b>Необходи́мо име́ть ви́зу.</b>＝ビザが必要です）。
+    強さの順に並べると <b>мо́жно ＜ на́до・ну́жно ＜ необходи́мо</b>。
+    до́лжен はこの線とは別で、<b>義務・責任</b>の軸にあります。</p>
+  </div>
+
+  <div class="case-row">
+    <strong>②-3　ну́жно と ну́жен —— 形が変わるほうと、変わらないほう</strong>
+    <p>同じ ну́жн- でも、<b>あとに何が来るか</b>で形が変わります。</p>
+    <div class="pair-list">
+      <p><b>不定形が続く → ну́жно のまま</b>
+      <span class="jp">無人称文なので、合わせる相手がありません</span>
+      <span>Мне <b>ну́жно</b> рабо́тать.（働かなければ）</span></p>
+      <p><b>必要な「もの」が来る → その性・数に合わせる</b>
+      <span class="jp">ну́жен は短語尾の形容詞。必要なものが主語です</span>
+      <span>Мне <b>ну́жен</b> слова́рь.（辞書がいる／男性）</span>
+      <span>Мне <b>нужна́</b> кни́га.（本がいる／女性）</span>
+      <span>Мне <b>ну́жно</b> вре́мя.（時間がいる／中性）</span>
+      <span>Мне <b>нужны́</b> де́ньги.（お金がいる／複数）</span></p>
+    </div>
+    <p style="font-size:11px;color:#7E5C42;">必要としている人はどちらも<b>与格</b>のままです。
+    変わるのは「必要なもの」に合わせる部分だけ。
+    <b>Мне нужны́ де́ньги.</b> の де́ньги は複数だけの名詞でしたね。</p>
+  </div>
+
+  <div class="case-row">
     <strong>③ 天気・自然</strong>
     <div class="conj-table">
       <span class="pron">Темне́ет.</span><span class="form">暗くなってきた</span>
@@ -9987,7 +10301,19 @@ const GRAMMAR_UNITS = [
      tokens:['Меня́','зову́т','Мао'],
      accept:[{o:'Меня́ зову́т Мао', n:'不定人称文。呼ばれている自分を対格で先に置きます'}],
      hint:'меня́ から始めます',
-     ex:'Меня́ зову́т Мао. 直訳は「（人々は）私をマオと呼んでいる」です。'}
+     ex:'Меня́ зову́т Мао. 直訳は「（人々は）私をマオと呼んでいる」です。'},
+    {type:'mc', q:'Она́ （　） прийти́ в семь.（彼女は7時に来るはずだ）', say:'Она́ должна́ прийти́ в семь',
+     opts:['должна́','до́лжен','должно́','должны́'], a:0,
+     ex:'до́лжен は主語に合わせて形が変わります。она́ は女性なので должна́ です。'},
+    {type:'mc', q:'Мне （　） слова́рь.（辞書が必要です）', say:'Мне ну́жен слова́рь',
+     opts:['ну́жен','ну́жно','нужна́','нужны́'], a:0,
+     ex:'必要な「もの」に合わせます。слова́рь は男性名詞なので ну́жен。人は与格 Мне のままです。'},
+    {type:'mc', q:'Я до́лжен рабо́тать. と Мне на́до рабо́тать. のちがいは？',
+     opts:['до́лжен は自分の責任、на́до は状況からくる必要','до́лжен のほうが弱い言い方','意味も使い方もまったく同じ'], a:0,
+     ex:'до́лжен は約束や責任として「そうすべき」。на́до はそうせざるをえない状況を指します。'},
+    {type:'mc', q:'「行かなければならなかった」を無人称文で言うと？', say:'Мне на́до бы́ло идти́',
+     opts:['Мне на́до бы́ло идти́.','Мне на́до был идти́.','Я на́до бы́ло идти́.'], a:0,
+     ex:'主語がないので бы́ло は中性・単数のまま。人は与格 Мне です。'}
   ]
 }
 ];
@@ -10779,6 +11105,27 @@ const WHY = {
   'color-shape:9': ['前の тёмно- は形を変えません', '', 'тёмноя という形はありません'],
   'color-shape:10': ['', 'бле́дно- は「淡い」で、あざやかさとは逆の方向です', 'све́тло- は「明るい・薄い」で、あざやかさとは別です'],
   'color-shape:11': ['濃さを足すのは тёмно- のほうです', ''],
+  // ---- 命令形（Не ＋ 体）----
+  'imperative-future:8': ['', '完了体を使うと「うっかり開けてしまわないでね」という警告になります', '不定形のままでは命令になりません'],
+  'imperative-future:9': ['', 'Не опа́здывай! は「遅刻ぐせを直しなさい」という、ふだんの習慣への注意です'],
+  'imperative-future:10': ['', '完了体だと「入りなさい」という事務的な指示に聞こえます。すすめるときは不完了体です'],
+  'imperative-future:11': ['', '禁止なら不完了体で Э́ту дверь нельзя́ открыва́ть. と言います'],
+  // ---- до́лжен と на́до ----
+  'impersonal:11': ['', 'до́лжен は男性形です。она́ には合いません', 'должно́ は中性形。人には使いません', 'должны́ は複数形です'],
+  'impersonal:12': ['', 'ну́жно は不定形が続くときの形です。ここは名詞が来ています', 'нужна́ は女性形。слова́рь は男性名詞です', 'нужны́ は複数形。слова́рь は単数です'],
+  'impersonal:13': ['', 'до́лжен のほうがむしろ硬く、責任の重い言い方です', '日本語ではどちらも「〜しなければ」ですが、主語の格も意味あいも違います'],
+  'impersonal:14': ['', '主語がないので был（男性形）にはなりません。中性の бы́ло です', 'на́до の文では人は与格 Мне になります。主格の Я は使えません'],
+  // ---- 人がら ----
+  'character:0': ['', 'любопы́тный は「詮索好き」に聞こえることがあります。ほめるなら любозна́тельный'],
+  'character:1': ['', '完了体を使うと「うっかり恥ずかしがらないでね」という警告の形になってしまいます', 'これでは「恥ずかしがりなさい」という命令になります'],
+  'character:2': ['', 'акти́вный は「積極的な」。反対語ではありません', 'до́брый は「やさしい」。人づきあいの開き具合とは別の軸です'],
+  'character:3': ['', 'до́брый は男性形です。она́ には合いません', 'до́брое は中性形。人には使いません'],
+  'character:4': ['', 'хвастли́вый は「自慢好きな」。控えめの反対です', 'лени́вый は「なまけものの」。控えめとは別の意味です'],
+  'character:5': ['', 'в хара́ктере は「性格のなかに」。人柄を述べる形ではありません', 'с хара́ктером は「気骨のある」という別の言い方になります'],
+  'character:6': ['', 'лени́вый は「なまけものの」。反対の意味です', 'терпели́вый は「がまん強い」。働き者とは別の性質です'],
+  'character:7': ['', 'компа́ния には「会社」の意味もありますが、この言い回しでは「仲間の集まり」です', 'むしろ人を集めて明るくする人のことです'],
+  'character:8': ['', 'стесня́ть は「窮屈にさせる」という別の動詞です', 'засте́нчивая は形容詞。動詞の位置には置けません'],
+  'character:9': ['', 'о́чень は「とても」。度をこしている感じは出ません', 'немно́го は「少し」。反対の方向です'],
   // ---- 外見をあらわす ----
   'appearance:0': ['髪があることは当たり前なので、есть は言いません', ''],
   'appearance:1': ['', 'есть がないと「その車、きみのもの？」のような、別のたずね方になります'],
@@ -12002,6 +12349,14 @@ function printNoteSheet() {
 // t:見出し／u:ユニットid／k:検索用の別のことば（かな・ロシア語）
 const TOPIC_INDEX = [
   { t:'名詞の性（男性・女性・中性）', u:'noun-gender', k:'せい おとこ おんな 中性' },
+  { t:'性格をあらわす形容詞', u:'character', k:'せいかく хара́ктер ものさし 反対語' },
+  { t:'積極的な・消極的な', u:'character', k:'акти́вный пасси́вный せっきょくてき' },
+  { t:'好奇心のある（любозна́тельный）', u:'character', k:'こうきしん любопы́тный せんさく' },
+  { t:'恥ずかしがり屋・遠慮がちな', u:'character', k:'засте́нчивый скро́мный はずかしい えんりょ стесня́ться' },
+  { t:'душа́ を使った言い回し', u:'character', k:'широ́кая душа́ компа́нии たましい' },
+  { t:'до́лжен と на́до のちがい', u:'impersonal', k:'должен надо нужно 義務 ぎむ ひつよう' },
+  { t:'ну́жен・нужна́・нужны́ の使い分け', u:'impersonal', k:'нужен нужна нужны ひつよう' },
+  { t:'Не ＋ 命令形（禁止と警告）', u:'imperative-future', k:'めいれい きんし けいこく не опозда́й открыва́йте' },
   { t:'名詞の複数形', u:'noun-plural', k:'ふくすう たち' },
   { t:'数えられない名詞', u:'noun-count', k:'かぞえられない чай' },
   { t:'複数だけで使う名詞', u:'noun-count', k:'де́ньги очки́ духи́ ふくすうのみ' },
