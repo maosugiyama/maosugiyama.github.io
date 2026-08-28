@@ -13,7 +13,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ねこと学ぶ キリル文字 - ロシア語アルファベットの森の散歩</title>
-<meta name="description" content="33匹のねこたちと一緒に、ロシア語のキリル文字33文字を楽しく学べる教材アプリ。動詞活用・6つの格・発音のルールも自然に身につきます。">
+<meta name="description" content="ロシア語をキリル文字から上級文法まで。33匹のねこと33文字をおぼえ、発音のルール・名詞・動詞・6つの格・形動詞・副動詞・仮定法まで進める無料の教材アプリ。全52ユニット・477問、音声つき。">
 <meta name="author" content="杉山真央">
 
 <!-- PWA（ホーム画面に追加・オフライン起動） -->
@@ -26,7 +26,7 @@
 
 <!-- Open Graph (SNS sharing) -->
 <meta property="og:title" content="ねこと学ぶ キリル文字">
-<meta property="og:description" content="ねこたちと一緒にロシア語のキリル文字を学ぼう🌲">
+<meta property="og:description" content="キリル文字から上級文法まで。ねこたちと歩くロシア語の森🌲">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:site_name" content="ねこと学ぶ キリル文字">
@@ -2967,6 +2967,23 @@
   .len-t .len-ex { font-size: 10.5px; color: #7E5C42; }
 
 
+  /* ---- カタカナ読みの表示切りかえ ---- */
+  body.hide-kana .kana-line { display: none; }
+  .kana-toggle {
+    background: none; border: none; padding: 0 0 4px;
+    font-family: inherit; font-size: 10.5px; color: #7E5C42;
+    text-decoration: underline; cursor: pointer;
+  }
+  .kana-toggle::after { content: 'カタカナを隠す'; }
+  body.hide-kana .kana-toggle::after { content: 'カタカナを見る'; }
+
+  /* ---- 表紙に守備範囲を書く ---- */
+  .cover-scope {
+    margin-top: 10px; font-size: 11.5px; line-height: 1.85;
+    color: #7E5C42;
+  }
+  .cover-scope b { color: #9F544A; font-weight: 800; }
+
   /* ---- アクセントの聞き比べ ---- */
   .acc-pairs { display: grid; gap: 8px; margin: 10px 0 8px; }
   .acc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -3063,6 +3080,9 @@
         <p style="font-size:11px;font-weight:700;color:#7E5C42;letter-spacing:0.1em;margin-bottom:6px;">ねこと学ぶ</p>
         <h2>キリル文字の森の<br>散歩へ出かけよう<span class="lu lu-md"><svg viewBox="0 0 24 24"><path d="M12 2L4 10h3l-4 6h4l-3 4h16l-3-4h4l-4-6h3z"></path><line x1="12" y1="20" x2="12" y2="22"></line></svg></span></h2>
         <p>ねこたちと一緒に、33文字のアルファベットを探検する旅へ。<br>森の奥には、言葉という宝物が待っています。</p>
+        <p class="cover-scope"><b>文字からはじめて、上級文法まで。</b><br>
+        33文字 → 発音のルール → 名詞・動詞・6つの格 → 形動詞・副動詞・仮定法。<br>
+        全52ユニット・477問。<b>順番どおりでなくても進められます。</b></p>
       </div>
     </div>
 
@@ -3198,7 +3218,7 @@
             <div class="home-card-icon"><span class="lu lu-md"><svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg></span></div>
             <div class="home-card-body">
               <strong>聞いて綴る（ディクテーション）</strong>
-              <span>音声を聞いて、キリル文字で書きとります。音と綴りを結びつける練習</span>
+              <span>音声を聞いて、キリル文字で書きとります。音と綴りを結びつける練習<br><b>※ 何文字か覚えてからが効果的です。図鑑を少し進めてからどうぞ</b></span>
               <span class="home-card-status" id="home-dict-status"></span>
             </div>
             <div class="home-card-arrow">→</div>
@@ -3331,7 +3351,7 @@
         <div class="notation-cell">
           <span class="notation-label" style="color:#9F544A;">ひらがな「ら・り・る・れ・ろ」</span>
           <span class="notation-desc">ロシア語 <b>р</b>（日本語のラ行に近い巻き舌のR）の音</span>
-          <span class="notation-examples">例：арбу́з → ア<b>る</b>ブス／рома́шка → <b>ら</b>マーシカ</span>
+          <span class="notation-examples">例：арбу́з → ア<b>る</b>ブース／рома́шка → <b>ら</b>マーシカ</span>
         </div>
         <div class="notation-cell">
           <span class="notation-label" style="color:#387362;">カタカナ「ラ・リ・ル・レ・ロ」</span>
@@ -3608,7 +3628,7 @@
     </div>
 
     <div class="info-card">
-      <h3><span class="lu lu-md"><svg viewBox="0 0 24 24"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0zM14.5 12.5l2-2M11.5 9.5l2-2M8.5 6.5l2-2M17.5 15.5l2-2"></path></svg></span> きほんの5つのルール</h3>
+      <h3><span class="lu lu-md"><svg viewBox="0 0 24 24"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0zM14.5 12.5l2-2M11.5 9.5l2-2M8.5 6.5l2-2M17.5 15.5l2-2"></path></svg></span> きほんの6つのルール</h3>
 
       <div class="rule-row">
         <strong>① 語末の無声音化</strong>
@@ -3764,8 +3784,8 @@
       <tr><td class="ps-p">生格（〜の）</td><td></td><td></td><td></td><td></td></tr>
       <tr><td class="ps-p">与格（〜に）</td><td></td><td></td><td></td><td></td></tr>
       <tr><td class="ps-p">対格（〜を）</td><td></td><td></td><td></td><td></td></tr>
-      <tr><td class="ps-p">造格（〜で）</td><td></td><td></td><td></td><td></td></tr>
-      <tr><td class="ps-p">前置格（〜で）</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="ps-p">造格（〜で・〜と）</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="ps-p">前置格（〜について・場所）</td><td></td><td></td><td></td><td></td></tr>
     </table>
     <table class="ps-case">
       <tr><th class="ps-title">単数：　　　　　　　</th><th>男性</th><th>女性</th><th>中性</th><th>複数</th></tr>
@@ -3773,8 +3793,8 @@
       <tr><td class="ps-p">生格（〜の）</td><td></td><td></td><td></td><td></td></tr>
       <tr><td class="ps-p">与格（〜に）</td><td></td><td></td><td></td><td></td></tr>
       <tr><td class="ps-p">対格（〜を）</td><td></td><td></td><td></td><td></td></tr>
-      <tr><td class="ps-p">造格（〜で）</td><td></td><td></td><td></td><td></td></tr>
-      <tr><td class="ps-p">前置格（〜で）</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="ps-p">造格（〜で・〜と）</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="ps-p">前置格（〜について・場所）</td><td></td><td></td><td></td><td></td></tr>
     </table>
   </section>
 
@@ -4050,8 +4070,8 @@ const GLOSSARY = {
 
 const LETTERS_EX_DATA = {
   "А": {
-    exSent:"Я хочу́ арбу́з.", exSentJp:"私はスイカがほしいです。", exSentTrans:"ヤ ハチュー アるブス",
-    spellTip:"{{語末}}の з は{{無声音化}}して /s/（ス）の音になります。耳では「アるブス」と聞こえますが、書くときは з です。{{語末}}の{{有声子音}}は{{無声音化}}するロシア語の基本ルールです。",
+    exSent:"Я хочу́ арбу́з.", exSentJp:"私はスイカがほしいです。", exSentTrans:"ヤ ハチュー アるブース",
+    spellTip:"{{語末}}の з は{{無声音化}}して /s/（ス）の音になります。耳では「アるブース」と聞こえますが、書くときは з です。{{語末}}の{{有声子音}}は{{無声音化}}するロシア語の基本ルールです。",
     spellTipTitle:"語末の無声音化に注意",
     wordBuild:"ペルシア語 <b>خربوزه</b>（ハルブーゼ：「メロン」）に由来する{{借用語}}です。ロシア以外にも、東欧・中央アジアの多くの言語に似た形で広まりました。",
     wordBuildTitle:"ペルシア語からの借用語"
@@ -4652,7 +4672,8 @@ function renderCardDetail() {
       html += '<p style="margin:0;font-size:14px;font-weight:700;color:#3A2318;flex:1;">' + vExData.exSent + '</p>';
       html += '<button onclick="doAction(\'heardSentence\')" style="display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:16px;border:none;background:#7BAE9E;color:#fff;font-size:13px;cursor:pointer;flex-shrink:0;"><svg viewBox="0 0 24 24" width="20" height="20" style="display:inline-block;vertical-align:middle;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19" fill="white" stroke="white" stroke-width="1.8" stroke-linejoin="round"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></button>';
       html += '</div>';
-      html += '<p style="margin:0 0 3px;font-size:11px;color:#7E5C42;">（' + vExData.exSentTrans + '）</p>';
+      html += '<p class="kana-line" style="margin:0 0 3px;font-size:11px;color:#7E5C42;">（' + vExData.exSentTrans + '）</p>';
+      html += '<button type="button" class="kana-toggle" onclick="toggleKana()"></button>';
       html += '<p style="margin:0;font-size:12px;color:#7A5040;">' + vExData.exSentJp + '</p>';
       html += '</div>';
     } else {
@@ -10810,6 +10831,24 @@ let challengeConfig = { scopes:['alpha','基礎','初級','中級','上級'], or
 let lastStage = 0;
 let lastUnitId = '';
 
+// カタカナ読みを隠せるようにする。
+// はじめは足場として要るが、いつまでも頼ると音で覚えられない。
+// 消したいと思ったときに、その場で消せることが大事。
+let kanaHidden = false;
+
+function applyKana() {
+  if (document.body) document.body.classList.toggle('hide-kana', kanaHidden);
+}
+
+function toggleKana() {
+  kanaHidden = !kanaHidden;
+  applyKana();
+  saveGrammarProgress();
+  showToast(kanaHidden
+    ? 'カタカナを隠しました。音とキリル文字だけで読んでみましょう'
+    : 'カタカナを表示しました', '#387362');
+}
+
 // レベルから段の番号を出す（1＝文字、2＝基礎と初級、3＝中級、4＝上級）
 function stageOfLevel(level) {
   if (level === '中級') return 3;
@@ -10835,6 +10874,7 @@ function saveGrammarProgress() {
       srs: srsData,
       dict: dictConfig,
       dictDone: dictDone,
+      kanaHidden: kanaHidden,
       savedAt: new Date().toISOString()
     }));
   } catch (e) { console.log('Grammar progress save failed:', e); noteStorageFailure(); }
@@ -10853,9 +10893,11 @@ function loadGrammarProgress() {
     if (d.dictDone) dictDone = d.dictDone;
     if (d.lastStage) lastStage = d.lastStage;
     if (d.lastUnitId) lastUnitId = d.lastUnitId;
+    if (d.kanaHidden) kanaHidden = true;
   } catch (e) { console.log('Grammar progress load failed:', e); }
 }
 loadGrammarProgress();
+applyKana();
 
 function unitById(id) { return GRAMMAR_UNITS.filter(function(u){ return u.id === id; })[0]; }
 function unitProg(id) { return grammarProgress[id] || { read:false, best:0, total:0, cleared:false }; }
