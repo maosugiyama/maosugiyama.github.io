@@ -7181,6 +7181,25 @@ const GRAMMAR_UNITS = [
       <span class="pron">90・100</span><span class="form">девяно́сто / сто</span>
     </div>
     <p style="font-size:11px;color:#7A5040;">50・60 は語尾に強勢、70・80 は前に強勢。ここは対で覚えると楽です。</p>
+    <p style="font-size:11px;color:#9D5700;"><b>со́рок</b>（40）だけは仲間はずれです。
+    ほかは「4＋10」のような組み立てなのに、40 は独自の語。
+    もとは毛皮を40枚ずつ束にして数えた単位だった、といわれています。</p>
+
+    <p style="margin-top:12px;"><b>◆ 100の位と、1000</b></p>
+    <div class="conj-table">
+      <span class="pron">100〜300</span><span class="form">сто ／ две́сти ／ три́ста</span>
+      <span class="pron">400〜600</span><span class="form">четы́реста ／ пятьсо́т ／ шестьсо́т</span>
+      <span class="pron">700〜900</span><span class="form">семьсо́т ／ восемьсо́т ／ девятьсо́т</span>
+      <span class="pron">1000</span><span class="form">ты́сяча　※ <b>女性名詞</b>のように変化します</span>
+      <span class="pron">2000</span><span class="form">две ты́сячи　※ 2〜4 のあとなので単数生格</span>
+      <span class="pron">5000</span><span class="form">пять ты́сяч　※ 5以上なので複数生格</span>
+    </div>
+    <p style="font-size:11px;color:#9D5700;"><b>ты́сяча</b> は数詞でありながら、
+    <b>名詞と同じように変化します</b>。だから前の数の影響を受け、
+    <b>две ты́сячи</b>（2〜4 → 単数生格）／<b>пять ты́сяч</b>（5以上 → 複数生格）と形が変わります。
+    年号の <b>две ты́сячи два́дцать шесто́й год</b> は、この規則どおりです。</p>
+    <p style="font-size:11px;color:#7E5C42;">200〜400 は <b>-ста / -сти</b>、500〜900 は <b>-со́т</b>。
+    これも сто（100）を数えた形が残ったものです。</p>
   </div>
 
   <div class="rule-row">
@@ -7218,6 +7237,12 @@ const GRAMMAR_UNITS = [
     {type:'mc', q:'「21冊の本」は？', opts:['два́дцать одна́ кни́га','два́дцать одна́ кни́ги','два́дцать оди́н книг'], a:0, ex:'1の位が1なので主格単数。кни́га は女性なので одна́。'},
     {type:'mc', q:'「11冊の本」は？', opts:['оди́ннадцать кни́ги','оди́ннадцать книг'], a:1, ex:'11〜14 は例外で、つねに生格複数です。'},
     {type:'mc', q:'「私は25歳です」は？', opts:['Мне два́дцать пять год.','Мне два́дцать пять лет.','Мне два́дцать пять го́да.'], a:1, ex:'1の位が5 → 生格複数。год の生格複数は лет です。'},
+    {type:'mc', q:'「2000」を正しく言うと？', say:'две ты́сячи', opts:['два ты́сяча','две ты́сячи','две ты́сяч'], a:1,
+     ex:'ты́сяча は女性名詞のように変化します。2〜4 のあとなので単数生格 ты́сячи、そして две（女性形）です。'},
+    {type:'mc', q:'「5000」を正しく言うと？', opts:['пять ты́сячи','пять ты́сяч'], a:1,
+     ex:'5以上のあとは複数生格。ты́сяча → ты́сяч です。'},
+    {type:'mc', q:'「200」を正しく言うと？', say:'две́сти', opts:['два сто','две́сти','двасто́'], a:1,
+     ex:'две́сти。200〜400 は -ста / -сти、500〜900 は -со́т の形になります。'},
     {type:'mc', q:'「40」をロシア語で言うと？', say:'со́рок', opts:['со́рок','четы́рдесят','четы́рнадцать'], a:0, ex:'40 は со́рок という独自の形。четы́рнадцать は14です。'},
     {type:'input', q:'「20」をロシア語で綴ってください（アクセント記号なしでOK）', a:'двадцать', hint:'дв… で始まります', ex:'два́дцать。два（2）＋ -дцать（10）という成り立ちです。'}
   ]
@@ -8995,16 +9020,16 @@ const GRAMMAR_UNITS = [
 
   <div class="case-row">
     <strong>季節 — 4つと、その「〜に」</strong>
-    <div class="conj-table">
-      <span class="pron">зима́（冬）</span><span class="form">зимо́й　12・1・2月</span>
-      <span class="pron">весна́（春）</span><span class="form">весно́й　3・4・5月</span>
-      <span class="pron">ле́то（夏）</span><span class="form">ле́том　6・7・8月</span>
-      <span class="pron">о́сень（秋）</span><span class="form">о́сенью　9・10・11月</span>
-    </div>
+<div class="wd-list"><div class="wd-row" style="--wd:#057DA4;"><span class="wd-chip" aria-hidden="true">冬</span><span class="wd-t"><b>зима́</b><span class="wd-in">зимо́й（〜に）</span><span class="wd-why">12・1・2月</span></span></div><div class="wd-row" style="--wd:#D81B7A;"><span class="wd-chip" aria-hidden="true">春</span><span class="wd-t"><b>весна́</b><span class="wd-in">весно́й（〜に）</span><span class="wd-why">3・4・5月</span></span></div><div class="wd-row" style="--wd:#288509;"><span class="wd-chip" aria-hidden="true">夏</span><span class="wd-t"><b>ле́то</b><span class="wd-in">ле́том（〜に）</span><span class="wd-why">6・7・8月</span></span></div><div class="wd-row" style="--wd:#B75901;"><span class="wd-chip" aria-hidden="true">秋</span><span class="wd-t"><b>о́сень</b><span class="wd-in">о́сенью（〜に）</span><span class="wd-why">9・10・11月</span></span></div></div>
     <p style="font-size:11px;color:#7E5C42;">「〜に」は<b>造格</b>で、前置詞をつけません。
     <span class="ex-inline">Зимо́й хо́лодно.</span>（冬は寒い）
     <span class="ex-inline">Ле́том жа́рко.</span>（夏は暑い）</p>
     <p style="font-size:11px;color:#7E5C42;">о́сень は -ь で終わる女性名詞。造格は <b>о́сенью</b> です。</p>
+    <p style="font-size:11px;color:#9D5700;"><b>なぜ「冬」から始まるのか</b>——
+    日本語では「春夏秋冬」と<b>春</b>から数えますが、ロシア語では
+    <b>зима́ → весна́ → ле́то → о́сень</b> と<b>冬</b>から挙げるのがふつうです。
+    暦の年が1月に始まり、いちばん大きなお祝いの <b>Но́вый год</b> も冬にあるためです。
+    この教材も、その順に並べています。</p>
   </div>
 
   <div class="case-row">
@@ -9154,7 +9179,7 @@ const GRAMMAR_UNITS = [
 
   <div class="case-row">
     <strong>曜日 — 7つと、その「〜に」</strong>
-<div class="wd-list"><div class="wd-row" style="--wd:#6A4E93;"><span class="wd-chip" aria-hidden="true">月</span><span class="wd-t"><b>понеде́льник</b><span class="wd-in">в понеде́льник</span><span class="wd-why">неде́ля（週）のあと</span></span></div><div class="wd-row" style="--wd:#B0521C;"><span class="wd-chip" aria-hidden="true">火</span><span class="wd-t"><b>вто́рник</b><span class="wd-in"><b>во</b> вто́рник</span><span class="wd-why">второ́й（2番目）から</span></span></div><div class="wd-row" style="--wd:#1F6A8C;"><span class="wd-chip" aria-hidden="true">水</span><span class="wd-t"><b>среда́</b><span class="wd-in">в <b>сре́ду</b></span><span class="wd-why">「まんなか」の意味</span></span></div><div class="wd-row" style="--wd:#2F7145;"><span class="wd-chip" aria-hidden="true">木</span><span class="wd-t"><b>четве́рг</b><span class="wd-in">в четве́рг</span><span class="wd-why">четвёртый（4番目）から</span></span></div><div class="wd-row" style="--wd:#8A6510;"><span class="wd-chip" aria-hidden="true">金</span><span class="wd-t"><b>пя́тница</b><span class="wd-in">в <b>пя́тницу</b></span><span class="wd-why">пя́тый（5番目）から</span></span></div><div class="wd-row" style="--wd:#7A5533;"><span class="wd-chip" aria-hidden="true">土</span><span class="wd-t"><b>суббо́та</b><span class="wd-in">в <b>суббо́ту</b></span><span class="wd-why">ヘブライ語 шабба́т から</span></span></div><div class="wd-row" style="--wd:#B0332F;"><span class="wd-chip" aria-hidden="true">日</span><span class="wd-t"><b>воскресе́нье</b><span class="wd-in">в воскресе́нье</span><span class="wd-why">воскресе́ние（復活）から</span></span></div></div>
+<div class="wd-list"><div class="wd-row" style="--wd:#7D1FB5;"><span class="wd-chip" aria-hidden="true">月</span><span class="wd-t"><b>понеде́льник</b><span class="wd-in">в понеде́льник</span><span class="wd-why">неде́ля（週）のあと</span></span></div><div class="wd-row" style="--wd:#D24000;"><span class="wd-chip" aria-hidden="true">火</span><span class="wd-t"><b>вто́рник</b><span class="wd-in"><b>во</b> вто́рник</span><span class="wd-why">второ́й（2番目）から</span></span></div><div class="wd-row" style="--wd:#0A79C4;"><span class="wd-chip" aria-hidden="true">水</span><span class="wd-t"><b>среда́</b><span class="wd-in">в <b>сре́ду</b></span><span class="wd-why">「まんなか」の意味</span></span></div><div class="wd-row" style="--wd:#0B8529;"><span class="wd-chip" aria-hidden="true">木</span><span class="wd-t"><b>четве́рг</b><span class="wd-in">в четве́рг</span><span class="wd-why">четвёртый（4番目）から</span></span></div><div class="wd-row" style="--wd:#9D6900;"><span class="wd-chip" aria-hidden="true">金</span><span class="wd-t"><b>пя́тница</b><span class="wd-in">в <b>пя́тницу</b></span><span class="wd-why">пя́тый（5番目）から</span></span></div><div class="wd-row" style="--wd:#7A4A21;"><span class="wd-chip" aria-hidden="true">土</span><span class="wd-t"><b>суббо́та</b><span class="wd-in">в <b>суббо́ту</b></span><span class="wd-why">ヘブライ語 шабба́т から</span></span></div><div class="wd-row" style="--wd:#E01010;"><span class="wd-chip" aria-hidden="true">日</span><span class="wd-t"><b>воскресе́нье</b><span class="wd-in">в воскресе́нье</span><span class="wd-why">воскресе́ние（復活）から</span></span></div></div>
     <p style="font-size:11px;color:#7E5C42;">曜日は<b>в ＋ 対格</b>。女性名詞は語尾が -у / -ю に変わります
     （среда́ → в сре́ду、пя́тница → в пя́тницу）。</p>
     <p style="font-size:11px;color:#7E5C42;">色は日本の<b>七曜</b>（日＝太陽・月＝月・火＝火…）に合わせてあります。
@@ -10670,7 +10695,10 @@ const WHY = {
   'numbers:3': ['', '「1」で終わる数のあとは主格・単数です。кни́ги にはなりません', 'оди́н は男性形です。女性名詞には одна́ を使い、名詞は主格・単数にします'],
   'numbers:4': ['11〜19 は「1で終わる数」の例外で、いつも生格・複数をとります', ''],
   'numbers:5': ['год は「1年」のときの形です。5以上のあとは лет にします', '', 'го́да は「2・3・4」のあとに使う形です'],
-  'numbers:6': ['', '40 だけは「4＋10」の形をとらず、со́рок という独自の語です', 'четы́рнадцать は14です'],
+  'numbers:6': ['два は男性・中性に使います。ты́сяча は女性名詞のように変化するので две です', '', 'ты́сяч は複数生格。2〜4 のあとは単数生格 ты́сячи です'],
+  'numbers:7': ['5以上のあとは複数生格です。ты́сячи は単数生格です', ''],
+  'numbers:8': ['два сто とは言いません。200は1語で две́сти です', '', 'そのような綴りはありません'],
+  'numbers:9': ['', '40 だけは「4＋10」の形をとらず、со́рок という独自の語です', 'четы́рнадцать は14です'],
 
   // ---- 完了体・不完了体の使い分け ----
   'aspect-use:0': ['писа́л は「書いていた」と過程を表します。書き上げたのなら完了体です', ''],
