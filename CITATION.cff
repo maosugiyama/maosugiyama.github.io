@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: この教材を引用するときは、以下の情報をお使いください。
+title: "ねこと学ぶ キリル文字 — ロシア語をキリル文字から上級文法まで"
+abstract: >-
+  ロシア語の学習教材アプリ。33文字のキリル文字から、発音のルール、
+  名詞・動詞・6つの格をへて、形動詞・副動詞・仮定法までを扱う。
+  全52ユニット・477問。イラスト・写真・本文はすべて著者による書きおろし。
+  アプリと紙のノートを分業させる設計と、印刷用ワークシートを備える。
+type: software
+authors:
+  - family-names: "杉山"
+    given-names: "真央"
+    alias: "Sugiyama, Mao"
+    affiliation: "名古屋外国語大学"
+version: "1.0.0"
+date-released: "2026-08-28"
+url: "https://maosugiyama.github.io/russian/"
+repository-code: "https://github.com/maosugiyama/maosugiyama.github.io"
+license: CC-BY-NC-ND-4.0
+keywords:
+  - ロシア語教育
+  - キリル文字
+  - 教材開発
+  - 語学学習アプリ
+  - Russian as a foreign language
+  - Cyrillic alphabet
