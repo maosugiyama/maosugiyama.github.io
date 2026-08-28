@@ -2967,6 +2967,24 @@
   .len-t .len-ex { font-size: 10.5px; color: #7E5C42; }
 
 
+  /* ---- 形でかわる呼び名 ---- */
+  .tp-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+    gap: 8px; margin: 10px 0 4px;
+  }
+  .tp-item {
+    background: #fff; border: 1px solid #F0DDD7; border-radius: 12px;
+    padding: 8px 3px 7px; text-align: center; min-width: 0;
+  }
+  .tp-item svg { width: 60px; height: 52px; display: block; margin: 0 auto 2px; }
+  .tp-item b {
+    display: block; font-size: 11.5px; font-weight: 800; color: #3A2318;
+    line-height: 1.45; overflow-wrap: anywhere;
+  }
+  .tp-item i {
+    display: block; font-style: normal; font-size: 10px; color: #7A5040; line-height: 1.5;
+  }
+
   /* ---- 性格のものさし ---- */
   .trait-scale { margin: 10px 0 4px; }
   .trait-line {
@@ -8779,6 +8797,46 @@ const GRAMMAR_UNITS = [
   </div>
 
   <div class="case-row">
+    <strong>ひとつの色ではないとき — 多色・透明</strong>
+    <p>色は一色とはかぎりません。<b>いくつもの色</b>があるとき、
+    そして<b>色そのものがない</b>ときの言い方です。</p>
+    <div class="conj-table">
+      <span class="pron">разноцве́тный</span><span class="form">多色の・色とりどりの　ра́зные（いろいろな）＋ цвет（色）</span>
+      <span class="pron">пёстрый</span><span class="form">まだらの・にぎやかな色づかいの</span>
+      <span class="pron">одноцве́тный</span><span class="form">単色の・無地の</span>
+      <span class="pron">цветно́й</span><span class="form">カラーの　↔ чёрно-бе́лый（白黒の）</span>
+      <span class="pron">прозра́чный</span><span class="form">透明な</span>
+      <span class="pron">непрозра́чный</span><span class="form">不透明な　не- をつけるだけ</span>
+      <span class="pron">бесцве́тный</span><span class="form">無色の　без（〜なしに）＋ цвет</span>
+    </div>
+    <p><span class="ex-inline">разноцве́тные ша́рики（色とりどりの風船）</span>
+    <span class="ex-inline">прозра́чное стекло́（透明なガラス）</span>
+    <span class="ex-inline">цветно́й каранда́ш（色えんぴつ）</span></p>
+    <p style="font-size:11px;color:#7E5C42;"><b>разноцве́тный と пёстрый のちがい</b>——
+    разноцве́тный は<b>色が何色もある</b>という事実を言うだけです。
+    пёстрый は<b>入り混じって、にぎやかに見える</b>という見た目の印象が入ります。
+    服について пёстрый と言うと、「派手だね」に近くなることもあります。</p>
+    <p style="font-size:11px;color:#7E5C42;"><b>прозра́чный</b> はたとえ話にも使います。
+    <b>прозра́чный намёк</b>＝「見えすいたほのめかし」。
+    透けて中が見えてしまう、というところから来ています。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>цвета́ と цветы́ — 1文字ちがいで別のもの</strong>
+    <div class="pair-list">
+      <p><b>цвет → цвета́</b>
+      <span class="jp">色（いろ）の複数</span>
+      <span>Каки́е <b>цвета́</b> вам нра́вятся?（どんな色がお好きですか）</span></p>
+      <p><b>цвето́к → цветы́</b>
+      <span class="jp">花（はな）の複数</span>
+      <span>Он подари́л мне <b>цветы́</b>.（彼は私に花をくれました）</span></p>
+    </div>
+    <p style="font-size:11px;color:#7E5C42;">どちらも цвет- からできた語で、
+    もとをたどれば「咲いて色づくもの」というひとつのイメージにつながっています。
+    分かれたのは複数形の形だけ。<b>цвета́ は色、цветы́ は花</b>——ここだけ押さえれば迷いません。</p>
+  </div>
+
+  <div class="case-row">
     <strong>色 ＋ 形 — 名詞の性に合わせる</strong>
     <p>色も形容詞なので、<b>うしろの名詞に語尾をそろえます</b>。同じ「赤い」でも4つの形になります。</p>
     <div class="conj-table">
@@ -8848,7 +8906,19 @@ const GRAMMAR_UNITS = [
      tokens:['си́ний','квадра́т'],
      accept:[{o:'си́ний квадра́т', n:'形容詞は名詞の前。квадра́т は男性名詞なので си́ний になります'}],
      hint:'形容詞が先です',
-     ex:'си́ний квадра́т。女性名詞なら си́няя、中性なら си́нее になります。'}
+     ex:'си́ний квадра́т。女性名詞なら си́няя、中性なら си́нее になります。'},
+    {type:'mc', q:'「色とりどりの・多色の」は？', say:'разноцве́тный',
+     opts:['разноцве́тный','одноцве́тный','бесцве́тный'], a:0,
+     ex:'ра́зные（いろいろな）＋ цвет（色）で разноцве́тный。'},
+    {type:'mc', q:'「透明なガラス」は？（стекло́ は中性）', say:'прозра́чное стекло́',
+     opts:['прозра́чное стекло́','прозра́чный стекло́','прозра́чная стекло́'], a:0,
+     ex:'стекло́ は中性名詞なので、形容詞も中性形 прозра́чное にします。'},
+    {type:'mc', q:'Каки́е （　） вам нра́вятся?（どんな色がお好きですか）', say:'Каки́е цвета́ вам нра́вятся',
+     opts:['цвета́','цветы́'], a:0,
+     ex:'цвет（色）の複数は цвета́。цветы́ は цвето́к（花）の複数です。'},
+    {type:'mc', q:'пёстрый が разноцве́тный と違うのは？',
+     opts:['色が入り混じって、にぎやかに見えるという印象が入る','色が2色しかないこと','まったく色がないこと'], a:0,
+     ex:'разноцве́тный は「何色もある」という事実。пёстрый はその見た目の印象まで含みます。'}
   ]
 },
 
@@ -9489,62 +9559,11 @@ const GRAMMAR_UNITS = [
     働く人の休暇に <b>кани́кулы</b> も使いません。ここは日本語の「休み」1語ではまかなえないところです。</p>
   </div>
 
-  <div class="case-row">
-    <strong>весна́ — 春のことば</strong>
-    <div class="conj-table">
-      <span class="pron">весна́</span><span class="form">春　весно́й（春に）</span>
-      <span class="pron">тепло́</span><span class="form">あたたかい　Весно́й тепло́.</span>
-      <span class="pron">мимо́за</span><span class="form">ミモザ</span>
-      <span class="pron">тюльпа́н</span><span class="form">チューリップ　複数 тюльпа́ны</span>
-      <span class="pron">цвето́к</span><span class="form">花　複数 цветы́（形が大きく変わります）</span>
-    </div>
-    <figure class="photo il"><img src="il-tulip.jpg" alt="うすいピンクの背景に、寄りそう2匹のねこと、チューリップ" loading="lazy"><figcaption><b>Весно́й цвету́т тюльпа́ны.</b><span>春にはチューリップが咲きます</span><span class="ph-note">цвету́т は цвести́（咲く）の они́ の形です。</span><em>絵：杉山真央</em></figcaption></figure>
-  </div>
+  <p style="font-size:11px;color:#7E5C42;margin:14px 0 2px;"><b>ここからは季節をひとめぐりします。</b>
+  上の表と同じく <b>зима́ → весна́ → ле́то → о́сень</b> の順です。
+  日本語の「春夏秋冬」とは出発点がちがうので、
+  <b>冬から</b>読みはじめてください。</p>
 
-  <div class="column-box">
-    <p class="cb-head">コラム — ミモザの日（8 Ма́рта）</p>
-    <p>ロシアの春は、<b>黄色</b>からはじまります。
-    3月8日は <b>Междунаро́дный же́нский день</b>（国際女性デー）。
-    この日、男性は身のまわりの女性——母・妻・同僚・先生——に花をおくります。</p>
-    <p>その花の代表が <b>мимо́за</b>。まだ寒い時期に、
-    街角に黄色いふさが山と積まれます。
-    「ミモザを見ると春が来たと思う」と言う人が多いほど、
-    この花と этот день は結びついています。</p>
-    <p><span class="ex-inline">С восьмы́м ма́рта!</span>（3月8日おめでとう）——
-    <b>с ＋ 造格</b>でお祝いを言うのは、ロシア語の決まった形です
-    （С днём рожде́ния! С Но́вым го́дом!）。</p>
-    <figure class="photo il"><img src="il-mimosa.jpg" alt="黄色いミモザの花にうずもれて、こちらを見ている2匹のねこ" loading="lazy"><figcaption><b>Мимо́за — цвето́к весны́</b><span>ミモザは春の花</span><span class="ph-note">же́нский день には、黄色いミモザが街にあふれます。</span><em>絵：杉山真央</em></figcaption></figure>
-  </div>
-
-  <div class="case-row">
-    <strong>ле́то — 夏のことば</strong>
-    <div class="conj-table">
-      <span class="pron">ле́то</span><span class="form">夏　ле́том（夏に）</span>
-      <span class="pron">жара́</span><span class="form">暑さ　Ле́том жа́рко.</span>
-      <span class="pron">да́ча</span><span class="form">郊外の家　на да́че（別荘で）</span>
-      <span class="pron">подсо́лнух</span><span class="form">ひまわり　複数 подсо́лнухи</span>
-      <span class="pron">со́лнце</span><span class="form">たいよう　※ л は読みません</span>
-    </div>
-    <figure class="photo il"><img src="il-sunflower.jpg" alt="大きなひまわりの花のかげから、帽子をかぶった2匹のねこがのぞいている" loading="lazy"><figcaption><b>Ле́том цвету́т подсо́лнухи.</b><span>夏にはひまわりが咲きます</span><span class="ph-note">подсо́лнух は「под（〜の下）＋ со́лнце（たいよう）」——太陽を追う花、という名前です。</span><em>絵：杉山真央</em></figcaption></figure>
-    <p style="font-size:11px;color:#7E5C42;">夏になると、街の人は週末ごとに <b>да́ча</b> へ出かけます。
-    小さな菜園のある郊外の家で、きゅうりやトマトを育て、сма́жить шашлы́к…
-    ロシアの夏はここが舞台です。</p>
-  </div>
-
-  <div class="case-row">
-    <strong>о́сень — 秋のことば</strong>
-    <div class="conj-table">
-      <span class="pron">о́сень</span><span class="form">秋　о́сенью（秋に）</span>
-      <span class="pron">листопа́д</span><span class="form">落ち葉　лист（葉）＋ пада́ть（落ちる）</span>
-      <span class="pron">грибы́</span><span class="form">きのこ　単数 гриб</span>
-      <span class="pron">урожа́й</span><span class="form">みのり・収穫</span>
-      <span class="pron">дождь</span><span class="form">雨　Идёт дождь.</span>
-    </div>
-    <figure class="photo il"><img src="il-autumn.jpg" alt="赤いもみじの葉と色とりどりの丸、ねずみたちにかこまれた2匹のねこ" loading="lazy"><figcaption><b>О́сенью па́дают ли́стья.</b><span>秋には葉が落ちます</span><span class="ph-note">ли́стья は лист の複数形。листопа́д はこの2語からできた語です。</span><em>絵：杉山真央</em></figcaption></figure>
-    <p style="font-size:11px;color:#7E5C42;">秋の <b>грибы́</b> はロシアの人にとって特別です。
-    森へきのこ狩りに出かけることを <b>ходи́ть за гриба́ми</b> と言います。
-    <b>за ＋ 造格</b>で「〜を取りに」——買い物なら <b>за хле́бом</b>（パンを買いに）です。</p>
-  </div>
   <div class="case-row">
     <strong>зима́ — 冬のことば</strong>
     <div class="conj-table">
@@ -9602,6 +9621,33 @@ const GRAMMAR_UNITS = [
     <figure class="photo"><img src="ph-bliny.jpg" alt="三角に折りたたまれたブリヌイと、はちみつの小鉢、カプチーノ" loading="lazy"><figcaption><b>блины́ с мёдом</b><span>はちみつをそえたブリヌイ</span><span class="ph-note">мёд（はちみつ）は с ＋ 造格 で мёдом。смета́на（サワークリーム）や икра́（イクラ）もよく合わせます。</span><em>撮影：杉山真央</em></figcaption></figure>
   </div>
 
+  <div class="case-row">
+    <strong>весна́ — 春のことば</strong>
+    <div class="conj-table">
+      <span class="pron">весна́</span><span class="form">春　весно́й（春に）</span>
+      <span class="pron">тепло́</span><span class="form">あたたかい　Весно́й тепло́.</span>
+      <span class="pron">мимо́за</span><span class="form">ミモザ</span>
+      <span class="pron">тюльпа́н</span><span class="form">チューリップ　複数 тюльпа́ны</span>
+      <span class="pron">цвето́к</span><span class="form">花　複数 цветы́（形が大きく変わります）</span>
+    </div>
+    <figure class="photo il"><img src="il-tulip.jpg" alt="うすいピンクの背景に、寄りそう2匹のねこと、チューリップ" loading="lazy"><figcaption><b>Весно́й цвету́т тюльпа́ны.</b><span>春にはチューリップが咲きます</span><span class="ph-note">цвету́т は цвести́（咲く）の они́ の形です。</span><em>絵：杉山真央</em></figcaption></figure>
+  </div>
+
+  <div class="column-box">
+    <p class="cb-head">コラム — ミモザの日（8 Ма́рта）</p>
+    <p>ロシアの春は、<b>黄色</b>からはじまります。
+    3月8日は <b>Междунаро́дный же́нский день</b>（国際女性デー）。
+    この日、男性は身のまわりの女性——母・妻・同僚・先生——に花をおくります。</p>
+    <p>その花の代表が <b>мимо́за</b>。まだ寒い時期に、
+    街角に黄色いふさが山と積まれます。
+    「ミモザを見ると春が来たと思う」と言う人が多いほど、
+    この花と этот день は結びついています。</p>
+    <p><span class="ex-inline">С восьмы́м ма́рта!</span>（3月8日おめでとう）——
+    <b>с ＋ 造格</b>でお祝いを言うのは、ロシア語の決まった形です
+    （С днём рожде́ния! С Но́вым го́дом!）。</p>
+    <figure class="photo il"><img src="il-mimosa.jpg" alt="黄色いミモザの花にうずもれて、こちらを見ている2匹のねこ" loading="lazy"><figcaption><b>Мимо́за — цвето́к весны́</b><span>ミモザは春の花</span><span class="ph-note">же́нский день には、黄色いミモザが街にあふれます。</span><em>絵：杉山真央</em></figcaption></figure>
+  </div>
+
   <div class="column-box">
     <p class="cb-head">コラム — Па́сха と、決まり文句のやりとり</p>
     <p>ロシアで一年のうちもっとも大きな宗教の祝日が <b>Па́сха</b>（復活祭）です。
@@ -9642,7 +9688,37 @@ const GRAMMAR_UNITS = [
 
 
 
-  `,
+    <div class="case-row">
+    <strong>ле́то — 夏のことば</strong>
+    <div class="conj-table">
+      <span class="pron">ле́то</span><span class="form">夏　ле́том（夏に）</span>
+      <span class="pron">жара́</span><span class="form">暑さ　Ле́том жа́рко.</span>
+      <span class="pron">да́ча</span><span class="form">郊外の家　на да́че（別荘で）</span>
+      <span class="pron">подсо́лнух</span><span class="form">ひまわり　複数 подсо́лнухи</span>
+      <span class="pron">со́лнце</span><span class="form">たいよう　※ л は読みません</span>
+    </div>
+    <figure class="photo il"><img src="il-sunflower.jpg" alt="大きなひまわりの花のかげから、帽子をかぶった2匹のねこがのぞいている" loading="lazy"><figcaption><b>Ле́том цвету́т подсо́лнухи.</b><span>夏にはひまわりが咲きます</span><span class="ph-note">подсо́лнух は「под（〜の下）＋ со́лнце（たいよう）」——太陽を追う花、という名前です。</span><em>絵：杉山真央</em></figcaption></figure>
+    <p style="font-size:11px;color:#7E5C42;">夏になると、街の人は週末ごとに <b>да́ча</b> へ出かけます。
+    小さな菜園のある郊外の家で、きゅうりやトマトを育て、
+    <b>шашлы́к</b>（シャシリク＝串焼き肉）を焼きます。
+    <b>жа́рить шашлы́к</b>——ロシアの夏はここが舞台です。</p>
+  </div>
+
+  <div class="case-row">
+    <strong>о́сень — 秋のことば</strong>
+    <div class="conj-table">
+      <span class="pron">о́сень</span><span class="form">秋　о́сенью（秋に）</span>
+      <span class="pron">листопа́д</span><span class="form">落ち葉　лист（葉）＋ пада́ть（落ちる）</span>
+      <span class="pron">грибы́</span><span class="form">きのこ　単数 гриб</span>
+      <span class="pron">урожа́й</span><span class="form">みのり・収穫</span>
+      <span class="pron">дождь</span><span class="form">雨　Идёт дождь.</span>
+    </div>
+    <figure class="photo il"><img src="il-autumn.jpg" alt="赤いもみじの葉と色とりどりの丸、ねずみたちにかこまれた2匹のねこ" loading="lazy"><figcaption><b>О́сенью па́дают ли́стья.</b><span>秋には葉が落ちます</span><span class="ph-note">ли́стья は лист の複数形。листопа́д はこの2語からできた語です。</span><em>絵：杉山真央</em></figcaption></figure>
+    <p style="font-size:11px;color:#7E5C42;">秋の <b>грибы́</b> はロシアの人にとって特別です。
+    森へきのこ狩りに出かけることを <b>ходи́ть за гриба́ми</b> と言います。
+    <b>за ＋ 造格</b>で「〜を取りに」——買い物なら <b>за хле́бом</b>（パンを買いに）です。</p>
+  </div>
+`,
   drills:[
     {type:'mc', q:'「冬に」を正しく言うと？', say:'зимо́й', opts:['в зиме́','зимо́й','на зиму́'], a:1,
      ex:'季節の「〜に」は造格で、前置詞をつけません。зимо́й・весно́й・ле́том・о́сенью。'},
@@ -9912,6 +9988,181 @@ const GRAMMAR_UNITS = [
      ex:'自分が着るのは оде́ться。наде́ться という形はありません。'},
     {type:'mc', q:'ロシアの家に上がるとき、玄関ですることは？', opts:['разу́ться（靴を脱ぐ）','обу́ться（靴をはく）'], a:0,
      ex:'разу́ться して та́почки にはきかえます。日本と同じ習慣です。'}
+  ]
+},
+
+{
+  id:'shape-types', cat:'vocab', level:'初級', title:'靴・帽子・髪型 — 形でかわる呼び名', sub:'日本語の1語が、ロシア語では何語にも',
+  lesson:`
+  <p>日本語なら「靴」「帽子」の一語で足りるところを、
+  ロシア語は<b>形ごとに別の名前</b>で呼び分けます。
+  逆にいうと、こちらが一語で済ませようとすると、なかなか通じません。
+  絵といっしょに、形で覚えてしまいましょう。</p>
+
+  <div class="verb-row">
+    <strong>◆ 靴 — о́бувь</strong>
+    <div class="tp-grid">
+      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 47 C8 41 11 35 18 33 C26 31 31 27 34 22 L39 22 L40 40 L47 47 Z" fill="#FFFDF8"/><path d="M40 40 L47 47 L41 47 Z" fill="#E8D5C4"/><path d="M34 22 C31 27 27 31 22 33"/></svg><b>ту́фли</b><i>パンプス・革靴</i></div>
+      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 47 C9 42 11 36 16 34 L16 17 Q16 13 21 13 L30 13 Q35 13 35 17 L35 34 C39 37 42 42 42 47 Z" fill="#FFFDF8"/><path d="M18 19 L32 23 M18 24 L32 28 M18 29 L32 32"/></svg><b>боти́нки</b><i>くるぶし丈の靴</i></div>
+      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 47 C9 42 11 36 16 34 L16 7 Q16 3 21 3 L31 3 Q36 3 36 7 L36 34 C40 37 43 42 43 47 Z" fill="#FFFDF8"/><path d="M16 11 L36 11"/></svg><b>сапоги́</b><i>長いブーツ</i></div>
+      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 42 C9 34 14 28 22 26 L33 24 L38 29 L42 42 Z" fill="#FFFDF8"/><path d="M9 42 L46 42 Q48 42 48 44 L48 47 Q48 49 46 49 L11 49 Q9 49 9 47 Z" fill="#E8D5C4"/><path d="M22 29 L30 31 M21 33 L29 35 M20 37 L28 39"/><path d="M33 24 C34 30 33 37 32 42"/></svg><b>кроссо́вки</b><i>スニーカー</i></div>
+      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 47 C7 40 12 34 21 33 L33 33 Q38 33 38 39 L38 47 Z" fill="#FFFDF8"/><path d="M14 34 Q22 22 32 33" fill="#FFFDF8"/><path d="M38 41 Q28 43 20 41"/></svg><b>та́почки</b><i>スリッパ</i></div>
+      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 45 Q6 49 12 49 L41 49 Q47 49 43 45 Z" fill="#FFFDF8"/><path d="M37 45 L42 45 L42 49 L36 49 Z" fill="#E8D5C4"/><path d="M14 45 L26 32" stroke-width="2.4"/><path d="M23 45 L33 34" stroke-width="2.4"/><path d="M36 44 Q41 37 39 31 Q37 26 31 29" stroke-width="2.2"/></svg><b>босоно́жки</b><i>サンダル</i></div>
+      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 47 C10 40 12 34 18 32 L18 8 Q18 4 25 4 L34 4 Q40 4 40 8 L40 47 Z" fill="#FFFDF8"/><path d="M18 13 Q29 16 40 13 M18 21 Q29 24 40 21"/></svg><b>ва́ленки</b><i>フェルトの防寒ブーツ</i></div>
+    </div>
+    <p style="font-size:11px;color:#7E5C42;"><b>о́бувь</b> は履きもの全体をまとめて言う語で、
+    <b>оде́жда</b> と同じ<b>集合名詞</b>です。いつも単数で、
+    <b>Я покупа́ю о́бувь.</b>（靴を買います）のように使います。</p>
+  </div>
+
+  <div class="rule-row">
+    <strong>靴はいつも複数形 — 「一足」の数えかた</strong>
+    <p>靴は左右そろって<b>ひとつ</b>ですから、ふだんは<b>複数形</b>で言います。
+    辞書に載っているのも、たいてい複数の形です。</p>
+    <div class="conj-table">
+      <span class="pron">ту́фли</span><span class="form">単数 ту́фля　※一方だけを指すとき</span>
+      <span class="pron">сапоги́</span><span class="form">単数 сапо́г</span>
+      <span class="pron">боти́нки</span><span class="form">単数 боти́нок</span>
+      <span class="pron">кроссо́вки</span><span class="form">単数 кроссо́вка</span>
+    </div>
+    <p style="margin-top:8px;">「一足の〜」は <b>па́ра ＋ 複数生格</b>。
+    ここで語尾が消えるので、形をよく見てください。</p>
+    <p><span class="ex-inline">па́ра ту́фель</span>
+    <span class="ex-inline">па́ра сапо́г</span>
+    <span class="ex-inline">па́ра боти́нок</span>
+    <span class="ex-inline">па́ра ва́ленок</span></p>
+    <p style="font-size:11px;color:#7E5C42;">ところが<b>носки́</b>（靴下）だけは
+    <b>па́ра носко́в</b> と <b>-ов</b> がつきます。
+    同じ「一足」なのに、сапо́г は語尾なし、носко́в は -ов。
+    ロシア語の複数生格は、この<b>ゼロ語尾</b>がいちばんの難所です。</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>◆ 帽子 — головно́й убо́р</strong>
+    <div class="tp-grid">
+      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 38 Q14 16 32 16 Q50 16 50 38 Z" fill="#FFFDF8"/><path d="M11 37 L53 37 Q55 37 55 40 L55 45 Q55 48 53 48 L11 48 Q9 48 9 45 L9 40 Q9 37 11 37 Z" fill="#E8D5C4"/><circle cx="32" cy="11" r="5.5" fill="#FFFDF8"/></svg><b>ша́пка</b><i>ニット帽・防寒帽</i></div>
+      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 36 Q20 11 32 11 Q44 11 44 36 Z" fill="#FFFDF8"/><path d="M20 29 L44 29" stroke="#E8D5C4" stroke-width="3.4"/><path d="M5 39 Q5 32 20 32 L44 32 Q59 32 59 39 Q59 45 32 45 Q5 45 5 39 Z" fill="#FFFDF8"/></svg><b>шля́па</b><i>つばのある帽子</i></div>
+      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 35 Q13 11 32 11 Q51 11 51 35 Z" fill="#FFFDF8"/><path d="M49 34 Q62 33 61 41 Q49 44 45 39 Z" fill="#E8D5C4"/><path d="M13 35 L51 35"/><circle cx="32" cy="10" r="2.2" fill="#7A5040"/></svg><b>ке́пка</b><i>キャップ</i></div>
+      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 32 Q20 12 32 12 Q44 12 43 32 Z" fill="#FFFDF8"/><path d="M8 32 L56 32 Q53 45 32 45 Q11 45 8 32 Z" fill="#FFFDF8"/><path d="M21 24 L43 24"/></svg><b>пана́ма</b><i>サンハット</i></div>
+      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 32 Q9 12 32 12 Q55 12 53 28 Q53 36 30 36 Q11 36 11 32 Z" fill="#FFFDF8"/><path d="M11 32 Q30 39 53 28"/><path d="M33 12 L36 5"/><circle cx="36.5" cy="4" r="2.4" fill="#7A5040"/></svg><b>бере́т</b><i>ベレー帽</i></div>
+    </div>
+    <p style="font-size:11px;color:#7E5C42;">全体をまとめて言うときは
+    <b>головно́й убо́р</b>（頭の被りもの）。少しかたい言い方で、
+    書類や店の分類でよく見かけます。
+    ふだんの会話では、それぞれの名前で呼びます。</p>
+    <p style="font-size:11px;color:#7E5C42;"><b>ша́пка</b> は本来<b>あたたかい帽子</b>のこと。
+    夏のつば付き帽子まで ша́пка と呼ぶと、少し不自然に響きます。
+    そこは <b>шля́па</b>・<b>ке́пка</b>・<b>пана́ма</b> の出番です。</p>
+    <p style="font-size:11px;color:#7E5C42;">ちなみに <b>шля́па</b> を人に向かって言うと、
+    「のろま・気のきかない人」という意味になります
+    （<b>Ну ты и шля́па!</b>）。帽子の話とは限りません。</p>
+  </div>
+
+  <div class="rule-row" style="background:#F3EEE6;border-left-color:#806452;">
+    <strong>☕ コーヒーブレイク — Наде́нь ша́пку!</strong>
+    <p>ロシアで育つと、秋から春にかけて何百回と言われることばがあります。
+    <b>Наде́нь ша́пку!</b>——「帽子をかぶりなさい！」。
+    母親が玄関で子どもに言う、決まり文句のようなものです。</p>
+    <p>背景にあるのは、<b>頭を冷やすと病気になる</b>という広く共有された考えです。
+    <b>Без ша́пки заболе́ешь!</b>（帽子なしだと病気になるよ）とも言います。
+    医学というより、寒い国の暮らしから生まれた言い伝えに近いものですが、
+    大人になっても親からこう言われる、という話をよく聞きます。</p>
+    <p style="font-size:11px;color:#7E5C42;">形は <b>наде́ть</b> の命令形で <b>наде́нь</b>。
+    <b>оде́ть</b> のあとに来るのは<b>人</b>でしたから、
+    <b>× Оде́нь ша́пку</b> とは言えません——「服のことば」で見た使い分けです。</p>
+  </div>
+
+  <div class="verb-row">
+    <strong>◆ 髪型 — причёска</strong>
+    <div class="tp-grid">
+      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 43 Q15 11 32 11 Q49 11 48 43 Q48 46 45 46 L19 46 Q16 46 16 43 Z" fill="#E8D5C4"/><ellipse cx="32" cy="32" rx="11" ry="12.5" fill="#FFFDF8"/><path d="M21 27 Q25 17 32 17 Q39 17 43 27 Q37 22 32 22 Q27 22 21 27 Z" fill="#E8D5C4"/></svg><b>ка́ре</b><i>ボブ</i></div>
+      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 34 Q18 13 32 13 Q46 13 45 34 Q41 22 32 22 Q23 22 19 34 Z" fill="#E8D5C4"/><ellipse cx="32" cy="32" rx="11" ry="12.5" fill="#FFFDF8"/><path d="M21 27 Q25 17 32 17 Q39 17 43 27 Q37 22 32 22 Q27 22 21 27 Z" fill="#E8D5C4"/><circle cx="46" cy="34" r="4.4" fill="#E8D5C4"/><circle cx="47" cy="40" r="4.4" fill="#E8D5C4"/><circle cx="46" cy="46" r="4.2" fill="#E8D5C4"/><path d="M46 50 L43 56 M46 50 L49 56"/></svg><b>коса́</b><i>三つ編み</i></div>
+      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M43 25 Q57 27 56 37 Q55 47 47 51 Q53 43 52 35 Q51 28 43 27 Z" fill="#E8D5C4"/><path d="M19 34 Q18 13 32 13 Q46 13 45 34 Q41 22 32 22 Q23 22 19 34 Z" fill="#E8D5C4"/><ellipse cx="32" cy="32" rx="11" ry="12.5" fill="#FFFDF8"/><path d="M21 27 Q25 17 32 17 Q39 17 43 27 Q37 22 32 22 Q27 22 21 27 Z" fill="#E8D5C4"/><circle cx="44" cy="26" r="2.6" fill="#FFFDF8"/></svg><b>хво́стик</b><i>ポニーテール</i></div>
+      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 36 Q18 13 32 13 Q46 13 45 36 Q41 22 32 22 Q23 22 19 36 Z" fill="#E8D5C4"/><ellipse cx="32" cy="32" rx="11" ry="12.5" fill="#FFFDF8"/><path d="M20 26 Q21 13 32 13 Q43 13 44 26 Q38 23 32 23 Q26 23 20 26 Z" fill="#E8D5C4"/><path d="M24 25 L25 19 M30 24 L30 18 M36 24 L37 18 M41 26 L40 20" stroke="#7A5040"/></svg><b>чёлка</b><i>前髪</i></div>
+      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 32 Q18 15 32 15 Q46 15 45 32 Q41 23 32 23 Q23 23 19 32 Z" fill="#E8D5C4"/><ellipse cx="32" cy="32" rx="11" ry="12.5" fill="#FFFDF8"/><path d="M21 28 Q25 19 32 19 Q39 19 43 28 Q37 24 32 24 Q27 24 21 28 Z" fill="#E8D5C4"/><circle cx="32" cy="11" r="6.5" fill="#E8D5C4"/><path d="M27 13 Q32 8 37 13"/></svg><b>пучо́к</b><i>おだんご</i></div>
+      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="30" r="6.5" fill="#E8D5C4"/><circle cx="25" cy="20" r="7" fill="#E8D5C4"/><circle cx="34" cy="17" r="7.5" fill="#E8D5C4"/><circle cx="43" cy="21" r="7" fill="#E8D5C4"/><circle cx="46" cy="30" r="6.5" fill="#E8D5C4"/><ellipse cx="32" cy="32" rx="11" ry="12.5" fill="#FFFDF8"/><circle cx="24" cy="26" r="4" fill="#E8D5C4"/><circle cx="32" cy="21" r="4" fill="#E8D5C4"/><circle cx="40" cy="25" r="4" fill="#E8D5C4"/></svg><b>ку́дри</b><i>巻き毛</i></div>
+    </div>
+    <p style="font-size:11px;color:#7E5C42;"><b>во́лосы</b>（髪）はいつも複数形。
+    <b>причёска</b> が「髪型」です。
+    <b>ко́сы</b>（коса́ の複数）は左右に垂らした三つ編み、
+    <b>хвост</b>（しっぽ）はそのままポニーテール——
+    小さくして <b>хво́стик</b> と言うほうがふつうです。</p>
+    <p style="font-size:11px;color:#7E5C42;"><b>ка́ре</b> はフランス語から来た外来語で、
+    <b>格変化しません</b>。ко́фе や метро́ と同じ仲間です。
+    <b>Она́ но́сит ка́ре.</b>（彼女はボブにしている）——形はそのままです。</p>
+    <div class="pair-list">
+      <p><b>髪について言ってみる</b>
+      <span>У неё <b>дли́нные во́лосы</b>.（彼女は髪が長い）</span>
+      <span>У неё <b>ко́сы</b>.（彼女は三つ編みをしている）</span>
+      <span>Она́ <b>кудря́вая</b>.（彼女は巻き毛だ）</span>
+      <span>Он <b>лы́сый</b>.（彼ははげている）</span>
+      <span>Она́ <b>подстри́глась</b>.（彼女は髪を切った）</span></p>
+    </div>
+    <p style="font-size:11px;color:#7E5C42;"><b>подстри́чься</b> は「自分の髪を切る（切ってもらう）」。
+    <b>-ся</b> がつくのは、切る相手が自分だからです。
+    美容師に切ってもらった場合もこの形を使います。</p>
+  </div>
+
+  <div class="case-row">
+    <strong>これは靴と帽子だけの話ではありません</strong>
+    <p>「日本語の1語 ＝ ロシア語の何語か」という関係は、あちこちに出てきます。
+    ここまでに出てきたものを並べてみます。</p>
+    <div class="conj-table">
+      <span class="pron">休み</span><span class="form">кани́кулы／о́тпуск／выходно́й／переры́в／о́тдых</span>
+      <span class="pron">青い</span><span class="form">си́ний（濃い青）／голубо́й（水色）</span>
+      <span class="pron">茶色い</span><span class="form">кори́чневый（もの）／ка́рий（目）／ры́жий（毛）</span>
+      <span class="pron">着る</span><span class="form">наде́ть（服を）／оде́ть（人に）／носи́ть（ふだん着る）</span>
+      <span class="pron">靴</span><span class="form">ту́фли／боти́нки／сапоги́／кроссо́вки…</span>
+    </div>
+    <p style="font-size:11px;color:#7E5C42;">辞書で1語だけ引いて済ませると、
+    どこかで必ずずれます。<b>どの場面の語か</b>までいっしょに覚えると、
+    使うときに迷いません。</p>
+  </div>
+  `,
+  drills:[
+    {type:'mc', q:'冬にはく、フェルトでできた防寒ブーツは？', say:'ва́ленки',
+     opts:['ва́ленки','та́почки','босоно́жки'], a:0,
+     ex:'ва́ленки は羊毛のフェルトを固めて作る、ロシアならではの冬の靴です。'},
+    {type:'mc', q:'スニーカーは？', say:'кроссо́вки',
+     opts:['кроссо́вки','боти́нки','ту́фли'], a:0,
+     ex:'кроссо́вки はスポーツ用の靴。боти́нки はくるぶし丈の革靴です。'},
+    {type:'mc', q:'「一足の長靴」は？', say:'па́ра сапо́г',
+     opts:['па́ра сапо́г','па́ра сапоги́','па́ра сапого́в'], a:0,
+     ex:'па́ра のあとは複数生格。сапоги́ → сапо́г と語尾が消えます。'},
+    {type:'mc', q:'「一足の靴下」は？', say:'па́ра носко́в',
+     opts:['па́ра носко́в','па́ра носо́к','па́ра носки́'], a:0,
+     ex:'носки́ の複数生格は носко́в。сапо́г とちがって -ов がつきます。'},
+    {type:'mc', q:'履きもの全体をまとめて言う語は？', say:'о́бувь',
+     opts:['о́бувь','ту́фли','боти́нки'], a:0,
+     ex:'о́бувь は оде́жда と同じ集合名詞。いつも単数で使います。'},
+    {type:'mc', q:'「帽子をかぶりなさい！」は？', say:'Наде́нь ша́пку',
+     opts:['Наде́нь ша́пку!','Оде́нь ша́пку!','Наде́й ша́пку!'], a:0,
+     ex:'наде́ть の命令形は наде́нь。оде́ть のあとに来るのは人です。'},
+    {type:'mc', q:'つばのある帽子は？', say:'шля́па',
+     opts:['шля́па','ша́пка','ке́пка'], a:0,
+     ex:'шля́па はつばがぐるりと出た帽子。ша́пка はあたたかい防寒帽です。'},
+    {type:'mc', q:'「三つ編み」は？', say:'коса́',
+     opts:['коса́','чёлка','пучо́к'], a:0,
+     ex:'коса́、複数は ко́сы。左右に垂らした三つ編みです。'},
+    {type:'mc', q:'「前髪」は？', say:'чёлка',
+     opts:['чёлка','ку́дри','ка́ре'], a:0,
+     ex:'чёлка は額にかかる前髪。ку́дри は巻き毛です。'},
+    {type:'mc', q:'ка́ре（ボブ）の格変化は？',
+     opts:['変化しません（不変化の外来語）','女性名詞として変化します','中性名詞として変化します'], a:0,
+     ex:'ко́фе や метро́ と同じで、ка́ре は形が変わりません。'},
+    {type:'mc', q:'Она́ （　）.（彼女は髪を切った）', say:'Она́ подстри́глась',
+     opts:['подстри́глась','подстри́гла','подстри́г'], a:0,
+     ex:'切る相手が自分なので -ся がつきます。過去・女性形で подстри́глась。'},
+    {type:'mc', q:'Ну ты и шля́па! と言われたら？',
+     opts:['「のろまだね」と言われている','「いい帽子だね」とほめられている','「帽子を取りなさい」と言われている'], a:0,
+     ex:'шля́па は人に使うと「気のきかない人」という意味になります。'},
+    {type:'input', q:'「スリッパ」を綴ってください（アクセント記号なしでOK）',
+     a:'тапочки', hint:'та… ではじまる複数形です', ex:'та́почки。単数は та́почка です。'},
+    {type:'order', q:'「私はブーツを一足買いました」を組み立ててください',
+     tokens:['Я','купи́л','па́ру','сапо́г'],
+     accept:[{o:'Я купи́л па́ру сапо́г', n:'па́ру は対格、そのあとの сапо́г は複数生格です'}],
+     hint:'Я から始めます',
+     ex:'Я купи́л па́ру сапо́г. па́ра が対格 па́ру になり、数えられる中身は複数生格のままです。'}
   ]
 },
 
@@ -11115,6 +11366,24 @@ const WHY = {
   'impersonal:12': ['', 'ну́жно は不定形が続くときの形です。ここは名詞が来ています', 'нужна́ は女性形。слова́рь は男性名詞です', 'нужны́ は複数形。слова́рь は単数です'],
   'impersonal:13': ['', 'до́лжен のほうがむしろ硬く、責任の重い言い方です', '日本語ではどちらも「〜しなければ」ですが、主語の格も意味あいも違います'],
   'impersonal:14': ['', '主語がないので был（男性形）にはなりません。中性の бы́ло です', 'на́до の文では人は与格 Мне になります。主格の Я は使えません'],
+  // ---- 形でかわる呼び名 ----
+  'shape-types:0': ['', 'та́почки は室内ではくスリッパです', 'босоно́жки は夏のサンダルです'],
+  'shape-types:1': ['', 'боти́нки はくるぶし丈の革靴です', 'ту́фли はかかとのある、あらたまった靴です'],
+  'shape-types:2': ['', 'па́ра のあとは主格ではなく複数生格になります', 'сапоги́ の複数生格に -ов はつきません'],
+  'shape-types:3': ['', 'носо́к は単数生格です。па́ра のあとは複数生格です', 'па́ра のあとは主格ではなく複数生格になります'],
+  'shape-types:4': ['', 'ту́фли は靴の一種類にすぎません', 'боти́нки も一種類だけを指します'],
+  'shape-types:5': ['', 'оде́ть のあとに来るのは人です。ものには наде́ть を使います', 'наде́ть の命令形は наде́нь です'],
+  'shape-types:6': ['', 'ша́пка はつばのない、あたたかい帽子です', 'ке́пка は前だけにひさしのあるキャップです'],
+  'shape-types:7': ['', 'чёлка は前髪です', 'пучо́к はおだんごに結った髪です'],
+  'shape-types:8': ['', 'ку́дри は巻き毛です', 'ка́ре はあごの高さで切りそろえたボブです'],
+  'shape-types:9': ['', 'ка́ре は外来語で、格変化しません', 'ка́ре は外来語で、格変化しません'],
+  'shape-types:10': ['', '-ся がないと「（誰かの髪を）切った」になります', 'подстри́г は男性形です。она́ には合いません'],
+  'shape-types:11': ['', 'шля́па を人に使うのは、ほめことばではありません', '帽子を取れという意味にはなりません'],
+  // ---- 多色・透明 ----
+  'color-shape:13': ['', 'одноцве́тный は「単色の」。反対の意味です', 'бесцве́тный は「無色の」。色がないという意味です'],
+  'color-shape:14': ['', 'прозра́чный は男性形です。стекло́ は中性名詞です', 'прозра́чная は女性形です。стекло́ は中性名詞です'],
+  'color-shape:15': ['', 'цветы́ は цвето́к（花）の複数です。色をたずねる文には合いません'],
+  'color-shape:16': ['', 'пёстрый に色数の決まりはありません', '色がないのは бесцве́тный のほうです'],
   // ---- 人がら ----
   'character:0': ['', 'любопы́тный は「詮索好き」に聞こえることがあります。ほめるなら любозна́тельный'],
   'character:1': ['', '完了体を使うと「うっかり恥ずかしがらないでね」という警告の形になってしまいます', 'これでは「恥ずかしがりなさい」という命令になります'],
@@ -12350,6 +12619,12 @@ function printNoteSheet() {
 const TOPIC_INDEX = [
   { t:'名詞の性（男性・女性・中性）', u:'noun-gender', k:'せい おとこ おんな 中性' },
   { t:'性格をあらわす形容詞', u:'character', k:'せいかく хара́ктер ものさし 反対語' },
+  { t:'多色の・透明の（разноцве́тный / прозра́чный）', u:'color-shape', k:'たしょく とうめい пёстрый одноцве́тный' },
+  { t:'靴のいろいろ（ту́фли / сапоги́ / кроссо́вки）', u:'shape-types', k:'くつ обувь ботинки тапочки валенки босоножки' },
+  { t:'帽子のいろいろ（ша́пка / шля́па / ке́пка）', u:'shape-types', k:'ぼうし панама берет головной убор' },
+  { t:'髪型のことば（коса́ / чёлка / ка́ре）', u:'shape-types', k:'かみがた причёска хвостик пучок кудри волосы' },
+  { t:'па́ра ＋ 複数生格（一足の〜）', u:'shape-types', k:'пара сапог носков いっそく ふくすうせいかく' },
+  { t:'цвета́（色）と цветы́（花）', u:'color-shape', k:'цвет цветок いろ はな ふくすう' },
   { t:'積極的な・消極的な', u:'character', k:'акти́вный пасси́вный せっきょくてき' },
   { t:'好奇心のある（любозна́тельный）', u:'character', k:'こうきしん любопы́тный せんさく' },
   { t:'恥ずかしがり屋・遠慮がちな', u:'character', k:'засте́нчивый скро́мный はずかしい えんりょ стесня́ться' },
