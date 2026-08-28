@@ -2967,6 +2967,13 @@
   .len-t .len-ex { font-size: 10.5px; color: #7E5C42; }
 
 
+  /* ---- まちがいの報告 ---- */
+  .report-link {
+    background: none; border: none; padding: 4px 8px;
+    font-family: inherit; font-size: 11px; color: #7E5C42;
+    text-decoration: underline; cursor: pointer;
+  }
+
   /* ---- この教材について（クレジット） ---- */
   .credit-list { margin: 6px 0 2px; }
   .credit-list p {
@@ -3217,7 +3224,8 @@
           <p><b>引用するときは</b><span>杉山真央（2026）「ねこと学ぶ キリル文字」
           <span style="white-space:nowrap;">https://maosugiyama.github.io/russian/</span></span></p>
         </div>
-        <p style="font-size:10.5px;color:#7E5C42;margin-top:10px;text-align:center;">© 2026 杉山真央</p>
+        <p style="text-align:center;margin-top:12px;" id="intro-report"></p>
+        <p style="font-size:10.5px;color:#7E5C42;margin-top:10px;text-align:center;">© 2026 杉山真央<span id="intro-appver"></span></p>
       </div>
 
       <button class="intro-start" onclick="enterRoad()">
@@ -11131,6 +11139,7 @@ function openGrammarUnit(id, origin) {
   html += '</div>';
   html += '<div id="unit-drill-area"></div>';
   html += '<div style="text-align:center;margin-top:16px;"><button class="unit-back" onclick="' + unitBackFn() + '">' + unitBackLabel(true) + '</button></div>';
+  html += '<div style="text-align:center;margin-top:10px;">' + reportButton('このページのまちがいを知らせる') + '</div>';
 
   view.innerHTML = html;
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -12904,6 +12913,14 @@ function tocMatches(q) {
 // ------------------------------------------------------------
 // 中身は GRAMMAR_UNITS と stageInfo() から作るので、
 // ユニットを足せば目次も自動でついてきます。
+// クレジット欄に、報告ボタンと版を書き入れる
+function renderIntroFooter() {
+  const r = document.getElementById('intro-report');
+  if (r) r.innerHTML = reportButton('まちがい・不具合を知らせる');
+  const v = document.getElementById('intro-appver');
+  if (v) v.textContent = '　版 ' + APP_VERSION;
+}
+
 function renderIntroToc() {
   const box = document.getElementById('intro-toc');
   if (!box) return;
@@ -13031,6 +13048,7 @@ function showHomeView(which) {
 
 function openIntro() {
   showHomeView('intro');
+  renderIntroFooter();
   logScreen('intro');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -13277,10 +13295,74 @@ window.addEventListener('unhandledrejection', function (e) { handleGlobalError(e
 //  ・氏名・メールアドレス・IPなど、個人を特定する情報は一切扱いません
 //  ・記録は端末の中に貯まり、利用者が自分で提出したときだけ研究者に渡ります
 //  ・いつでも「協力をやめる」ことができ、そのとき記録も削除されます
+// 教材の版。報告や引用のときに、どの時点のものかが分かるようにする。
+// 中身を直したら、ここと sw.js の VERSION、CITATION.cff をそろえて上げること。
+const APP_VERSION = '1.0.0';
+
 const RESEARCH_KEY = 'nekoCyrillicResearch_v1';
 const RESEARCH_MAX_EVENTS = 5000;      // これを超えたら古いものから間引く
 // ↓ Googleフォームなどの提出先を用意したら、ここにURLを入れるとボタンが出ます
 const RESEARCH_FORM_URL = '';
+
+// ------------------------------------------------------------
+// 不具合・誤植の報告さき
+// ------------------------------------------------------------
+// 公開すると、いちばん時間を取られるのは新しい機能ではなく
+// 「どこが変なのか分からない報告」への問い合わせ返しです。
+// そこで、報告のときに「どのユニットの、どの問題か」を
+// こちらで自動的に書き添えるようにしています。
+//
+// 使い方：
+//  1. Googleフォームを作る（質問は下の3つ）
+//     ・どんなことでしょうか（記述式）
+//     ・場所（記述式）  ← ここに自動で入ります
+//     ・お使いの環境（記述式）  ← ここに自動で入ります
+//  2. 「事前入力したURLを取得」で、場所と環境に目印を入れて生成する
+//  3. 出てきたURLをそのまま下に貼る（entry.xxxx がそのまま使えます）
+// URL が空のあいだは、報告ボタンは出ません。
+const REPORT_FORM_URL = '';
+const REPORT_ENTRY_PLACE = 'PLACE';   // 事前入力URLで「場所」に入れた目印
+const REPORT_ENTRY_ENV   = 'ENV';     // 同じく「環境」に入れた目印
+
+// いま見ている場所を、ことばにして返す
+function reportPlace(extra) {
+  if (extra) return extra;
+  const u = currentUnitId ? unitById(currentUnitId) : null;
+  if (u) return '文法ユニット「' + u.title + '」（' + u.id + '）';
+  if (currentLetter) return 'キリル文字「' + currentLetter.u + '」';
+  return 'そのほか';
+}
+
+function reportEnv() {
+  let voice = '不明';
+  try {
+    const vs = (window.speechSynthesis && window.speechSynthesis.getVoices()) || [];
+    const ru = vs.filter(function (v) { return v && v.lang && v.lang.toLowerCase().indexOf('ru') === 0; });
+    voice = ru.length ? ru.map(function (v) { return v.name; }).join(' / ') : 'ロシア語の音声なし';
+  } catch (e) { voice = '取得できず'; }
+  return ['教材の版：' + APP_VERSION,
+          '画面の幅：' + (window.innerWidth || '?') + 'px',
+          '端末：' + (navigator.userAgent || '?'),
+          'ロシア語の音声：' + voice].join(' ／ ');
+}
+
+function openReport(extra) {
+  if (!REPORT_FORM_URL) return;
+  let url = REPORT_FORM_URL;
+  url = url.replace(encodeURIComponent(REPORT_ENTRY_PLACE), encodeURIComponent(reportPlace(extra)));
+  url = url.replace(REPORT_ENTRY_PLACE, encodeURIComponent(reportPlace(extra)));
+  url = url.replace(encodeURIComponent(REPORT_ENTRY_ENV), encodeURIComponent(reportEnv()));
+  url = url.replace(REPORT_ENTRY_ENV, encodeURIComponent(reportEnv()));
+  window.open(url, '_blank');
+}
+
+// 報告ボタン。URL が空なら何も出さない。
+function reportButton(label, extra) {
+  if (!REPORT_FORM_URL) return '';
+  const arg = extra ? "'" + String(extra).replace(/'/g, "\\'") + "'" : '';
+  return '<button type="button" class="report-link" onclick="openReport(' + arg + ')">'
+       + (label || 'まちがいを知らせる') + '</button>';
+}
 
 let research = { consent: null, pid: null, consentAt: null, events: [], truncated: 0 };
 
