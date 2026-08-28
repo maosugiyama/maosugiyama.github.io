@@ -2967,6 +2967,20 @@
   .len-t .len-ex { font-size: 10.5px; color: #7E5C42; }
 
 
+  /* ---- この教材について（クレジット） ---- */
+  .credit-list { margin: 6px 0 2px; }
+  .credit-list p {
+    padding: 9px 0; border-bottom: 1px dotted #EFE0DA;
+    font-size: 12px; line-height: 1.8; color: #3A2318;
+  }
+  .credit-list p:last-child { border-bottom: none; }
+  .credit-list p > b {
+    display: block; font-size: 11.5px; font-weight: 800;
+    color: #9F544A; margin-bottom: 2px;
+  }
+  .credit-list span { display: block; font-size: 11.5px; color: #7A5040; line-height: 1.85; }
+  .credit-list i { font-style: normal; font-weight: 700; }
+
   /* ---- カタカナ読みの表示切りかえ ---- */
   body.hide-kana .kana-line { display: none; }
   .kana-toggle {
@@ -3181,6 +3195,20 @@
         </div>
 
         <p class="intro-note">操作の手順は、次のページの「はじめての方へ」でくわしく説明しています。</p>
+      </div>
+
+      <div class="intro-card">
+        <h3>この教材について — 絵と文章のこと</h3>
+        <div class="credit-list">
+          <p><b>絵・写真</b><span>ねこ33匹のイラスト、季節や服のイラスト、ロシアで撮った写真——
+          この教材にある絵と写真は、<b>すべて杉山真央が描き、撮影したもの</b>です。</span></p>
+          <p><b>本文・練習問題</b><span>解説文と練習問題は、すべて書きおろしです。</span></p>
+          <p><b>引用したロシア語のテキスト</b><span>プーシキン『ルスラーンとリュドミーラ』序詩（1820年）と、
+          <i>Ре́пка</i>・<i>Тере́мок</i> などのロシア民話から引いています。
+          いずれも<b>著作権の保護期間が終わったもの</b>です。</span></p>
+          <p><b>音声</b><span>お使いの端末にそなわっている読み上げ機能で、その場で読み上げています。
+          音声ファイルは持っていないため、端末によって声や読み方がちがいます。</span></p>
+        </div>
       </div>
 
       <button class="intro-start" onclick="enterRoad()">
