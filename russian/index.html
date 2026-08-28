@@ -2967,6 +2967,15 @@
   .len-t .len-ex { font-size: 10.5px; color: #7E5C42; }
 
 
+  /* ---- 表紙の入口ボタン ---- */
+  .cover-start .cs-text { text-align: left; line-height: 1.4; }
+  .cover-start .cs-text b { display: block; font-size: 15px; font-weight: 800; }
+  .cover-start .cs-text small { display: block; font-size: 10.5px; opacity: 0.88; margin-top: 2px; }
+  .cover-start.alt {
+    background: #fff; color: #9F544A;
+    border: 1.5px solid #E0968B;
+  }
+
   /* ---- まちがいの報告 ---- */
   .report-link {
     background: none; border: none; padding: 4px 8px;
@@ -3108,11 +3117,30 @@
     </div>
 
     <div class="cover-actions" id="cover-actions">
-      <button class="cover-start" onclick="enterRoad()">
-        <span class="cs-paw"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6.6" cy="9.2" rx="2" ry="2.6" transform="rotate(-18 6.6 9.2)"></ellipse><ellipse cx="11.9" cy="6.9" rx="2.05" ry="2.85"></ellipse><ellipse cx="17.2" cy="9.2" rx="2" ry="2.6" transform="rotate(18 17.2 9.2)"></ellipse><path d="M12 11.3c3.1 0 5.4 2.3 5.4 5 0 2.2-1.8 3.7-4.2 3.7h-2.4c-2.4 0-4.2-1.5-4.2-3.7 0-2.7 2.3-5 5.4-5z"></path></svg></span>
-        はじめる
-      </button>
       <p class="cover-review" id="cover-review"></p>
+
+      <button class="cover-start" id="cover-resume" onclick="resumeLastUnit()" style="display:none;">
+        <span class="cs-paw"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6.6" cy="9.2" rx="2" ry="2.6" transform="rotate(-18 6.6 9.2)"></ellipse><ellipse cx="11.9" cy="6.9" rx="2.05" ry="2.85"></ellipse><ellipse cx="17.2" cy="9.2" rx="2" ry="2.6" transform="rotate(18 17.2 9.2)"></ellipse><path d="M12 11.3c3.1 0 5.4 2.3 5.4 5 0 2.2-1.8 3.7-4.2 3.7h-2.4c-2.4 0-4.2-1.5-4.2-3.7 0-2.7 2.3-5 5.4-5z"></path></svg></span>
+        <span class="cs-text"><b>つづきから</b><small id="cover-resume-name"></small></span>
+      </button>
+
+      <button class="cover-start" onclick="startLetters()">
+        <span class="cs-paw"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6.6" cy="9.2" rx="2" ry="2.6" transform="rotate(-18 6.6 9.2)"></ellipse><ellipse cx="11.9" cy="6.9" rx="2.05" ry="2.85"></ellipse><ellipse cx="17.2" cy="9.2" rx="2" ry="2.6" transform="rotate(18 17.2 9.2)"></ellipse><path d="M12 11.3c3.1 0 5.4 2.3 5.4 5 0 2.2-1.8 3.7-4.2 3.7h-2.4c-2.4 0-4.2-1.5-4.2-3.7 0-2.7 2.3-5 5.4-5z"></path></svg></span>
+        <span class="cs-text"><b>文字からはじめる</b><small>はじめての方はこちら。まず1匹に会いましょう</small></span>
+      </button>
+
+      <button class="cover-start alt" onclick="startGrammar()">
+        <span class="cs-paw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></span>
+        <span class="cs-text"><b>文法からはじめる</b><small>キリル文字が読める方はこちら</small></span>
+      </button>
+
+      <button class="cover-intro" onclick="enterRoad()">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"></path><path d="M9 4v14M15 6v14"></path></svg>
+        <span class="ci-text">
+          <b>全体の地図を見る</b>
+          <small>4つの段と、いま自分がいるところ</small>
+        </span>
+      </button>
       <button class="cover-intro" onclick="openIntro()">
         <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"></path></svg>
         <span class="ci-text">
@@ -3228,7 +3256,7 @@
         <p style="font-size:10.5px;color:#7E5C42;margin-top:10px;text-align:center;">© 2026 杉山真央<span id="intro-appver"></span></p>
       </div>
 
-      <button class="intro-start" onclick="enterRoad()">
+      <button class="intro-start" onclick="startLetters()">
         <span class="cs-paw"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6.6" cy="9.2" rx="2" ry="2.6" transform="rotate(-18 6.6 9.2)"></ellipse><ellipse cx="11.9" cy="6.9" rx="2.05" ry="2.85"></ellipse><ellipse cx="17.2" cy="9.2" rx="2" ry="2.6" transform="rotate(18 17.2 9.2)"></ellipse><path d="M12 11.3c3.1 0 5.4 2.3 5.4 5 0 2.2-1.8 3.7-4.2 3.7h-2.4c-2.4 0-4.2-1.5-4.2-3.7 0-2.7 2.3-5 5.4-5z"></path></svg></span>
         はじめる
       </button>
@@ -3237,7 +3265,7 @@
     <div id="home-toc" style="display:none;">
       <p class="intro-back"><button onclick="backToCover()">← 表紙にもどる</button></p>
       <div class="intro-card" id="intro-toc"></div>
-      <button class="intro-start" onclick="enterRoad()">
+      <button class="intro-start" onclick="startLetters()">
         <span class="cs-paw"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6.6" cy="9.2" rx="2" ry="2.6" transform="rotate(-18 6.6 9.2)"></ellipse><ellipse cx="11.9" cy="6.9" rx="2.05" ry="2.85"></ellipse><ellipse cx="17.2" cy="9.2" rx="2" ry="2.6" transform="rotate(18 17.2 9.2)"></ellipse><path d="M12 11.3c3.1 0 5.4 2.3 5.4 5 0 2.2-1.8 3.7-4.2 3.7h-2.4c-2.4 0-4.2-1.5-4.2-3.7 0-2.7 2.3-5 5.4-5z"></path></svg></span>
         はじめる
       </button>
@@ -13061,6 +13089,24 @@ function openToc() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+// 表紙の「文字からはじめる」。
+// 説明を読ませる前に、まず1匹に会ってもらう。
+// まだ4つの記念が揃っていない文字のうち、いちばん先のものを開く。
+function startLetters() {
+  showHomeView('cover');
+  switchTab('alphabet');
+  const rest = incompleteLetters();
+  const l = rest.length ? rest[0] : LETTERS[0];
+  openCardDetail(l);
+}
+
+// 表紙の「文法からはじめる」。文字が読める人の入口。
+function startGrammar() {
+  showHomeView('cover');
+  switchTab('grammar');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 function enterRoad() {
   showHomeView('road');
   renderRoadmap();
@@ -13088,6 +13134,14 @@ function renderCover() {
       rev.innerHTML = '';
     }
   }
+  const res = document.getElementById('cover-resume');
+  if (res) {
+    const u = lastUnitId ? unitById(lastUnitId) : null;
+    res.style.display = u ? 'flex' : 'none';
+    const nm = document.getElementById('cover-resume-name');
+    if (nm && u) nm.textContent = u.title;
+  }
+
   const sv = document.getElementById('cover-survey');
   if (sv) {
     // 研究に協力していて、まだアンケートに答えていない方にだけ出す
