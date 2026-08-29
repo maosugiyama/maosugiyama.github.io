@@ -3077,7 +3077,7 @@
 
   /* ---- 形でかわる呼び名 ---- */
   .tp-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
     gap: 8px; margin: 10px 0 4px;
   }
   .tp-item {
@@ -3091,9 +3091,14 @@
   }
   .tp-credit { font-size: 10px; color: #7E5C42; text-align: right; margin: 2px 2px 0; }
   .tp-item b {
-    display: block; font-size: 11.5px; font-weight: 800; color: #3A2318;
-    line-height: 1.45; overflow-wrap: anywhere;
+    display: block; font-size: 11px; font-weight: 800; color: #3A2318;
+    line-height: 1.5; hyphens: none;
+    /* 語の途中では割らない。соло́менная が「соло́мен／ная」と分かれて
+       読みにくくなるため。どうしても入らないときだけ折り返す */
+    overflow-wrap: break-word;
   }
+  /* 長い名前は、ますからはみ出さないよう少し小さく */
+  .tp-item.long b { font-size: 10px; letter-spacing: -0.01em; }
   .tp-item i {
     display: block; font-style: normal; font-size: 10px; color: #7A5040; line-height: 1.5;
   }
@@ -10264,9 +10269,9 @@ const GRAMMAR_UNITS = [
       <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M42 38 L46 50 L41 50 L39 40 Z" fill="#E8D5C4"/><path d="M6 46 Q3 39 11 35 C20 31 28 28 34 19 L42 19 L43 38 C32 44 14 48 6 46 Z" fill="#FFFDF8"/><path d="M34 19 C31 26 25 31 18 34"/></svg><b>ту́фли</b><i>パンプス・革靴</i></div>
       <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 45 Q4 39 11 35 L17 32 L17 13 Q17 10 21 10 L35 10 Q39 10 39 13 L39 33 L44 39 L45 50 L11 50 Q5 50 6 45 Z" fill="#FFFDF8"/><path d="M17 15 L39 15"/><path d="M20 20 L36 25 M36 20 L20 25 M20 29 L36 33"/><path d="M11 50 L11 45 Q27 48 45 45"/></svg><b>боти́нки</b><i>くるぶし丈の靴</i></div>
       <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 45 Q4 39 11 35 L16 32 L16 7 Q16 3 21 3 L34 3 Q39 3 39 7 L39 33 L44 39 L45 50 L11 50 Q5 50 6 45 Z" fill="#FFFDF8"/><path d="M11 50 L11 45 Q27 48 45 45"/><path d="M39 24 Q33 27 32 33"/></svg><b>сапоги́</b><i>長いブーツ</i></div>
-      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 40 Q4 32 15 27 C21 24 26 22 30 20 Q33 20 33 25 L33 28 Q36 23 40 22 Q45 22 45 29 L45 40 Z" fill="#FFFDF8"/><path d="M5 40 L47 40 Q51 40 51 44 L51 47 Q51 50 47 50 L9 50 Q5 50 5 47 Z" fill="#E8D5C4"/><path d="M5 45 L51 45"/><path d="M19 27 L28 30 M18 31 L27 34 M17 35 L26 38"/><path d="M15 27 C22 32 30 37 34 40"/></svg><b>кроссо́вки</b><i>スニーカー</i></div>
+      <div class="tp-item long"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 40 Q4 32 15 27 C21 24 26 22 30 20 Q33 20 33 25 L33 28 Q36 23 40 22 Q45 22 45 29 L45 40 Z" fill="#FFFDF8"/><path d="M5 40 L47 40 Q51 40 51 44 L51 47 Q51 50 47 50 L9 50 Q5 50 5 47 Z" fill="#E8D5C4"/><path d="M5 45 L51 45"/><path d="M19 27 L28 30 M18 31 L27 34 M17 35 L26 38"/><path d="M15 27 C22 32 30 37 34 40"/></svg><b>кроссо́вки</b><i>スニーカー</i></div>
       <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 48 Q3 41 11 36 Q19 30 28 30 Q37 30 38 39 L38 48 Z" fill="#FFFDF8"/><path d="M38 39 Q27 44 16 40"/><path d="M11 36 Q23 33 32 36"/></svg><b>та́почки</b><i>スリッパ</i></div>
-      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 45 Q4 50 11 50 L42 50 Q48 50 45 45 Z" fill="#FFFDF8"/><path d="M12 45 L30 30" stroke-width="2.6"/><path d="M31 45 L16 32" stroke-width="2.6"/><path d="M38 45 Q43 38 41 31 Q39 27 33 28" stroke-width="2.2"/></svg><b>босоно́жки</b><i>サンダル</i></div>
+      <div class="tp-item long"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 45 Q4 50 11 50 L42 50 Q48 50 45 45 Z" fill="#FFFDF8"/><path d="M12 45 L30 30" stroke-width="2.6"/><path d="M31 45 L16 32" stroke-width="2.6"/><path d="M38 45 Q43 38 41 31 Q39 27 33 28" stroke-width="2.2"/></svg><b>босоно́жки</b><i>サンダル</i></div>
       <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 50 Q3 50 4 42 Q6 33 14 30 L15 12 Q15 4 26 4 L40 4 Q49 4 48 12 L48 50 Z" fill="#FFFDF8"/><path d="M4 45 Q26 49 48 45"/><path d="M15 21 Q31 24 48 21"/></svg><b>ва́ленки</b><i>フェルトの防寒ブーツ</i></div>
     </div>
     <p style="font-size:11px;color:#7E5C42;"><b>о́бувь</b> は履きもの全体をまとめて言う語で、
@@ -10304,14 +10309,14 @@ const GRAMMAR_UNITS = [
       <div class="tp-item"><img src="ht-kepka.png" alt="ハンチング" loading="lazy"><b>ке́пка</b><i>ハンチング</i></div>
       <div class="tp-item"><img src="ht-kartuz.png" alt="つばつきの古い帽子" loading="lazy"><b>карту́з</b><i>つばつきの古い帽子</i></div>
       <div class="tp-item"><img src="ht-ushanka.png" alt="耳あてつきの帽子" loading="lazy"><b>уша́нка</b><i>耳あてつきの帽子</i></div>
-      <div class="tp-item"><img src="ht-mehovaya.png" alt="毛皮の帽子" loading="lazy"><b>мехова́я ша́пка</b><i>毛皮の帽子</i></div>
+      <div class="tp-item long"><img src="ht-mehovaya.png" alt="毛皮の帽子" loading="lazy"><b>мехова́я ша́пка</b><i>毛皮の帽子</i></div>
       <div class="tp-item"><img src="ht-beret.png" alt="ベレー帽" loading="lazy"><b>бере́т</b><i>ベレー帽</i></div>
       <div class="tp-item"><img src="ht-panama.png" alt="サンハット" loading="lazy"><b>пана́ма</b><i>サンハット</i></div>
       <div class="tp-item"><img src="ht-kanote.png" alt="カンカン帽" loading="lazy"><b>канотье́</b><i>カンカン帽</i></div>
-      <div class="tp-item"><img src="ht-solomennaya.png" alt="麦わら帽子" loading="lazy"><b>соло́менная шля́па</b><i>麦わら帽子</i></div>
-      <div class="tp-item"><img src="ht-beysbolka.png" alt="キャップ" loading="lazy"><b>бейсбо́лка</b><i>キャップ</i></div>
+      <div class="tp-item long"><img src="ht-solomennaya.png" alt="麦わら帽子" loading="lazy"><b>соло́менная шля́па</b><i>麦わら帽子</i></div>
+      <div class="tp-item long"><img src="ht-beysbolka.png" alt="キャップ" loading="lazy"><b>бейсбо́лка</b><i>キャップ</i></div>
       <div class="tp-item"><img src="ht-furazhka.png" alt="制帽・軍帽" loading="lazy"><b>фура́жка</b><i>制帽・軍帽</i></div>
-      <div class="tp-item"><img src="ht-vyazanaya.png" alt="ニット帽" loading="lazy"><b>вя́заная ша́пка</b><i>ニット帽</i></div>
+      <div class="tp-item long"><img src="ht-vyazanaya.png" alt="ニット帽" loading="lazy"><b>вя́заная ша́пка</b><i>ニット帽</i></div>
     </div>
     <p class="tp-credit">絵：杉山真央</p>
     <p style="font-size:11px;color:#7E5C42;">全体をまとめて言うときは
