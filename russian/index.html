@@ -2974,9 +2974,9 @@
     font-size: 13px; line-height: 1; color: #C0A99B;
     font-family: inherit;
   }
-  .note-mark::before { content: '\\2606'; }
+  .note-mark::before { content: '\2606'; }
   .note-mark.on { color: #C08A2E; }
-  .note-mark.on::before { content: '\\2605'; }
+  .note-mark.on::before { content: '\2605'; }
   .note-mark:hover { color: #9F544A; }
   .tp-item { position: relative; }
   .tp-item .note-mark { position: absolute; top: 2px; right: 4px; margin: 0; }
@@ -3085,6 +3085,11 @@
     padding: 8px 3px 7px; text-align: center; min-width: 0;
   }
   .tp-item svg { width: 60px; height: 52px; display: block; margin: 0 auto 2px; }
+  .tp-item img {
+    width: 66px; height: 54px; object-fit: contain;
+    display: block; margin: 0 auto 3px;
+  }
+  .tp-credit { font-size: 10px; color: #7E5C42; text-align: right; margin: 2px 2px 0; }
   .tp-item b {
     display: block; font-size: 11.5px; font-weight: 800; color: #3A2318;
     line-height: 1.45; overflow-wrap: anywhere;
@@ -10294,12 +10299,21 @@ const GRAMMAR_UNITS = [
   <div class="verb-row">
     <strong>◆ 帽子 — головно́й убо́р</strong>
     <div class="tp-grid">
-      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 38 Q14 16 32 16 Q50 16 50 38 Z" fill="#FFFDF8"/><path d="M11 37 L53 37 Q55 37 55 40 L55 45 Q55 48 53 48 L11 48 Q9 48 9 45 L9 40 Q9 37 11 37 Z" fill="#E8D5C4"/><circle cx="32" cy="11" r="5.5" fill="#FFFDF8"/></svg><b>ша́пка</b><i>ニット帽・防寒帽</i></div>
-      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 36 Q20 11 32 11 Q44 11 44 36 Z" fill="#FFFDF8"/><path d="M20 29 L44 29" stroke="#E8D5C4" stroke-width="3.4"/><path d="M5 39 Q5 32 20 32 L44 32 Q59 32 59 39 Q59 45 32 45 Q5 45 5 39 Z" fill="#FFFDF8"/></svg><b>шля́па</b><i>つばのある帽子</i></div>
-      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 35 Q13 11 32 11 Q51 11 51 35 Z" fill="#FFFDF8"/><path d="M49 34 Q62 33 61 41 Q49 44 45 39 Z" fill="#E8D5C4"/><path d="M13 35 L51 35"/><circle cx="32" cy="10" r="2.2" fill="#7A5040"/></svg><b>ке́пка</b><i>キャップ</i></div>
-      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 32 Q20 12 32 12 Q44 12 43 32 Z" fill="#FFFDF8"/><path d="M8 32 L56 32 Q53 45 32 45 Q11 45 8 32 Z" fill="#FFFDF8"/><path d="M21 24 L43 24"/></svg><b>пана́ма</b><i>サンハット</i></div>
-      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 32 Q9 12 32 12 Q55 12 53 28 Q53 36 30 36 Q11 36 11 32 Z" fill="#FFFDF8"/><path d="M11 32 Q30 39 53 28"/><path d="M33 12 L36 5"/><circle cx="36.5" cy="4" r="2.4" fill="#7A5040"/></svg><b>бере́т</b><i>ベレー帽</i></div>
+      <div class="tp-item"><img src="ht-shapka.png" alt="防寒帽（つばなし）" loading="lazy"><b>ша́пка</b><i>防寒帽（つばなし）</i></div>
+      <div class="tp-item"><img src="ht-shlyapa.png" alt="つばのある帽子" loading="lazy"><b>шля́па</b><i>つばのある帽子</i></div>
+      <div class="tp-item"><img src="ht-kepka.png" alt="ハンチング" loading="lazy"><b>ке́пка</b><i>ハンチング</i></div>
+      <div class="tp-item"><img src="ht-kartuz.png" alt="つばつきの古い帽子" loading="lazy"><b>карту́з</b><i>つばつきの古い帽子</i></div>
+      <div class="tp-item"><img src="ht-ushanka.png" alt="耳あてつきの帽子" loading="lazy"><b>уша́нка</b><i>耳あてつきの帽子</i></div>
+      <div class="tp-item"><img src="ht-mehovaya.png" alt="毛皮の帽子" loading="lazy"><b>мехова́я ша́пка</b><i>毛皮の帽子</i></div>
+      <div class="tp-item"><img src="ht-beret.png" alt="ベレー帽" loading="lazy"><b>бере́т</b><i>ベレー帽</i></div>
+      <div class="tp-item"><img src="ht-panama.png" alt="サンハット" loading="lazy"><b>пана́ма</b><i>サンハット</i></div>
+      <div class="tp-item"><img src="ht-kanote.png" alt="カンカン帽" loading="lazy"><b>канотье́</b><i>カンカン帽</i></div>
+      <div class="tp-item"><img src="ht-solomennaya.png" alt="麦わら帽子" loading="lazy"><b>соло́менная шля́па</b><i>麦わら帽子</i></div>
+      <div class="tp-item"><img src="ht-beysbolka.png" alt="キャップ" loading="lazy"><b>бейсбо́лка</b><i>キャップ</i></div>
+      <div class="tp-item"><img src="ht-furazhka.png" alt="制帽・軍帽" loading="lazy"><b>фура́жка</b><i>制帽・軍帽</i></div>
+      <div class="tp-item"><img src="ht-vyazanaya.png" alt="ニット帽" loading="lazy"><b>вя́заная ша́пка</b><i>ニット帽</i></div>
     </div>
+    <p class="tp-credit">絵：杉山真央</p>
     <p style="font-size:11px;color:#7E5C42;">全体をまとめて言うときは
     <b>головно́й убо́р</b>（頭の被りもの）。少しかたい言い方で、
     書類や店の分類でよく見かけます。
@@ -10310,6 +10324,23 @@ const GRAMMAR_UNITS = [
     <p style="font-size:11px;color:#7E5C42;">ちなみに <b>шля́па</b> を人に向かって言うと、
     「のろま・気のきかない人」という意味になります
     （<b>Ну ты и шля́па!</b>）。帽子の話とは限りません。</p>
+    <p style="font-size:11px;color:#7E5C42;"><b>уша́нка</b> は <b>у́ши</b>（耳）から。
+    「耳のついた帽子」という、そのままの名前です。
+    ロシアの冬の帽子といえばこれで、耳あては下ろしても、頭の上で結んでもかまいません。</p>
+    <p style="font-size:11px;color:#7E5C42;"><b>канотье́</b> はフランス語 <b>canotier</b> から来た外来語で、
+    <b>格変化しません</b>。髪型の <b>ка́ре</b> と同じ仲間です。</p>
+
+    <div class="rule-row">
+      <strong>2語でできた名前は、形容詞を女性形に</strong>
+      <p><b>ша́пка</b> も <b>шля́па</b> も<b>女性名詞</b>ですから、
+      前につく形容詞はどれも <b>-ая</b> の形になります。</p>
+      <p><span class="ex-inline">мехова́я ша́пка（毛皮の帽子）</span>
+      <span class="ex-inline">вя́заная ша́пка（ニット帽）</span>
+      <span class="ex-inline">соло́менная шля́па（麦わら帽子）</span></p>
+      <p style="font-size:11px;color:#7E5C42;">материа́л（素材）で呼び分けるこの形は、
+      服にもそのまま使えます——<b>ко́жаная ку́ртка</b>（革のジャケット）、
+      <b>шерстяно́й шарф</b>（ウールのマフラー／шарф は男性なので -о́й）。</p>
+    </div>
   </div>
 
   <div class="rule-row" style="background:#F3EEE6;border-left-color:#806452;">
@@ -10431,7 +10462,22 @@ const GRAMMAR_UNITS = [
      tokens:['Я','купи́л','па́ру','сапо́г'],
      accept:[{o:'Я купи́л па́ру сапо́г', n:'па́ру は対格、そのあとの сапо́г は複数生格です'}],
      hint:'Я から始めます',
-     ex:'Я купи́л па́ру сапо́г. па́ра が対格 па́ру になり、数えられる中身は複数生格のままです。'}
+     ex:'Я купи́л па́ру сапо́г. па́ра が対格 па́ру になり、数えられる中身は複数生格のままです。'},
+    {type:'mc', q:'耳あてのついた、ロシアの冬の帽子は？', say:'уша́нка',
+     opts:['уша́нка','пана́ма','канотье́'], a:0,
+     ex:'у́ши（耳）から уша́нка。「耳のついた帽子」という名前です。'},
+    {type:'mc', q:'канотье́（カンカン帽）の格変化は？',
+     opts:['変化しません（不変化の外来語）','女性名詞として変化します','男性名詞として変化します'], a:0,
+     ex:'フランス語 canotier から来た外来語で、ка́ре や ко́фе と同じく形が変わりません。'},
+    {type:'mc', q:'「毛皮の帽子」は？', say:'мехова́я ша́пка',
+     opts:['мехова́я ша́пка','мехово́й ша́пка','мехово́е ша́пка'], a:0,
+     ex:'ша́пка は女性名詞なので、形容詞も女性形 мехова́я にします。'},
+    {type:'mc', q:'軍人や制服の人がかぶる、ひさしのある帽子は？', say:'фура́жка',
+     opts:['фура́жка','бейсбо́лка','бере́т'], a:0,
+     ex:'фура́жка は制帽・軍帽。бейсбо́лка は野球帽から来た、ふだんのキャップです。'},
+    {type:'mc', q:'「麦わら帽子」は？', say:'соло́менная шля́па',
+     opts:['соло́менная шля́па','соло́менный шля́па','соло́менное шля́па'], a:0,
+     ex:'соло́ма（麦わら）＋ шля́па。шля́па は女性名詞なので соло́менная です。'}
   ]
 },
 
@@ -11832,6 +11878,12 @@ const WHY = {
   'impersonal:12': ['', 'ну́жно は不定形が続くときの形です。ここは名詞が来ています', 'нужна́ は女性形。слова́рь は男性名詞です', 'нужны́ は複数形。слова́рь は単数です'],
   'impersonal:13': ['', 'до́лжен のほうがむしろ硬く、責任の重い言い方です', '日本語ではどちらも「〜しなければ」ですが、主語の格も意味あいも違います'],
   'impersonal:14': ['', '主語がないので был（男性形）にはなりません。中性の бы́ло です', 'на́до の文では人は与格 Мне になります。主格の Я は使えません'],
+  // ---- 帽子（絵つき）----
+  'shape-types:14': ['', 'пана́ма は夏のつば広の帽子です', 'канотье́ は麦わらのカンカン帽です'],
+  'shape-types:15': ['', 'канотье́ は外来語で、格変化しません', 'канотье́ は外来語で、格変化しません'],
+  'shape-types:16': ['', 'мехово́й は男性形です。ша́пка は女性名詞です', 'мехово́е は中性形です。ша́пка は女性名詞です'],
+  'shape-types:17': ['', 'бейсбо́лка はふだんかぶるキャップです', 'бере́т はつばのないベレー帽です'],
+  'shape-types:18': ['', 'соло́менный は男性形です。шля́па は女性名詞です', 'соло́менное は中性形です。шля́па は女性名詞です'],
   // ---- 形でかわる呼び名 ----
   'shape-types:0': ['', 'та́почки は室内ではくスリッパです', 'босоно́жки は夏のサンダルです'],
   'shape-types:1': ['', 'боти́нки はくるぶし丈の革靴です', 'ту́фли はかかとのある、あらたまった靴です'],
@@ -13087,7 +13139,10 @@ const TOPIC_INDEX = [
   { t:'性格をあらわす形容詞', u:'character', k:'せいかく хара́ктер ものさし 反対語' },
   { t:'多色の・透明の（разноцве́тный / прозра́чный）', u:'color-shape', k:'たしょく とうめい пёстрый одноцве́тный многоцветный' },
   { t:'靴のいろいろ（ту́фли / сапоги́ / кроссо́вки）', u:'shape-types', k:'くつ обувь ботинки тапочки валенки босоножки' },
-  { t:'帽子のいろいろ（ша́пка / шля́па / ке́пка）', u:'shape-types', k:'ぼうし панама берет головной убор' },
+  { t:'帽子のいろいろ（ша́пка / шля́па / ке́пка）', u:'shape-types', k:'ぼうし панама берет головной убор картуз канотье' },
+  { t:'уша́нка と冬の帽子', u:'shape-types', k:'ушанка меховая шапка вязаная みみあて ぼうかんぼう' },
+  { t:'бейсбо́лка・фура́жка（キャップ・制帽）', u:'shape-types', k:'бейсболка фуражка кепка きゃっぷ せいぼう' },
+  { t:'素材で呼ぶ（мехова́я / соло́менная / вя́заная）', u:'shape-types', k:'そざい けがわ むぎわら にっと 形容詞の女性形' },
   { t:'髪型のことば（коса́ / чёлка / ка́ре）', u:'shape-types', k:'かみがた причёска хвостик пучок кудри волосы' },
   { t:'па́ра ＋ 複数生格（一足の〜）', u:'shape-types', k:'пара сапог носков いっそく ふくすうせいかく' },
   { t:'цвета́（色）と цветы́（花）', u:'color-shape', k:'цвет цветок いろ はな ふくすう' },

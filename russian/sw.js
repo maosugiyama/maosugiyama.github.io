@@ -1,7 +1,7 @@
 // ねこと学ぶ キリル文字 — オフライン用のサービスワーカー
 // ★ 内容を更新したら、下の VERSION を必ず1つ上げてください（例: v1 → v2）
 //    番号を上げないと、利用者の端末に古い画面が残り続けます。
-const VERSION = 'v64';
+const VERSION = 'v65';
 const CACHE = 'neko-cyrillic-' + VERSION;
 
 // 最初に保存しておくファイル（これだけあればオフラインで起動できます）
@@ -27,7 +27,20 @@ const CORE = [
   './il-sunflower.jpg',
   './ph-bliny.jpg',
   './ph-flag.jpg',
-  './cl-jacket.png',
+    './ht-shapka.png',
+  './ht-shlyapa.png',
+  './ht-kepka.png',
+  './ht-kartuz.png',
+  './ht-ushanka.png',
+  './ht-mehovaya.png',
+  './ht-beret.png',
+  './ht-panama.png',
+  './ht-kanote.png',
+  './ht-solomennaya.png',
+  './ht-beysbolka.png',
+  './ht-furazhka.png',
+  './ht-vyazanaya.png',
+'./cl-jacket.png',
   './cl-dress.png',
   './cl-jeans.png',
   './cl-skirt.png',
