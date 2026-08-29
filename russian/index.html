@@ -2967,6 +2967,50 @@
   .len-t .len-ex { font-size: 10.5px; color: #7E5C42; }
 
 
+  /* ---- メモした語 ---- */
+  .note-mark {
+    display: inline-block; margin-left: 7px; vertical-align: baseline;
+    background: none; border: none; padding: 0 2px; cursor: pointer;
+    font-size: 13px; line-height: 1; color: #C0A99B;
+    font-family: inherit;
+  }
+  .note-mark::before { content: '\\2606'; }
+  .note-mark.on { color: #C08A2E; }
+  .note-mark.on::before { content: '\\2605'; }
+  .note-mark:hover { color: #9F544A; }
+  .tp-item { position: relative; }
+  .tp-item .note-mark { position: absolute; top: 2px; right: 4px; margin: 0; }
+
+  .cover-notes { display: none; cursor: pointer; border: none; font-family: inherit; }
+  .nt-count { font-size: 11.5px; color: #7A5040; margin: 10px 0 4px; }
+  .nt-group { margin: 12px 0 4px; }
+  .nt-unit {
+    display: block; width: 100%; text-align: left;
+    background: #FBEAE4; border: none; border-radius: 10px;
+    padding: 7px 11px; margin-bottom: 4px;
+    font-family: inherit; font-size: 11.5px; font-weight: 800; color: #9F544A;
+    cursor: pointer;
+  }
+  .nt-unit span { font-weight: 600; font-size: 10.5px; opacity: 0.8; }
+  .nt-row {
+    display: flex; align-items: flex-start; gap: 8px;
+    padding: 7px 4px; border-bottom: 1px dotted #EFE0DA;
+  }
+  .nt-row:last-child { border-bottom: none; }
+  .nt-say {
+    flex-shrink: 0; background: #EFF6F2; border: none; color: #2F6650;
+    border-radius: 999px; padding: 4px 9px; font-size: 11px; cursor: pointer;
+    font-family: inherit;
+  }
+  .nt-text { flex: 1; min-width: 0; line-height: 1.6; }
+  .nt-text b { display: block; font-size: 12.5px; font-weight: 800; color: #3A2318; overflow-wrap: anywhere; }
+  .nt-text span { display: block; font-size: 11px; color: #7A5040; overflow-wrap: anywhere; }
+  .nt-del {
+    flex-shrink: 0; background: none; border: none; color: #B0958A;
+    font-size: 13px; cursor: pointer; padding: 2px 4px; font-family: inherit;
+  }
+  .nt-empty { font-size: 11.5px; color: #7A5040; line-height: 2; text-align: center; padding: 18px 6px; }
+
   /* ---- 表紙の入口ボタン ---- */
   .cover-start .cs-text { text-align: left; line-height: 1.4; }
   .cover-start .cs-text b { display: block; font-size: 15px; font-weight: 800; }
@@ -3118,6 +3162,7 @@
 
     <div class="cover-actions" id="cover-actions">
       <p class="cover-review" id="cover-review"></p>
+      <button class="cover-review cover-notes" id="cover-notes" onclick="openNotes()" style="display:none;"></button>
 
       <button class="cover-start" id="cover-resume" onclick="resumeLastUnit()" style="display:none;">
         <span class="cs-paw"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6.6" cy="9.2" rx="2" ry="2.6" transform="rotate(-18 6.6 9.2)"></ellipse><ellipse cx="11.9" cy="6.9" rx="2.05" ry="2.85"></ellipse><ellipse cx="17.2" cy="9.2" rx="2" ry="2.6" transform="rotate(18 17.2 9.2)"></ellipse><path d="M12 11.3c3.1 0 5.4 2.3 5.4 5 0 2.2-1.8 3.7-4.2 3.7h-2.4c-2.4 0-4.2-1.5-4.2-3.7 0-2.7 2.3-5 5.4-5z"></path></svg></span>
@@ -3305,6 +3350,22 @@
         <span class="cs-paw"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6.6" cy="9.2" rx="2" ry="2.6" transform="rotate(-18 6.6 9.2)"></ellipse><ellipse cx="11.9" cy="6.9" rx="2.05" ry="2.85"></ellipse><ellipse cx="17.2" cy="9.2" rx="2" ry="2.6" transform="rotate(18 17.2 9.2)"></ellipse><path d="M12 11.3c3.1 0 5.4 2.3 5.4 5 0 2.2-1.8 3.7-4.2 3.7h-2.4c-2.4 0-4.2-1.5-4.2-3.7 0-2.7 2.3-5 5.4-5z"></path></svg></span>
         はじめる
       </button>
+    </div>
+
+    <div id="home-notes" style="display:none;">
+      <p class="intro-back"><button onclick="backToCover()">← 表紙にもどる</button></p>
+      <div class="intro-card">
+        <h3>メモした語</h3>
+        <p style="font-size:11.5px;color:#7A5040;line-height:1.9;">解説のなかの表で、語のとなりの
+        <b>&#9734;</b> を押すと、ここに集まります。ユニットごとに並んでいるので、
+        <b>出てきたところへ戻る</b>こともできます。</p>
+        <div id="notes-list"></div>
+        <div style="text-align:center;margin-top:14px;">
+          <button class="cover-intro" onclick="copyNotes()" style="width:auto;padding:9px 18px;">
+            一覧をコピーする（ノートや表計算に貼れます）
+          </button>
+        </div>
+      </div>
     </div>
 
     <div id="home-road" style="display:none;">
@@ -10983,6 +11044,178 @@ let lastUnitId = '';
 // 消したいと思ったときに、その場で消せることが大事。
 let kanaHidden = false;
 
+// ------------------------------------------------------------
+// メモした語
+// ------------------------------------------------------------
+// 解説の表に出てくる「語 ＋ 意味」に印をつけて、あとで一覧で見返す。
+// どのユニットで出会ったかを一緒に持たせて、そこへ戻れるようにする。
+let noteWords = [];                 // [{ w:語, m:意味, u:ユニットid, t:ユニット名 }]
+const NOTE_MAX = 500;
+
+function noteIndex(w, u) {
+  for (let i = 0; i < noteWords.length; i++) {
+    if (noteWords[i].w === w && noteWords[i].u === u) return i;
+  }
+  return -1;
+}
+
+function toggleNote(w, m, u, btn) {
+  const t = (unitById(u) || {}).title || '';
+  const i = noteIndex(w, u);
+  if (i >= 0) {
+    noteWords.splice(i, 1);
+    if (btn) btn.classList.remove('on');
+    showToast('メモから外しました', '#7E5C42');
+  } else {
+    if (noteWords.length >= NOTE_MAX) {
+      showToast('メモが' + NOTE_MAX + '語になりました。古いものを整理してください', '#9F544A');
+      return;
+    }
+    noteWords.push({ w: w, m: m, u: u, t: t });
+    if (btn) btn.classList.add('on');
+    showToast('メモしました（全' + noteWords.length + '語）', '#387362');
+  }
+  saveGrammarProgress();
+  updateNoteCount();
+}
+
+// 印のボタンを1つ作る
+function makeNoteMark(w, m, unitId) {
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'note-mark' + (noteIndex(w, unitId) >= 0 ? ' on' : '');
+  b.setAttribute('aria-label', w + ' をメモする');
+  b.title = 'あとで見返す語としてメモする';
+  b.onclick = function (e) { e.stopPropagation(); e.preventDefault(); toggleNote(w, m, unitId, b); };
+  return b;
+}
+
+const NOTE_CYR = /[\u0410-\u044F\u0401\u0451]/;
+
+// 活用表の左端に並ぶ人称代名詞は、メモする語ではないので印を出さない
+const NOTE_SKIP = ['я','ты','он','она́','она','оно́','оно','мы','вы','они́','они'];
+function noteSkippable(w) { return NOTE_SKIP.indexOf(w.toLowerCase()) >= 0; }
+
+// 解説のなかの「語 ＋ 意味」に、印のボタンを差しこむ。
+// 表（conj-table）、絵つきのカード（tp-item）、ことばのチップ（tchip）が対象。
+function decorateNotes(root, unitId) {
+  if (!root) return;
+
+  // ① 表
+  const tables = root.querySelectorAll('.conj-table');
+  for (let ti = 0; ti < tables.length; ti++) {
+    const kids = Array.prototype.slice.call(tables[ti].children);
+    for (let i = 0; i + 1 < kids.length; i += 2) {
+      const pr = kids[i], fm = kids[i + 1];
+      if (!pr.classList || !pr.classList.contains('pron')) continue;
+      if (!fm.classList || !fm.classList.contains('form')) continue;
+      if (fm.querySelector('.note-mark')) continue;
+      const w = (pr.textContent || '').trim();
+      const m = (fm.textContent || '').trim();
+      if (!NOTE_CYR.test(w) || noteSkippable(w)) continue;
+      fm.appendChild(makeNoteMark(w, m, unitId));
+    }
+  }
+
+  // ② 絵つきのカード（靴・帽子・髪型）
+  const items = root.querySelectorAll('.tp-item');
+  for (let i = 0; i < items.length; i++) {
+    const el = items[i];
+    if (el.querySelector('.note-mark')) continue;
+    const bw = el.querySelector('b'), bm = el.querySelector('i');
+    if (!bw) continue;
+    const w = (bw.textContent || '').trim();
+    const m = bm ? (bm.textContent || '').trim() : '';
+    if (!NOTE_CYR.test(w)) continue;
+    el.appendChild(makeNoteMark(w, m, unitId));
+  }
+
+  // ③ ことばのチップ（性格のことば）
+  const chips = root.querySelectorAll('.tchip');
+  for (let i = 0; i < chips.length; i++) {
+    const el = chips[i];
+    if (el.querySelector('.note-mark')) continue;
+    const im = el.querySelector('i');
+    let w = '';
+    for (let k = 0; k < el.childNodes.length; k++) {
+      if (el.childNodes[k].nodeType === 3) w += el.childNodes[k].textContent;
+    }
+    w = w.trim();
+    const m = im ? (im.textContent || '').trim() : '';
+    if (!NOTE_CYR.test(w)) continue;
+    (im || el).appendChild(makeNoteMark(w, m, unitId));
+  }
+}
+
+function updateNoteCount() {
+  const el = document.getElementById('cover-notes');
+  if (el) {
+    el.style.display = noteWords.length ? 'flex' : 'none';
+    el.innerHTML = icon('edit_note', 'lu-md') + ' メモした語が <b>' + noteWords.length + '</b> 語';
+  }
+}
+
+function openNotes() {
+  renderNotes();
+  showHomeView('notes');
+  logScreen('notes');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderNotes() {
+  const box = document.getElementById('notes-list');
+  if (!box) return;
+  if (!noteWords.length) {
+    box.innerHTML = '<p class="nt-empty">まだ何もメモしていません。<br>'
+      + '解説のなかの表で、語のとなりにある <b>&#9734;</b> を押すと、ここに集まります。</p>';
+    return;
+  }
+  // ユニットごとにまとめる
+  const groups = [];
+  noteWords.forEach(function (n) {
+    let g = groups.filter(function (x) { return x.u === n.u; })[0];
+    if (!g) { g = { u: n.u, t: n.t, items: [] }; groups.push(g); }
+    g.items.push(n);
+  });
+  let html = '<p class="nt-count">全 <b>' + noteWords.length + '</b> 語（' + groups.length + ' ユニット）</p>';
+  groups.forEach(function (g) {
+    html += '<div class="nt-group">';
+    html += '  <button class="nt-unit" onclick="openUnitFromHome(\'' + g.u + '\')">'
+         +  (g.t || g.u) + ' <span>へ行く →</span></button>';
+    g.items.forEach(function (n) {
+      html += '<div class="nt-row">';
+      html += '  <button class="nt-say" onclick="speak(\'' + String(n.w).replace(/'/g, "\\'") + '\')" aria-label="' + n.w + ' の発音を聞く">&#9834;</button>';
+      html += '  <div class="nt-text"><b>' + n.w + '</b><span>' + n.m + '</span></div>';
+      html += '  <button class="nt-del" onclick="removeNote(\'' + String(n.w).replace(/'/g, "\\'") + '\',\'' + g.u + '\')" aria-label="メモから外す">&#10005;</button>';
+      html += '</div>';
+    });
+    html += '</div>';
+  });
+  box.innerHTML = html;
+}
+
+function removeNote(w, u) {
+  const i = noteIndex(w, u);
+  if (i < 0) return;
+  noteWords.splice(i, 1);
+  saveGrammarProgress();
+  renderNotes();
+  updateNoteCount();
+}
+
+// 一覧を、紙のノートや表計算に貼れる形で書き出す
+function copyNotes() {
+  if (!noteWords.length) return;
+  const lines = noteWords.map(function (n) { return n.w + '\t' + n.m + '\t' + (n.t || ''); });
+  const text = 'ロシア語\t意味\t出てきたところ\n' + lines.join('\n');
+  try {
+    navigator.clipboard.writeText(text);
+    showToast('メモした語をコピーしました。ノートや表計算に貼れます', '#387362');
+  } catch (e) {
+    showToast('コピーできませんでした', '#9F544A');
+  }
+}
+
 function applyKana() {
   if (document.body) document.body.classList.toggle('hide-kana', kanaHidden);
 }
@@ -11022,6 +11255,7 @@ function saveGrammarProgress() {
       dict: dictConfig,
       dictDone: dictDone,
       kanaHidden: kanaHidden,
+      notes: noteWords,
       savedAt: new Date().toISOString()
     }));
   } catch (e) { console.log('Grammar progress save failed:', e); noteStorageFailure(); }
@@ -11041,6 +11275,7 @@ function loadGrammarProgress() {
     if (d.lastStage) lastStage = d.lastStage;
     if (d.lastUnitId) lastUnitId = d.lastUnitId;
     if (d.kanaHidden) kanaHidden = true;
+    if (Array.isArray(d.notes)) noteWords = d.notes;
   } catch (e) { console.log('Grammar progress load failed:', e); }
 }
 loadGrammarProgress();
@@ -11244,6 +11479,7 @@ function openGrammarUnit(id, origin) {
   html += '<div style="text-align:center;margin-top:10px;">' + reportButton('このページのまちがいを知らせる') + '</div>';
 
   view.innerHTML = html;
+  decorateNotes(view, u.id);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -13107,7 +13343,8 @@ function renderTocResults() {
   html += '<div class="toc-step plain"><b>いつでも</b><em>ためす・見直す</em></div>';
   html += tocRow('tocGoTab(\'challenge\')', '', 'チャレンジ', '出題範囲・順番・問題数をえらんで力だめし', false);
   html += tocRow('tocGoTab(\'home\')', '', '今日の復習', 'まちがえた問題が、日をあけて出てきます', false);
-  html += tocRow('tocGoTab(\'home\')', '', 'ノートと印刷', '活用表・格変化表・まちがえた語ノートをA4で印刷', false);
+  html += tocRow('openNotes()', '', 'メモした語', '解説のなかで ☆ を押した語が、ここに集まります', false)
+       + tocRow('tocGoTab(\'home\')', '', 'ノートと印刷', '活用表・格変化表・まちがえた語・すきなことばをA4で印刷', false);
 
   box.innerHTML = html;
 }
@@ -13141,7 +13378,7 @@ function tocGoUnit(id) {
 
 // 表紙・はじめに・目次・道のり の4画面を出し分ける
 function showHomeView(which) {
-  const ids = { cover:'cover-actions', intro:'home-intro', toc:'home-toc', road:'home-road' };
+  const ids = { cover:'cover-actions', intro:'home-intro', toc:'home-toc', road:'home-road', notes:'home-notes' };
   Object.keys(ids).forEach(function(k) {
     const el = document.getElementById(ids[k]);
     if (el) el.style.display = (k === which) ? 'block' : 'none';
@@ -13197,6 +13434,7 @@ function backToCover() {
 
 // 表紙の表示を整える（復習の件数と、アンケートのボタン）
 function renderCover() {
+  updateNoteCount();
   const rev = document.getElementById('cover-review');
   if (rev) {
     const c = srsCounts();
