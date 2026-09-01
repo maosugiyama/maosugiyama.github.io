@@ -3006,7 +3006,7 @@
   .nt-text b { display: block; font-size: 12.5px; font-weight: 800; color: #3A2318; overflow-wrap: anywhere; }
   .nt-text span { display: block; font-size: 11px; color: #7A5040; overflow-wrap: anywhere; }
   .nt-del {
-    flex-shrink: 0; background: none; border: none; color: #B0958A;
+    flex-shrink: 0; background: none; border: none; color: #7A5040;
     font-size: 13px; cursor: pointer; padding: 2px 4px; font-family: inherit;
   }
   .nt-empty { font-size: 11.5px; color: #7A5040; line-height: 2; text-align: center; padding: 18px 6px; }
@@ -10266,17 +10266,41 @@ const GRAMMAR_UNITS = [
   <div class="verb-row">
     <strong>◆ 靴 — о́бувь</strong>
     <div class="tp-grid">
-      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M42 38 L46 50 L41 50 L39 40 Z" fill="#E8D5C4"/><path d="M6 46 Q3 39 11 35 C20 31 28 28 34 19 L42 19 L43 38 C32 44 14 48 6 46 Z" fill="#FFFDF8"/><path d="M34 19 C31 26 25 31 18 34"/></svg><b>ту́фли</b><i>パンプス・革靴</i></div>
-      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 45 Q4 39 11 35 L17 32 L17 13 Q17 10 21 10 L35 10 Q39 10 39 13 L39 33 L44 39 L45 50 L11 50 Q5 50 6 45 Z" fill="#FFFDF8"/><path d="M17 15 L39 15"/><path d="M20 20 L36 25 M36 20 L20 25 M20 29 L36 33"/><path d="M11 50 L11 45 Q27 48 45 45"/></svg><b>боти́нки</b><i>くるぶし丈の靴</i></div>
-      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 45 Q4 39 11 35 L16 32 L16 7 Q16 3 21 3 L34 3 Q39 3 39 7 L39 33 L44 39 L45 50 L11 50 Q5 50 6 45 Z" fill="#FFFDF8"/><path d="M11 50 L11 45 Q27 48 45 45"/><path d="M39 24 Q33 27 32 33"/></svg><b>сапоги́</b><i>長いブーツ</i></div>
-      <div class="tp-item long"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 40 Q4 32 15 27 C21 24 26 22 30 20 Q33 20 33 25 L33 28 Q36 23 40 22 Q45 22 45 29 L45 40 Z" fill="#FFFDF8"/><path d="M5 40 L47 40 Q51 40 51 44 L51 47 Q51 50 47 50 L9 50 Q5 50 5 47 Z" fill="#E8D5C4"/><path d="M5 45 L51 45"/><path d="M19 27 L28 30 M18 31 L27 34 M17 35 L26 38"/><path d="M15 27 C22 32 30 37 34 40"/></svg><b>кроссо́вки</b><i>スニーカー</i></div>
-      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 48 Q3 41 11 36 Q19 30 28 30 Q37 30 38 39 L38 48 Z" fill="#FFFDF8"/><path d="M38 39 Q27 44 16 40"/><path d="M11 36 Q23 33 32 36"/></svg><b>та́почки</b><i>スリッパ</i></div>
-      <div class="tp-item long"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 45 Q4 50 11 50 L42 50 Q48 50 45 45 Z" fill="#FFFDF8"/><path d="M12 45 L30 30" stroke-width="2.6"/><path d="M31 45 L16 32" stroke-width="2.6"/><path d="M38 45 Q43 38 41 31 Q39 27 33 28" stroke-width="2.2"/></svg><b>босоно́жки</b><i>サンダル</i></div>
-      <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 50 Q3 50 4 42 Q6 33 14 30 L15 12 Q15 4 26 4 L40 4 Q49 4 48 12 L48 50 Z" fill="#FFFDF8"/><path d="M4 45 Q26 49 48 45"/><path d="M15 21 Q31 24 48 21"/></svg><b>ва́ленки</b><i>フェルトの防寒ブーツ</i></div>
+      <div class="tp-item"><img src="sh-obuv.png" alt="履きもの（全体）" loading="lazy"><b>о́бувь</b><i>履きもの（全体）</i></div>
+      <div class="tp-item long"><img src="sh-krossovki.png" alt="スニーカー" loading="lazy"><b>кроссо́вки</b><i>スニーカー</i></div>
+      <div class="tp-item"><img src="sh-kedy.png" alt="布地のスニーカー" loading="lazy"><b>ке́ды</b><i>布地のスニーカー</i></div>
+      <div class="tp-item"><img src="sh-tufli.png" alt="パンプス・革靴" loading="lazy"><b>ту́фли</b><i>パンプス・革靴</i></div>
+      <div class="tp-item"><img src="sh-botinki.png" alt="くるぶし丈の靴" loading="lazy"><b>боти́нки</b><i>くるぶし丈の靴</i></div>
+      <div class="tp-item"><img src="sh-sapogi.png" alt="長いブーツ" loading="lazy"><b>сапоги́</b><i>長いブーツ</i></div>
+      <div class="tp-item"><img src="sh-valenki.png" alt="フェルトの防寒ブーツ" loading="lazy"><b>ва́ленки</b><i>フェルトの防寒ブーツ</i></div>
+      <div class="tp-item"><img src="sh-uggi.png" alt="ムートンブーツ" loading="lazy"><b>у́гги</b><i>ムートンブーツ</i></div>
+      <div class="tp-item long"><img src="sh-rezinovye.png" alt="長靴・レインブーツ" loading="lazy"><b>рези́новые сапоги́</b><i>長靴・レインブーツ</i></div>
+      <div class="tp-item"><img src="sh-lofery.png" alt="ローファー" loading="lazy"><b>ло́феры</b><i>ローファー</i></div>
+      <div class="tp-item"><img src="sh-shlepancy.png" alt="つっかけ・サンダル" loading="lazy"><b>шлёпанцы</b><i>つっかけ・サンダル</i></div>
+      <div class="tp-item"><img src="sh-slancy.png" alt="ビーチサンダル" loading="lazy"><b>сла́нцы</b><i>ビーチサンダル</i></div>
+      <div class="tp-item"><img src="sh-tapochki.png" alt="スリッパ" loading="lazy"><b>та́почки</b><i>スリッパ</i></div>
+      <div class="tp-item"><img src="sh-baletki.png" alt="バレエシューズ" loading="lazy"><b>бале́тки</b><i>バレエシューズ</i></div>
     </div>
+    <p class="tp-credit">絵：杉山真央</p>
     <p style="font-size:11px;color:#7E5C42;"><b>о́бувь</b> は履きもの全体をまとめて言う語で、
     <b>оде́жда</b> と同じ<b>集合名詞</b>です。いつも単数で、
-    <b>Я покупа́ю о́бувь.</b>（靴を買います）のように使います。</p>
+    <b>Я покупа́ю о́бувь.</b>（靴を買います）のように使います。
+    絵のいちばんはじめに置いたのは、この語だけが<b>種類の名前ではなく、全体の呼び名</b>だからです。</p>
+
+    <p style="font-size:11px;color:#7E5C42;"><b>кроссо́вки と ке́ды</b>——
+    どちらもスニーカーですが、<b>кроссо́вки</b> は運動用の、底の厚いもの。
+    <b>ке́ды</b> は布地にゴム底の、薄くて軽いものを指します。
+    ке́ды という語は、アメリカの靴の商標 <b>Keds</b> から来ました。</p>
+
+    <p style="font-size:11px;color:#7E5C42;"><b>шлёпанцы</b> は
+    <b>шлёпать</b>（ぺたぺた音を立てる）から。歩くときの音がそのまま名前になっています。
+    日本語の「つっかけ」に近い成り立ちですね。
+    かかとにひもがあるサンダルなら <b>босоно́жки</b>——
+    <b>бо́сый</b>（はだしの）＋ <b>но́ги</b>（足）で「はだしの足」です。</p>
+
+    <p style="font-size:11px;color:#7E5C42;">新しいものほど、外から来た語が多くなります。
+    <b>у́гги</b>（UGG）、<b>ло́феры</b>（loafer）、<b>бале́тки</b>（バレエの бале́т から）。
+    どれも、もとの形をロシア語の複数形にして使っています。</p>
   </div>
 
   <div class="rule-row">
@@ -10289,6 +10313,9 @@ const GRAMMAR_UNITS = [
       <span class="pron">боти́нки</span><span class="form">単数 боти́нок</span>
       <span class="pron">кроссо́вки</span><span class="form">単数 кроссо́вка</span>
     </div>
+    <p style="font-size:11px;color:#7E5C42;"><b>рези́новые сапоги́</b>（長靴）のように
+    形容詞がつくときは、<b>複数形に合わせて -ые</b>。
+    帽子の <b>мехова́я ша́пка</b> が単数・女性だったのと同じしくみです。</p>
     <p style="margin-top:8px;">「一足の〜」は <b>па́ра ＋ 複数生格</b>。
     ここで語尾が消えるので、形をよく見てください。</p>
     <p><span class="ex-inline">па́ра ту́фель</span>
@@ -10299,6 +10326,25 @@ const GRAMMAR_UNITS = [
     <b>па́ра носко́в</b> と <b>-ов</b> がつきます。
     同じ「一足」なのに、сапо́г は語尾なし、носко́в は -ов。
     ロシア語の複数生格は、この<b>ゼロ語尾</b>がいちばんの難所です。</p>
+    <p style="font-size:11px;color:#7E5C42;">男性名詞からできた
+    <b>сла́нцы</b>・<b>шлёпанцы</b>・<b>ло́феры</b> も <b>-ев / -ов</b> がつきます
+    （<b>па́ра сла́нцев</b>、<b>па́ра ло́феров</b>）。
+    <b>-ки</b> で終わる女性名詞のなかまが語尾なし、と覚えると見分けやすくなります。</p>
+  </div>
+
+  <div class="rule-row" style="background:#F3EEE6;border-left-color:#806452;">
+    <strong>☕ コーヒーブレイク — 町の名前が、靴の名前になった</strong>
+    <p><b>сла́нцы</b>（ビーチサンダル）は、もともと<b>町の名前</b>です。
+    レニングラード州にある <b>Сла́нцы</b> という町で、<b>「Полиме́р」</b>という工場が
+    ソ連じゅうのゴムサンダルを作っていました。</p>
+    <p>その靴底には、製造地として <b>СЛАНЦЫ</b> と型押しされていました。
+    ところが「〜製」という語がひとつも添えられていなかったため、
+    人々はそれを<b>商品の名前だと思ってしまった</b>のです。
+    そのまま「サンダル＝сла́нцы」として、国じゅうに広まりました。</p>
+    <p>それ以前は <b>вьетна́мки</b>（ベトナムのもの）と呼ばれていました。
+    ちなみに町の名 Сла́нцы は、そこで採れた
+    <b>горю́чие сла́нцы</b>（オイルシェール）に由来します。
+    <b>岩石 → 町 → 靴</b>と、名前が三度うつり変わったことになります。</p>
   </div>
 
   <div class="verb-row">
@@ -10482,7 +10528,22 @@ const GRAMMAR_UNITS = [
      ex:'фура́жка は制帽・軍帽。бейсбо́лка は野球帽から来た、ふだんのキャップです。'},
     {type:'mc', q:'「麦わら帽子」は？', say:'соло́менная шля́па',
      opts:['соло́менная шля́па','соло́менный шля́па','соло́менное шля́па'], a:0,
-     ex:'соло́ма（麦わら）＋ шля́па。шля́па は女性名詞なので соло́менная です。'}
+     ex:'соло́ма（麦わら）＋ шля́па。шля́па は女性名詞なので соло́менная です。'},
+    {type:'mc', q:'布地にゴム底の、薄くて軽いスニーカーは？', say:'ке́ды',
+     opts:['ке́ды','кроссо́вки','бале́тки'], a:0,
+     ex:'ке́ды はアメリカの商標 Keds から。кроссо́вки は運動用の、底の厚いものです。'},
+    {type:'mc', q:'сла́нцы（ビーチサンダル）という名前のもとは？',
+     opts:['作っていた工場のある町の名前','作った人の名前','材料になった木の名前'], a:0,
+     ex:'レニングラード州の町 Сла́нцы。靴底の型押しを、商品名だと思った人が多かったのです。'},
+    {type:'mc', q:'「長靴（ゴムのブーツ）」は？', say:'рези́новые сапоги́',
+     opts:['рези́новые сапоги́','рези́новая сапоги́','рези́новый сапоги́'], a:0,
+     ex:'сапоги́ は複数形なので、形容詞も複数形 рези́новые にします。'},
+    {type:'mc', q:'шлёпанцы という名前は、何から来ていますか？',
+     opts:['歩くときの音（шлёпать）','作った町の名前','材料のゴム'], a:0,
+     ex:'шлёпать は「ぺたぺた音を立てる」。日本語の「つっかけ」に近い成り立ちです。'},
+    {type:'mc', q:'「一足のビーチサンダル」は？', say:'па́ра сла́нцев',
+     opts:['па́ра сла́нцев','па́ра сла́нц','па́ра сла́нцы'], a:0,
+     ex:'сла́нцы は男性名詞からできた複数形なので、複数生格に -ев がつきます。'}
   ]
 },
 
@@ -11883,6 +11944,12 @@ const WHY = {
   'impersonal:12': ['', 'ну́жно は不定形が続くときの形です。ここは名詞が来ています', 'нужна́ は女性形。слова́рь は男性名詞です', 'нужны́ は複数形。слова́рь は単数です'],
   'impersonal:13': ['', 'до́лжен のほうがむしろ硬く、責任の重い言い方です', '日本語ではどちらも「〜しなければ」ですが、主語の格も意味あいも違います'],
   'impersonal:14': ['', '主語がないので был（男性形）にはなりません。中性の бы́ло です', 'на́до の文では人は与格 Мне になります。主格の Я は使えません'],
+  // ---- 靴（絵つき）----
+  'shape-types:19': ['', 'кроссо́вки は運動用の、底の厚いスニーカーです', 'бале́тки はバレエシューズのような平らな靴です'],
+  'shape-types:20': ['', '人の名前ではなく、町の名前から来ています', '木ではなく、その町で採れた岩石（オイルシェール）が町名のもとです'],
+  'shape-types:21': ['', 'рези́новая は単数・女性形です。сапоги́ は複数形です', 'рези́новый は単数・男性形です。сапоги́ は複数形です'],
+  'shape-types:22': ['', '町の名前から来ているのは сла́нцы のほうです', '材料ではなく、音から来た名前です'],
+  'shape-types:23': ['', 'сла́нц という形はありません', 'па́ра のあとは主格ではなく複数生格になります'],
   // ---- 帽子（絵つき）----
   'shape-types:14': ['', 'пана́ма は夏のつば広の帽子です', 'канотье́ は麦わらのカンカン帽です'],
   'shape-types:15': ['', 'канотье́ は外来語で、格変化しません', 'канотье́ は外来語で、格変化しません'],
@@ -13143,7 +13210,10 @@ const TOPIC_INDEX = [
   { t:'名詞の性（男性・女性・中性）', u:'noun-gender', k:'せい おとこ おんな 中性' },
   { t:'性格をあらわす形容詞', u:'character', k:'せいかく хара́ктер ものさし 反対語' },
   { t:'多色の・透明の（разноцве́тный / прозра́чный）', u:'color-shape', k:'たしょく とうめい пёстрый одноцве́тный многоцветный' },
-  { t:'靴のいろいろ（ту́фли / сапоги́ / кроссо́вки）', u:'shape-types', k:'くつ обувь ботинки тапочки валенки босоножки' },
+  { t:'靴のいろいろ（ту́фли / сапоги́ / кроссо́вки）', u:'shape-types', k:'くつ обувь ботинки тапочки валенки босоножки лоферы балетки' },
+  { t:'кроссо́вки と ке́ды のちがい', u:'shape-types', k:'кроссовки кеды すにーかー keds' },
+  { t:'сла́нцы と шлёпанцы（サンダル）', u:'shape-types', k:'сланцы шлёпанцы вьетнамки びーちさんだる つっかけ' },
+  { t:'у́гги・рези́новые сапоги́（冬と雨の靴）', u:'shape-types', k:'угги резиновые сапоги ながぐつ むーとん' },
   { t:'帽子のいろいろ（ша́пка / шля́па / ке́пка）', u:'shape-types', k:'ぼうし панама берет головной убор картуз канотье' },
   { t:'уша́нка と冬の帽子', u:'shape-types', k:'ушанка меховая шапка вязаная みみあて ぼうかんぼう' },
   { t:'бейсбо́лка・фура́жка（キャップ・制帽）', u:'shape-types', k:'бейсболка фуражка кепка きゃっぷ せいぼう' },
