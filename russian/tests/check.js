@@ -18,6 +18,7 @@ const ROOT = path.join(__dirname, '..');
 const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 const sw = fs.readFileSync(path.join(ROOT, 'sw.js'), 'utf8');
 
+const cffPathEarly = path.join(ROOT, '..', 'CITATION.cff');
 const problems = [];
 const notes = [];
 function bad(where, msg) { problems.push('[' + where + '] ' + msg); }
@@ -194,6 +195,44 @@ T.forEach(function (t) {
   if (!t.u) { bad('目次', '「' + t.t + '」に飛び先（u）がありません'); return; }
   if (!ids.has(t.u)) bad('目次', '「' + t.t + '」の飛び先 ' + t.u + ' が存在しません');
 });
+
+// ============================================================
+// 7b. 同じ問題が2回入っていないか
+// ============================================================
+// 問題を足すとき、すでにある問いと同じものを書いてしまうことがある。
+// 実際に「語順を変えても意味が保たれるのは？」が2回入っていた。
+(function () {
+  const seen = {};
+  U.forEach(function (u) {
+    u.drills.forEach(function (d, i) {
+      if (!d.q) return;
+      const key = u.id + '|' + d.q.replace(/[\s、。？?]/g, '');
+      if (seen[key] !== undefined) bad(u.id + ':' + i, '同じ問題が ' + seen[key] + ' 番にもあります：' + d.q.slice(0, 30));
+      else seen[key] = i;
+    });
+  });
+})();
+
+// ============================================================
+// 7c. 本文に書いた「◯ユニット・◯問」が実数と合っているか
+// ============================================================
+// 手で書いた数字は、問題を足すたびに古くなる。実際に表紙が
+// 477問のまま、実数563問になっていた。
+(function () {
+  const drills = U.reduce(function (n, u) { return n + u.drills.length; }, 0);
+  const re = /全(\d+)ユニット・(\d+)問/g;
+  let m;
+  while ((m = re.exec(html))) {
+    if (+m[1] !== U.length) bad('数字', '「全' + m[1] + 'ユニット」とありますが、実数は ' + U.length + ' です');
+    if (+m[2] !== drills) bad('数字', '「' + m[2] + '問」とありますが、実数は ' + drills + ' 問です');
+  }
+  if (fs.existsSync(cffPathEarly)) {
+    const cm = /全(\d+)ユニット・(\d+)問/.exec(fs.readFileSync(cffPathEarly, 'utf8'));
+    if (cm && (+cm[1] !== U.length || +cm[2] !== drills)) {
+      bad('CITATION.cff', '「全' + cm[1] + 'ユニット・' + cm[2] + '問」とありますが、実数は ' + U.length + '・' + drills + ' です');
+    }
+  }
+})();
 
 // ============================================================
 // 8. 版の数字がそろっているか
