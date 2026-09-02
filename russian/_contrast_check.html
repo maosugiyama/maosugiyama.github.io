@@ -14820,4 +14820,33 @@ renderCover();          // 1ページ目は表紙
   </div>
 </div>
 
+<script>window.addEventListener("load",function(){setTimeout(function(){
+function lum(c){var m=c.match(/\d+/g); if(!m) return null;
+ var a=m.slice(0,3).map(function(v){v=v/255;return v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4);});
+ return 0.2126*a[0]+0.7152*a[1]+0.0722*a[2];}
+function bgOf(el){ while(el){ var c=getComputedStyle(el).backgroundColor;
+ if(c && c.indexOf("rgba(0, 0, 0, 0)")<0 && c!=="transparent") return c; el=el.parentElement; }
+ return "rgb(255,255,255)"; }
+var bad=[], seen={};
+function scan(){ document.querySelectorAll("body *").forEach(function(el){
+  if(!el.offsetParent && el.tagName!=="BODY") return;
+  var t=""; for(var i=0;i<el.childNodes.length;i++) if(el.childNodes[i].nodeType===3) t+=el.childNodes[i].textContent;
+  t=t.trim(); if(!t) return;
+  var cs=getComputedStyle(el); var f=lum(cs.color), b=lum(bgOf(el)); if(f===null||b===null) return;
+  var r=(Math.max(f,b)+0.05)/(Math.min(f,b)+0.05);
+  var size=parseFloat(cs.fontSize), bold=(parseInt(cs.fontWeight)||400)>=700;
+  var need=(size>=24 || (size>=18.66 && bold)) ? 3.0 : 4.5;
+  if(r<need){ var k=cs.color+"|"+bgOf(el)+"|"+Math.round(size); if(seen[k]) return; seen[k]=1;
+    bad.push(r.toFixed(2)+" 必要"+need+" "+Math.round(size)+"px "+cs.color+" / "+bgOf(el)+" 「"+t.slice(0,20)+"」"); } }); }
+try{
+  enterRoad(); scan(); switchTab("grammar"); scan();
+  GRAMMAR_UNITS.forEach(function(u){ openGrammarUnit(u.id); scan(); });
+  try{ document.querySelectorAll("#grammar-unit .note-mark")[0].click(); }catch(e){}
+  scan(); switchTab("home"); openNotes(); scan();
+  switchTab("alphabet"); scan(); openCardDetail(LETTERS[0]); scan();
+  document.getElementById("modal-bg").classList.remove("open");
+  switchTab("pronunciation"); scan(); switchTab("challenge"); scan(); switchTab("dictation"); scan();
+  openToc(); scan(); openIntro(); scan(); backToCover(); scan();
+  document.title = bad.length ? ("NG::"+bad.join("::")) : "OK";
+}catch(e){ document.title="ERR "+e.message; } },900);});</script>
 </body></html>
