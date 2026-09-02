@@ -41,10 +41,17 @@ function bgOf(el){
   var layers=[];
   while(el){
     var cs=getComputedStyle(el);
-    // グラデーションや画像が背景のときは、下地の色を1つに決められない。
+    // グラデーションが背景のときは、下地の色を1つに決められない。
     // 無理に決めると、濃いボタンの上の白文字を「白地に白」と誤って報告する。
     // 判定できないものは見送る（見落とすほうが、狼少年になるよりまし）。
-    if(cs.backgroundImage && cs.backgroundImage !== 'none') return null;
+    //
+    // ただし body と html は読まない。ここには森の地図が
+    // データURIで入っていて、backgroundImage を読むだけで
+    // 13万字の文字列が返る。要素ごとに読むと検査が固まってしまう。
+    if(el !== document.body && el !== document.documentElement){
+      var bi = cs.backgroundImage;
+      if(bi && bi !== 'none') return null;
+    }
     var c=parse(cs.backgroundColor);
     if(c && c[3]>0){ layers.push(c); if(c[3]>=1) break; }
     el=el.parentElement;
