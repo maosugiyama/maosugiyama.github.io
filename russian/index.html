@@ -961,7 +961,10 @@
   .gloss-term {
     display: inline-block;
     background: rgba(201,123,114,0.15);
-    color: #9F544A;
+    /* 背景が半透明なので、下に何が来るかで見え方が変わる。
+       ピンクや黄色の枠の中に置かれたときがいちばん薄くなるため、
+       その場合でも読める濃さにしてある（白地 5.36／枠の中 4.67）。 */
+    color: #924D44;
     padding: 0 6px;
     border-radius: 6px;
     font-weight: 700;
