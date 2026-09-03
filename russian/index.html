@@ -3030,6 +3030,15 @@
   }
   .nt-empty { font-size: 11.5px; color: #7A5040; line-height: 2; text-align: center; padding: 18px 6px; }
 
+  /* ---- アンケートのパート2の前置き ---- */
+  .sv-divider {
+    background: #FCF2D9; border-left: 3px solid #E0AE3C;
+    border-radius: 12px; padding: 11px 13px; margin: 18px 0 10px;
+  }
+  .sv-divider b { display: block; font-size: 13px; color: #9D5700; margin-bottom: 4px; }
+  .sv-divider span { font-size: 11.5px; color: #7A5040; line-height: 1.9; }
+  .sv-divider span b { display: inline; font-size: inherit; }
+
   /* ---- 表紙の「今日はこれ」 ---- */
   .cover-today { margin: 2px 0 4px; }
   .today-hello { font-size: 12.5px; color: #7A5040; text-align: center; margin: 0 0 8px; }
@@ -3321,7 +3330,7 @@
       <p class="cover-map-legend"><span class="lg-paw"></span> いまここ　<span class="lg-flag"></span> あるききった場所　<span class="lg-fog"></span> まだ霧のなか</p>
       <button class="cover-survey" id="cover-survey" onclick="openSurvey()" style="display:none;">
         <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 20h9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path></svg>
-        アンケートに答える
+        <span class="sv-btn-label">アンケートに答える</span>
       </button>
     </div>
 
@@ -14457,9 +14466,23 @@ function renderCover() {
 
   const sv = document.getElementById('cover-survey');
   if (sv) {
-    // 研究に協力していて、まだアンケートに答えていない方にだけ出す
-    const show = researchEnabled() && !research.surveyAt;
+    // アンケートの案内は、この表紙ボタンに一本化してある。
+    // 気楽に受けてもらうものなので、あちこちから誘わない。
+    // パート2（取り組み方・感想）は使ってみないと答えられないので、
+    // 3日歩いてから、あらためて一度だけ誘う。
+    let show = false, label = '';
+    if (researchEnabled()) {
+      if (surveyAnsweredPart(1) === 0) {
+        show = true; label = 'アンケートに答える（2分）';
+      } else if (surveyAnsweredPart(2) === 0 && Object.keys(dailyLog).length >= 3) {
+        show = true; label = 'アンケートのつづき — 使ってみてどうですか';
+      }
+    }
     sv.style.display = show ? 'flex' : 'none';
+    if (show) {
+      const t = sv.querySelector('.sv-btn-label');
+      if (t) t.textContent = label;
+    }
   }
   renderMapMarks();
 }
@@ -15067,24 +15090,35 @@ const SURVEY = [
     opts:['独学','大学の授業','語学学校','オンライン講座','学んでいない'] },
   { id:'how', q:'これまでの学習方法（いくつでも）', type:'many',
     opts:['教科書','単語帳','アプリ','動画','授業','音声教材','とくにない'] },
-  { id:'style', q:'このアプリの取り組み方に近いのは', type:'one',
+  { part:2, id:'style', q:'このアプリの取り組み方に近いのは', type:'one',
     opts:['説明は読まず、まず練習問題から','解説を読んでから練習する','ノートに書きながら学ぶ',
           '音声を聞くことが中心','チャレンジで力試しが中心','そのときによる'] },
-  { id:'time', q:'よく取り組む時間帯', type:'one',
+  { part:2, id:'time', q:'よく取り組む時間帯', type:'one',
     opts:['朝','昼','夕方','夜','決まっていない'] },
-  { id:'scene', q:'よく取り組む場面（いくつでも）', type:'many',
+  { part:2, id:'scene', q:'よく取り組む場面（いくつでも）', type:'many',
     opts:['自宅','通学・通勤の移動中','学校・職場','待ち時間','寝る前','その他'] },
-  { id:'span', q:'1回に取り組む時間', type:'one',
+  { part:2, id:'span', q:'1回に取り組む時間', type:'one',
     opts:['5分未満','5〜15分','15〜30分','30分以上'] },
-  { id:'review', q:'まちがえた問題の復習について', type:'one',
+  { part:2, id:'review', q:'まちがえた問題の復習について', type:'one',
     opts:['「今日の復習」をよく使う','ときどき使う','使ったことがない','気づかなかった'] },
   { id:'paper', q:'紙の本があれば欲しいですか', type:'one',
     opts:['とても欲しい','欲しい','どちらでもない','必要ない'] },
   { id:'series', q:'紙で読みたい内容（いくつでも）', type:'many',
     opts:['キリル文字','文法','ことわざ','慣用句','会話表現','単語帳','童話・物語'] },
-  { id:'good', q:'使ってみた感想（任意）', type:'text' },
-  { id:'hard', q:'難しかったところ・こうしてほしいところ（任意）', type:'text' }
+  { part:2, id:'good', q:'使ってみた感想（任意）', type:'text' },
+  { part:2, id:'hard', q:'難しかったところ・こうしてほしいところ（任意）', type:'text' }
 ];
+
+// パートごとの回答数。パート1＝いま答えられること（学習歴など）、
+// パート2＝使ってみてから分かること（取り組み方・感想）
+function surveyAnsweredPart(part) {
+  const s = research.survey || {};
+  return SURVEY.filter(function (q) {
+    if ((q.part || 1) !== part) return false;
+    const v = s[q.id];
+    return v !== undefined && v !== '' && !(Array.isArray(v) && !v.length);
+  }).length;
+}
 
 function surveyAnswered() {
   const s = research.survey || {};
@@ -15123,7 +15157,17 @@ function renderSurveyBody() {
   if (!box) return;
   const s = research.survey || {};
   let html = '';
+  let dividerDone = false;
+  const walked = Object.keys(dailyLog).length;
   SURVEY.forEach(function (q, i) {
+    if ((q.part || 1) === 2 && !dividerDone) {
+      dividerDone = true;
+      html += '<div class="sv-divider"><b>ここから先は、使ってみてから</b><span>'
+        + (walked >= 3
+            ? 'もう ' + walked + ' 日歩いているので、きっと答えられます。'
+            : '取り組み方や時間帯は、使ってみないと分かりません。三日ほど歩いてから、また開いてもらえるとちょうどいい頃合いです。')
+        + '<br>いま分からない項目は<b>とばして保存して大丈夫</b>です。あとからいつでも書き直せます。</span></div>';
+    }
     html += '<div class="sv-q">';
     html += '<p class="sv-label"><span>' + (i + 1) + '</span>' + q.q + '</p>';
     if (q.type === 'text') {
@@ -15181,18 +15225,15 @@ function closeSurvey() {
   renderRoadmap();
 }
 
-// ホーム下部のアンケートカード（同意した方にだけ出す）
+// ホーム下部のアンケートカードは出さない。
+// 案内は表紙のボタンに一本化した（気楽なアンケートなので、
+// あちこちから重ねて誘わない）。書き直しは「研究への協力」の
+// 「答える／見直す」からいつでもできる。
 function renderSurveyCard() {
   const box = document.getElementById('survey-card');
   if (!box) return;
-  if (!researchEnabled()) { box.innerHTML = ''; box.style.display = 'none'; return; }
-  const n = surveyAnswered();
-  box.style.display = 'flex';
-  box.innerHTML =
-    '<div class="bc-body"><strong>アンケート（任意・2分ほど）</strong>'
-    + '<span>' + (n ? '回答ありがとうございます（' + n + ' / ' + SURVEY.length + ' 問）。いつでも書き直せます'
-                    : '学習歴や、このアプリの使い方を教えてください。教材づくりの参考にします') + '</span></div>'
-    + '<button onclick="openSurvey()">' + (n ? '見直す' : '答える') + '</button>';
+  box.innerHTML = '';
+  box.style.display = 'none';
 }
 
 // ============================================================
