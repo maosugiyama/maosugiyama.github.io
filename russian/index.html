@@ -3030,6 +3030,98 @@
   }
   .nt-empty { font-size: 11.5px; color: #7A5040; line-height: 2; text-align: center; padding: 18px 6px; }
 
+  /* ---- 表紙の「今日はこれ」 ---- */
+  .cover-today { margin: 2px 0 4px; }
+  .today-hello { font-size: 12.5px; color: #7A5040; text-align: center; margin: 0 0 8px; }
+  .today-hello b { color: #9F544A; }
+  .today-act {
+    width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: #FDF0EE; border: 1.5px solid #E0968B; color: #9F544A;
+    border-radius: 16px; padding: 12px 16px; font-family: inherit; cursor: pointer;
+    text-align: left;
+  }
+  .today-act span b { display: block; font-size: 14.5px; font-weight: 800; }
+  .today-act span small { display: block; font-size: 10.5px; color: #7A5040; margin-top: 1px; }
+  .today-act:active { transform: scale(0.99); }
+  .today-log {
+    display: block; margin: 7px auto 0; background: none; border: none;
+    font-family: inherit; font-size: 11px; color: #7E5C42;
+    text-decoration: underline; cursor: pointer;
+  }
+
+  /* ---- あしあと（カレンダー） ---- */
+  #log-stats { display: flex; gap: 8px; margin: 12px 0; }
+  .log-row {
+    flex: 1; background: #FBF6EE; border-radius: 12px; padding: 10px 4px; text-align: center;
+  }
+  .log-row b { display: block; font-size: 21px; color: #9F544A; }
+  .log-row span { font-size: 10px; color: #7A5040; }
+  .log-nav { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 6px 0; }
+  .log-nav b { font-size: 13px; color: #3A2318; }
+  .log-nav button {
+    background: #fff; border: 1.5px solid #E8CFC8; color: #9F544A; border-radius: 999px;
+    width: 30px; height: 30px; font-family: inherit; font-size: 15px; cursor: pointer;
+  }
+  .log-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+  .log-dow { text-align: center; font-size: 9.5px; color: #7A5040; padding: 3px 0; }
+  .log-dow.sun { color: #B44453; }
+  .log-day {
+    position: relative; aspect-ratio: 1; border-radius: 9px; background: #FBF6EE;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .log-day i { font-style: normal; font-size: 9px; color: #7A5040; position: absolute; top: 3px; left: 5px; }
+  .log-day svg { width: 17px; height: 17px; fill: #BA574B; margin-top: 5px; }
+  .log-day em { font-style: normal; font-size: 8px; color: #7A5040; }
+  .log-day.on { background: #FBEAE4; }
+  .log-day.today { outline: 2px solid #E0968B; outline-offset: -2px; }
+
+  /* ---- 結果画面のきのう比 ---- */
+  .drill-vs { text-align: center; font-size: 11.5px; color: #7A5040; margin: -4px 0 10px; }
+  .drill-vs.best { color: #9D5700; font-weight: 700; }
+
+  /* ---- 地図に重ねるしるし ---- */
+  .cover-map { position: relative; overflow: hidden; }
+  #map-marks { position: absolute; inset: 0; pointer-events: none; }
+  .map-fog {
+    position: absolute; transform: translate(-50%, -50%); border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(250,249,239,0.94) 55%, rgba(250,249,239,0));
+    transition: opacity 0.6s;
+  }
+  .map-flag { position: absolute; transform: translate(-50%, -50%); }
+  .map-flag svg { width: 22px; height: 22px; }
+  .map-here { position: absolute; transform: translate(-50%, -50%); text-align: center; }
+  .map-here svg { width: 19px; height: 19px; fill: #BA574B; filter: drop-shadow(0 1px 1px rgba(255,255,255,0.9)); }
+  .map-here i {
+    display: block; font-style: normal; font-size: 8.5px; font-weight: 800; color: #9F544A;
+    background: rgba(255,253,248,0.9); border-radius: 6px; padding: 0 4px; margin-top: 1px;
+  }
+  .cover-map-legend { text-align: center; font-size: 9.5px; color: #7A5040; margin: 3px 0 0; }
+  .lg-paw::before { content: '🐾'; font-size: 10px; }
+  .lg-flag { display: inline-block; width: 8px; height: 8px; background: #BA574B; clip-path: polygon(0 0, 100% 30%, 0 60%); }
+  .lg-fog { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: radial-gradient(closest-side, rgba(210,200,180,0.8), rgba(250,249,239,0)); }
+
+  /* ---- たびの節目 ---- */
+  #ms-bg {
+    position: fixed; inset: 0; z-index: 9999; display: none;
+    align-items: center; justify-content: center;
+    background: rgba(58,35,24,0.45); padding: 24px;
+  }
+  #ms-bg.open { display: flex; }
+  .ms-card {
+    background: #FFFDF8; border-radius: 20px; padding: 26px 22px; max-width: 340px;
+    text-align: center; box-shadow: 0 12px 40px rgba(58,35,24,0.35);
+  }
+  .ms-eyebrow { font-size: 11px; letter-spacing: 0.2em; color: #9D5700; font-weight: 800; margin-bottom: 8px; }
+  .ms-name { font-family: Georgia, serif; font-size: 21px; color: #3A2318; margin-bottom: 8px; }
+  .ms-jp { font-size: 12.5px; color: #7A5040; line-height: 1.9; margin-bottom: 16px; }
+  .ms-actions { display: flex; gap: 8px; justify-content: center; }
+  .ms-map, .ms-close {
+    border-radius: 999px; padding: 10px 18px; font-family: inherit; font-size: 12.5px;
+    font-weight: 800; cursor: pointer;
+  }
+  .ms-map { background: #9F544A; color: #fff; border: none; }
+  .ms-close { background: #fff; color: #9F544A; border: 1.5px solid #E8CFC8; }
+
   /* ---- 表紙の入口ボタン ---- */
   .cover-start .cs-text { text-align: left; line-height: 1.4; }
   .cover-start .cs-text b { display: block; font-size: 15px; font-weight: 800; }
@@ -3190,13 +3282,8 @@
     </div>
 
     <div class="cover-actions" id="cover-actions">
-      <p class="cover-review" id="cover-review"></p>
+      <div class="cover-today" id="cover-today"></div>
       <button class="cover-review cover-notes" id="cover-notes" onclick="openNotes()" style="display:none;"></button>
-
-      <button class="cover-start" id="cover-resume" onclick="resumeLastUnit()" style="display:none;">
-        <span class="cs-paw"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6.6" cy="9.2" rx="2" ry="2.6" transform="rotate(-18 6.6 9.2)"></ellipse><ellipse cx="11.9" cy="6.9" rx="2.05" ry="2.85"></ellipse><ellipse cx="17.2" cy="9.2" rx="2" ry="2.6" transform="rotate(18 17.2 9.2)"></ellipse><path d="M12 11.3c3.1 0 5.4 2.3 5.4 5 0 2.2-1.8 3.7-4.2 3.7h-2.4c-2.4 0-4.2-1.5-4.2-3.7 0-2.7 2.3-5 5.4-5z"></path></svg></span>
-        <span class="cs-text"><b>つづきから</b><small id="cover-resume-name"></small></span>
-      </button>
 
       <button class="cover-start" onclick="startLetters()">
         <span class="cs-paw"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6.6" cy="9.2" rx="2" ry="2.6" transform="rotate(-18 6.6 9.2)"></ellipse><ellipse cx="11.9" cy="6.9" rx="2.05" ry="2.85"></ellipse><ellipse cx="17.2" cy="9.2" rx="2" ry="2.6" transform="rotate(18 17.2 9.2)"></ellipse><path d="M12 11.3c3.1 0 5.4 2.3 5.4 5 0 2.2-1.8 3.7-4.2 3.7h-2.4c-2.4 0-4.2-1.5-4.2-3.7 0-2.7 2.3-5 5.4-5z"></path></svg></span>
@@ -3229,8 +3316,9 @@
           <small>この教材にあるもの、ぜんぶ</small>
         </span>
       </button>
-      <div class="cover-map" role="img" aria-label="ロシア語の森の地図。南の「もじの草原」から、音の木立・格の川・ことばの村・動詞の森をとおって、北の「文法の山やま」まで小道がのびています。東には昔話の湖、方位のしるしつき"></div>
+      <div class="cover-map" id="cover-map" role="img" aria-label="ロシア語の森の地図。南の「もじの草原」から、音の木立・格の川・ことばの村・動詞の森をとおって、北の「文法の山やま」まで小道がのびています。東には昔話の湖、方位のしるしつき"></div>
       <p class="cover-map-cap">КА́РТА ЛЕ́СА — この森のちず</p>
+      <p class="cover-map-legend"><span class="lg-paw"></span> いまここ　<span class="lg-flag"></span> あるききった場所　<span class="lg-fog"></span> まだ霧のなか</p>
       <button class="cover-survey" id="cover-survey" onclick="openSurvey()" style="display:none;">
         <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path d="M12 20h9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path></svg>
         アンケートに答える
@@ -3397,6 +3485,22 @@
         <p style="text-align:center;margin-top:12px;">
           <button type="button" class="kana-toggle mark-toggle" onclick="toggleNoteMarks()"></button>
         </p>
+      </div>
+    </div>
+
+    <div id="home-log" style="display:none;">
+      <p class="intro-back"><button onclick="backToCover()">← 表紙にもどる</button></p>
+      <div class="intro-card">
+        <h3>あしあと</h3>
+        <p style="font-size:11.5px;color:#7A5040;line-height:1.9;">問題をひとつ解くたびに、その日に肉球のしるしがつきます。
+        毎日でなくてかまいません。<b>もどってきた日も、おなじ一歩</b>です。</p>
+        <div id="log-stats"></div>
+        <div class="log-nav">
+          <button onclick="moveLogMonth(-1)" aria-label="前の月">‹</button>
+          <b id="log-month-name"></b>
+          <button onclick="moveLogMonth(1)" aria-label="次の月">›</button>
+        </div>
+        <div id="log-cal"></div>
       </div>
     </div>
 
@@ -11340,10 +11444,11 @@ function srsToday() {
 
 function srsRecord(id, correct) {
   if (!id) return;
+  logDay(correct);                       // 日ごとのあゆみは、正誤にかかわらず記録する
   const today = srsToday();
   const e = srsData[id];
-  // 正解し続けている問題（キュー外・卒業済み）は、記録も保存もしない
-  if (correct && (!e || e.m)) return;
+  // 正解し続けている問題（キュー外・卒業済み）は、復習の列には入れない
+  if (correct && (!e || e.m)) { saveGrammarProgress(); return; }
   if (!correct) {
     // 間違えた → 箱を戻して、今日のうちにもう一度
     srsData[id] = {
@@ -11529,6 +11634,39 @@ let kanaHidden = false;
 // メモの ☆ を出すかどうか。表の行すべてに付くので、
 // 使わない人にとってはただの記号が並ぶことになります。
 let noteMarksHidden = false;
+
+// ------------------------------------------------------------
+// 日ごとのあゆみ
+// ------------------------------------------------------------
+// これまで保存していたのは「いまの状態」だけで、
+// 歩いてきた時間はどこにも残っていなかった。
+// 「昨日30分やった」「3日つづいている」を見せるための記録。
+// かたちは { 日番号: { q:解いた数, ok:正解した数 } }。日番号は srsToday() と同じ。
+let dailyLog = {};
+let milestones = {};      // 節目に立ち会った日 { s1:日番号, … }
+
+function logDay(correct) {
+  const t = srsToday();
+  const e = dailyLog[t] || { q: 0, ok: 0 };
+  e.q++; if (correct) e.ok++;
+  dailyLog[t] = e;
+  // 古い日は間引く（400日ぶんだけ残す）
+  const keys = Object.keys(dailyLog);
+  if (keys.length > 400) {
+    keys.sort(function (a, b) { return a - b; })
+        .slice(0, keys.length - 400)
+        .forEach(function (k) { delete dailyLog[k]; });
+  }
+}
+
+// 連続日数。今日まだ解いていなければ、昨日までのつづき具合を返す
+function streakStats() {
+  const t = srsToday();
+  const today = !!dailyLog[t];
+  let run = 0, d = today ? t : t - 1;
+  while (dailyLog[d]) { run++; d--; }
+  return { today: today, run: run };
+}
 
 function applyNoteMarks() {
   if (document.body) document.body.classList.toggle('hide-note-marks', noteMarksHidden);
@@ -11794,6 +11932,8 @@ function saveGrammarProgress() {
       kanaHidden: kanaHidden,
       noteMarksHidden: noteMarksHidden,
       notes: noteWords,
+      days: dailyLog,
+      ms: milestones,
       savedAt: new Date().toISOString()
     }));
   } catch (e) { console.log('Grammar progress save failed:', e); noteStorageFailure(); }
@@ -11815,6 +11955,8 @@ function loadGrammarProgress() {
     if (d.kanaHidden) kanaHidden = true;
     if (d.noteMarksHidden) noteMarksHidden = true;
     if (Array.isArray(d.notes)) noteWords = d.notes;
+    if (d.days) dailyLog = d.days;
+    if (d.ms) milestones = d.ms;
   } catch (e) { console.log('Grammar progress load failed:', e); }
 }
 loadGrammarProgress();
@@ -13040,6 +13182,9 @@ function finishUnitDrill() {
   const u = unitById(s.unitId);
   const p = unitProg(s.unitId);
   const cleared = (s.correct / s.qs.length) >= 0.8;
+  // 前回とくらべるために、上書きするまえの記録をとっておく
+  s.prevBest = p.total ? p.best : null;
+  s.newBest = p.total > 0 && s.correct > (p.best || 0);
   grammarProgress[s.unitId] = {
     read: true,
     best: Math.max(p.best || 0, s.correct),
@@ -13049,6 +13194,7 @@ function finishUnitDrill() {
   saveGrammarProgress();
   logUnitFinish(s.unitId, s.correct, s.qs.length, cleared);
   renderUnitDrillResult();
+  checkMilestones();
 }
 
 function renderUnitDrillResult() {
@@ -13065,6 +13211,16 @@ function renderUnitDrillResult() {
 
   let html = '<div class="drill-wrap result">';
   html += '<div class="drill-result-score"><b>' + s.correct + '</b> / ' + s.qs.length + ' 問正解</div>';
+  // まえの自分とくらべる。他人とではなく
+  if (s.prevBest !== null && s.prevBest !== undefined) {
+    if (s.newBest) {
+      html += '<p class="drill-vs best">' + icon('sparkles','lu-md') + ' 記録こうしん！ 前回まで ' + s.prevBest + ' 問 → きょう <b>' + s.correct + '</b> 問</p>';
+    } else if (s.correct === s.prevBest && s.correct === s.qs.length) {
+      // 満点キープはそっとしておく
+    } else {
+      html += '<p class="drill-vs">これまでのベスト：' + s.prevBest + ' 問</p>';
+    }
+  }
   html += '<div class="drill-result-msg">' + (cleared ? icon('smile','lu-lg') : icon('paw','lu-lg')) + ' <strong>' + msg + '</strong><span>' + sub + '</span></div>';
   if (s.wrong.length) {
     html += '<div class="drill-review"><strong>' + icon('lightbulb','lu-md') + ' まちがえた問題</strong>';
@@ -13905,6 +14061,67 @@ function tocMatches(q) {
 // ------------------------------------------------------------
 // 中身は GRAMMAR_UNITS と stageInfo() から作るので、
 // ユニットを足せば目次も自動でついてきます。
+// ------------------------------------------------------------
+// あしあと（日ごとのカレンダー）
+// ------------------------------------------------------------
+let logMonthOffset = 0;   // 0 = 今月
+
+function openLog() {
+  logMonthOffset = 0;
+  renderLogCal();
+  showHomeView('log');
+  logScreen('log');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function moveLogMonth(d) { logMonthOffset += d; if (logMonthOffset > 0) logMonthOffset = 0; renderLogCal(); }
+
+function renderLogCal() {
+  const stats = document.getElementById('log-stats');
+  const cal = document.getElementById('log-cal');
+  const nameEl = document.getElementById('log-month-name');
+  if (!cal) return;
+
+  const st = streakStats();
+  const totalQ = Object.keys(dailyLog).reduce(function (n, k) { return n + dailyLog[k].q; }, 0);
+  const totalDays = Object.keys(dailyLog).length;
+  if (stats) {
+    stats.innerHTML = '<div class="log-row"><b>' + (st.run || 0) + '</b><span>連続の日数</span></div>'
+      + '<div class="log-row"><b>' + totalDays + '</b><span>歩いた日</span></div>'
+      + '<div class="log-row"><b>' + totalQ + '</b><span>解いた問題</span></div>';
+  }
+
+  const base = new Date();
+  base.setDate(1);
+  base.setMonth(base.getMonth() + logMonthOffset);
+  const y = base.getFullYear(), mo = base.getMonth();
+  if (nameEl) nameEl.textContent = y + '年 ' + (mo + 1) + '月';
+
+  const first = new Date(y, mo, 1);
+  const startDow = first.getDay();
+  const daysIn = new Date(y, mo + 1, 0).getDate();
+  const todayNum = srsToday();
+
+  let html = '<div class="log-grid">';
+  ['日','月','火','水','木','金','土'].forEach(function (w, i) {
+    html += '<span class="log-dow' + (i === 0 ? ' sun' : '') + '">' + w + '</span>';
+  });
+  for (let i = 0; i < startDow; i++) html += '<span></span>';
+  for (let d = 1; d <= daysIn; d++) {
+    const dt = new Date(y, mo, d); dt.setHours(0, 0, 0, 0);
+    const key = Math.round(dt.getTime() / 86400000);
+    const e = dailyLog[key];
+    const isToday = key === todayNum;
+    html += '<span class="log-day' + (e ? ' on' : '') + (isToday ? ' today' : '') + '">'
+          + '<i>' + d + '</i>'
+          + (e ? '<svg viewBox="0 0 24 24" aria-label="' + e.q + '問">' + STAIR_PAW.replace(/<\/?svg[^>]*>/g, '') + '</svg>' : '')
+          + (e ? '<em>' + e.q + '</em>' : '')
+          + '</span>';
+  }
+  html += '</div>';
+  cal.innerHTML = html;
+}
+
 // クレジット欄に、報告ボタンと版を書き入れる
 function renderIntroFooter() {
   const r = document.getElementById('intro-report');
@@ -13997,7 +14214,8 @@ function renderTocResults() {
   html += '<div class="toc-step plain"><b>いつでも</b><em>ためす・見直す</em></div>';
   html += tocRow('tocGoTab(\'challenge\')', '', 'チャレンジ', '出題範囲・順番・問題数をえらんで力だめし', false);
   html += tocRow('tocGoTab(\'home\')', '', '今日の復習', 'まちがえた問題が、日をあけて出てきます', false);
-  html += tocRow('openNotes()', '', 'メモした語', '解説のなかで ☆ を押した語が、ここに集まります', false)
+  html += tocRow('openLog()', '', 'あしあと', '歩いた日のカレンダーと、連続の日数', false)
+       + tocRow('openNotes()', '', 'メモした語', '解説のなかで ☆ を押した語が、ここに集まります', false)
        + tocRow('tocGoTab(\'home\')', '', 'ノートと印刷', '活用表・格変化表・まちがえた語・すきなことばをA4で印刷', false);
 
   box.innerHTML = html;
@@ -14032,7 +14250,7 @@ function tocGoUnit(id) {
 
 // 表紙・はじめに・目次・道のり の4画面を出し分ける
 function showHomeView(which) {
-  const ids = { cover:'cover-actions', intro:'home-intro', toc:'home-toc', road:'home-road', notes:'home-notes' };
+  const ids = { cover:'cover-actions', intro:'home-intro', toc:'home-toc', road:'home-road', notes:'home-notes', log:'home-log' };
   Object.keys(ids).forEach(function(k) {
     const el = document.getElementById(ids[k]);
     if (el) el.style.display = (k === which) ? 'block' : 'none';
@@ -14087,25 +14305,154 @@ function backToCover() {
 }
 
 // 表紙の表示を整える（復習の件数と、アンケートのボタン）
+// ------------------------------------------------------------
+// たびの節目
+// ------------------------------------------------------------
+// 33文字のコンプリートには celebration があるのに、
+// 文法の52ユニットの側には節目がひとつもなかった。
+// 地図の地名を、そのまま節目の名前にする。
+const MILESTONE_DEFS = [
+  { k:'s1', name:'Поля́на Букв',        jp:'33匹ぜんぶと なかよしになりました。もじの草原は、もうあなたの庭です。',
+    done:function(){ return LETTERS.every(function(l){ return letterActionCount(l.u) === 4; }); } },
+  { k:'s2', name:'Река́ Падеже́й',      jp:'基礎と初級、すべてクリア。むっつの流れの川をわたりました。',
+    done:function(){ const us = unitsOfLevel(['基礎','初級']); return us.length > 0 && clearedOfLevel(['基礎','初級']) === us.length; } },
+  { k:'s3', name:'Лес Глаго́лов',       jp:'中級すべてクリア。ことばの村をぬけ、動詞の森をとおりました。',
+    done:function(){ const us = unitsOfLevel(['中級']); return us.length > 0 && clearedOfLevel(['中級']) === us.length; } },
+  { k:'s4', name:'Го́ры Грамма́тики',   jp:'上級すべてクリア。пик Бы のいただきに、あなたの旗が立ちました。',
+    done:function(){ const us = unitsOfLevel(['上級']); return us.length > 0 && clearedOfLevel(['上級']) === us.length; } }
+];
+
+function checkMilestones() {
+  for (let i = 0; i < MILESTONE_DEFS.length; i++) {
+    const m = MILESTONE_DEFS[i];
+    if (milestones[m.k]) continue;
+    if (!m.done()) continue;
+    milestones[m.k] = srsToday();
+    saveGrammarProgress();
+    showMilestone(m);
+    break;                      // 一度にひとつ。かさなったら次の機会に
+  }
+}
+
+function showMilestone(m) {
+  let bg = document.getElementById('ms-bg');
+  if (!bg) {
+    bg = document.createElement('div');
+    bg.id = 'ms-bg';
+    document.body.appendChild(bg);
+  }
+  bg.innerHTML = '<div class="ms-card">'
+    + '<p class="ms-eyebrow">たびの節目</p>'
+    + '<p class="ms-name" lang="ru">' + m.name + '</p>'
+    + '<p class="ms-jp">' + m.jp + '</p>'
+    + '<div class="ms-actions">'
+    + '<button class="ms-map" onclick="closeMilestone(); switchTab(\'home\'); backToCover();">地図で見る</button>'
+    + '<button class="ms-close" onclick="closeMilestone()">つづける</button>'
+    + '</div></div>';
+  bg.classList.add('open');
+}
+function closeMilestone() {
+  const bg = document.getElementById('ms-bg');
+  if (bg) bg.classList.remove('open');
+}
+
+// ------------------------------------------------------------
+// 地図に、いまの自分を重ねる
+// ------------------------------------------------------------
+// 地図は全員おなじ絵だったが、ここに「いまここ」の肉球と、
+// あるききった場所の旗と、まだ先の霧を重ねる。
+// 座標は地図の下絵（800×1200）のもの。表示サイズに合わせて換算する。
+const MAP_SPOTS = { 1:{x:400,y:1035}, 2:{x:245,y:545}, 3:{x:598,y:468}, 4:{x:305,y:212} };
+const MAP_FOGS  = { 2:{x:230,y:520,r:185}, 3:{x:625,y:500,r:205}, 4:{x:330,y:190,r:225} };
+
+function stageStarted(n) {
+  if (n <= 1) return true;
+  if (n === 2) return clearedOfLevel(['基礎','初級']) > 0;
+  if (n === 3) return clearedOfLevel(['中級']) > 0;
+  return clearedOfLevel(['上級']) > 0;
+}
+function stageFinished(n) {
+  const m = MILESTONE_DEFS[n - 1];
+  return m ? (milestones[m.k] ? true : m.done()) : false;
+}
+
+const MAP_FLAG_SVG = '<svg viewBox="0 0 24 24"><path d="M7 21 V4" stroke="#8A6B52" stroke-width="1.8" fill="none"/><path d="M7 4 L17 7 L7 10 Z" fill="#BA574B"/></svg>';
+
+function renderMapMarks() {
+  const map = document.getElementById('cover-map');
+  if (!map) return;
+  let box = document.getElementById('map-marks');
+  if (!box) {
+    box = document.createElement('div');
+    box.id = 'map-marks';
+    map.appendChild(box);
+  }
+  const cw = map.clientWidth, ch = map.clientHeight;
+  if (!cw || !ch) return;
+  const sc = Math.min(cw / 800, ch / 1200);
+  const ox = (cw - 800 * sc) / 2, oy = (ch - 1200 * sc) / 2;
+  const px = function (x) { return (ox + x * sc).toFixed(1); };
+  const py = function (y) { return (oy + y * sc).toFixed(1); };
+
+  let html = '';
+  // まだ先の霧
+  [2, 3, 4].forEach(function (n) {
+    if (stageStarted(n)) return;
+    const f = MAP_FOGS[n], d = (f.r * 2 * sc).toFixed(0);
+    html += '<div class="map-fog" style="left:' + px(f.x) + 'px;top:' + py(f.y) + 'px;width:' + d + 'px;height:' + d + 'px;"></div>';
+  });
+  // あるききった場所の旗
+  [1, 2, 3, 4].forEach(function (n) {
+    if (!stageFinished(n)) return;
+    const s = MAP_SPOTS[n];
+    html += '<div class="map-flag" style="left:' + px(s.x) + 'px;top:' + py(s.y - 26) + 'px;">' + MAP_FLAG_SVG + '</div>';
+  });
+  // いまここ
+  const here = MAP_SPOTS[Math.min(4, Math.max(1, lastStage || 1))];
+  html += '<div class="map-here" style="left:' + px(here.x + 26) + 'px;top:' + py(here.y) + 'px;">'
+        + '<svg viewBox="0 0 24 24">' + STAIR_PAW.replace(/<\/?svg[^>]*>/g, '') + '</svg><i>いまここ</i></div>';
+  box.innerHTML = html;
+}
+
+let mapMarksTimer = null;
+window.addEventListener('resize', function () {
+  clearTimeout(mapMarksTimer);
+  mapMarksTimer = setTimeout(renderMapMarks, 150);
+});
+
+// 時間帯にあわせたあいさつ
+function greetingWord() {
+  const hh = new Date().getHours();
+  if (hh >= 5 && hh < 10) return 'おはようございます';
+  if (hh >= 10 && hh < 17) return 'こんにちは';
+  return 'こんばんは';
+}
+
+// 表紙のいちばん上。「今日はこれ」をひとつだけ差し出す。
+// 開いた瞬間に迷わせないための場所で、選択肢はこの下に並んでいる。
 function renderCover() {
   updateNoteCount();
-  const rev = document.getElementById('cover-review');
-  if (rev) {
+  const box = document.getElementById('cover-today');
+  if (box) {
+    const st = streakStats();
     const c = srsCounts();
+    let hello = greetingWord();
+    if (st.today && st.run >= 2)       hello += '。<b>' + st.run + '日つづいています</b>';
+    else if (!st.today && st.run >= 1) hello += '。きょうも歩くと<b> ' + (st.run + 1) + ' 日目</b>です';
+    else if (st.today)                 hello += '。きょうの一歩、ふみだしています';
+
+    let act = '';
     if (c.due > 0) {
-      rev.style.display = 'block';
-      rev.innerHTML = icon('refresh', 'lu-md') + ' 今日の復習が <b>' + c.due + '</b> 問あります';
-    } else {
-      rev.style.display = 'none';
-      rev.innerHTML = '';
+      act = '<button class="today-act" onclick="startReview()">' + icon('refresh', 'lu-md')
+          + '<span><b>きょうの復習 ' + c.due + ' 問</b><small>5分あればじゅうぶんです</small></span></button>';
+    } else if (lastUnitId && unitById(lastUnitId)) {
+      act = '<button class="today-act" onclick="resumeLastUnit()">' + icon('paw', 'lu-md')
+          + '<span><b>つづきから</b><small>' + unitById(lastUnitId).title + '</small></span></button>';
     }
-  }
-  const res = document.getElementById('cover-resume');
-  if (res) {
-    const u = lastUnitId ? unitById(lastUnitId) : null;
-    res.style.display = u ? 'flex' : 'none';
-    const nm = document.getElementById('cover-resume-name');
-    if (nm && u) nm.textContent = u.title;
+    const hasLog = Object.keys(dailyLog).length > 0;
+    box.innerHTML = '<p class="today-hello">' + hello + '</p>' + act
+      + (hasLog ? '<button class="today-log" onclick="openLog()">あしあとを見る →</button>' : '');
+    box.style.display = 'block';
   }
 
   const sv = document.getElementById('cover-survey');
@@ -14114,6 +14461,7 @@ function renderCover() {
     const show = researchEnabled() && !research.surveyAt;
     sv.style.display = show ? 'flex' : 'none';
   }
+  renderMapMarks();
 }
 
 // ホームの「ひと足先に読めます」から、文法ユニットを直接開く
@@ -14471,6 +14819,7 @@ function logRunFinish(mode, correct, total, extra) {
 function logLetterAction(letter, action) {
   logEvent('let', { l: letter, a: action });
   gaEvent('letter_action', { letter: letter, action: action });
+  if (typeof checkMilestones === 'function') checkMilestones();
 }
 
 function logScreen(name) {
