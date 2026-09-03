@@ -3030,6 +3030,12 @@
   }
   .nt-empty { font-size: 11.5px; color: #7A5040; line-height: 2; text-align: center; padding: 18px 6px; }
 
+  /* ---- 保存と提出のちがい ---- */
+  .sv-submit-note {
+    background: #F3EEE6; border-radius: 10px; padding: 10px 12px;
+    font-size: 11px; color: #7A5040; line-height: 1.9; margin: 14px 0 4px;
+  }
+
   /* ---- アンケートのパート2の前置き ---- */
   .sv-divider {
     background: #FCF2D9; border-left: 3px solid #E0AE3C;
@@ -15204,6 +15210,9 @@ function openSurvey() {
        + 'お名前や連絡先は聞きません。</p>';
   html += '<div class="sv-count" id="survey-count"></div>';
   html += '<div id="survey-body"></div>';
+  html += '<p class="sv-submit-note">「保存」は<b>この端末に書きとめるだけ</b>で、まだ研究者には届いていません。<br>'
+       + '届けてくださるときは、ホーム下部の<b>「研究への協力」</b>から提出をお願いします。<br>'
+       + 'あとからいつでも書き直せますし、書き直したら提出しなおせます。</p>';
   html += '<div class="modal-close-bottom"><button onclick="closeSurvey()">保存してとじる</button></div>';
   modal.innerHTML = html;
   renderSurveyBody();
