@@ -3064,6 +3064,40 @@
     text-decoration: underline; cursor: pointer;
   }
 
+  /* ---- ことばの索引 ---- */
+  .vc-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 6px; }
+  .vc-chip {
+    background: #fff; border: 1.5px solid #E8CFC8; color: #9F544A;
+    border-radius: 999px; padding: 5px 11px; font-family: inherit;
+    font-size: 11px; font-weight: 700; cursor: pointer;
+  }
+  .vc-chip.on { background: #9F544A; border-color: #9F544A; color: #fff; }
+  .vc-letter {
+    font-family: Georgia, serif; font-size: 16px; color: #9F544A;
+    border-bottom: 1px solid #F0DDD7; margin: 14px 0 4px; padding-bottom: 2px;
+  }
+  .vc-row {
+    display: flex; align-items: flex-start; gap: 8px;
+    padding: 7px 2px; border-bottom: 1px dotted #F0E4DC;
+  }
+  .vc-row:last-child { border-bottom: none; }
+  .vc-say {
+    flex-shrink: 0; background: #EFF6F2; border: none; color: #2F6650;
+    border-radius: 999px; padding: 4px 9px; font-size: 11px; cursor: pointer;
+    font-family: inherit; margin-top: 1px;
+  }
+  .vc-body { flex: 1; min-width: 0; line-height: 1.55; }
+  .vc-body b { font-size: 13px; font-weight: 800; color: #3A2318; margin-right: 6px; }
+  .vc-jp { font-size: 11.5px; color: #5A3F30; margin-right: 6px; }
+  .vc-en { font-size: 10.5px; color: #8A6B52; font-style: italic; }
+  .vc-go {
+    flex-shrink: 0; background: none; border: 1px solid #EFE0DA; color: #7E5C42;
+    border-radius: 999px; padding: 3px 9px; font-family: inherit; font-size: 9.5px;
+    cursor: pointer; max-width: 108px; overflow: hidden; text-overflow: ellipsis;
+    white-space: nowrap; margin-top: 2px;
+  }
+  .vc-empty { text-align: center; font-size: 11.5px; color: #7A5040; padding: 18px 0; }
+
   /* ---- あしあと（カレンダー） ---- */
   #log-stats { display: flex; gap: 8px; margin: 12px 0; }
   .log-row {
@@ -3502,6 +3536,20 @@
         <p style="text-align:center;margin-top:12px;">
           <button type="button" class="kana-toggle mark-toggle" onclick="toggleNoteMarks()"></button>
         </p>
+      </div>
+    </div>
+
+    <div id="home-vocab" style="display:none;">
+      <p class="intro-back"><button onclick="backToCover()">← 表紙にもどる</button></p>
+      <div class="intro-card">
+        <h3>ことばの索引 <span style="font-family:Georgia,serif;font-weight:400;font-size:12px;color:#7A5040;" lang="ru">— указа́тель</span></h3>
+        <p style="font-size:11.5px;color:#7A5040;line-height:1.9;">この教材に出てきたことばを、紙の辞書の索引のように並べました。
+        英語の訳もそえてあります。♪ で音、右のボタンで<b>出てきたところ</b>へ戻れます。</p>
+        <input id="vocab-q" class="toc-search" type="search" placeholder="ことばをさがす（ロシア語・日本語・英語）"
+               oninput="vocabSearch(this.value)" autocomplete="off">
+        <div id="vocab-chips" class="vc-chips"></div>
+        <p style="font-size:10.5px;color:#7A5040;text-align:right;margin:2px 0;"><span id="vocab-count"></span></p>
+        <div id="vocab-list"></div>
       </div>
     </div>
 
@@ -14104,6 +14152,499 @@ function tocMatches(q) {
 // ------------------------------------------------------------
 // 中身は GRAMMAR_UNITS と stageInfo() から作るので、
 // ユニットを足せば目次も自動でついてきます。
+// ことばの索引。手で監査した既習語の一覧（語・日本語・英語・品詞・出てきたユニット）。
+// 品詞: n=名詞 v=動詞 a=形容詞 d=副詞 e=表現 x=そのほか（前置詞・接頭辞など）
+// ユニットの @А は「文字の図鑑のА」。新しい語を教えたら、ここにも1行足すこと。
+const VOCAB = [
+  ["а́вгуст","8月","August","n","seasons"],
+  ["апре́ль","4月","April","n","seasons"],
+  ["арбу́з","スイカ","watermelon","n","@А"],
+  ["Ба́ба-яга́","魔女のおばあさん（ロシア民話の名物）","Baba Yaga (witch of Russian tales)","n","folktales"],
+  ["ба́бушка","おばあさん","grandmother","n","shape-types"],
+  ["бале́тки","バレエシューズ","ballet flats","n","shape-types"],
+  ["бант","リボン（結んだもの）","bow (ribbon)","n","clothes"],
+  ["ба́нтик","小さなリボン","little bow","n","shape-types"],
+  ["бежа́ть","走っていく","to run (one way)","v","verb-motion"],
+  ["без","〜なしで","without","x","prepositions"],
+  ["бейсбо́лка","キャップ","baseball cap","n","shape-types"],
+  ["белова́тый","白っぽい","whitish","a","color-shape"],
+  ["бе́лый","白い","white","a","color-shape"],
+  ["бере́т","ベレー帽","beret","n","shape-types"],
+  ["бесцве́тный","無色の","colourless","a","color-shape"],
+  ["бле́дно-","（色の前で）淡い","pale- (before a colour)","x","color-shape"],
+  ["блу́зка","ブラウス（女）","blouse","n","clothes"],
+  ["бог","神","god","n","case-acc"],
+  ["бо́льше","より大きい・もっと","bigger; more","d","comparative"],
+  ["большо́й","大きい","big","a","comparative"],
+  ["борода́","あごひげ","beard","n","appearance"],
+  ["боти́нки","くるぶし丈の靴","ankle boots","n","shape-types"],
+  ["боя́ться","こわがる ＋ 生格","to be afraid of (+gen.)","v","reflexive"],
+  ["брат","兄弟","brother","n","appearance"],
+  ["бро́ви","まゆ","eyebrows","n","appearance"],
+  ["брю́ки","ズボン","trousers","n","clothes"],
+  ["буке́т","花束","bouquet","n","@Б"],
+  ["бы́стрый","速い","fast","a","comparative"],
+  ["быть","〜である・ある","to be","v","verb-irr"],
+  ["в-","（接頭辞）中へ","(prefix) into","x","verb-motion-pref"],
+  ["ва́ленки","フェルトの長ぐつ","felt boots (valenki)","n","clothes,shape-types"],
+  ["варе́жки","ミトン（指が分かれていない手袋）","mittens","n","clothes"],
+  ["верблю́д","らくだ","camel","n","@В"],
+  ["ве́село","楽しい","(it is) fun","d","impersonal"],
+  ["весна́","春","spring","n","seasons"],
+  ["весну́шки","そばかす","freckles","n","appearance"],
+  ["ви́деть","見える","to see","v","verb-i"],
+  ["висе́ть","かかっている","to be hanging","v","confusing-verbs"],
+  ["вку́сный","おいしい","tasty","a","comparative"],
+  ["внима́тельный","気がきく","attentive","a","character"],
+  ["вода́","水","water","n","case-prep"],
+  ["во́лосы","髪（複数で）","hair","n","appearance"],
+  ["воротни́к","えり","collar","n","clothes"],
+  ["воскресе́нье","日曜日","Sunday","n","seasons"],
+  ["вре́мя","時間","time","n","impersonal"],
+  ["встреча́ться","会う","to meet (each other)","v","reflexive"],
+  ["вто́рник","火曜日","Tuesday","n","seasons"],
+  ["вы-","（接頭辞）外へ","(prefix) out of","x","verb-motion-pref"],
+  ["высо́кий","高い","tall; high","a","appearance"],
+  ["вя́заная ша́пка","ニット帽","knitted hat","e","shape-types"],
+  ["глаза́","目（複数）","eyes","n","appearance"],
+  ["говори́ть","話す","to speak","v","verb-i"],
+  ["голубо́й","水色の","light blue","a","color-shape"],
+  ["горо́х","エンドウ","peas","n","@Г"],
+  ["грибы́","きのこ","mushrooms","n","seasons"],
+  ["гру́стно","かなしい","(it is) sad","d","impersonal"],
+  ["гу́бы","くちびる","lips","n","appearance"],
+  ["гуля́ть","散歩する","to stroll","v","verb-e"],
+  ["дать","与える","to give","v","verb-irr"],
+  ["да́ча","郊外の家","dacha (country house)","n","seasons"],
+  ["дед","おじいさん","grandfather (old man)","n","folktales"],
+  ["дека́брь","12月","December","n","seasons"],
+  ["де́лать","する・作る","to do; to make","v","verb-e"],
+  ["де́ньги","お金（複数のみ）","money (pl. only)","n","noun-count"],
+  ["де́рево","木","tree","n","case-prep"],
+  ["дешёвый","安い","cheap","a","comparative"],
+  ["джи́нсы","ジーンズ","jeans","n","clothes"],
+  ["дли́нный","長い","long","a","appearance"],
+  ["для","〜のために","for","x","prepositions"],
+  ["до свида́ния","さようなら","goodbye","e","phrases"],
+  ["до-","（接頭辞）〜まで到達","(prefix) as far as","x","verb-motion-pref"],
+  ["до́брый","やさしい","kind","a","folktales"],
+  ["дово́льно","なかなか","rather","d","character"],
+  ["дождь","雨","rain","n","seasons"],
+  ["до́ктор","医者","doctor","n","@Д"],
+  ["до́лжен","〜しなければならない（責任）","must; obliged to","a","impersonal"],
+  ["дом","家","house","n","case-gen"],
+  ["дорого́й","高い","expensive; dear","a","comparative"],
+  ["друг","友だち","friend","n","case-dat"],
+  ["духи́","香水（複数のみ）","perfume (pl. only)","n","noun-count"],
+  ["единоро́г","一角獣、ユニコーン","unicorn","n","@Е"],
+  ["ёж","ハリネズミ","hedgehog","n","@Ё"],
+  ["е́здить","（乗り物で）通う","to go (by vehicle, habitually)","v","verb-motion"],
+  ["ёлка","もみの木・クリスマスツリー","fir tree; Christmas tree","n","seasons"],
+  ["есть","食べる","to eat","v","verb-irr"],
+  ["е́хать","（乗り物で）行く・向かう","to go (by vehicle, one way)","v","verb-motion"],
+  ["жа́дный","けちな","greedy","a","character"],
+  ["жара́","暑さ","heat","n","seasons"],
+  ["жа́рко","暑い","(it is) hot","d","impersonal"],
+  ["желтова́тый","黄色みがかった","yellowish","a","color-shape"],
+  ["жёлтый","黄色い","yellow","a","color-shape"],
+  ["живо́т","おなか","belly","n","@Ж"],
+  ["жить","住む・生きる","to live","v","verb-e"],
+  ["за-","（接頭辞）立ち寄る","(prefix) drop in","x","verb-motion-pref"],
+  ["занима́ться","取り組む ＋ 造格","to be engaged in (+instr.)","v","reflexive"],
+  ["засте́нчивый","恥ずかしがり屋の（もって生まれた性質）","shy (by nature)","a","character"],
+  ["звезда́","星","star","n","color-shape"],
+  ["звони́ть","電話する","to phone (+dat.)","v","case-dat"],
+  ["здоро́ваться","あいさつを交わす","to greet each other","v","reflexive"],
+  ["здра́вствуйте","こんにちは（ていねい）","hello (polite)","e","phrases"],
+  ["зеленова́тый","緑がかった","greenish","a","color-shape"],
+  ["зелёный","緑の","green","a","color-shape"],
+  ["зе́ркало","鏡","mirror","n","@З"],
+  ["зима́","冬","winter","n","seasons"],
+  ["знать","知っている","to know","v","verb-e"],
+  ["золото́й","金の","golden","a","folktales"],
+  ["Ива́н-дура́к","イワンのばか（最後に幸運をつかむ主人公）","Ivan the Fool (folk hero)","n","folktales"],
+  ["игра́ть","遊ぶ・演奏する","to play","v","verb-e"],
+  ["идти́","（歩いて）行く・向かう","to go (on foot, one way)","v","verb-motion"],
+  ["из","〜（の中）から","out of; from","x","prepositions"],
+  ["извини́те","すみません","excuse me","e","phrases"],
+  ["изуча́ть","（専門として）学ぶ","to study (a subject)","v","confusing-verbs"],
+  ["икра́","イクラ","caviar","n","@И"],
+  ["и́мя","名前","name","n","negation-gen"],
+  ["интере́сно","おもしろい","(it is) interesting","d","impersonal"],
+  ["интере́сный","おもしろい","interesting","a","comparative"],
+  ["интересова́ться","興味がある ＋ 造格","to be interested in (+instr.)","v","reflexive"],
+  ["ию́ль","7月","July","n","seasons"],
+  ["ию́нь","6月","June","n","seasons"],
+  ["йо́га","ヨガ","yoga","n","@Й"],
+  ["к","〜のところへ","to; towards (+dat.)","x","prepositions"],
+  ["канотье́","カンカン帽","boater hat","n","shape-types"],
+  ["капюшо́н","フード","hood","n","clothes"],
+  ["ка́ре","ボブ","bob (haircut)","n","shape-types"],
+  ["ка́рий","茶色い（目に）","brown (of eyes)","a","appearance"],
+  ["карма́н","ポケット","pocket","n","clothes"],
+  ["карту́з","つばつきの古い帽子","peaked cap (old style)","n","shape-types"],
+  ["квадра́т","四角","square","n","color-shape"],
+  ["квадра́тный","四角い","square (adj.)","a","color-shape"],
+  ["ке́ды","布地のスニーカー","canvas sneakers","n","shape-types"],
+  ["ке́пка","ハンチング","flat cap","n","shape-types"],
+  ["кни́га","本","book","n","@К"],
+  ["кори́чневый","茶色い（ものに）","brown (of things)","a","color-shape"],
+  ["коро́ль","王（西欧の童話）","king (Western tales)","n","folktales"],
+  ["коро́ткий","短い","short","a","clothes"],
+  ["коса́","三つ編み","braid, plait","n","shape-types"],
+  ["ко́сички","両側の小さな三つ編み","pigtails","n","shape-types"],
+  ["кот","ねこ（雄）","cat (male)","n","negation-gen"],
+  ["ко́фе","コーヒー","coffee","n","noun-count"],
+  ["ко́шка","ねこ（雌）","cat (female)","n","noun-plural"],
+  ["Коще́й Бессме́ртный","不死身のカシチェイ（悪役）","Koschei the Deathless (villain)","e","folktales"],
+  ["краси́вый","美しい","beautiful","a","comparative"],
+  ["краснова́тый","赤みがかった","reddish","a","color-shape"],
+  ["кра́сный","赤い","red","a","color-shape"],
+  ["кроссо́вки","スニーカー","sneakers","n","shape-types"],
+  ["круг","円・まる","circle","n","color-shape"],
+  ["кру́глый","丸い","round","a","color-shape"],
+  ["ку́дри","巻き毛","curls","n","shape-types"],
+  ["кудря́шки","くるくるの巻き毛","little curls","n","shape-types"],
+  ["ку́кла","人形","doll","n","case-acc"],
+  ["кули́ч","復活祭の背の高い丸いパン","kulich (tall Easter bread)","n","seasons"],
+  ["купи́ть","買う","to buy","v","case-dat"],
+  ["курно́сый","上を向いた鼻・だんご鼻","snub-nosed","a","appearance"],
+  ["ку́ртка","ジャンパー・上着（女）","jacket","n","clothes"],
+  ["лежа́ть","横になっている","to be lying","v","confusing-verbs"],
+  ["лес","森","forest","n","case-prep"],
+  ["лете́ть","飛んでいく","to fly (one way)","v","verb-motion"],
+  ["ле́то","夏","summer","n","seasons"],
+  ["лимо́н","レモン","lemon","n","case-inst"],
+  ["лиса́","キツネ","fox","n","@Л"],
+  ["листопа́д","落ち葉","leaf fall","n","seasons"],
+  ["лицо́","顔（中性）","face","n","appearance"],
+  ["ло́жка","スプーン","spoon","n","case-inst"],
+  ["ло́феры","ローファー","loafers","n","shape-types"],
+  ["лу́чше","よりよい・もっとよく","better","d","comparative"],
+  ["люби́ть","愛する・好む","to love","v","verb-i"],
+  ["май","5月","May","n","seasons"],
+  ["ма́ленький","小さい","small","a","comparative"],
+  ["ма́ма","お母さん","mum","n","case-dat"],
+  ["март","3月","March","n","seasons"],
+  ["ма́чеха","継母","stepmother","n","folktales"],
+  ["ме́ньше","より小さい","smaller; less","d","comparative"],
+  ["мертве́ц","死者","dead person","n","case-acc"],
+  ["мехова́я ша́пка","毛皮の帽子","fur hat","e","shape-types"],
+  ["мимо́за","ミモザ","mimosa","n","seasons"],
+  ["многоцве́тный","多色の","multicoloured","a","color-shape"],
+  ["мо́жно","〜してよい","one may; it is allowed","d","impersonal"],
+  ["молодо́й","若い","young","a","comparative"],
+  ["моло́же","年下の（比較級）","younger","d","comparative"],
+  ["молоко́","牛乳","milk","n","case-inst"],
+  ["моро́женое","アイスクリーム","ice cream","n","@М"],
+  ["моро́з","きびしい寒さ","hard frost","n","seasons"],
+  ["мочь","〜できる","to be able","v","verb-irr"],
+  ["му́дрый","賢い","wise","a","folktales"],
+  ["мы́ться","体を洗う・入浴する","to wash oneself","v","reflexive"],
+  ["мя́гкий","おだやかな","soft; gentle","a","character"],
+  ["на авто́бусе","バスで","by bus","e","verb-motion"],
+  ["на высо́ком каблуке́","ハイヒールの","high-heeled","e","shape-types"],
+  ["на маши́не","車で","by car","e","verb-motion"],
+  ["на метро́","地下鉄で","by metro","e","verb-motion"],
+  ["на пло́ской подо́шве","底が平らな","flat-soled","e","shape-types"],
+  ["на по́езде","列車で","by train","e","verb-motion"],
+  ["надёжный","頼りになる","reliable","a","character"],
+  ["наде́ть","（その場で）着る・履く","to put on","v","shape-types"],
+  ["наде́яться","願う・期待する","to hope","v","reflexive"],
+  ["на́до","〜しなければ","one must","d","impersonal"],
+  ["наро́д","民衆","people, folk","n","case-acc"],
+  ["Не стесня́йтесь!","どうぞ遠慮なく","don't be shy!","e","character"],
+  ["нельзя́","〜してはいけない","one must not","d","impersonal"],
+  ["немно́го","すこし","a little","d","character"],
+  ["непрозра́чный","不透明な","opaque","a","color-shape"],
+  ["ни́зкий","低い","low; short","a","appearance"],
+  ["но́вый","新しい","new","a","adj-cases"],
+  ["нос","鼻（男性）","nose","n","appearance"],
+  ["носи́ть","ふだん履く","to wear (habitually)","v","shape-types"],
+  ["носки́","靴下","socks","n","clothes"],
+  ["носоро́г","サイ","rhinoceros","n","@Н"],
+  ["ноя́брь","11月","November","n","seasons"],
+  ["нра́виться","気に入る ＋ 与格（人）","to be pleasing (+dat.)","v","reflexive"],
+  ["ну́жно","〜する必要がある","one needs","d","impersonal"],
+  ["о","〜について","about","x","prepositions"],
+  ["обнима́ться","抱きあう","to hug each other","v","reflexive"],
+  ["обо-","（接頭辞）まわり込む","(prefix) around","x","verb-motion-pref"],
+  ["о́бувь","履きもの","footwear","n","clothes,shape-types"],
+  ["обу́ться","靴をはく","to put shoes on","v","clothes,shape-types"],
+  ["ова́л","だえん","oval","n","color-shape"],
+  ["ова́льный","楕円の","oval (adj.)","a","color-shape"],
+  ["одева́ться","服を着る","to get dressed","v","reflexive"],
+  ["одноцве́тный","単色の・無地の","plain, one-colour","a","color-shape"],
+  ["октя́брь","10月","October","n","seasons"],
+  ["ора́нжевый","オレンジ色の","orange","a","color-shape"],
+  ["оре́х","くるみ","nut, walnut","n","@О"],
+  ["орли́ный","わし鼻","aquiline (of a nose)","a","appearance"],
+  ["о́сень","秋","autumn","n","seasons"],
+  ["отзы́вчивый","思いやりのある","sympathetic","a","character"],
+  ["ото-","（接頭辞）少し離れる","(prefix) a bit away","x","verb-motion-pref"],
+  ["о́чень","とても","very","d","character"],
+  ["очки́","めがね（複数のみ）","glasses (pl. only)","n","noun-count"],
+  ["пальто́","コート（中）","coat","n","clothes"],
+  ["пана́ма","サンハット","sun hat","n","shape-types"],
+  ["па́сха","復活祭のチーズ菓子","paskha (Easter dessert)","n","seasons"],
+  ["пере-","（接頭辞）越えて・渡って","(prefix) across","x","verb-motion-pref"],
+  ["переоде́ться","着替える","to change clothes","v","clothes"],
+  ["перча́тки","手袋（指が分かれているもの）","gloves","n","clothes"],
+  ["пёстрый","まだらの・にぎやかな色づかいの","motley, gaudy","a","color-shape"],
+  ["пешко́м","歩いて","on foot","d","verb-motion"],
+  ["писа́ть","書く","to write","v","verb-e"],
+  ["пить","飲む","to drink","v","verb-irr"],
+  ["пла́вать","泳ぐ・泳ぎまわる","to swim (around)","v","verb-motion"],
+  ["пла́тье","ワンピース（中）","dress","n","clothes"],
+  ["плохо́й","悪い","bad","a","comparative"],
+  ["по","〜に沿って","along (+dat.)","x","prepositions"],
+  ["по-","（接頭辞）出発","(prefix) set off","x","verb-motion-pref"],
+  ["пове́сить","かける（動作）","to hang up","v","confusing-verbs"],
+  ["подо-","（接頭辞）そばへ寄る","(prefix) approach","x","verb-motion-pref"],
+  ["подсо́лнух","ひまわり","sunflower","n","seasons"],
+  ["подстри́чься","髪を切ってもらう","to get a haircut","v","shape-types"],
+  ["пожа́луйста","どうぞ・どういたしまして","please; you're welcome","e","phrases"],
+  ["положи́ть","横にして置く","to lay down","v","confusing-verbs"],
+  ["помо́чь","手伝う","to help (+dat.)","v","case-dat"],
+  ["понеде́льник","月曜日","Monday","n","seasons"],
+  ["попуга́й","オウム","parrot","n","@П"],
+  ["поста́вить","立てて置く","to stand (sth) up","v","confusing-verbs"],
+  ["прекра́сный","とても美しい","wonderful, most beautiful","a","folktales"],
+  ["при-","（接頭辞）到着","(prefix) arrival","x","verb-motion-pref"],
+  ["приве́т","やあ","hi","e","phrases"],
+  ["принц","王子（西欧の童話）","prince (Western tales)","n","folktales"],
+  ["про-","（接頭辞）通り過ぎる","(prefix) past","x","verb-motion-pref"],
+  ["прозра́чный","透明な","transparent","a","color-shape"],
+  ["прямо́й","まっすぐな","straight","a","appearance"],
+  ["прямоуго́льник","長方形","rectangle","n","color-shape"],
+  ["пу́говица","ボタン","button","n","clothes"],
+  ["пусты́ня","砂漠","desert","n","case-dat"],
+  ["пучо́к","おだんご","hair bun","n","shape-types"],
+  ["пя́тница","金曜日","Friday","n","seasons"],
+  ["рабо́та","仕事","work","n","case-prep"],
+  ["рабо́тать","働く","to work","v","verb-e"],
+  ["разде́ться","（上着などを）脱ぐ","to take off (coat etc.)","v","clothes"],
+  ["разноцве́тный","多色の・色とりどりの","multicoloured","a","color-shape"],
+  ["разу́ться","靴を脱ぐ","to take shoes off","v","clothes,shape-types"],
+  ["рези́новые сапоги́","長靴・レインブーツ","rubber boots","e","shape-types"],
+  ["ресни́цы","まつげ","eyelashes","n","appearance"],
+  ["реши́тельный","決断力のある","decisive","a","character"],
+  ["ро́зовый","ピンクの","pink","a","color-shape"],
+  ["рома́шка","カモミール","camomile","n","@Р"],
+  ["рот","口（男性）","mouth","n","appearance"],
+  ["руба́шка","シャツ（女）","shirt","n","clothes"],
+  ["рука́в","そで","sleeve","n","clothes"],
+  ["ру́чка","ペン","pen","n","case-inst"],
+  ["ры́жий","赤茶色の（毛色に）","ginger, red (of fur/hair)","a","color-shape"],
+  ["с","〜と一緒に","with (+instr.)","x","prepositions"],
+  ["С днём рожде́ния!","お誕生日おめでとう","happy birthday!","e","seasons"],
+  ["С Но́вым го́дом!","あけましておめでとう","happy new year!","e","seasons"],
+  ["сапоги́","長いブーツ","(tall) boots","n","clothes,shape-types"],
+  ["са́хар","砂糖","sugar","n","case-inst"],
+  ["све́тло-","（色の前で）薄い・明るい","light- (before a colour)","x","color-shape"],
+  ["сви́тер","セーター（男）","sweater","n","clothes"],
+  ["сентя́брь","9月","September","n","seasons"],
+  ["се́рый","灰色の","grey","a","color-shape"],
+  ["серьёзный","まじめな","serious","a","character"],
+  ["сесть","すわる（動作）","to sit down","v","confusing-verbs"],
+  ["сиде́ть","すわっている","to be sitting","v","confusing-verbs"],
+  ["синева́тый","青みがかった","bluish","a","color-shape"],
+  ["си́ний","青い（濃い青）","(dark) blue","a","color-shape"],
+  ["сказа́ть","言う","to say","v","imperative-future"],
+  ["ску́чно","退屈だ","(it is) boring","d","impersonal"],
+  ["сла́нцы","ビーチサンダル","flip-flops","n","shape-types"],
+  ["след","足跡","footprint","n","@С"],
+  ["сли́шком","〜すぎる","too (much)","d","character"],
+  ["слы́шать","聞こえる","to hear","v","verb-i"],
+  ["смея́ться","笑う","to laugh","v","reflexive"],
+  ["смотре́ть","見る","to look, to watch","v","verb-i"],
+  ["снег","雪","snow","n","seasons"],
+  ["снегови́к","雪だるま","snowman","n","seasons"],
+  ["снима́ть","脱ぐ","to take off (impf.)","v","clothes"],
+  ["снять","脱ぐ","to take off (pf.)","v","clothes,shape-types"],
+  ["со́лнце","たいよう","sun","n","seasons"],
+  ["соло́менная шля́па","麦わら帽子","straw hat","e","shape-types"],
+  ["спаси́бо","ありがとう","thank you","e","phrases"],
+  ["спать","眠る","to sleep","v","verb-i"],
+  ["споко́йный","落ち着いた","calm","a","character"],
+  ["среда́","水曜日","Wednesday","n","seasons"],
+  ["ссо́риться","けんかする","to quarrel","v","reflexive"],
+  ["стара́ться","努力する","to try hard","v","reflexive"],
+  ["ста́рше","年上の（比較級）","older","d","comparative"],
+  ["ста́рый","古い・年上","old","a","comparative"],
+  ["стесни́тельный","はにかみ屋の（ほぼ同じ。話しことば寄り）","bashful","a","character"],
+  ["стесня́ться","（いま）恥ずかしがる・遠慮する","to feel shy","v","character"],
+  ["стол","机・テーブル","table","n","case-inst"],
+  ["стоя́ть","立っている","to be standing","v","confusing-verbs"],
+  ["стра́нный","変わった","strange","a","character"],
+  ["стро́гий","厳しい","strict","a","character"],
+  ["студе́нт","学生","student","n","case-inst"],
+  ["суббо́та","土曜日","Saturday","n","seasons"],
+  ["су́мка","かばん（女）","bag","n","clothes"],
+  ["съёмка","撮影","filming, shoot","n","@Ъ"],
+  ["сыр","チーズ","cheese","n","@Ы"],
+  ["та́почки","スリッパ","slippers","n","clothes,shape-types"],
+  ["тёмно-","（色の前で）濃い","dark- (before a colour)","x","color-shape"],
+  ["тепло́","あたたかい","(it is) warm","d","seasons"],
+  ["толсто́вка","パーカー・トレーナー（女）","hoodie, sweatshirt","n","clothes"],
+  ["тост","乾杯","toast (drinking)","n","@Т"],
+  ["треуго́льник","三角形","triangle","n","color-shape"],
+  ["треуго́льный","三角の","triangular","a","color-shape"],
+  ["труп","死体","corpse","n","case-acc"],
+  ["ту́фли","くつ（かかとのあるもの）","(dress) shoes","n","clothes,shape-types"],
+  ["тюле́нь","アザラシ","seal","n","@Ь"],
+  ["тюльпа́н","チューリップ","tulip","n","seasons"],
+  ["у","〜のところに","at, by (+gen.)","x","prepositions"],
+  ["у-","（接頭辞）立ち去る","(prefix) away","x","verb-motion-pref"],
+  ["у́гги","ムートンブーツ","ugg boots","n","shape-types"],
+  ["улыба́ться","ほほえむ","to smile","v","reflexive"],
+  ["у́мный","賢い","clever","a","character"],
+  ["умыва́ться","顔を洗う","to wash one's face","v","reflexive"],
+  ["университе́т","大学","university","n","case-prep"],
+  ["упря́мый","頑固な","stubborn","a","character"],
+  ["урожа́й","みのり・収穫","harvest","n","seasons"],
+  ["усы́","口ひげ","moustache","n","appearance"],
+  ["у́тка","アヒル","duck","n","@У"],
+  ["учи́тель","教師","teacher","n","case-inst"],
+  ["учи́ть","おぼえる・教える","to memorise; to teach","v","confusing-verbs"],
+  ["учи́ться","（学校に）通って学ぶ","to study (at school)","v","confusing-verbs"],
+  ["уша́нка","耳あてつきの帽子","ushanka (ear-flap hat)","n","shape-types"],
+  ["у́ши","耳","ears","n","appearance"],
+  ["февра́ль","2月","February","n","seasons"],
+  ["фиоле́товый","紫の","violet, purple","a","color-shape"],
+  ["флаг","旗","flag","n","@Ф"],
+  ["фура́жка","制帽・軍帽","service cap","n","shape-types"],
+  ["футбо́лка","Tシャツ（女）","T-shirt","n","clothes"],
+  ["хво́стик","ポニーテール","ponytail","n","shape-types"],
+  ["хи́трый","ずる賢い","cunning","a","folktales"],
+  ["хлеб","パン","bread","n","@Х"],
+  ["ходи́ть","（歩いて）通う・よく行く","to go (on foot, habitually)","v","verb-motion"],
+  ["хо́лодно","寒い","(it is) cold","d","impersonal"],
+  ["хоро́ший","良い","good","a","comparative"],
+  ["хоте́ть","欲しい・〜したい","to want","v","verb-irr"],
+  ["ху́же","より悪い","worse","d","comparative"],
+  ["царе́вич","王子","tsarevich (prince)","n","folktales"],
+  ["царь","王様","tsar","n","folktales"],
+  ["цветно́й","カラーの","colour (adj.), in colour","a","color-shape"],
+  ["цвето́к","花","flower","n","seasons"],
+  ["цирк","サーカス","circus","n","@Ц"],
+  ["чай","お茶","tea","n","@Ч"],
+  ["часы́","時計（複数のみ）","clock, watch (pl. only)","n","noun-count"],
+  ["чёлка","前髪","fringe, bangs","n","shape-types"],
+  ["че́реп","頭蓋骨","skull","n","case-acc"],
+  ["чёрный","黒い","black","a","color-shape"],
+  ["чёрт","悪魔","devil","n","case-acc"],
+  ["че́стный","正直な","honest","a","character"],
+  ["четве́рг","木曜日","Thursday","n","seasons"],
+  ["чита́ть","読む","to read","v","verb-e"],
+  ["ша́пка","帽子（女）","hat (warm, brimless)","n","clothes,shape-types"],
+  ["шарф","マフラー（男）","scarf","n","clothes"],
+  ["ши́шка","松ぼっくり","pine cone","n","@Ш"],
+  ["шко́ла","学校","school","n","case-prep"],
+  ["шлёпанцы","つっかけ・サンダル","slides, sandals","n","shape-types"],
+  ["шля́па","つばのある帽子","(brimmed) hat","n","shape-types"],
+  ["ще́дрый","気前のよい","generous","a","character"],
+  ["щёки","ほお","cheeks","n","appearance"],
+  ["щелку́нчик","くるみ割り人形","nutcracker","n","@Щ"],
+  ["э́хо","こだま","echo","n","@Э"],
+  ["ю́бка","スカート（女）","skirt","n","clothes"],
+  ["юла́","独楽（こま）","spinning top","n","@Ю"],
+  ["я́блоко","りんご","apple","n","@Я,comparative"],
+  ["янва́рь","1月","January","n","seasons"],
+  ["я́рко-","あざやかな","bright- (before a colour)","n","color-shape"],
+];
+
+// ------------------------------------------------------------
+// ことばの索引の画面
+// ------------------------------------------------------------
+let vocabPos = '';      // '' = すべて
+let vocabQuery = '';
+
+const VOCAB_POS_LABEL = { n:'名詞', v:'動詞', a:'形容詞', d:'副詞', e:'表現', x:'そのほか' };
+
+function vocabNorm(s) {
+  return String(s).replace(/́/g, '').toLowerCase()
+    .replace(/[ァ-ヴ]/g, function (ch) { return String.fromCharCode(ch.charCodeAt(0) - 0x60); });
+}
+
+function openVocab() {
+  vocabPos = ''; vocabQuery = '';
+  renderVocab();
+  showHomeView('vocab');
+  logScreen('vocab');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function vocabSetPos(p) { vocabPos = p; renderVocabList(); renderVocabChips(); }
+function vocabSearch(v) { vocabQuery = v; renderVocabList(); }
+
+// 語の出どころへ飛ぶ（@А は文字の図鑑へ）
+function vocabGo(u) {
+  if (u.charAt(0) === '@') {
+    const l = LETTERS.filter(function (x) { return x.u === u.slice(1); })[0];
+    switchTab('alphabet');
+    if (l) openCardDetail(l);
+    return;
+  }
+  openUnitFromHome(u);
+}
+
+function vocabUnitLabel(u) {
+  if (u.charAt(0) === '@') return '文字 ' + u.slice(1);
+  const un = unitById(u);
+  return un ? un.title.split(' — ')[0] : u;
+}
+
+function renderVocabChips() {
+  const box = document.getElementById('vocab-chips');
+  if (!box) return;
+  const cnt = {};
+  VOCAB.forEach(function (r) { cnt[r[3]] = (cnt[r[3]] || 0) + 1; });
+  let html = '<button class="vc-chip' + (vocabPos === '' ? ' on' : '') + '" onclick="vocabSetPos(\'\')">すべて ' + VOCAB.length + '</button>';
+  ['n','v','a','d','e','x'].forEach(function (p) {
+    html += '<button class="vc-chip' + (vocabPos === p ? ' on' : '') + '" onclick="vocabSetPos(\'' + p + '\')">'
+          + VOCAB_POS_LABEL[p] + ' ' + (cnt[p] || 0) + '</button>';
+  });
+  box.innerHTML = html;
+}
+
+function renderVocabList() {
+  const box = document.getElementById('vocab-list');
+  if (!box) return;
+  const q = vocabNorm(vocabQuery.trim());
+  let cur = '';
+  let html = '';
+  let shown = 0;
+  VOCAB.forEach(function (r) {
+    const w = r[0], jp = r[1], en = r[2], pos = r[3], us = r[4].split(',');
+    if (vocabPos && pos !== vocabPos) return;
+    if (q && vocabNorm(w + ' ' + jp + ' ' + en).indexOf(q) < 0) return;
+    shown++;
+    const letter = vocabNorm(w).charAt(0).toUpperCase().replace('Ё', 'Е');
+    if (letter !== cur && /[А-Я]/.test(letter)) {
+      cur = letter;
+      html += '<p class="vc-letter" lang="ru">' + letter + '</p>';
+    }
+    html += '<div class="vc-row">';
+    html += '<button class="vc-say" onclick="speak(\'' + w.replace(/'/g, "\\'") + '\')" aria-label="' + w + ' の発音を聞く">&#9834;</button>';
+    html += '<div class="vc-body"><b lang="ru">' + w + '</b>'
+          + '<span class="vc-jp">' + jp + '</span>'
+          + '<span class="vc-en" lang="en">' + en + '</span></div>';
+    html += '<button class="vc-go" onclick="vocabGo(\'' + us[0] + '\')" title="出てきたところへ">' + vocabUnitLabel(us[0]) + ' →</button>';
+    html += '</div>';
+  });
+  box.innerHTML = html || '<p class="vc-empty">見つかりませんでした。べつのことばで探してみてください。</p>';
+  const c = document.getElementById('vocab-count');
+  if (c) c.textContent = shown + ' 語';
+}
+
+function renderVocab() {
+  renderVocabChips();
+  renderVocabList();
+  const inp = document.getElementById('vocab-q');
+  if (inp) inp.value = vocabQuery;
+}
+
 // ------------------------------------------------------------
 // あしあと（日ごとのカレンダー）
 // ------------------------------------------------------------
@@ -14257,7 +14798,8 @@ function renderTocResults() {
   html += '<div class="toc-step plain"><b>いつでも</b><em>ためす・見直す</em></div>';
   html += tocRow('tocGoTab(\'challenge\')', '', 'チャレンジ', '出題範囲・順番・問題数をえらんで力だめし', false);
   html += tocRow('tocGoTab(\'home\')', '', '今日の復習', 'まちがえた問題が、日をあけて出てきます', false);
-  html += tocRow('openLog()', '', 'あしあと', '歩いた日のカレンダーと、連続の日数', false)
+  html += tocRow('openVocab()', '', 'ことばの索引', '出てきた語を、品詞と辞書順でひける。英語の訳つき', false)
+       + tocRow('openLog()', '', 'あしあと', '歩いた日のカレンダーと、連続の日数', false)
        + tocRow('openNotes()', '', 'メモした語', '解説のなかで ☆ を押した語が、ここに集まります', false)
        + tocRow('tocGoTab(\'home\')', '', 'ノートと印刷', '活用表・格変化表・まちがえた語・すきなことばをA4で印刷', false);
 
@@ -14293,7 +14835,7 @@ function tocGoUnit(id) {
 
 // 表紙・はじめに・目次・道のり の4画面を出し分ける
 function showHomeView(which) {
-  const ids = { cover:'cover-actions', intro:'home-intro', toc:'home-toc', road:'home-road', notes:'home-notes', log:'home-log' };
+  const ids = { cover:'cover-actions', intro:'home-intro', toc:'home-toc', road:'home-road', notes:'home-notes', log:'home-log', vocab:'home-vocab' };
   Object.keys(ids).forEach(function(k) {
     const el = document.getElementById(ids[k]);
     if (el) el.style.display = (k === which) ? 'block' : 'none';
