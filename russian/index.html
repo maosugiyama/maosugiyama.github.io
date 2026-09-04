@@ -2498,12 +2498,18 @@
   }
   .nb-label b { font-size: 13px; }
   .nb-spread { position: relative; }
-  .nb-spread.fold .nb-page + .nb-page { border-left: 2px dashed #B08D6E; }
+  /* 見本02：各ページのまんなかに折り線がある形 */
+  .nb-spread.fold2 .nb-page { padding-left: 30px; }
+  .nb-cols { display: grid; grid-template-columns: 1fr 1fr; column-gap: 0; position: relative; }
+  .nb-cols .nb-title { grid-row: 1; }
+  .nb-col { min-width: 0; padding-right: 6px; }
+  .nb-col-r { border-left: 1.5px dashed #B08D6E; padding-left: 7px; padding-right: 0; }
   .nb-fold-mark {
-    position: absolute; top: 2px; left: 50%; transform: translateX(-50%);
-    font-size: 8.5px; color: #8A6B52; background: rgba(253,252,247,0.9);
-    padding: 0 4px; border-radius: 5px;
+    position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+    font-size: 8px; color: #8A6B52; background: rgba(253,252,247,0.92);
+    padding: 0 3px; border-radius: 5px; white-space: nowrap; z-index: 1;
   }
+  .nb-cols .nb-fold-mark { top: -2px; }
   .nb-jp2 { font-size: 11px; color: #2B4C7E; margin: 0; line-height: 22px; }
   .nb-ai { font-size: 10.5px; color: #3D7A52; margin: 0 0 3px; line-height: 22px; }
   .nb-ai-inline { color: #3D7A52; font-weight: 700; }
@@ -3913,33 +3919,44 @@
         <p class="nb-label">つかいかたの見本 <b>02</b> — じぶん語彙帳</p>
         <p class="ng-cap">出会った語で「自分の言いたい文」を作り、AIに自然な言い方を尋ねて書き足していく語彙帳です。
         まんなかで<b>折って</b>、どちらかを隠せば、移動時間の復習ノートになります：</p>
-        <div class="nb-spread fold" aria-label="じぶん語彙帳の見開きの見本">
-          <div class="nb-page">
-            <p class="nb-title" lang="ru">по-ру́сски</p>
-            <p class="nb-word" lang="ru"><b>о́сень</b></p>
-            <p class="nb-ex" lang="ru">Я люблю́ о́сень.</p>
-            <p class="nb-ai" lang="ru">✎ Бо́льше всего́ я люблю́ о́сень.</p>
-            <p class="nb-word" lang="ru"><b>чай</b></p>
-            <p class="nb-ex" lang="ru">Я пью чай.</p>
-            <p class="nb-ai" lang="ru">✎ По утра́м я пью чай с молоко́м.</p>
+        <div class="nb-spread fold2" aria-label="じぶん語彙帳の見開きの見本">
+          <div class="nb-page nb-cols">
+            <span class="nb-fold-mark">↓ここで折る</span>
+            <div class="nb-col">
+              <p class="nb-title" lang="ru">сло́во</p>
+              <p class="nb-word" lang="ru"><b>о́сень</b></p>
+              <p class="nb-word" lang="ru"><b>пить чай</b></p>
+            </div>
+            <div class="nb-col nb-col-r">
+              <p class="nb-title">いみ</p>
+              <p class="nb-jp2">秋</p>
+              <p class="nb-jp2">お茶を飲む</p>
+            </div>
           </div>
-          <div class="nb-page">
-            <p class="nb-title">日本語</p>
-            <p class="nb-word">秋</p>
-            <p class="nb-jp2">秋が好きです</p>
-            <p class="nb-ai">✎ なによりも秋がいちばん好き</p>
-            <p class="nb-word">お茶</p>
-            <p class="nb-jp2">お茶を飲みます</p>
-            <p class="nb-ai">✎ 毎朝ミルク入りのお茶を飲みます</p>
+          <div class="nb-page nb-cols">
+            <span class="nb-fold-mark">↓ここで折る</span>
+            <div class="nb-col">
+              <p class="nb-title">こう言いたい</p>
+              <p class="nb-jp2">秋がいちばん好き</p>
+              <p class="nb-jp2">毎朝ミルク入りのお茶を飲む</p>
+            </div>
+            <div class="nb-col nb-col-r">
+              <p class="nb-title" lang="ru">по-ру́сски</p>
+              <p class="nb-ex" lang="ru">Я люблю́ о́сень.</p>
+              <p class="nb-ai" lang="ru">✎ Бо́льше всего́ я люблю́ о́сень.</p>
+              <p class="nb-ex" lang="ru">Я пью чай у́тром.</p>
+              <p class="nb-ai" lang="ru">✎ По утра́м я пью чай с молоко́м.</p>
+            </div>
           </div>
-          <span class="nb-fold-mark">←ここで折る</span>
         </div>
         <ul class="ng-list">
-          <li><b>じぶんの文 → AIで直す</b>　「この語で言いたいこと」をまず自分で書き、
-          生成AIに「もっと自然な言い方は？」と尋ねて、<span class="nb-ai-inline">✎ 緑のペン</span>で書き足します。
-          直された差分が、そのままあなた専用の教材になります</li>
-          <li><b>両方向のテスト</b>　左を隠せば 日本語→ロシア語、右を隠せば ロシア語→日本語。
-          折るだけで、どちらの向きも自分で確かめられます</li>
+          <li><b>左ページ＝語彙と意味</b>　まんなかの破線で折れば、
+          語彙だけを見て意味を思い出す・意味だけを見て語彙を思い出す、の両方ができます</li>
+          <li><b>右ページ＝じぶんの文</b>　「この語でこう言いたい」を日本語で書き、
+          自分でロシア語にしてみて、生成AIに「もっと自然な言い方は？」と尋ねた答えを
+          <span class="nb-ai-inline">✎ 緑のペン</span>で書き足します。直された差分が、そのまま自分専用の教材になります</li>
+          <li><b>こちらも折れる</b>　日本語だけを見てロシア語を言えるか、
+          ロシア語だけを見て意味がとれるか——移動時間の復習にちょうどよい形です</li>
           <li>この形の<b>印刷シート（じぶん語彙帳）</b>を下のボタンから刷れます。
           A5ならノートに貼れて、B6なら手帳にはさめます</li>
         </ul>
@@ -3989,7 +4006,7 @@
           <button class="ng-size-btn" data-size="a5" onclick="setSheetSize('a5')">A5</button>
           <button class="ng-size-btn" data-size="b6" onclick="setSheetSize('b6')">B6</button>
         </div>
-        <p class="ng-note">印刷ボタンから「PDFとして保存」も選べます。活用表・格変化表・<b>名詞メモ</b>・まちがえた語・すきなことば・<b>じぶん語彙帳</b>の6枚組です。
+        <p class="ng-note">印刷ボタンから「PDFとして保存」も選べます。活用表・格変化表・<b>名詞メモ</b>・まちがえた語・すきなことば・<b>じぶん語彙帳（左右2枚）</b>の7枚組です。
         A5はノートに貼りやすく、B6は手帳にはさめる大きさです（印刷の画面でも同じ用紙サイズを選んでください）。</p>
       </div>
     </div>
@@ -4324,28 +4341,32 @@
 <div class="print-sheet" id="print-sheet">
   <section class="ps-page">
     <h1>動詞の活用表<span>ねこと学ぶ キリル文字 — maosugiyama.github.io/russian</span></h1>
-    <p class="ps-lead">不定形と意味を書き、6つの形を埋めましょう。語尾だけ色を変えると、規則が見えてきます。</p>
+    <p class="ps-lead">不定形と意味を書き、活用・過去・命令形を埋めましょう。語尾だけ色を変えると、規則が見えてきます。</p>
     <div class="ps-grid2">
       <table class="ps-verb"><tr><th colspan="2" class="ps-title">不定形　　　　　　　　　　意味</th></tr>
         <tr><td class="ps-p">я</td><td></td></tr><tr><td class="ps-p">ты</td><td></td></tr>
         <tr><td class="ps-p">он / она́</td><td></td></tr><tr><td class="ps-p">мы</td><td></td></tr>
         <tr><td class="ps-p">вы</td><td></td></tr><tr><td class="ps-p">они́</td><td></td></tr>
-        <tr><td class="ps-p">過去</td><td></td></tr></table>
+        <tr><td class="ps-p">過去</td><td></td></tr>
+        <tr><td class="ps-p">命令形</td><td></td></tr></table>
       <table class="ps-verb"><tr><th colspan="2" class="ps-title">不定形　　　　　　　　　　意味</th></tr>
         <tr><td class="ps-p">я</td><td></td></tr><tr><td class="ps-p">ты</td><td></td></tr>
         <tr><td class="ps-p">он / она́</td><td></td></tr><tr><td class="ps-p">мы</td><td></td></tr>
         <tr><td class="ps-p">вы</td><td></td></tr><tr><td class="ps-p">они́</td><td></td></tr>
-        <tr><td class="ps-p">過去</td><td></td></tr></table>
+        <tr><td class="ps-p">過去</td><td></td></tr>
+        <tr><td class="ps-p">命令形</td><td></td></tr></table>
       <table class="ps-verb"><tr><th colspan="2" class="ps-title">不定形　　　　　　　　　　意味</th></tr>
         <tr><td class="ps-p">я</td><td></td></tr><tr><td class="ps-p">ты</td><td></td></tr>
         <tr><td class="ps-p">он / она́</td><td></td></tr><tr><td class="ps-p">мы</td><td></td></tr>
         <tr><td class="ps-p">вы</td><td></td></tr><tr><td class="ps-p">они́</td><td></td></tr>
-        <tr><td class="ps-p">過去</td><td></td></tr></table>
+        <tr><td class="ps-p">過去</td><td></td></tr>
+        <tr><td class="ps-p">命令形</td><td></td></tr></table>
       <table class="ps-verb"><tr><th colspan="2" class="ps-title">不定形　　　　　　　　　　意味</th></tr>
         <tr><td class="ps-p">я</td><td></td></tr><tr><td class="ps-p">ты</td><td></td></tr>
         <tr><td class="ps-p">он / она́</td><td></td></tr><tr><td class="ps-p">мы</td><td></td></tr>
         <tr><td class="ps-p">вы</td><td></td></tr><tr><td class="ps-p">они́</td><td></td></tr>
-        <tr><td class="ps-p">過去</td><td></td></tr></table>
+        <tr><td class="ps-p">過去</td><td></td></tr>
+        <tr><td class="ps-p">命令形</td><td></td></tr></table>
     </div>
   </section>
 
@@ -4422,30 +4443,46 @@
   </section>
 
   <section class="ps-page">
-    <h1>じぶん語彙帳<span>ねこと学ぶ キリル文字 — maosugiyama.github.io/russian</span></h1>
-    <p class="ps-lead"><b>①</b> 語彙と意味を書く　<b>②</b> その語で<b>自分の言いたい文</b>をロシア語で書いてみる
-    　<b>③</b> 生成AIに「もっと自然な言い方は？」と尋ねて、直した文を書き足す
-    　<b>④</b> まんなかの折り線で折れば、<b>ロシア語→日本語</b>も<b>日本語→ロシア語</b>も自分でテストできます。移動時間の復習にどうぞ。</p>
+    <h1>じぶん語彙帳（左ページ）<span>ねこと学ぶ キリル文字 — maosugiyama.github.io/russian</span></h1>
+    <p class="ps-lead"><b>左＝語彙（ロシア語）・右＝意味</b>。まんなかの破線が<b>折り曲げ線</b>です。
+    折れば「語彙→意味」「意味→語彙」のどちらの向きでも、自分でテストできます。</p>
     <table class="ps-vocab">
-      <tr>
-        <th style="width:16%">語彙（ロシア語）</th>
-        <th style="width:34%">じぶんの文 → AIで直した文</th>
-        <th class="ps-fold" style="width:14%">意味</th>
-        <th style="width:36%">日本語の文</th>
-      </tr>
-      <tr><td></td><td></td><td class="ps-fold"></td><td></td></tr>
-      <tr><td></td><td></td><td class="ps-fold"></td><td></td></tr>
-      <tr><td></td><td></td><td class="ps-fold"></td><td></td></tr>
-      <tr><td></td><td></td><td class="ps-fold"></td><td></td></tr>
-      <tr><td></td><td></td><td class="ps-fold"></td><td></td></tr>
-      <tr><td></td><td></td><td class="ps-fold"></td><td></td></tr>
-      <tr><td></td><td></td><td class="ps-fold"></td><td></td></tr>
-      <tr><td></td><td></td><td class="ps-fold"></td><td></td></tr>
-      <tr><td></td><td></td><td class="ps-fold"></td><td></td></tr>
-      <tr><td></td><td></td><td class="ps-fold"></td><td></td></tr>
-      <tr><td></td><td></td><td class="ps-fold"></td><td></td></tr>
+      <tr><th style="width:50%">語彙（単語・フレーズ）</th><th class="ps-fold" style="width:50%">意味</th></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
     </table>
-    <p class="ps-foot-note">まんなかの破線が<b>折り曲げ線</b>です。谷折りにすると、左（ロシア語）だけ・右（日本語）だけを見て思い出す練習ができます。</p>
+    <p class="ps-foot-note">1行に1語。フレーズ（пить чай のような形）で書くと、そのまま使えます。</p>
+  </section>
+
+  <section class="ps-page">
+    <h1>じぶん語彙帳（右ページ）<span>ねこと学ぶ キリル文字 — maosugiyama.github.io/russian</span></h1>
+    <p class="ps-lead"><b>左＝この語でこう言いたい（日本語）・右＝ロシア語</b>。
+    ロシア語の欄には、<b>①自分で書いた文</b>と、<b>②生成AIに「もっと自然な言い方は？」と尋ねた答え（緑のペンで）</b>を書きます。
+    まんなかの破線で折れば、日本語→ロシア語・ロシア語→日本語の両方向を確かめられます。</p>
+    <table class="ps-vocab">
+      <tr><th style="width:44%">こう言いたい（日本語）</th><th class="ps-fold" style="width:56%">ロシア語（自分の文 → ✎AIで直した文）</th></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+      <tr><td></td><td class="ps-fold"></td></tr>
+    </table>
+    <p class="ps-foot-note">左ページと同じ行の高さなので、ノートに貼ると見開きがそのまま再現できます。</p>
   </section>
 
   <section class="ps-page">
