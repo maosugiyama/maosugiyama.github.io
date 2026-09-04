@@ -2456,6 +2456,63 @@
   }
   .ng-note { font-size: 10.5px !important; color: #7E5C42 !important; margin-top: 7px !important; }
 
+  /* ---- ノートの見開きの見本 ---- */
+  .ng-cap { font-size: 11px !important; color: #7E5C42 !important; margin-top: 12px !important; }
+  .nb-spread {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    border: 1.5px solid #C9BBA6; border-radius: 10px; overflow: hidden;
+    box-shadow: 0 3px 10px rgba(140,90,70,0.12); margin: 8px 0 6px;
+  }
+  .nb-page {
+    /* 罫線ノートの紙。左ページと右ページはまんなかの綴じで分かれる */
+    background:
+      linear-gradient(90deg, transparent 26px, rgba(214,120,110,0.5) 26px, rgba(214,120,110,0.5) 27px, transparent 27px),
+      repeating-linear-gradient(#FDFCF7 0, #FDFCF7 21px, #D9E3EE 21px, #D9E3EE 22px);
+    padding: 10px 10px 12px 34px; min-height: 190px;
+  }
+  .nb-page + .nb-page { border-left: 2px solid #C9BBA6; }
+  .nb-page, .nb-page * { font-family: Georgia, 'Times New Roman', serif; }
+  .nb-title {
+    font-size: 12px; color: #2B4C7E; font-weight: 700; margin: 0 0 4px;
+    border-bottom: 2px solid rgba(224,174,60,0.55);
+    display: inline-block; padding-bottom: 1px;
+  }
+  .nb-table { border-collapse: collapse; }
+  .nb-table td {
+    font-size: 12.5px; color: #2B4C7E; padding: 1.5px 8px 1.5px 0; line-height: 22px;
+  }
+  .nb-end { color: #B23B32; font-weight: 700; }
+  .nb-memo { font-size: 9.5px; color: #7E5C42; margin: 4px 0 0; }
+  .nb-ex { font-size: 12.5px; color: #2B4C7E; margin: 0; line-height: 22px; }
+  .nb-jp { font-size: 9px; color: #8A6B52; text-align: right; margin: 0 0 2px; line-height: 22px; }
+  .nb-hr { border-bottom: 1.5px dashed #C9BBA6; margin: 4px 0 6px; }
+  .nb-word { font-size: 12px; color: #2B4C7E; margin: 0; line-height: 22px; }
+  .nb-word i { font-style: normal; font-size: 9.5px; color: #8A6B52; }
+  .nb-word b { color: #4D7D6E; }
+
+  /* ---- 筆記体とブロック体 ---- */
+  .cur-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin: 8px 0;
+  }
+  .cur-cell {
+    background: #FDFCF7; border: 1px solid #E6D9C8; border-radius: 10px;
+    padding: 7px 4px 6px; text-align: center;
+  }
+  .cur-print {
+    font-family: Georgia, serif; font-size: 19px; color: #3A2318;
+  }
+  .cur-cell .cur-hand { display: inline-block; vertical-align: middle; width: 40px; height: 33px; margin-left: 2px; }
+  .cur-hand path { fill: none; stroke: #2B4C7E; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .cur-cell i {
+    display: block; font-style: normal; font-size: 9px; color: #7A5040; margin-top: 2px;
+  }
+  .cur-word {
+    background: #FCF2D9; border-left: 3px solid #E0AE3C; border-radius: 10px;
+    padding: 9px 11px; margin: 8px 0; font-size: 11.5px; color: #3A2318;
+  }
+  .cur-word .cur-hand.big { display: block; width: 128px; height: 43px; margin: 4px auto; }
+  .cur-note { display: block; font-size: 10.5px; color: #7A5040; }
+
   /* ---- 印刷用シート ---- */
   .print-sheet { display: none; }
   @media print {
@@ -3767,6 +3824,35 @@
         <p>アプリは<b>音と反復</b>が得意です。いっぽうノートは<b>手を動かして整理する</b>のが得意。
         両方を組み合わせると、定着が早くなります。</p>
 
+        <p class="ng-cap">たとえば、こんな見開きです（クリックでなくて大丈夫、ながめる見本です）：</p>
+        <div class="nb-spread" aria-label="ノートの見開きの見本">
+          <div class="nb-page">
+            <p class="nb-title">глаго́л «чита́ть»</p>
+            <table class="nb-table" lang="ru">
+              <tr><td>я</td><td>чита́<span class="nb-end">ю</span></td></tr>
+              <tr><td>ты</td><td>чита́<span class="nb-end">ешь</span></td></tr>
+              <tr><td>он</td><td>чита́<span class="nb-end">ет</span></td></tr>
+              <tr><td>мы</td><td>чита́<span class="nb-end">ем</span></td></tr>
+              <tr><td>вы</td><td>чита́<span class="nb-end">ете</span></td></tr>
+              <tr><td>они́</td><td>чита́<span class="nb-end">ют</span></td></tr>
+            </table>
+            <p class="nb-memo">← 語幹はインク、<span class="nb-end">語尾だけ赤</span></p>
+          </div>
+          <div class="nb-page">
+            <p class="nb-title">приме́р</p>
+            <p class="nb-ex" lang="ru">Я чита́ю кни́гу.</p>
+            <p class="nb-jp">本を読みます</p>
+            <p class="nb-ex" lang="ru">Мы идём в цирк.</p>
+            <p class="nb-jp">サーカスへ行きます</p>
+            <div class="nb-hr"></div>
+            <p class="nb-title">мои́ слова́ ✍</p>
+            <p class="nb-word" lang="ru">пусты́ня <i>砂漠</i> <b>✓</b></p>
+            <p class="nb-word" lang="ru">о́бувь <i>履きもの</i></p>
+          </div>
+        </div>
+        <p class="ng-note">きれいに書けなくてかまいません。<b>語尾の色が目に入る</b>こと、
+        日本語訳が<b>右端で隠せる</b>こと——働きが同じなら、それは良いノートです。</p>
+
         <h4>見開きを3つに分ける</h4>
         <ul class="ng-list">
           <li><b>左ページ＝表</b>　活用表・格変化表を、そのまま書き写します。<b>色は2色まで</b>（語尾だけ色を変えると、規則が目に入ります）</li>
@@ -3774,6 +3860,25 @@
           <li><b>右下＝まちがえた語</b>　「今日の復習」に出た語だけを集めます。ここが自分専用の弱点集になります</li>
           <li><b>別ページ＝名詞メモ</b>　新しい名詞を「数えられる／数えられない／複数だけ」の3列に分けて書きためます。性も一緒に書いておくと、複数形や数詞で迷わなくなります</li>
         </ul>
+
+
+        <h4>手で書くと、形がかわる文字があります</h4>
+        <p>ロシアの人がノートに書くのは<b>筆記体</b>で、活字とはずいぶん形がちがいます。
+        自分は活字ふうに書くとしても、<b>読めるようにはなっておく</b>と、
+        いつか手書きのメモや黒板に出会ったときに困りません。</p>
+        <div class="cur-grid" lang="ru">
+          <div class="cur-cell"><span class="cur-print">т</span><svg viewBox="0 0 44 36" class="cur-hand"><path d="M4 28 C5 18 8 14 10 15 C12 16 12 22 11 28 C13 18 16 14 18 15 C20 16 20 22 19 28 C21 18 24 14 26 15 C28 16 28 22 27 28 C27.5 29.5 30 29 31 27"/></svg><i>m に見える</i></div>
+          <div class="cur-cell"><span class="cur-print">и</span><svg viewBox="0 0 44 36" class="cur-hand"><path d="M8 16 C9 15 10 15 10 17 L10 25 C10 28 12 29 14 27 C16 25 17 21 17 16 L17 25 C17 28 19 29 21 27"/></svg><i>u に見える</i></div>
+          <div class="cur-cell"><span class="cur-print">д</span><svg viewBox="0 0 44 36" class="cur-hand"><path d="M22 17 C18 14 12 15 11 20 C10 25 14 28 18 26 C21 24 22 20 22 16 L22 28 C22 33 20 35 17 34 C15 33 15 31 17 30"/></svg><i>g に見える</i></div>
+          <div class="cur-cell"><span class="cur-print">л</span><svg viewBox="0 0 44 36" class="cur-hand"><path d="M8 27 C9 24 10 20 12 16 C13 14 14 14 15 16 C17 20 18 24 19 27 C19.5 28.5 22 29 23 27"/></svg><i>入り口に小さな鉤</i></div>
+          <div class="cur-cell"><span class="cur-print">м</span><svg viewBox="0 0 44 36" class="cur-hand"><path d="M6 27 C7 23 8 19 10 16 C11 14 12 14 13 16 L15 22 C16 24 17 24 18 22 L20 16 C21 14 22 14 23 16 C25 19 26 23 27 27"/></svg><i>山がとがる</i></div>
+          <div class="cur-cell"><span class="cur-print">ш</span><svg viewBox="0 0 44 36" class="cur-hand"><path d="M6 16 L6 24 C6 27 8 28 10 26 C11 25 12 21 12 16 L12 24 C12 27 14 28 16 26 C17 25 18 21 18 16 L18 24 C18 27 20 28 22 26 C23 25 24 21 24 16 L24 25 C24 28 26 29 28 27"/></svg><i>w のような三本足</i></div>
+        </div>
+        <div class="cur-word">
+          <span>たとえば <b lang="ru">тут</b>（ここ）を筆記体で書くと——</span>
+          <svg viewBox="0 0 120 40" class="cur-hand big"><path d="M6 30 C7 20 10 16 12 17 C14 18 14 24 13 30 C15 20 18 16 20 17 C22 18 22 24 21 30 C23 20 26 16 28 17 C30 18 30 24 29 30 C30 31.5 32 31.5 33 30 M40 18 C41 17 42 17 42 19 L42 27 C42 30 44 31 46 29 C48 27 49 23 49 18 L49 27 C49 34 47 38 44 37 C42 36.5 42 34 44 33 M56 30 C57 20 60 16 62 17 C64 18 64 24 63 30 C65 20 68 16 70 17 C72 18 72 24 71 30 C73 20 76 16 78 17 C80 18 80 24 79 30 C80 31.5 82 31.5 83 30"/></svg>
+          <span class="cur-note">…<b>mym</b> のように見えます。т＝山3つ、у＝しっぽつき、が読みとりのコツです。</span>
+        </div>
 
         <h4>書き写す価値があるのは「表」です</h4>
         <p>解説文を丸写しする必要はありません。<b>青い枠の表（活用・格変化）</b>だけを写し、
