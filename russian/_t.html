@@ -16370,4 +16370,10 @@ renderCover();          // 1ページ目は表紙
   </div>
 </div>
 
+<script>window.addEventListener("load",function(){setTimeout(function(){try{enterRoad();switchTab("grammar");openGrammarUnit("character");
+var sc=document.querySelector(".trait-scale"); 
+var mx=0; ["250px","300px","420px"].forEach(function(w){ sc.style.width=w;
+  document.querySelectorAll(".trait-line").forEach(function(e){ mx=Math.max(mx,e.scrollWidth-e.clientWidth); }); });
+sc.style.width=""; window.scrollTo(0,0);
+document.title="はみ出し最大 "+mx+"px";}catch(e){document.title="ERR "+e.message;}},400);});</script>
 </body></html>
