@@ -3086,6 +3086,18 @@
   .len-t .len-ex { font-size: 10.5px; color: #7E5C42; }
 
 
+  /* ---- 学びかたの道具ばこ ---- */
+  .toolbox { margin-top: 8px; }
+  .tb-row {
+    display: block; width: 100%; text-align: left;
+    background: #FBF6EE; border: none; border-radius: 12px;
+    padding: 10px 13px; margin-bottom: 7px;
+    font-family: inherit; cursor: pointer; line-height: 1.7;
+  }
+  .tb-row:active { transform: scale(0.995); }
+  .tb-row b { display: block; font-size: 12.5px; color: #9F544A; }
+  .tb-row span { display: block; font-size: 11px; color: #7A5040; }
+
   /* ---- ロシア語の字間 ---- */
   /* 字間（letter-spacing）は、アクセント記号と土台の文字のあいだにも
      入ってしまい、記号が浮いて見える。ロシア語では開けない */
@@ -3593,6 +3605,25 @@
         </div>
 
         <p class="intro-note">操作の手順は、次のページの「はじめての方へ」でくわしく説明しています。</p>
+      </div>
+
+      <div class="intro-card">
+        <h3>学びかたの道具ばこ</h3>
+        <p style="font-size:12px;line-height:1.95;color:#3A2318;">はじめる前に、
+        この教材に<b>そなえつけの道具</b>があることだけ知っておいてください。
+        ぜんぶ目次からも開けます。</p>
+        <div class="toolbox">
+          <button class="tb-row" onclick="tocGoNote()">
+            <b>ノートの作り方</b><span>見開きの見本・筆記体の読み方・印刷シート7枚組。紙と組むと定着が早くなります</span></button>
+          <button class="tb-row" onclick="openNotes()">
+            <b>☆ ことばをメモする</b><span>解説のなかの語には ☆ がついています。押すと自分の一覧に集まります</span></button>
+          <button class="tb-row" onclick="backToCover()">
+            <b>今日の復習</b><span>まちがえた問題は消えません。日をあけて、表紙にもどってきます</span></button>
+          <button class="tb-row" onclick="openLog()">
+            <b>あしあと</b><span>歩いた日に肉球がつくカレンダー。もどってきた日も、おなじ一歩です</span></button>
+          <button class="tb-row" onclick="openVocab()">
+            <b>ことばの索引</b><span>出てきた語396語を、品詞と辞書順で。英語の訳つき</span></button>
+        </div>
       </div>
 
       <div class="intro-card">
@@ -15029,6 +15060,18 @@ function renderIntroFooter() {
   if (v) v.textContent = '　版 ' + APP_VERSION;
 }
 
+// 目次から「ノートの作り方」へ。折りたたみを開いた状態で連れていく。
+// これまで、開いた人しか中身に出会えなかった。
+function tocGoNote() {
+  switchTab('home');
+  enterRoad();
+  const g = document.querySelector('.note-guide');
+  if (g) {
+    g.classList.add('open');
+    setTimeout(function () { g.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 120);
+  }
+}
+
 function renderIntroToc() {
   const box = document.getElementById('intro-toc');
   if (!box) return;
@@ -15084,6 +15127,20 @@ function renderTocResults() {
 
   const stages = stageInfo();
 
+  // ---- まえがき ----
+  // 本でいちばん先に読むものが、目次のいちばん先に来る。
+  // 学びかたの道具（ノート・☆・復習・あしあと）は、始めてから
+  // 出会うのでは遅い情報なので、本編より前に置く。
+  html += '<div class="toc-step plain"><b>まえがき</b><em>はじめる前に</em></div>';
+  html += tocRow('openIntro()', '', 'はじめに読む', 'この教材の使い方・5つのこつ・つくった人から', false);
+
+  html += '<div class="toc-step plain"><b>学びかたの道具</b><em>いつでも戻ってこられます</em></div>';
+  html += tocRow('tocGoNote()', '', 'ノートの作り方と印刷シート', '見開きの見本・筆記体・じぶん語彙帳など7枚組', false);
+  html += tocRow('openNotes()', '', '☆ ことばをメモする', '解説のなかの ☆ を押すと、ここに集まります', false);
+  html += tocRow('tocGoTab(\'home\')', '', '今日の復習', 'まちがえた問題が、日をあけて出てきます', false);
+  html += tocRow('openLog()', '', 'あしあと', '歩いた日のカレンダーと、連続の日数', false);
+  html += tocRow('openVocab()', '', 'ことばの索引', '出てきた語を、品詞と辞書順でひける。英語の訳つき', false);
+
   // ---- 1段目：文字と音 ----
   const s1 = stages[0];
   html += tocStage(s1, s1.done + ' / ' + s1.total + ' 匹');
@@ -15109,14 +15166,9 @@ function renderTocResults() {
     });
   }
 
-  // ---- いつでも使えるもの ----
-  html += '<div class="toc-step plain"><b>いつでも</b><em>ためす・見直す</em></div>';
+  // ---- 力だめし ----
+  html += '<div class="toc-step plain"><b>力だめし</b><em>いつでも</em></div>';
   html += tocRow('tocGoTab(\'challenge\')', '', 'チャレンジ', '出題範囲・順番・問題数をえらんで力だめし', false);
-  html += tocRow('tocGoTab(\'home\')', '', '今日の復習', 'まちがえた問題が、日をあけて出てきます', false);
-  html += tocRow('openVocab()', '', 'ことばの索引', '出てきた語を、品詞と辞書順でひける。英語の訳つき', false)
-       + tocRow('openLog()', '', 'あしあと', '歩いた日のカレンダーと、連続の日数', false)
-       + tocRow('openNotes()', '', 'メモした語', '解説のなかで ☆ を押した語が、ここに集まります', false)
-       + tocRow('tocGoTab(\'home\')', '', 'ノートと印刷', '活用表・格変化表・まちがえた語・すきなことばをA4で印刷', false);
 
   box.innerHTML = html;
 }
