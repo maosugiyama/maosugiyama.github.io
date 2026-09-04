@@ -11935,6 +11935,32 @@ function noteVisit(stageNo, unitId) {
 
 function saveGrammarProgress() {
   try {
+    // まもり：開きっぱなしの古いタブ（前の版のまま動いているもの）が
+    // 保存すると、その版が知らない記録（日ごとのあゆみ・節目）を
+    // 落としてしまう。書く前に保存済みのものと読み合わせて、
+    // 過去の日の記録が消えないようにする。
+    try {
+      const raw0 = localStorage.getItem(GRAMMAR_STORAGE_KEY);
+      if (raw0) {
+        const prev = JSON.parse(raw0);
+        if (prev && prev.days) {
+          Object.keys(prev.days).forEach(function (k) {
+            const mine = dailyLog[k], theirs = prev.days[k];
+            if (!mine) dailyLog[k] = theirs;
+            else { mine.q = Math.max(mine.q, theirs.q || 0); mine.ok = Math.max(mine.ok, theirs.ok || 0); }
+          });
+        }
+        if (prev && prev.ms) {
+          Object.keys(prev.ms).forEach(function (k) { if (!milestones[k]) milestones[k] = prev.ms[k]; });
+        }
+        if (Array.isArray(prev && prev.notes) && prev.notes.length > noteWords.length) {
+          // メモも同じ理屈で、多いほうを信じる
+          const have = {};
+          noteWords.forEach(function (n) { have[n.w + '|' + n.u] = 1; });
+          prev.notes.forEach(function (n) { if (!have[n.w + '|' + n.u]) noteWords.push(n); });
+        }
+      }
+    } catch (e) {}
     localStorage.setItem(GRAMMAR_STORAGE_KEY, JSON.stringify({
       grammar: grammarProgress,
       lastStage: lastStage,
