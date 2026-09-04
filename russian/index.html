@@ -3183,6 +3183,19 @@
   .sv-divider span { font-size: 11.5px; color: #7A5040; line-height: 1.9; }
   .sv-divider span b { display: inline; font-size: inherit; }
 
+  /* ---- 表紙の入口の色分け ---- */
+  /* それぞれの入口に、淡い透明色をひとつずつ。地図の地域の色と
+     ゆるく対応させてある（文字＝紅、文法＝川の藍、地図＝土の茶）。
+     「文字からはじめる」だけが濃い一色だった状態をやめ、
+     色でも見分けがつくようにする */
+  .c-intro { background: rgba(224,174,60,0.15) !important; border-color: rgba(224,174,60,0.55) !important; color: #9D5700 !important; }
+  .c-toc   { background: rgba(123,174,158,0.17) !important; border-color: rgba(123,174,158,0.6) !important; color: #2F6650 !important; }
+  .c-let   { background: rgba(186,87,75,0.19) !important; border: 1.5px solid rgba(186,87,75,0.6) !important; color: #9F544A !important; }
+  .c-let .cs-text small { color: #7A5040; opacity: 1; }
+  .c-gram  { background: rgba(61,118,168,0.13) !important; border-color: rgba(61,118,168,0.5) !important; color: #2F5E88 !important; }
+  .c-gram .cs-text small { color: #46617A; }
+  .c-map   { background: rgba(138,107,82,0.13) !important; border-color: rgba(138,107,82,0.5) !important; color: #6B4638 !important; }
+
   /* ---- 表紙の「今日はこれ」 ---- */
   .cover-today { margin: 2px 0 4px; }
   .today-hello { font-size: 12.5px; color: #7A5040; text-align: center; margin: 0 0 8px; }
@@ -3488,14 +3501,14 @@
       <div class="cover-today" id="cover-today"></div>
       <button class="cover-review cover-notes" id="cover-notes" onclick="openNotes()" style="display:none;"></button>
 
-      <button class="cover-intro" onclick="openIntro()">
+      <button class="cover-intro c-intro" onclick="openIntro()">
         <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"></path></svg>
         <span class="ci-text">
           <b>はじめに読む</b>
           <small>この教材の使い方と、つくった人から</small>
         </span>
       </button>
-      <button class="cover-intro" onclick="openToc()">
+      <button class="cover-intro c-toc" onclick="openToc()">
         <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path><path d="M3.5 6h.01M3.5 12h.01M3.5 18h.01" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"></path></svg>
         <span class="ci-text">
           <b>目次</b>
@@ -3503,17 +3516,17 @@
         </span>
       </button>
 
-      <button class="cover-start" onclick="startLetters()">
+      <button class="cover-start c-let" onclick="startLetters()">
         <span class="cs-paw"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><ellipse cx="6.6" cy="9.2" rx="2" ry="2.6" transform="rotate(-18 6.6 9.2)"></ellipse><ellipse cx="11.9" cy="6.9" rx="2.05" ry="2.85"></ellipse><ellipse cx="17.2" cy="9.2" rx="2" ry="2.6" transform="rotate(18 17.2 9.2)"></ellipse><path d="M12 11.3c3.1 0 5.4 2.3 5.4 5 0 2.2-1.8 3.7-4.2 3.7h-2.4c-2.4 0-4.2-1.5-4.2-3.7 0-2.7 2.3-5 5.4-5z"></path></svg></span>
         <span class="cs-text"><b>文字からはじめる</b><small>はじめての方はこちら。まず1匹に会いましょう</small></span>
       </button>
 
-      <button class="cover-start alt" onclick="startGrammar()">
+      <button class="cover-start alt c-gram" onclick="startGrammar()">
         <span class="cs-paw"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></span>
         <span class="cs-text"><b>文法からはじめる</b><small>キリル文字が読める方はこちら</small></span>
       </button>
 
-      <button class="cover-intro" onclick="enterRoad()">
+      <button class="cover-intro c-map" onclick="enterRoad()">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"></path><path d="M9 4v14M15 6v14"></path></svg>
         <span class="ci-text">
           <b>全体の地図を見る</b>
@@ -9237,7 +9250,7 @@ const GRAMMAR_UNITS = [
     箱から出てきては、すぐころんと転んでしまったから——という設定です。</p>
     <p>ゲーナが弾いているのは <b>гармо́шка</b>（гармо́нь の愛称形）。
     誕生日の歌「Пусть бегу́т неуклю́же…」は、いまも子どもたちが歌います。</p>
-    <figure class="photo"><img src="ph-cheburashka.jpg" alt="アコーディオンを弾くワニのゲーナと、その前に立つチェブラーシカの銅像" loading="lazy"><figcaption><b>Чебура́шка и крокоди́л Ге́на</b><span>チェブラーシカとワニのゲーナ</span><span class="ph-note">モスクワの公園に立つ銅像。ゲーナの手にあるのが гармо́шка です。</span><em>撮影：杉山真央</em></figcaption></figure>
+    <figure class="photo"><img src="ph-cheburashka.jpg" alt="アコーディオンを弾くワニのゲーナと、その前に立つチェブラーシカの銅像" loading="lazy"><figcaption><b>Чебура́шка и крокоди́л Ге́на</b><span>チェブラーシカとワニのゲーナ</span><span class="ph-note">ハバロフスクの公園に立つ銅像。ゲーナの手にあるのが гармо́шка です。</span><em>撮影：杉山真央</em></figcaption></figure>
   </div>
 
   <div class="case-row">
