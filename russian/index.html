@@ -3615,15 +3615,15 @@
         この教材に<b>そなえつけの道具</b>があることだけ知っておいてください。
         ぜんぶ目次からも開けます。</p>
         <div class="toolbox">
-          <button class="tb-row" onclick="tocGoNote()">
+          <button class="tb-row" onclick="tbGo('note')">
             <b>ノートの作り方</b><span>見開きの見本・筆記体の読み方・印刷シート7枚組。紙と組むと定着が早くなります</span></button>
-          <button class="tb-row" onclick="openNotes()">
+          <button class="tb-row" onclick="tbGo('notes')">
             <b>☆ ことばをメモする</b><span>解説のなかの語には ☆ がついています。押すと自分の一覧に集まります</span></button>
           <button class="tb-row" onclick="backToCover()">
             <b>今日の復習</b><span>まちがえた問題は消えません。日をあけて、表紙にもどってきます</span></button>
-          <button class="tb-row" onclick="openLog()">
+          <button class="tb-row" onclick="tbGo('log')">
             <b>あしあと</b><span>歩いた日に肉球がつくカレンダー。もどってきた日も、おなじ一歩です</span></button>
-          <button class="tb-row" onclick="openVocab()">
+          <button class="tb-row" onclick="tbGo('vocab')">
             <b>ことばの索引</b><span>出てきた語396語を、品詞と辞書順で。英語の訳つき</span></button>
         </div>
       </div>
@@ -3740,6 +3740,7 @@
     </div>
 
     <div id="home-road" style="display:none;">
+      <p class="intro-back" id="road-back" style="display:none;"><button onclick="returnToIntro()">← 「はじめに」にもどる</button></p>
     <p class="roadmap-title">ねこと歩く、ロシア語の道のり</p>
     <div class="stairs-wrap" id="stairs"></div>
     <div class="research-band" id="research-band"></div>
@@ -15062,6 +15063,41 @@ function renderIntroFooter() {
   if (v) v.textContent = '　版 ' + APP_VERSION;
 }
 
+// ------------------------------------------------------------
+// 道具ばこから跳んだときの「もどる」
+// ------------------------------------------------------------
+// 「はじめに」を読みかけの人が道具を見にいくと、行き先の
+// もどるボタンは「表紙にもどる」しかなく、読みかけの場所へ
+// 帰れなかった。来た場所を覚えて、もどるボタンを差しかえる。
+let homeOrigin = null;   // 'intro' ＝ 道具ばこから来た
+
+function returnToIntro() {
+  homeOrigin = null;
+  setBackRows();
+  openIntro();
+}
+
+function setBackRows() {
+  const fromIntro = homeOrigin === 'intro';
+  ['home-notes', 'home-log', 'home-vocab'].forEach(function (id) {
+    const btn = document.querySelector('#' + id + ' .intro-back button');
+    if (!btn) return;
+    btn.textContent = fromIntro ? '← 「はじめに」にもどる' : '← 表紙にもどる';
+    btn.onclick = fromIntro ? returnToIntro : backToCover;
+  });
+  const rb = document.getElementById('road-back');
+  if (rb) rb.style.display = fromIntro ? 'block' : 'none';
+}
+
+function tbGo(kind) {
+  homeOrigin = 'intro';
+  if (kind === 'note') tocGoNote();
+  else if (kind === 'notes') openNotes();
+  else if (kind === 'log') openLog();
+  else if (kind === 'vocab') openVocab();
+  setBackRows();
+}
+
 // 目次から「ノートの作り方」へ。折りたたみを開いた状態で連れていく。
 // これまで、開いた人しか中身に出会えなかった。
 function tocGoNote() {
@@ -15253,6 +15289,8 @@ function enterRoad() {
 }
 
 function backToCover() {
+  homeOrigin = null;
+  setBackRows();
   showHomeView('cover');
   renderCover();
   window.scrollTo({ top: 0, behavior: 'smooth' });
