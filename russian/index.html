@@ -3086,6 +3086,11 @@
   .len-t .len-ex { font-size: 10.5px; color: #7E5C42; }
 
 
+  /* ---- 「はじめに」のなかの枠は、まわりの文字と同じ大きさに ---- */
+  .intro-mild p { font-size: 11.5px; line-height: 1.95; color: #3A2318; margin: 5px 0; }
+  .intro-mild strong { font-size: 12.5px; }
+  .intro-mild .im-note { font-size: 11px; color: #7E5C42; margin-top: 8px; }
+
   /* ---- 学びかたの道具ばこ ---- */
   .toolbox { margin-top: 8px; }
   .tb-row {
@@ -3630,21 +3635,20 @@
 
       <div class="intro-card">
         <h3>この教材でできること、できないこと</h3>
-        <p style="font-size:12px;line-height:1.95;color:#3A2318;">ここにあるのは、
-        <b>道すじ</b>と、<b>つまずきやすいところの説明</b>です。
+        <p style="font-size:11.5px;line-height:1.95;color:#3A2318;">ここにあるのは、
+        道すじと、つまずきやすいところの説明です。
         ロシア語の文法をすべて網羅したものではありません。</p>
-        <div class="rule-row">
+        <div class="rule-row intro-mild">
           <strong>お使いの教科書・参考書と、いっしょに</strong>
-          <p>とくに<b>細かい例外</b>、<b>語彙の広がり</b>、<b>まとまった文章の読解</b>は、
+          <p>とくに細かい例外、語彙の広がり、まとまった文章の読解は、
           手もとの教科書や辞書のほうがくわしく書かれています。
           授業で使っている教科書があるなら、<b>そちらが主、この教材は副</b>と考えてください。</p>
           <p style="margin-top:8px;">おすすめの組み合わせは、こうです。</p>
-          <p>• ここで<b>「なぜそうなるのか」</b>をつかみ、教科書で<b>裏を取る</b></p>
-          <p>• 教科書で分からなかったところを、ここの<b>説明と練習</b>で補う</p>
-          <p>• 覚えたかどうかは、ここの<b>練習問題</b>で確かめる</p>
-          <p style="font-size:11px;color:#7E5C42;margin-top:8px;">
-          説明のしかたが教科書とちがうことがあります。
-          そのときは<b>どちらが正しいかではなく、どちらが自分に入ってくるか</b>で選んでください。
+          <p>• ここで「なぜそうなるのか」をつかみ、教科書で裏を取る</p>
+          <p>• 教科書で分からなかったところを、ここの説明と練習で補う</p>
+          <p>• 覚えたかどうかは、ここの練習問題で確かめる</p>
+          <p class="im-note">説明のしかたが教科書とちがうことがあります。
+          そのときは、どちらが正しいかではなく<b>どちらが自分に入ってくるか</b>で選んでください。
           同じことを二通りの言い方で聞けるのは、むしろ得なことです。</p>
         </div>
       </div>
@@ -5982,6 +5986,11 @@ function closeModal() {
   if (typeof todoReturn !== 'undefined' && todoReturn) {
     todoReturn = false;
     setTimeout(openTodoList, 150);
+  }
+  // ことばの索引から開いた文字カードを閉じたときは、索引に戻す
+  if (typeof vocabCardReturn !== 'undefined' && vocabCardReturn) {
+    vocabCardReturn = false;
+    setTimeout(function () { switchTab('home'); reopenVocab(); }, 150);
   }
 }
 
@@ -12558,14 +12567,28 @@ let currentUnitId = null;
 // 戻り先を、来た道と同じにするために覚えておく。
 let unitOrigin = 'hub';
 function unitBackLabel(long) {
-  return unitOrigin === 'toc'
-    ? (long ? '← 目次に戻る' : '← 目次')
-    : (long ? '← 文法メニューに戻る' : '← 文法メニュー');
+  if (unitOrigin === 'toc')   return long ? '← 目次に戻る' : '← 目次';
+  if (unitOrigin === 'vocab') return long ? '← ことばの索引に戻る' : '← 索引';
+  return long ? '← 文法メニューに戻る' : '← 文法メニュー';
 }
-function unitBackFn() { return unitOrigin === 'toc' ? 'backToUnitOrigin()' : 'backToGrammarHub()'; }
+function unitBackFn() {
+  return (unitOrigin === 'toc' || unitOrigin === 'vocab') ? 'backToUnitOrigin()' : 'backToGrammarHub()';
+}
 
-// 目次から来たときは、目次へ戻す
+// 目次・ことばの索引から来たときは、来たところへ戻す
 function backToUnitOrigin() {
+  if (unitOrigin === 'vocab') {
+    currentUnitId = null;
+    drillState = null;
+    unitOrigin = 'hub';
+    const view = document.getElementById('grammar-unit');
+    if (view) view.style.display = 'none';
+    const hub = document.getElementById('grammar-hub');
+    if (hub) hub.style.display = 'block';
+    switchTab('home');
+    reopenVocab();
+    return;
+  }
   if (unitOrigin !== 'toc') { backToGrammarHub(); return; }
   currentUnitId = null;
   drillState = null;
@@ -12581,7 +12604,7 @@ function backToUnitOrigin() {
 function openGrammarUnit(id, origin) {
   const u = unitById(id);
   if (!u) return;
-  unitOrigin = origin === 'toc' ? 'toc' : 'hub';
+  unitOrigin = (origin === 'toc' || origin === 'vocab') ? origin : 'hub';
   currentUnitId = id;
   noteVisit(stageOfLevel(u.level), id);
   const p = unitProg(id);
@@ -14927,15 +14950,26 @@ function openVocab() {
 function vocabSetPos(p) { vocabPos = p; renderVocabList(); renderVocabChips(); }
 function vocabSearch(v) { vocabQuery = v; renderVocabList(); }
 
-// 語の出どころへ飛ぶ（@А は文字の図鑑へ）
+// 語の出どころへ飛ぶ（@А は文字の図鑑へ）。
+// もどるボタンが「← 索引」になるよう、来た場所を渡す。
+let vocabCardReturn = false;   // 文字カードを索引から開いたしるし
+
 function vocabGo(u) {
   if (u.charAt(0) === '@') {
     const l = LETTERS.filter(function (x) { return x.u === u.slice(1); })[0];
     switchTab('alphabet');
-    if (l) openCardDetail(l);
+    if (l) { vocabCardReturn = true; openCardDetail(l); }
     return;
   }
-  openUnitFromHome(u);
+  switchTab('grammar');
+  openGrammarUnit(u, 'vocab');
+}
+
+// 検索や絞りこみを保ったまま、索引へ戻る
+function reopenVocab() {
+  renderVocab();
+  showHomeView('vocab');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function vocabUnitLabel(u) {
