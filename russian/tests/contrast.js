@@ -108,7 +108,7 @@ try {
     '--headless=new', '--disable-gpu', '--no-sandbox',
     '--user-data-dir=' + tmp, '--window-size=500,1200',
     '--virtual-time-budget=' + (ALL ? 40000 : 9000), '--dump-dom', 'file://' + page,
-  ], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: 64 * 1024 * 1024 });
+  ], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: 64 * 1024 * 1024, timeout: 60000, killSignal: 'SIGKILL' });
 } catch (e) {
   out = (e.stdout || '').toString();
 } finally {
