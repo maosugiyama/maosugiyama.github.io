@@ -608,13 +608,13 @@
   }
   .info-card h4 {
     margin: 14px 0 8px;
-    font-size: 13px;
+    font-size: 14px;
     color: #7A5040;
     font-weight: 700;
   }
   .info-card p {
     margin: 6px 0;
-    font-size: 12.5px;
+    font-size: 14px;
     color: #3A2318;
     line-height: 1.7;
   }
@@ -629,7 +629,7 @@
   .info-card .rule-row { background: #FCF2D9; border-left-color: #E0AE3C; }
   .info-card .case-row strong, .info-card .verb-row strong, .info-card .rule-row strong {
     color: #9F544A;
-    font-size: 14px;
+    font-size: 15px;
     display: block;
     margin-bottom: 4px;
   }
@@ -650,7 +650,7 @@
     grid-template-columns: fit-content(42%) 1fr;
     gap: 9px 12px;
     margin: 8px 0;
-    font-size: 11.5px;
+    font-size: 12.5px;
     line-height: 1.85;
   }
   .conj-table .pron {
@@ -1287,12 +1287,12 @@
 
   .drill-fb {
     margin-top: 13px; border-radius: 13px; padding: 12px 13px;
-    font-size: 12px; line-height: 1.75;
+    font-size: 13px; line-height: 1.75;
   }
   .drill-fb.ok { background: #E4F2EC; color: #2E6B58; }
   .drill-fb.ng { background: #FDF0EE; color: #8A4A42; }
-  .drill-fb strong { display: flex; align-items: center; gap: 5px; font-size: 13px; margin-bottom: 4px; }
-  .drill-fb p { font-size: 12px; line-height: 1.75; margin: 4px 0 0; color: inherit; }
+  .drill-fb strong { display: flex; align-items: center; gap: 5px; font-size: 14px; margin-bottom: 4px; }
+  .drill-fb p { font-size: 13px; line-height: 1.75; margin: 4px 0 0; color: inherit; }
   .drill-ans { font-size: 13px !important; }
 
   .drill-result-score { text-align: center; font-size: 15px; color: #7A5040; margin-bottom: 4px; }
@@ -1312,9 +1312,9 @@
   .drill-review-item {
     background: #fff; border-radius: 11px; padding: 10px 11px; margin-bottom: 8px;
   }
-  .drill-review-item .rq { font-size: 12px; font-weight: 700; color: #3A2318; line-height: 1.6; }
-  .drill-review-item .ra { font-size: 12px; color: #2E6B58; margin-top: 3px; }
-  .drill-review-item .rx { font-size: 11px; color: #7E5C42; line-height: 1.7; margin-top: 3px; }
+  .drill-review-item .rq { font-size: 13px; font-weight: 700; color: #3A2318; line-height: 1.6; }
+  .drill-review-item .ra { font-size: 13px; color: #2E6B58; margin-top: 3px; }
+  .drill-review-item .rx { font-size: 12px; color: #7E5C42; line-height: 1.7; margin-top: 3px; }
 
   /* チャレンジ設定 */
   .chip-row { display: flex; flex-wrap: wrap; gap: 7px; margin: 8px 0 4px; }
@@ -2663,7 +2663,7 @@
     background: rgba(255,255,255,0.65);
     border-radius: 10px; padding: 9px 11px;
     margin: 2px 0 8px !important;
-    font-size: 12px !important; line-height: 1.8 !important;
+    font-size: 13px !important; line-height: 1.8 !important;
   }
   .drill-why b { display: block; margin-bottom: 2px; }
   .drill-others {
@@ -2706,10 +2706,10 @@
     padding: 13px 15px; margin: 14px 0 6px;
   }
   .column-box .cb-head {
-    font-size: 11.5px; font-weight: 800; color: #8A6A2E;
+    font-size: 12px; font-weight: 800; color: #8A6A2E;
     letter-spacing: 0.06em; margin-bottom: 7px;
   }
-  .column-box p { font-size: 12px; color: #4A3524; line-height: 2; margin: 7px 0 0; }
+  .column-box p { font-size: 13px; color: #4A3524; line-height: 2; margin: 7px 0 0; }
 
   /* ============================================================
      はじめに（この教材について）
@@ -2912,14 +2912,14 @@
   .pair-list p:last-child { border-bottom: none; }
   /* 見出しの b だけ。span の中の強調には当てない */
   .pair-list p > b {
-    display: block; font-size: 12px; font-weight: 800;
+    display: block; font-size: 13.5px; font-weight: 800;
     color: #9F544A; margin-bottom: 3px;
   }
   .pair-list span b { color: #9F544A; font-weight: 800; }
   .pair-list span {
-    display: block; font-size: 12px; color: #3A2318; line-height: 2;
+    display: block; font-size: 13px; color: #3A2318; line-height: 2;
   }
-  .pair-list .jp { font-size: 11px; color: #7A5040; line-height: 1.8; margin-bottom: 1px; }
+  .pair-list .jp { font-size: 12px; color: #7A5040; line-height: 1.8; margin-bottom: 1px; }
   .toc-ck { flex-shrink: 0; color: #4E8B6E; }
 
 
@@ -3106,7 +3106,11 @@
   /* ---- ロシア語の字間 ---- */
   /* 字間（letter-spacing）は、アクセント記号と土台の文字のあいだにも
      入ってしまい、記号が浮いて見える。ロシア語では開けない */
-  [lang="ru"] { letter-spacing: normal; }
+  /* キリル文字は Times New Roman の字面（エックスハイト）が小さく、
+     同じpxでも日本語より一段小さく見える。少し拡大して視覚サイズを
+     そろえる。入れ子になったときの二重拡大は下の行で打ち消す */
+  [lang="ru"] { letter-spacing: normal; font-size: 1.09em; }
+  [lang="ru"] [lang="ru"] { font-size: 1em; }
 
   /* ---- キーボードで操作したときの位置表示 ---- */
   /* マウスでは出さず、キーボードで進めたときだけ出す。
@@ -6073,7 +6077,7 @@ const GRAMMAR_UNITS = [
     <strong>中性（сре́дний）— -о / -е で終わる</strong>
     <p>• <span class="ex-inline">зе́ркало（鏡・З）</span> <span class="ex-inline">я́блоко（りんご・Я）</span> <span class="ex-inline">молоко́（牛乳）</span></p>
     <p>• <span class="ex-inline">мо́ре（海）</span> <span class="ex-inline">со́лнце（太陽）</span></p>
-    <p style="font-size:11px;color:#7E5C42;">※ моро́женое（アイス・М）は形容詞から生まれた中性名詞です。</p>
+    <p style="font-size:12px;color:#7E5C42;">※ моро́женое（アイス・М）は形容詞から生まれた中性名詞です。</p>
   </div>
 
   <div class="rule-row">
@@ -6081,7 +6085,7 @@ const GRAMMAR_UNITS = [
     <p><b>男性のことも女性のこともあります。</b>これは覚えるしかありません。</p>
     <p>• 男性：<span class="ex-inline">тюле́нь（アザラシ・Ь）</span> <span class="ex-inline">слова́рь（辞書）</span> <span class="ex-inline">день（日）</span></p>
     <p>• 女性：<span class="ex-inline">жизнь（命）</span> <span class="ex-inline">мать（母）</span> <span class="ex-inline">ночь（夜）</span></p>
-    <p style="font-size:11px;color:#7E5C42;">コツ：-жь / -шь / -чь / -щь のように「ж, ш, ч, щ ＋ ь」で終わる語は女性が多いです。</p>
+    <p style="font-size:12px;color:#7E5C42;">コツ：-жь / -шь / -чь / -щь のように「ж, ш, ч, щ ＋ ь」で終わる語は女性が多いです。</p>
   </div>
 
   <div class="rule-row">
@@ -6090,7 +6094,7 @@ const GRAMMAR_UNITS = [
     <p>• <span class="ex-inline">па́па（パパ）</span> <span class="ex-inline">де́душка（おじいさん）</span> ← -а で終わるが<b>男性</b></p>
   </div>
 
-  <p style="background:#FFFBF0;border-left:3px solid #F0CC70;padding:8px 10px;margin-top:10px;font-size:11.5px;color:#7A4800;line-height:1.7;border-radius:8px;">
+  <p style="background:#FFFBF0;border-left:3px solid #F0CC70;padding:8px 10px;margin-top:10px;font-size:12.5px;color:#7A4800;line-height:1.7;border-radius:8px;">
   <b>覚え方</b>：子音・й＝男の子、-а/-я＝女の子、-о/-е＝どちらでもない子。<br>
   ねこ図鑑の単語で練習すると、自然に身につきます。</p>
   `,
@@ -6142,7 +6146,7 @@ const GRAMMAR_UNITS = [
     <p>• <span class="ex-inline">кни́га → кни́г<b>и</b></span>（× книгы）</p>
     <p>• <span class="ex-inline">ши́шка → ши́шк<b>и</b></span>（× шишкы）</p>
     <p>• <span class="ex-inline">оре́х → оре́х<b>и</b></span>（× орехы）</p>
-    <p style="font-size:11px;color:#9D5700;">この正書法ルールは次のユニットで詳しくあつかいます。</p>
+    <p style="font-size:12px;color:#9D5700;">この正書法ルールは次のユニットで詳しくあつかいます。</p>
   </div>
 
   <div class="rule-row">
@@ -6151,10 +6155,10 @@ const GRAMMAR_UNITS = [
     ロシア語では、そういうときに<b>複数形</b>を使います。数を意識しない日本語話者がいちばん間違えるところです。</p>
     <p>• <span class="ex-inline">Я люблю́ ко́шек.</span>（ねこ<b>という動物</b>が好き）← 一般的な好み・複数形</p>
     <p>• <span class="ex-inline">Я люблю́ ко́шку.</span>（<b>その</b>ねこが好き）← 特定の1匹・単数形</p>
-    <p style="font-size:11px;color:#7E5C42;">英語の <b>I like cats.</b> と <b>I like the cat.</b> のちがいと、同じ考え方です。</p>
+    <p style="font-size:12px;color:#7E5C42;">英語の <b>I like cats.</b> と <b>I like the cat.</b> のちがいと、同じ考え方です。</p>
     <p>• <span class="ex-inline">Я люблю́ я́блоки.（Я）</span>（りんごが好き）／<span class="ex-inline">Я ем я́блоко.</span>（りんごを1つ食べる）</p>
     <p>• <span class="ex-inline">Я люблю́ соба́к.</span>（犬が好き）／<span class="ex-inline">Я ви́жу соба́ку.</span>（あの犬が見える）</p>
-    <p style="font-size:11px;color:#9D5700;">※ <b>数えられないものは単数のまま</b>です：<b>чай</b>（お茶）・<b>молоко́</b>（牛乳）・
+    <p style="font-size:12px;color:#9D5700;">※ <b>数えられないものは単数のまま</b>です：<b>чай</b>（お茶）・<b>молоко́</b>（牛乳）・
     <b>му́зыка</b>（音楽）・<b>моро́женое</b>（アイス・М）。Я люблю́ чай. が正しく、× Я люблю́ чаи́ とは言いません。</p>
   </div>
 
@@ -6184,9 +6188,9 @@ const GRAMMAR_UNITS = [
   <p>ロシア語の名詞には、数え方の<b>「札」が3種類</b>あります。まずは全体をひと目で——</p>
 
   <div style="display:flex;flex-wrap:wrap;gap:10px;margin:12px 0;">
-    <div style="flex:1;min-width:150px;background:#E4F2EC;border:2px solid #7BAE9E;border-radius:12px;padding:10px;text-align:center;"><div style="display:flex;align-items:center;justify-content:center;gap:6px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#4A7A6A;color:#FFFFFF;font-size:14px;flex:none;">1</span><b style="font-size:13px;color:#4A7A6A;">数えられる</b></div><div lang="ru" style="font-size:21px;margin:8px 0 4px;">кни́га → кни́ги</div><div style="font-size:11px;color:#5A3A30;">1・2・3…と数える<br>ふつうの名詞</div></div>
-    <div style="flex:1;min-width:150px;background:#FFF6E0;border:2px solid #C9A227;border-radius:12px;padding:10px;text-align:center;"><div style="display:flex;align-items:center;justify-content:center;gap:6px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#8A5A00;color:#FFFFFF;font-size:14px;flex:none;">2</span><b style="font-size:13px;color:#8A5A00;">数えられない</b></div><div lang="ru" style="font-size:21px;margin:8px 0 4px;">чай</div><div style="font-size:11px;color:#5A3A30;"><b>いつも単数</b><br>液体・材料・抽象</div></div>
-    <div style="flex:1;min-width:150px;background:#F0F4FB;border:2px solid #8FA8C8;border-radius:12px;padding:10px;text-align:center;"><div style="display:flex;align-items:center;justify-content:center;gap:6px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#3A5578;color:#FFFFFF;font-size:14px;flex:none;">3</span><b style="font-size:13px;color:#3A5578;">複数だけ</b></div><div lang="ru" style="font-size:21px;margin:8px 0 4px;">очки́</div><div style="font-size:11px;color:#5A3A30;"><b>いつも複数</b><br>ペア・集まりの形</div></div>
+    <div style="flex:1;min-width:150px;background:#E4F2EC;border:2px solid #7BAE9E;border-radius:12px;padding:10px;text-align:center;"><div style="display:flex;align-items:center;justify-content:center;gap:6px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#4A7A6A;color:#FFFFFF;font-size:14px;flex:none;">1</span><b style="font-size:13px;color:#4A7A6A;">数えられる</b></div><div lang="ru" style="font-size:21px;margin:8px 0 4px;">кни́га → кни́ги</div><div style="font-size:12px;color:#5A3A30;">1・2・3…と数える<br>ふつうの名詞</div></div>
+    <div style="flex:1;min-width:150px;background:#FFF6E0;border:2px solid #C9A227;border-radius:12px;padding:10px;text-align:center;"><div style="display:flex;align-items:center;justify-content:center;gap:6px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#8A5A00;color:#FFFFFF;font-size:14px;flex:none;">2</span><b style="font-size:13px;color:#8A5A00;">数えられない</b></div><div lang="ru" style="font-size:21px;margin:8px 0 4px;">чай</div><div style="font-size:12px;color:#5A3A30;"><b>いつも単数</b><br>液体・材料・抽象</div></div>
+    <div style="flex:1;min-width:150px;background:#F0F4FB;border:2px solid #8FA8C8;border-radius:12px;padding:10px;text-align:center;"><div style="display:flex;align-items:center;justify-content:center;gap:6px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#3A5578;color:#FFFFFF;font-size:14px;flex:none;">3</span><b style="font-size:13px;color:#3A5578;">複数だけ</b></div><div lang="ru" style="font-size:21px;margin:8px 0 4px;">очки́</div><div style="font-size:12px;color:#5A3A30;"><b>いつも複数</b><br>ペア・集まりの形</div></div>
   </div>
   <p style="font-size:12px;color:#7A5040;">新しい名詞に出会うたびに、この3つのどれかの札を貼っていく——それがこの課の仕事です。
   札がちがうと、複数形の作り方も、数詞との組み合わせ方も変わります。</p>
@@ -6194,20 +6198,20 @@ const GRAMMAR_UNITS = [
   <div class="case-row">
     <strong style="display:flex;align-items:center;gap:8px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#4A7A6A;color:#FFFFFF;font-size:14px;flex:none;">1</span><span>数えられる名詞 — 単数と複数がある</span></strong>
     <p>ほとんどの名詞はここ。1つ、2つ…と数えられ、複数形を持ちます。</p>
-    <p style="line-height:2.1;"><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #7BAE9E;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">кни́га</b> <span style="color:#4A7A6A;">→</span> <span lang="ru" style="font-size:15px;">кни́ги</span><span style="font-size:11px;color:#7A5040;">本</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #7BAE9E;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">оре́х</b> <span style="color:#4A7A6A;">→</span> <span lang="ru" style="font-size:15px;">оре́хи</span><span style="font-size:11px;color:#7A5040;">くるみ</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #7BAE9E;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">ко́шка</b> <span style="color:#4A7A6A;">→</span> <span lang="ru" style="font-size:15px;">ко́шки</span><span style="font-size:11px;color:#7A5040;">ねこ</span></span></p>
-    <p style="font-size:11px;color:#7E5C42;">「〜が好き」と種類全体を言うときは複数形で：Я люблю́ ко́шек.</p>
+    <p style="line-height:2.1;"><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #7BAE9E;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">кни́га</b> <span style="color:#4A7A6A;">→</span> <span lang="ru" style="font-size:15px;">кни́ги</span><span style="font-size:12px;color:#7A5040;">本</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #7BAE9E;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">оре́х</b> <span style="color:#4A7A6A;">→</span> <span lang="ru" style="font-size:15px;">оре́хи</span><span style="font-size:12px;color:#7A5040;">くるみ</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #7BAE9E;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">ко́шка</b> <span style="color:#4A7A6A;">→</span> <span lang="ru" style="font-size:15px;">ко́шки</span><span style="font-size:12px;color:#7A5040;">ねこ</span></span></p>
+    <p style="font-size:12px;color:#7E5C42;">「〜が好き」と種類全体を言うときは複数形で：Я люблю́ ко́шек.</p>
   </div>
 
   <div class="rule-row">
     <strong style="display:flex;align-items:center;gap:8px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#8A5A00;color:#FFFFFF;font-size:14px;flex:none;">2</span><span>数えられない名詞 — いつも単数のまま</span></strong>
     <p>形の決まっていないもの。<b>複数形を作らず</b>、動詞も形容詞も単数に合わせます。</p>
-    <p style="margin:10px 0 2px;"><span style="font-size:11px;font-weight:bold;color:#8A5A00;background:#FFF6E0;border-radius:6px;padding:2px 8px;">物質 — 液体・材料</span></p>
-    <p style="line-height:2.1;"><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">чай</b><span style="font-size:11px;color:#7A5040;">お茶</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">вода́</b><span style="font-size:11px;color:#7A5040;">水</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">молоко́</b><span style="font-size:11px;color:#7A5040;">牛乳</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">хлеб</b><span style="font-size:11px;color:#7A5040;">パン</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">са́хар</b><span style="font-size:11px;color:#7A5040;">砂糖</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">мя́со</b><span style="font-size:11px;color:#7A5040;">肉</span></span></p>
-    <p style="margin:10px 0 2px;"><span style="font-size:11px;font-weight:bold;color:#8A5A00;background:#FFF6E0;border-radius:6px;padding:2px 8px;">抽象 — 手でさわれないもの</span></p>
-    <p style="line-height:2.1;"><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">му́зыка</b><span style="font-size:11px;color:#7A5040;">音楽</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">любо́вь</b><span style="font-size:11px;color:#7A5040;">愛</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">сча́стье</b><span style="font-size:11px;color:#7A5040;">幸せ</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">вре́мя</b><span style="font-size:11px;color:#7A5040;">時間</span></span></p>
-    <p style="margin:10px 0 2px;"><span style="font-size:11px;font-weight:bold;color:#8A5A00;background:#FFF6E0;border-radius:6px;padding:2px 8px;">集合 — まとめて1つと見るもの</span></p>
-    <p style="line-height:2.1;"><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">оде́жда</b><span style="font-size:11px;color:#7A5040;">衣服</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">о́бувь</b><span style="font-size:11px;color:#7A5040;">履き物</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">ме́бель</b><span style="font-size:11px;color:#7A5040;">家具</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">посу́да</b><span style="font-size:11px;color:#7A5040;">食器</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">бельё</b><span style="font-size:11px;color:#7A5040;">下着・リネン</span></span></p>
-    <p style="font-size:11px;color:#9D5700;">× Я люблю́ чаи́ とは言いません。○ <b>Я люблю́ чай.</b></p>
+    <p style="margin:10px 0 2px;"><span style="font-size:12px;font-weight:bold;color:#8A5A00;background:#FFF6E0;border-radius:6px;padding:2px 8px;">物質 — 液体・材料</span></p>
+    <p style="line-height:2.1;"><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">чай</b><span style="font-size:12px;color:#7A5040;">お茶</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">вода́</b><span style="font-size:12px;color:#7A5040;">水</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">молоко́</b><span style="font-size:12px;color:#7A5040;">牛乳</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">хлеб</b><span style="font-size:12px;color:#7A5040;">パン</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">са́хар</b><span style="font-size:12px;color:#7A5040;">砂糖</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">мя́со</b><span style="font-size:12px;color:#7A5040;">肉</span></span></p>
+    <p style="margin:10px 0 2px;"><span style="font-size:12px;font-weight:bold;color:#8A5A00;background:#FFF6E0;border-radius:6px;padding:2px 8px;">抽象 — 手でさわれないもの</span></p>
+    <p style="line-height:2.1;"><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">му́зыка</b><span style="font-size:12px;color:#7A5040;">音楽</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">любо́вь</b><span style="font-size:12px;color:#7A5040;">愛</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">сча́стье</b><span style="font-size:12px;color:#7A5040;">幸せ</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">вре́мя</b><span style="font-size:12px;color:#7A5040;">時間</span></span></p>
+    <p style="margin:10px 0 2px;"><span style="font-size:12px;font-weight:bold;color:#8A5A00;background:#FFF6E0;border-radius:6px;padding:2px 8px;">集合 — まとめて1つと見るもの</span></p>
+    <p style="line-height:2.1;"><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">оде́жда</b><span style="font-size:12px;color:#7A5040;">衣服</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">о́бувь</b><span style="font-size:12px;color:#7A5040;">履き物</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">ме́бель</b><span style="font-size:12px;color:#7A5040;">家具</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">посу́да</b><span style="font-size:12px;color:#7A5040;">食器</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #C9A227;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">бельё</b><span style="font-size:12px;color:#7A5040;">下着・リネン</span></span></p>
+    <p style="font-size:12px;color:#9D5700;">× Я люблю́ чаи́ とは言いません。○ <b>Я люблю́ чай.</b></p>
 
     <div style="border-left:4px solid #C9A227;background:#FFF6E0;border-radius:0 10px 10px 0;padding:10px 12px;margin:12px 0;">
       <p style="margin-top:0;"><b style="color:#8A5A00;">よく間違える оде́жда のなかま</b></p>
@@ -6218,7 +6222,7 @@ const GRAMMAR_UNITS = [
         <span class="pron">服はタンスの中</span><span class="form">Оде́жда виси́т в шкафу́.</span>
         <span class="pron">服をたくさん</span><span class="form">мно́го оде́жды（生格）</span>
       </div>
-      <p style="font-size:11px;color:#9D5700;">英語とちょうど<b>逆</b>です。clothes は複数扱い（clothes <b>are</b>）、
+      <p style="font-size:12px;color:#9D5700;">英語とちょうど<b>逆</b>です。clothes は複数扱い（clothes <b>are</b>）、
       оде́жда は<b>単数扱い</b>（оде́жда <b>виси́т</b>）。</p>
       <p>数えたいときは、<b>具体的な品物のほう</b>を数えます：
       <span class="ex-inline">две ру́башки</span>（シャツ2枚）　<span class="ex-inline">три ве́щи</span>（3点）。
@@ -6234,19 +6238,19 @@ const GRAMMAR_UNITS = [
         <span class="pron">たくさんの砂糖</span><span class="form">мно́го са́хара</span>
         <span class="pron">お茶を2杯</span><span class="form">две ча́шки ча́я</span>
       </div>
-      <p style="font-size:11px;color:#3A5578;">数えているのは<b>入れ物のほう</b>（ча́шка が2つ）。中身は生格のまま動きません。</p>
+      <p style="font-size:12px;color:#3A5578;">数えているのは<b>入れ物のほう</b>（ча́шка が2つ）。中身は生格のまま動きません。</p>
     </div>
   </div>
 
   <div class="rule-row">
     <strong style="display:flex;align-items:center;gap:8px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#3A5578;color:#FFFFFF;font-size:14px;flex:none;">3</span><span>複数だけで使う名詞 — 単数の形がない</span></strong>
     <p>1つのものでも<b>いつも複数形</b>。ペアや集まりでできているものに多い仲間です。</p>
-    <p style="line-height:2.1;"><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #8FA8C8;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">де́ньги</b><span style="font-size:11px;color:#7A5040;">お金</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #8FA8C8;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">часы́</b><span style="font-size:11px;color:#7A5040;">時計</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #8FA8C8;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">очки́</b><span style="font-size:11px;color:#7A5040;">めがね</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #8FA8C8;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">брю́ки</b><span style="font-size:11px;color:#7A5040;">ズボン</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #8FA8C8;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">но́жницы</b><span style="font-size:11px;color:#7A5040;">はさみ</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #8FA8C8;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">ша́хматы</b><span style="font-size:11px;color:#7A5040;">チェス</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #8FA8C8;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">кани́кулы</b><span style="font-size:11px;color:#7A5040;">学校の休み</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #8FA8C8;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">воро́та</b><span style="font-size:11px;color:#7A5040;">門</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #8FA8C8;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">духи́</b><span style="font-size:11px;color:#7A5040;">香水</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #8FA8C8;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">сли́вки</b><span style="font-size:11px;color:#7A5040;">クリーム</span></span></p>
+    <p style="line-height:2.1;"><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #8FA8C8;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">де́ньги</b><span style="font-size:12px;color:#7A5040;">お金</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #8FA8C8;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">часы́</b><span style="font-size:12px;color:#7A5040;">時計</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #8FA8C8;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">очки́</b><span style="font-size:12px;color:#7A5040;">めがね</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #8FA8C8;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">брю́ки</b><span style="font-size:12px;color:#7A5040;">ズボン</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #8FA8C8;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">но́жницы</b><span style="font-size:12px;color:#7A5040;">はさみ</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #8FA8C8;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">ша́хматы</b><span style="font-size:12px;color:#7A5040;">チェス</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #8FA8C8;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">кани́кулы</b><span style="font-size:12px;color:#7A5040;">学校の休み</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #8FA8C8;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">воро́та</b><span style="font-size:12px;color:#7A5040;">門</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #8FA8C8;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">духи́</b><span style="font-size:12px;color:#7A5040;">香水</span></span><span style="display:inline-flex;align-items:baseline;gap:5px;background:#FFFFFF;border:1.5px solid #8FA8C8;border-radius:9px;padding:4px 9px;margin:3px 2px;"><b lang="ru" style="font-size:15px;">сли́вки</b><span style="font-size:12px;color:#7A5040;">クリーム</span></span></p>
     <p>動詞も形容詞も、かならず<b>複数</b>に合わせます。</p>
     <p>• <span class="ex-inline">Часы́ иду́т.</span>（時計が動いています）← × Час идёт.</p>
     <p>• <span class="ex-inline">Где мои́ очки́?</span>（私のめがねはどこ？）← мои́（複数）</p>
     <p>• <span class="ex-inline">Э́то мои́ де́ньги.</span>（これは私のお金です）</p>
-    <p style="font-size:11px;color:#9D5700;">※ <b>часы́</b>（時計）と <b>час</b>（1時間・1時）は別の語です。
+    <p style="font-size:12px;color:#9D5700;">※ <b>часы́</b>（時計）と <b>час</b>（1時間・1時）は別の語です。
     数えるときは「ペア」を使います：две па́ры брюк（ズボン2本）。</p>
   </div>
 
@@ -6255,19 +6259,19 @@ const GRAMMAR_UNITS = [
     <p>新しい名詞に出会ったら、<b>札を決めてから</b>書き写します。たとえば——</p>
     <div style="display:flex;gap:0;border:1.5px solid #D9C8B2;border-radius:10px;overflow:hidden;margin:10px 0;max-width:430px;">
       <div style="flex:1;border-right:1px dashed #D9C8B2;">
-        <div style="background:#E4F2EC;color:#4A7A6A;font-size:11px;font-weight:bold;text-align:center;padding:4px;">① 数えられる</div>
+        <div style="background:#E4F2EC;color:#4A7A6A;font-size:12px;font-weight:bold;text-align:center;padding:4px;">① 数えられる</div>
         <div lang="ru" style="padding:8px;font-size:14px;text-align:center;line-height:1.9;">кни́га<br>ко́шка</div>
       </div>
       <div style="flex:1;border-right:1px dashed #D9C8B2;">
-        <div style="background:#FFF6E0;color:#8A5A00;font-size:11px;font-weight:bold;text-align:center;padding:4px;">② いつも単数</div>
+        <div style="background:#FFF6E0;color:#8A5A00;font-size:12px;font-weight:bold;text-align:center;padding:4px;">② いつも単数</div>
         <div lang="ru" style="padding:8px;font-size:14px;text-align:center;line-height:1.9;">чай<br>молоко́</div>
       </div>
       <div style="flex:1;">
-        <div style="background:#F0F4FB;color:#3A5578;font-size:11px;font-weight:bold;text-align:center;padding:4px;">③ いつも複数</div>
+        <div style="background:#F0F4FB;color:#3A5578;font-size:12px;font-weight:bold;text-align:center;padding:4px;">③ いつも複数</div>
         <div lang="ru" style="padding:8px;font-size:14px;text-align:center;line-height:1.9;">очки́<br>брю́ки</div>
       </div>
     </div>
-    <p style="font-size:11px;color:#7A5040;">ホームの「ノートの作り方」から、この3列の<b>書き込み用シート</b>を印刷できます。</p>
+    <p style="font-size:12px;color:#7A5040;">ホームの「ノートの作り方」から、この3列の<b>書き込み用シート</b>を印刷できます。</p>
   </div>
   
   `,
@@ -6309,21 +6313,21 @@ const GRAMMAR_UNITS = [
   <div class="rule-row">
     <strong>ルール② к, г, х の後は「и」（ы は不可）</strong>
     <p>• <span class="ex-inline">кни́га → кни́г<b>и</b></span> <span class="ex-inline">ру́ка → ру́к<b>и</b></span> <span class="ex-inline">оре́х → оре́х<b>и</b></span></p>
-    <p style="font-size:11px;color:#9D5700;">合言葉：<b>「к・г・х のあとに ы はいない」</b></p>
+    <p style="font-size:12px;color:#9D5700;">合言葉：<b>「к・г・х のあとに ы はいない」</b></p>
   </div>
 
   <div class="rule-row">
     <strong>ルール③ ж, ш, щ, ч の後も「и」</strong>
     <p>音は /ɨ/ に近く聞こえても、綴りは <b>и</b> です。</p>
     <p>• <span class="ex-inline">жизнь（命）</span> <span class="ex-inline">ши́шка（松ぼっくり・Ш）</span> <span class="ex-inline">маши́на（車）</span></p>
-    <p style="font-size:11px;color:#9D5700;">合言葉：<b>「жи・ши・щи・чи は и で書く」</b></p>
+    <p style="font-size:12px;color:#9D5700;">合言葉：<b>「жи・ши・щи・чи は и で書く」</b></p>
   </div>
 
   <div class="rule-row">
     <strong>ルール④ ч, щ, ж, ш の後は а・у（я・ю ではない）</strong>
     <p>• <span class="ex-inline">часы́（時計）</span>（× чясы）　<span class="ex-inline">чу́до（奇跡）</span>（× чюдо）</p>
     <p>• <span class="ex-inline">слы́шу（聞こえる・я の形）</span>（× слышю）</p>
-    <p style="font-size:11px;color:#9D5700;">合言葉：<b>「ча・ща は а、чу・щу は у」</b></p>
+    <p style="font-size:12px;color:#9D5700;">合言葉：<b>「ча・ща は а、чу・щу は у」</b></p>
   </div>
 
   <div class="verb-row">
@@ -6362,7 +6366,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">вы</span><span class="form">あなた（丁寧）／あなたたち</span>
       <span class="pron">они́</span><span class="form">彼ら</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">※ вы は「複数のあなた」と「1人への丁寧な あなた」の両方。初対面では вы を使うのが安全です。</p>
+    <p style="font-size:12px;color:#7A5040;">※ вы は「複数のあなた」と「1人への丁寧な あなた」の両方。初対面では вы を使うのが安全です。</p>
   </div>
 
   <div class="rule-row">
@@ -6419,7 +6423,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">中性</span><span class="form">моё — моё я́блоко（わたしのりんご）</span>
       <span class="pron">複数</span><span class="form">мои́ — мои́ кни́ги（わたしの本たち）</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">※ 変わるのは「持ち主」ではなく「持たれるモノの性」です。男性が言っても кни́га なら моя́。</p>
+    <p style="font-size:12px;color:#7A5040;">※ 変わるのは「持ち主」ではなく「持たれるモノの性」です。男性が言っても кни́га なら моя́。</p>
   </div>
 
   <div class="verb-row">
@@ -6436,7 +6440,7 @@ const GRAMMAR_UNITS = [
     <p>「彼の・彼女の・彼らの」は<b>いつも同じ形</b>。ここだけ覚えれば楽ができます。</p>
     <p>• <b>его́</b> кни́га（彼の本）／<b>его́</b> флаг（彼の旗）／<b>его́</b> я́блоко（彼のりんご）</p>
     <p>• <b>её</b> кни́га（彼女の本）　• <b>их</b> дом（彼らの家）</p>
-    <p style="font-size:11px;color:#9D5700;">※ 前置詞の後でも у него́ とは違い、所有の его́ に н はつきません。</p>
+    <p style="font-size:12px;color:#9D5700;">※ 前置詞の後でも у него́ とは違い、所有の его́ に н はつきません。</p>
   </div>
 
   <div class="case-row">
@@ -6454,7 +6458,7 @@ const GRAMMAR_UNITS = [
     <p>его́ を使ったとたん「主語とは別の人の」という合図になります。この区別は日本語にないので、
     作文でいちばん間違えやすいところです。そして日本語の「自分の」とちがい、
     <b>я・ты が主語のときにも</b>使えます：<span class="ex-inline">Я люблю́ свою́ рабо́ту.（自分の仕事が好きです）</span></p>
-    <p style="font-size:11px;color:#7A5040;">свой は主語そのものには使いません。
+    <p style="font-size:12px;color:#7A5040;">свой は主語そのものには使いません。
     「わたしの兄は…」と文を始めるなら Мой брат — です。</p>
   </div>
 
@@ -6501,7 +6505,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">чей</span><span class="form">だれの　Чья э́то кни́га?</span>
       <span class="pron">ско́лько</span><span class="form">いくつ　Ско́лько тебе́ лет?</span>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">ロシア語の質問には「〜か？」にあたる語尾がありません。
+    <p style="font-size:12px;color:#7E5C42;">ロシア語の質問には「〜か？」にあたる語尾がありません。
     疑問詞があればそれで質問、なければ<b>音の上げ下げ</b>だけで質問になります
     （Ты студе́нт?↗）。書きことば用の小さな ли だけは例外——この課のおしまいで紹介します。この「上げ下げ」の正体は、「イントネーション — 7つの ИК」の課でくわしく。</p>
   </div>
@@ -6515,7 +6519,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">куда́?（どこへ）</span><span class="form">向かう先　— Я иду́ в парк.（対格）</span>
       <span class="pron">отку́да?（どこから）</span><span class="form">出どころ　— Я из Япо́нии.（生格）</span>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">質問の語をまちがえなければ、答えの格もまちがえません。
+    <p style="font-size:12px;color:#7E5C42;">質問の語をまちがえなければ、答えの格もまちがえません。
     <b>質問が、格の道しるべ</b>になっています。</p>
   </div>
 
@@ -6532,7 +6536,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">造格</span><span class="form">кем ／ чем　— С кем ты идёшь?（だれと行くの？）</span>
       <span class="pron">前置格</span><span class="form">о ком ／ о чём　— О чём ты говори́шь?（何の話？）</span>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">кто の対格が生格と同じ кого́ になるのは、
+    <p style="font-size:12px;color:#7E5C42;">кто の対格が生格と同じ кого́ になるのは、
     <b>生き物（活動体）の規則</b>そのもの。что は「もの」なので対格＝主格のまま。
     対格の課で覚えた区別が、疑問詞にも生きています。</p>
   </div>
@@ -6546,7 +6550,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">Како́е э́то сло́во?</span><span class="form">どんな語？（中性）</span>
       <span class="pron">Каки́е э́то цветы́?</span><span class="form">どんな花？（複数）</span>
     </div>
-    <p style="font-size:11px;color:#7E5C42;"><b>как</b> と <b>како́й</b> の使い分け——
+    <p style="font-size:12px;color:#7E5C42;"><b>как</b> と <b>како́й</b> の使い分け——
     <b>как</b> は「どのように」（動詞にかかる）、<b>како́й</b> は「どんな」（名詞にかかる）。
     Как дела́? は決まり文句として、そのまま覚えてしまいましょう。</p>
   </div>
@@ -6555,10 +6559,10 @@ const GRAMMAR_UNITS = [
     <strong>почему́? には потому́ что</strong>
     <p>「なぜ？」とたずねられたら、<b>потому́ что</b>（なぜなら）で答えます。</p>
     <p>• <span class="ex-inline">— Почему́ ты у́чишь ру́сский? — Потому́ что я люблю́ ко́шек.</span></p>
-    <p><span style="font-size:11px;color:#7E5C42;">（なぜロシア語を？ — ねこが好きだからです）……この教材の答えとしては、満点です。</span></p>
+    <p><span style="font-size:12px;color:#7E5C42;">（なぜロシア語を？ — ねこが好きだからです）……この教材の答えとしては、満点です。</span></p>
     <p>ちなみに、この教材をつくった人は、こう答えることにしています。</p>
     <p>• <span class="ex-inline">— Потому́ что э́то судьба́.（運命だからです）</span></p>
-    <p><span style="font-size:11px;color:#7E5C42;"><b lang="ru">судьба́</b>（運命）は、ロシア語の歌や小説にいちばんよく出てくることばのひとつ。
+    <p><span style="font-size:12px;color:#7E5C42;"><b lang="ru">судьба́</b>（運命）は、ロシア語の歌や小説にいちばんよく出てくることばのひとつ。
     あなたの答えも、いつか見つかりますように。</span></p>
   </div>
   <div class="rule-row">
@@ -6571,7 +6575,7 @@ const GRAMMAR_UNITS = [
     </div>
     <p>• <span class="ex-inline">Кто́-то чита́ет.（だれかが読んでいる——姿は見えている）</span></p>
     <p>• <span class="ex-inline">Кто́-нибудь чита́л э́ту кни́гу?（だれか、この本を読んだ人はいますか）</span></p>
-    <p style="font-size:11px;color:#7E5C42;">質問・お願い・「もし〜なら」の文では -нибудь、
+    <p style="font-size:12px;color:#7E5C42;">質問・お願い・「もし〜なら」の文では -нибудь、
     見たまま・あったままを語る文では -то。что́-то／что́-нибудь、где́-то／где́-нибудь もまったく同じです。</p>
   </div>
 
@@ -6651,7 +6655,7 @@ const GRAMMAR_UNITS = [
     <div style="flex:1;min-width:240px;background:#FDF0EE;border:2px solid #C97B72;border-radius:12px;padding:12px;">
       <div style="font-size:12px;color:#8F3F35;font-weight:bold;">ни… ＋ 活用した動詞（не もいっしょ）</div>
       <div style="font-size:26px;margin:6px 0;" lang="ru">никт<span style="background:#8F3F35;color:#FFFFFF;border-radius:6px;padding:0 5px;">о́</span></div>
-      <div style="font-size:11px;color:#7A5040;">アクセントは<b>おしり</b></div>
+      <div style="font-size:12px;color:#7A5040;">アクセントは<b>おしり</b></div>
       <div style="display:flex;gap:8px;margin:12px 0;justify-content:center;">
         <span style="border:2px solid #C97B72;border-radius:50%;width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;color:#8F3F35;text-decoration:line-through;" lang="ru">он</span>
         <span style="border:2px solid #C97B72;border-radius:50%;width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;color:#8F3F35;text-decoration:line-through;" lang="ru">она́</span>
@@ -6663,7 +6667,7 @@ const GRAMMAR_UNITS = [
     <div style="flex:1;min-width:240px;background:#F0F4FB;border:2px solid #3A5578;border-radius:12px;padding:12px;">
       <div style="font-size:12px;color:#3A5578;font-weight:bold;">не́… ＋ 不定形（動詞は原形のまま）</div>
       <div style="font-size:26px;margin:6px 0;" lang="ru">н<span style="background:#3A5578;color:#FFFFFF;border-radius:6px;padding:0 5px;">е́</span>кого</div>
-      <div style="font-size:11px;color:#41536B;">アクセントは<b>あたま（не́）</b></div>
+      <div style="font-size:12px;color:#41536B;">アクセントは<b>あたま（не́）</b></div>
       <div style="display:flex;gap:8px;margin:12px 0;justify-content:center;">
         <span style="border:2px dashed #3A5578;border-radius:50%;width:38px;height:38px;display:inline-block;"></span>
       </div>
@@ -6686,7 +6690,7 @@ const GRAMMAR_UNITS = [
     </div>
     <p>• <span class="ex-inline">Я никогда́ не был в Москве́.（モスクワには一度も行ったことがない）</span></p>
     <p>• <span class="ex-inline">Мне не́когда чита́ть.（読むひまがない）</span> ← 人は与格、動詞は不定形</p>
-    <p style="font-size:11px;color:#7A5040;">не́-系は無人称文の仲間です。Мне хо́лодно と同じく、人は мне（与格）で登場します。</p>
+    <p style="font-size:12px;color:#7A5040;">не́-系は無人称文の仲間です。Мне хо́лодно と同じく、人は мне（与格）で登場します。</p>
   </div>
 
   <div class="rule-row">
@@ -6695,7 +6699,7 @@ const GRAMMAR_UNITS = [
     ——日本語や英語とちがい、ロシア語は<b>否定を重ねるのが正しい形</b>です。</p>
     <p>② 前置詞は、ことばの<b>間に割り込みます</b>：<span class="ex-inline">ни у кого́ нет кни́ги.（誰のところにも本がない）</span>
     （× у никого́）</p>
-    <p style="font-size:11px;color:#7E5C42;">アクセントが не́ に引っ越す現象は、否定生格の課の
+    <p style="font-size:12px;color:#7E5C42;">アクセントが не́ に引っ越す現象は、否定生格の課の
     не́ было でも見ました。Никого́ нет.（誰もいない）もあの課の仲間です。</p>
   </div>
   `,
@@ -6788,16 +6792,16 @@ const GRAMMAR_UNITS = [
   <p style="text-align:center;margin:10px 0;">
     <button class="acc-say" onclick="speak('Он студент.')" aria-label="平叙文を聞く">&#9834; Он студе́нт.</button>　
     <button class="acc-say" onclick="speak('Он студент?')" aria-label="質問を聞く">&#9834; Он студе́нт?</button><br>
-    <span style="font-size:11px;color:#7E5C42;">↑ まずは聞きくらべてください。文字はまったく同じ、メロディーだけがちがいます。</span>
+    <span style="font-size:12px;color:#7E5C42;">↑ まずは聞きくらべてください。文字はまったく同じ、メロディーだけがちがいます。</span>
   </p>
 
-  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 26 L95 27 L125 46 L190 50" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="110" cy="36" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-1　平叙文</b>　<span lang="ru">Э́то дом.</span> <button class="acc-say" onclick="speak('Это дом.')" aria-label="ИК-1 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">これは家です——中心からなだらかに下げて終わる</span><br><span style="font-size:11px;color:#7E5C42;">日本語の言い切りより、最後をしっかり低く。</span></div></div>
-  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 24 L80 24 L100 26 L130 48 L190 50" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="90" cy="25" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-2　疑問詞のある質問</b>　<span lang="ru">Кто э́то?　Где кни́га?</span> <button class="acc-say" onclick="speak('Кто это? Где книга?')" aria-label="ИК-2 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">だれ？どこ？——上げずに、疑問詞を強めにいって下げる</span><br><span style="font-size:11px;color:#7E5C42;">疑問詞が質問のしるしなので、メロディーは上げません。呼びかけや命令もこの型です。</span></div></div>
-  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 32 L80 32 L100 8 L125 44 L190 48" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="8" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-3　はい・いいえの質問</b>　<span lang="ru">Ты студе́нт?</span> <button class="acc-say" onclick="speak('Ты студент?')" aria-label="ИК-3 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">学生なの？——中心で急角度に高く上げ、すぐ下げる</span><br><span style="font-size:11px;color:#7E5C42;">疑問詞の課の「↗」の正体がこれ。話しことばでは、この上げこそが「〜か？」の代わりです（書きことばの ли に相当）。</span></div></div>
-  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 28 L85 28 L105 44 L150 22 L190 12" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="105" cy="44" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-4　くらべる聞き返し</b>　<span lang="ru">А ты?</span> <button class="acc-say" onclick="speak('А ты?')" aria-label="ИК-4 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">で、きみは？——いったん下げてから、なめらかに上げて終わる</span><br><span style="font-size:11px;color:#7E5C42;">接続詞の課で見た「くらべる а」の質問。窓口などのあらたまった聞き返しにも使います。</span></div></div>
-  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 38 L45 12 L135 12 L170 40 L190 46" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="45" cy="12" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-5　感嘆（ほめる）</b>　<span lang="ru">Кака́я пого́да!</span> <button class="acc-say" onclick="speak('Какая погода!')" aria-label="ИК-5 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">なんていい天気！——2つの山：高く上げて、保って、下げる</span><br><span style="font-size:11px;color:#7E5C42;">中心が2つあるのが特徴。Как хорошо́!（ああ、いいなあ）もこの型です。</span></div></div>
-  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 38 L90 38 L115 12 L190 9" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="115" cy="12" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-6　余韻の感嘆・未完</b>　<span lang="ru">А пиро́г како́й!</span> <button class="acc-say" onclick="speak('А пирог какой!')" aria-label="ИК-6 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">あのピローグときたら！——上げたまま、高く漂わせて終わる</span><br><span style="font-size:11px;color:#7E5C42;">下げないことで「まだ続きがある」余韻が残ります。</span></div></div>
-  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 32 L85 32 L105 8 L122 8" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="105" cy="8" r="5" fill="#C1443C"/><line x1="126" y1="2" x2="126" y2="16" stroke="#C1443C" stroke-width="3"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-7　皮肉の否定</b>　<span lang="ru">Како́й он студе́нт!</span> <button class="acc-say" onclick="speak('Какой он студент!')" aria-label="ИК-7 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">彼が学生だなんて！（＝学生なんかじゃない）——急に上げて、ぷつっと切る</span><br><span style="font-size:11px;color:#7E5C42;">形は感嘆、意味は否定。ИК-5 でほめ、ИК-7 でけなす——メロディーだけで正反対になります。</span></div></div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 26 L95 27 L125 46 L190 50" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="110" cy="36" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-1　平叙文</b>　<span lang="ru">Э́то дом.</span> <button class="acc-say" onclick="speak('Это дом.')" aria-label="ИК-1 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">これは家です——中心からなだらかに下げて終わる</span><br><span style="font-size:12px;color:#7E5C42;">日本語の言い切りより、最後をしっかり低く。</span></div></div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 24 L80 24 L100 26 L130 48 L190 50" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="90" cy="25" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-2　疑問詞のある質問</b>　<span lang="ru">Кто э́то?　Где кни́га?</span> <button class="acc-say" onclick="speak('Кто это? Где книга?')" aria-label="ИК-2 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">だれ？どこ？——上げずに、疑問詞を強めにいって下げる</span><br><span style="font-size:12px;color:#7E5C42;">疑問詞が質問のしるしなので、メロディーは上げません。呼びかけや命令もこの型です。</span></div></div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 32 L80 32 L100 8 L125 44 L190 48" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="8" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-3　はい・いいえの質問</b>　<span lang="ru">Ты студе́нт?</span> <button class="acc-say" onclick="speak('Ты студент?')" aria-label="ИК-3 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">学生なの？——中心で急角度に高く上げ、すぐ下げる</span><br><span style="font-size:12px;color:#7E5C42;">疑問詞の課の「↗」の正体がこれ。話しことばでは、この上げこそが「〜か？」の代わりです（書きことばの ли に相当）。</span></div></div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 28 L85 28 L105 44 L150 22 L190 12" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="105" cy="44" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-4　くらべる聞き返し</b>　<span lang="ru">А ты?</span> <button class="acc-say" onclick="speak('А ты?')" aria-label="ИК-4 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">で、きみは？——いったん下げてから、なめらかに上げて終わる</span><br><span style="font-size:12px;color:#7E5C42;">接続詞の課で見た「くらべる а」の質問。窓口などのあらたまった聞き返しにも使います。</span></div></div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 38 L45 12 L135 12 L170 40 L190 46" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="45" cy="12" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-5　感嘆（ほめる）</b>　<span lang="ru">Кака́я пого́да!</span> <button class="acc-say" onclick="speak('Какая погода!')" aria-label="ИК-5 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">なんていい天気！——2つの山：高く上げて、保って、下げる</span><br><span style="font-size:12px;color:#7E5C42;">中心が2つあるのが特徴。Как хорошо́!（ああ、いいなあ）もこの型です。</span></div></div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 38 L90 38 L115 12 L190 9" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="115" cy="12" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-6　余韻の感嘆・未完</b>　<span lang="ru">А пиро́г како́й!</span> <button class="acc-say" onclick="speak('А пирог какой!')" aria-label="ИК-6 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">あのピローグときたら！——上げたまま、高く漂わせて終わる</span><br><span style="font-size:12px;color:#7E5C42;">下げないことで「まだ続きがある」余韻が残ります。</span></div></div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 32 L85 32 L105 8 L122 8" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="105" cy="8" r="5" fill="#C1443C"/><line x1="126" y1="2" x2="126" y2="16" stroke="#C1443C" stroke-width="3"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-7　皮肉の否定</b>　<span lang="ru">Како́й он студе́нт!</span> <button class="acc-say" onclick="speak('Какой он студент!')" aria-label="ИК-7 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">彼が学生だなんて！（＝学生なんかじゃない）——急に上げて、ぷつっと切る</span><br><span style="font-size:12px;color:#7E5C42;">形は感嘆、意味は否定。ИК-5 でほめ、ИК-7 でけなす——メロディーだけで正反対になります。</span></div></div>
 
   <div class="rule-row">
     <strong>いちばん大事なこと — 上げる場所で、質問の焦点が変わる</strong>
@@ -6806,10 +6810,10 @@ const GRAMMAR_UNITS = [
       <span class="pron">Вы за́втра е́дете в Москву́?</span><span class="form">за́втра で上げれば「行くのは明日？」</span>
       <span class="pron">Вы за́втра е́дете в Москву́?</span><span class="form">Москву́ で上げれば「行き先はモスクワ？」</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">日本語の「〜？」の上げより、ИК-3 は<b>急で高い</b>のがコツ。
+    <p style="font-size:12px;color:#7A5040;">日本語の「〜？」の上げより、ИК-3 は<b>急で高い</b>のがコツ。
     ひかえめに上げると、ロシア語話者には平叙文（ИК-1）に聞こえてしまい、
     「質問だったの？」となりがちです。思いきって上げてください。</p>
-    <p style="font-size:11px;color:#7E5C42;">♪ の音声は合成です。ИК-1〜ИК-4 の上げ下げはかなり忠実に
+    <p style="font-size:12px;color:#7E5C42;">♪ の音声は合成です。ИК-1〜ИК-4 の上げ下げはかなり忠実に
     再現されますが、ИК-5〜ИК-7 の感情の細部（ほめ・余韻・皮肉）までは出ません。
     曲線の図を見ながら、<b>自分の声でまねる</b>のがいちばんの練習です。</p>
   </div>
@@ -6847,11 +6851,11 @@ const GRAMMAR_UNITS = [
     <strong>① Э́то … — これは〜です</strong>
     <p>指さして紹介する表現。後ろは<b>主格</b>（辞書形）のままでOK。</p>
     <p>• <span class="ex-inline">Э́то зе́ркало.（З）</span> <span class="ex-inline">Э́то единоро́г.（Е）</span> <span class="ex-inline">Э́то щелку́нчик.（Щ）</span></p>
-    <p style="font-size:11px;color:#7E5C42;">※ э́то は名詞の性に関係なくいつも э́то。Э́то кни́га. も Э́то флаг. もOK。</p>
+    <p style="font-size:12px;color:#7E5C42;">※ э́то は名詞の性に関係なくいつも э́то。Э́то кни́га. も Э́то флаг. もOK。</p>
     <p style="margin-top:8px;">そして、この型を<b>問い</b>にすると——</p>
     <p>• <span class="ex-inline">Что э́то? — Э́то юла́.（これは何？ — こまです）</span></p>
     <p>• <span class="ex-inline">Кто э́то? — Э́то ко́шка.（これはだれ？ — ねこです）</span></p>
-    <p style="font-size:11px;color:#7E5C42;">ものには <b>что</b>、人や動物には <b>кто</b>。
+    <p style="font-size:12px;color:#7E5C42;">ものには <b>что</b>、人や動物には <b>кто</b>。
     この一文があれば、目に入るものすべてが語彙の先生になります。</p>
 
     <div class="column-box">
@@ -6911,7 +6915,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">име́ть в виду́</span><span class="form">〜のつもりで言う　Что ты име́ешь в виду́?（どういう意味？）</span>
       <span class="pron">име́ть значе́ние</span><span class="form">重要である　Э́то не име́ет значе́ния.（それは問題ではありません）</span>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">本や車のような<b>もの</b>に <b>Я име́ю кни́гу</b> と言うと、
+    <p style="font-size:12px;color:#7E5C42;">本や車のような<b>もの</b>に <b>Я име́ю кни́гу</b> と言うと、
     文法的には通じても、書類のようなかたい響きになります。ものは у ＋ 生格、
     権利・意味・可能性のような<b>目に見えないもの</b>は име́ть——この住み分けです。
     <b>Что вы име́ете в виду́?</b>（どういう意味でしょうか）は、聞き返しの必需品なので
@@ -6922,8 +6926,8 @@ const GRAMMAR_UNITS = [
     <strong>③ Я люблю́ … — わたしは〜が好き</strong>
     <p>後ろは<b>対格</b>。люби́ть は第2変化の動詞です。</p>
     <p>• <span class="ex-inline">Я люблю́ моро́женое.（М）</span> <span class="ex-inline">Я люблю́ я́блоки.（Я）</span> <span class="ex-inline">Я люблю́ съёмку.（Ъ）</span></p>
-    <p style="font-size:11px;color:#7E5C42;">※ съёмка → съёмк<b>у</b> のように、女性名詞は対格で -а → -у に変わります。</p>
-    <p style="font-size:11px;color:#9D5700;">※ <b>「ねこが好き」のように種類全体を指すときは複数形</b>にします：
+    <p style="font-size:12px;color:#7E5C42;">※ съёмка → съёмк<b>у</b> のように、女性名詞は対格で -а → -у に変わります。</p>
+    <p style="font-size:12px;color:#9D5700;">※ <b>「ねこが好き」のように種類全体を指すときは複数形</b>にします：
     Я люблю́ <b>ко́шек</b>.／Я люблю́ <b>я́блоки</b>.　特定の1つを指すときだけ単数です。
     数えられないもの（чай・молоко́・моро́женое）は、いつも単数のままです。</p>
   </div>
@@ -6952,7 +6956,7 @@ const GRAMMAR_UNITS = [
     <p>• <span class="ex-inline">Дава́йте вы́пьем за дру́жбу!</span>（友情のために飲みましょう）— ていねいな言い方</p>
     <p>• <span class="ex-inline">Ну, за встре́чу!</span>（それじゃあ、この出会いに）— くだけた言い方。Ну, за … は決まり文句です</p>
     <p>• <span class="ex-inline">До дна!</span>（飲みほして！）— дно（底）の生格。「底まで」の意味です</p>
-    <p style="font-size:11px;color:#7A5040;">за のあとは対格なので、生き物の名前は生格と同じ形になります
+    <p style="font-size:12px;color:#7A5040;">за のあとは対格なので、生き物の名前は生格と同じ形になります
     （роди́тели → за роди́телей／хозя́йка → за хозя́йку）。</p>
 
     <p style="margin-top:12px;"><b>◆ тост は掛け声ではありません</b></p>
@@ -7027,7 +7031,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">вы</span><span class="form">-ете / -ёте</span>
       <span class="pron">они́</span><span class="form">-ют / -ут</span>
     </div>
-    <p style="font-size:11px;color:#3A5578;">目印：ты・он・мы・вы の形に <b>е</b> か <b>ё</b> が見える → 第1変化。</p>
+    <p style="font-size:12px;color:#3A5578;">目印：ты・он・мы・вы の形に <b>е</b> か <b>ё</b> が見える → 第1変化。</p>
   </div>
 
   <div class="verb-row">
@@ -7054,7 +7058,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">вы</span><span class="form">идёте</span>
       <span class="pron">они́</span><span class="form">иду́т</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">アクセントが語尾にあるので е ではなく <b>ё</b> が現れます。</p>
+    <p style="font-size:12px;color:#7A5040;">アクセントが語尾にあるので е ではなく <b>ё</b> が現れます。</p>
   </div>
 
   <div class="verb-row">
@@ -7097,7 +7101,7 @@ const GRAMMAR_UNITS = [
     </div>
     <p>• <span class="ex-inline">Я рису́ю ко́шку.（ねこを描いています）</span></p>
     <p>変換が起きるのは現在形だけ。<b>過去形は ова のまま</b>です：Он рисова́л.（彼は描いていた）</p>
-    <p style="font-size:11px;color:#7A5040;">じつは Здра́вствуйте! も、この仲間の
+    <p style="font-size:12px;color:#7A5040;">じつは Здра́вствуйте! も、この仲間の
     здра́вствовать（健やかである）の命令形——直訳は「お健やかに！」です。
     再帰動詞の課で見た Я интересу́юсь му́зыкой. の интересова́ться も同じ変換です。</p>
   </div>
@@ -7164,7 +7168,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">вы</span><span class="form">лю́бите</span>
       <span class="pron">они́</span><span class="form">лю́бят</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">я の形だけ <b>л</b> が入ります（люб + ю → люблю́）。б, п, в, ф, м で終わる語幹に起こる現象です。</p>
+    <p style="font-size:12px;color:#7A5040;">я の形だけ <b>л</b> が入ります（люб + ю → люблю́）。б, п, в, ф, м で終わる語幹に起こる現象です。</p>
   </div>
 
   <div class="verb-row">
@@ -7176,7 +7180,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">он / она́</span><span class="form">слы́шит</span>
       <span class="pron">они́</span><span class="form">слы́шат</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">不定形は -ать ですが活用は第2変化。я の形が слы́шу（× слы́шю）なのは正書法ルールのためです。</p>
+    <p style="font-size:12px;color:#7A5040;">不定形は -ать ですが活用は第2変化。я の形が слы́шу（× слы́шю）なのは正書法ルールのためです。</p>
   </div>
 
   <div class="verb-row">
@@ -7223,7 +7227,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">вы</span><span class="form">хоти́те</span>
       <span class="pron">они́</span><span class="form">хотя́т</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">単数は第1変化（хо́чешь）、複数は第2変化（хоти́м）。ロシア語で唯一クラスの珍しいタイプです。</p>
+    <p style="font-size:12px;color:#7A5040;">単数は第1変化（хо́чешь）、複数は第2変化（хоти́м）。ロシア語で唯一クラスの珍しいタイプです。</p>
   </div>
 
   <div class="verb-row">
@@ -7237,7 +7241,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">они́</span><span class="form">едя́т</span>
     </div>
     <p>例：<span class="ex-inline">Я ем я́блоко.（りんごを食べます）</span></p>
-    <p style="font-size:11px;color:#7E5C42;">※「〜がある」の есть（У меня́ есть…）とは別の語です。形が同じなので文脈で判断します。</p>
+    <p style="font-size:12px;color:#7E5C42;">※「〜がある」の есть（У меня́ есть…）とは別の語です。形が同じなので文脈で判断します。</p>
   </div>
 
   <div class="verb-row">
@@ -7249,7 +7253,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">мы</span><span class="form">е́дем</span>
       <span class="pron">они́</span><span class="form">е́дут</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">歩いて行くなら идти́、乗り物なら е́хать。日本語の「行く」が2つに分かれます。</p>
+    <p style="font-size:12px;color:#7A5040;">歩いて行くなら идти́、乗り物なら е́хать。日本語の「行く」が2つに分かれます。</p>
   </div>
 
   <div class="verb-row">
@@ -7295,7 +7299,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">歩いて</span><span class="form">идти́　／　ходи́ть</span>
       <span class="pron">乗り物で</span><span class="form">е́хать　／　е́здить</span>
     </div>
-    <p style="font-size:11px;color:#3A5578;">左（定方向）＝「今まさに、その方向へ向かっている」。右（不定方向）＝「いつも行く」「行って帰ってきた」。</p>
+    <p style="font-size:12px;color:#3A5578;">左（定方向）＝「今まさに、その方向へ向かっている」。右（不定方向）＝「いつも行く」「行って帰ってきた」。</p>
   </div>
 
   <div class="verb-row">
@@ -7309,7 +7313,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">вы</span><span class="form">идёте</span>
       <span class="pron">они́</span><span class="form">иду́т</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">過去形は形が変わります：шёл / шла / шли。</p>
+    <p style="font-size:12px;color:#7A5040;">過去形は形が変わります：шёл / шла / шли。</p>
   </div>
 
   <div class="verb-row">
@@ -7322,7 +7326,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">мы</span><span class="form">хо́дим</span>
       <span class="pron">они́</span><span class="form">хо́дят</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">第2変化。я の形で д → ж に変わります（ходи́ть → хожу́）。</p>
+    <p style="font-size:12px;color:#7A5040;">第2変化。я の形で д → ж に変わります（ходи́ть → хожу́）。</p>
   </div>
 
   <div class="verb-row">
@@ -7332,14 +7336,14 @@ const GRAMMAR_UNITS = [
       <span class="pron">е́здить</span><span class="form">е́зжу / е́здишь / е́здит / е́здят</span>
     </div>
     <p>例：<span class="ex-inline">Я е́ду в Москву́.（いまモスクワへ向かっています）</span> <span class="ex-inline">Я е́зжу на рабо́ту на метро́.（いつも地下鉄で通勤します）</span></p>
-    <p style="font-size:11px;color:#7E5C42;">バス・電車・車で行くときは е́хать。徒歩なら идти́。街の中でも、乗るなら е́хать です。</p>
+    <p style="font-size:12px;color:#7E5C42;">バス・電車・車で行くときは е́хать。徒歩なら идти́。街の中でも、乗るなら е́хать です。</p>
   </div>
 
   <div class="rule-row">
     <strong>「昨日行った」はどっち？</strong>
     <p>• <b>ходи́л</b>（不定方向の過去）＝<b>行って帰ってきた</b>：Вчера́ я ходи́л в цирк.（昨日サーカスへ行った＝もう帰宅している）</p>
     <p>• <b>шёл</b>（定方向の過去）＝<b>向かう途中だった</b>：Я шёл в цирк и уви́дел лису́.（サーカスへ向かう途中でキツネを見た）</p>
-    <p style="font-size:11px;color:#9D5700;">日本語の「行った」は両方を含むので、ここは意識して選ぶ必要があります。</p>
+    <p style="font-size:12px;color:#9D5700;">日本語の「行った」は両方を含むので、ここは意識して選ぶ必要があります。</p>
   </div>
 
   <div class="rule-row">
@@ -7399,7 +7403,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">中性</span><span class="form">-ло　→ оно́ чита́ло</span>
       <span class="pron">複数</span><span class="form">-ли　→ они́ / мы / вы чита́ли</span>
     </div>
-    <p style="font-size:11px;color:#3A5578;">я・ты も、話し手が男性なら -л、女性なら -ла。「Я чита́ла.」と言えば話し手は女性です。</p>
+    <p style="font-size:12px;color:#3A5578;">я・ты も、話し手が男性なら -л、女性なら -ла。「Я чита́ла.」と言えば話し手は女性です。</p>
   </div>
 
   <div class="case-row">
@@ -7417,7 +7421,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">люби́ть</span><span class="form">люби́л / люби́ла / люби́ли</span>
       <span class="pron">идти́（不規則）</span><span class="form">шёл / шла / шло / шли</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">идти́ の過去形 шёл / шла は形がまったく変わります。よく出るので覚えてしまいましょう。</p>
+    <p style="font-size:12px;color:#7A5040;">идти́ の過去形 шёл / шла は形がまったく変わります。よく出るので覚えてしまいましょう。</p>
   </div>
 
   <div class="case-row">
@@ -7432,7 +7436,7 @@ const GRAMMAR_UNITS = [
     </div>
     <p>• <span class="ex-inline">Он не мог прийти́.（彼は来られなかった）</span>
     <span class="ex-inline">Она́ не могла́ прийти́.（彼女は〜）</span></p>
-    <p style="font-size:11px;color:#7E5C42;">「モーグル」ではなく<b>мог</b>（モーク）。
+    <p style="font-size:12px;color:#7E5C42;">「モーグル」ではなく<b>мог</b>（モーク）。
     -л がないので過去形に見えにくいですが、これが男性形です。</p>
   </div>
 
@@ -7448,7 +7452,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">нача́ть（始める）</span><span class="form">на́чал ／ <b>начала́</b> ／ на́чало ／ на́чали</span>
     </div>
     <p>• <span class="ex-inline">Она́ жила́ в Москве́.（彼女はモスクワに住んでいた）</span></p>
-    <p style="font-size:11px;color:#7E5C42;">нача́ть は男性・中性・複数で <b>на́-</b> に前がかりになる
+    <p style="font-size:12px;color:#7E5C42;">нача́ть は男性・中性・複数で <b>на́-</b> に前がかりになる
     （на́чал・на́чали）のに、女性だけ <b>начала́</b>。歌のように口で覚えるのが早い型です。</p>
   </div>
 
@@ -7526,7 +7530,7 @@ const GRAMMAR_UNITS = [
     <p>• 前置格：<span class="ex-inline">Тюле́нь в воде́.（Ь：水の中に）</span></p>
   </div>
 
-  <p style="background:#FFFBF0;border-left:3px solid #F0CC70;padding:8px 10px;margin-top:10px;font-size:11.5px;color:#7A4800;line-height:1.7;border-radius:8px;">
+  <p style="background:#FFFBF0;border-left:3px solid #F0CC70;padding:8px 10px;margin-top:10px;font-size:12.5px;color:#7A4800;line-height:1.7;border-radius:8px;">
   <b>安心してください</b>：6つ全部を一度に覚える必要はありません。
   次のユニットから、使う頻度が高い順にひとつずつ練習していきます。</p>
   `,
@@ -7582,7 +7586,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">女性 -я</span><span class="form">-ю　пусты́ня → пусты́ню</span>
       <span class="pron">中性</span><span class="form">変化なし　я́блоко → я́блоко</span>
     </div>
-    <p style="font-size:11px;color:#3A5578;">ポイントは<b>「生きているかどうか（動物性）」</b>。男性名詞だけ、人・動物のときに形が変わります。</p>
+    <p style="font-size:12px;color:#3A5578;">ポイントは<b>「生きているかどうか（動物性）」</b>。男性名詞だけ、人・動物のときに形が変わります。</p>
   </div>
 
   <div class="case-row">
@@ -7599,7 +7603,7 @@ const GRAMMAR_UNITS = [
     <p>前置詞 <b>в</b> / <b>на</b> ＋ 対格 で「〜へ（移動）」を表します。</p>
     <p>• <span class="ex-inline">Мы идём в цирк.（Ц：サーカスへ行きます）</span></p>
     <p>• <span class="ex-inline">Я иду́ на рабо́ту.（仕事へ行きます）</span></p>
-    <p style="font-size:11px;color:#9D5700;">同じ в でも、<b>前置格</b>なら「〜で（場所）」。в ци́рке＝サーカスで。動くか、いるかで格が変わります。</p>
+    <p style="font-size:12px;color:#9D5700;">同じ в でも、<b>前置格</b>なら「〜で（場所）」。в ци́рке＝サーカスで。動くか、いるかで格が変わります。</p>
   </div>
 
   <div class="case-row">
@@ -7623,7 +7627,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">活動体</span><span class="form">Я ви́жу <b>кого́?</b> — до́ктора / лису́ / ку́кол</span>
       <span class="pron">不活動体</span><span class="form">Я ви́жу <b>что?</b> — флаг / кни́гу / че́реп</span>
     </div>
-    <p style="font-size:11px;color:#9D5700;"><b>кто 自身が活動体のふるまいをします。</b>
+    <p style="font-size:12px;color:#9D5700;"><b>кто 自身が活動体のふるまいをします。</b>
     対格は生格と同じ <b>кого́</b>。いっぽう что は不活動体なので、対格も <b>что</b> のまま。
     疑問詞そのものが、この規則の見本になっているわけです。</p>
 
@@ -7639,17 +7643,17 @@ const GRAMMAR_UNITS = [
       <span class="pron">чёрт（悪魔）</span><span class="form"><b>活動体</b>　Я ви́жу чёрта.　目に見えなくても кто?</span>
       <span class="pron">бог（神）</span><span class="form"><b>活動体</b>　Я ви́жу Бо́га.</span>
     </div>
-    <p style="font-size:11px;color:#3A5578;">「実在するかどうか」でもありません。
+    <p style="font-size:12px;color:#3A5578;">「実在するかどうか」でもありません。
     <b>чёрт</b>（悪魔）<b>а́нгел</b>（天使）<b>бог</b>（神）<b>руса́лка</b>（水の精）<b>домово́й</b>（家の精）——
     目に見えない存在、想像上の存在も、すべて活動体です。
     人として語りかけられる相手かどうか、という線引きなのです。</p>
-    <p style="font-size:11px;color:#9D5700;">同じ「亡くなった人」でも、<b>труп</b> は「もの」として、
+    <p style="font-size:12px;color:#9D5700;">同じ「亡くなった人」でも、<b>труп</b> は「もの」として、
     <b>мертве́ц</b> は「人」として扱われます。ここにロシア語のものの見方が表れています。</p>
-    <p style="font-size:11px;color:#7E5C42;">ほかに <b>ро́бот</b>・<b>матрёшка</b>・トランプの
+    <p style="font-size:12px;color:#7E5C42;">ほかに <b>ро́бот</b>・<b>матрёшка</b>・トランプの
     <b>туз</b>（エース）やチェスの <b>ферзь</b> も活動体です（Я взял туза́.）。
     人の形をしたもの、動かして遊ぶものは「人あつかい」になります。
     <b>микро́б</b>・<b>ви́рус</b> のように、扱いがゆれる語もあります。</p>
-    <p style="font-size:11px;color:#7E5C42;">※ ку́кла は女性名詞なので、単数では ку́клу となり見分けられません。
+    <p style="font-size:12px;color:#7E5C42;">※ ку́кла は女性名詞なので、単数では ку́клу となり見分けられません。
     <b>複数の Я ви́жу ку́кол</b>（生格・複数と同じ形）で、はじめて活動体だと分かります。</p>
   </div>
   `,
@@ -7698,7 +7702,7 @@ const GRAMMAR_UNITS = [
     <strong>① 所有「〜の」</strong>
     <p>• <span class="ex-inline">Э́то рог носоро́га.（Н：これはサイの角）</span></p>
     <p>• <span class="ex-inline">Э́то кни́га до́ктора.（医者の本）</span></p>
-    <p style="font-size:11px;color:#7E5C42;">日本語と語順が逆：「サイ<b>の</b>角」→「角 ＋ サイ（生格）」。</p>
+    <p style="font-size:12px;color:#7E5C42;">日本語と語順が逆：「サイ<b>の</b>角」→「角 ＋ サイ（生格）」。</p>
   </div>
 
   <div class="case-row">
@@ -7731,7 +7735,7 @@ const GRAMMAR_UNITS = [
     <p>この о・е は<b>出没母音</b>——語尾がゼロのとき（主格）だけ現れて、
     語尾がつくと消えます。複数生格で ша́пка → ша́пок と<b>現れる</b>方向は別の課で見ますが、
     あれと同じ母音の、もう一つの顔です。</p>
-    <p style="font-size:11px;color:#7A5040;">「Бу́ду там три дня.（3日いる予定）」の дня も、
+    <p style="font-size:12px;color:#7A5040;">「Бу́ду там три дня.（3日いる予定）」の дня も、
     день の е が消えた形。辞書に оте́ц (отца́) と生格が添えてあったら、それが「消えるサイン」です。</p>
   </div>
 
@@ -7824,7 +7828,7 @@ const GRAMMAR_UNITS = [
     <p>нра́виться は<b>出会った瞬間の「いいね」</b>。はじめての物・見たばかりの物にはこちらです：
     <span class="ex-inline">Мне понра́вился э́тот фильм.（この映画、よかった）</span>
     ——感想を言うときの過去形 понра́вился／понра́вилась は丸ごと覚える価値があります。</p>
-    <p style="font-size:11px;color:#7E5C42;">人に向けると温度差がいちばんはっきりします。
+    <p style="font-size:12px;color:#7E5C42;">人に向けると温度差がいちばんはっきりします。
     Ты мне нра́вишься. は「きみが気になっている」、Я тебя́ люблю́. は告白の決定打——
     順序を間違えると、たいへんなことになります。</p>
   </div>
@@ -7911,7 +7915,7 @@ const GRAMMAR_UNITS = [
     <p>• <span class="ex-inline">Э́то суп с горо́хом.（Г：豆入りスープ）</span></p>
     <p>• <span class="ex-inline">Я пью чай с молоко́м.（Ч：ミルク入りのお茶）</span></p>
     <p>• <span class="ex-inline">Я иду́ с ма́мой.（お母さんと一緒に行く）</span></p>
-    <p style="font-size:11px;color:#7E5C42;">カフェで役立つ表現：ко́фе с са́харом（砂糖入りコーヒー）、чай с лимо́ном（レモンティー）。</p>
+    <p style="font-size:12px;color:#7E5C42;">カフェで役立つ表現：ко́фе с са́харом（砂糖入りコーヒー）、чай с лимо́ном（レモンティー）。</p>
   </div>
 
   <div class="case-row">
@@ -7924,7 +7928,7 @@ const GRAMMAR_UNITS = [
     <strong>③ 職業・状態（быть の後）</strong>
     <p>• <span class="ex-inline">Он был до́ктором.（彼は医者でした）</span></p>
     <p>• <span class="ex-inline">Я хочу́ быть учи́телем.（教師になりたい）</span></p>
-    <p style="font-size:11px;color:#7E5C42;">※ 現在形なら主格：Мой брат — до́ктор.（Д）</p>
+    <p style="font-size:12px;color:#7E5C42;">※ 現在形なら主格：Мой брат — до́ктор.（Д）</p>
   </div>
 
   <div class="rule-row">
@@ -7992,7 +7996,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">中性 -о</span><span class="form">-е　зе́ркало → в зе́ркале</span>
       <span class="pron">女性 -ь</span><span class="form">-и　жизнь → в жи́зни</span>
     </div>
-    <p style="font-size:11px;color:#3A5578;">迷ったら <b>-е</b>。6つの格の中でいちばん形がシンプルです。</p>
+    <p style="font-size:12px;color:#3A5578;">迷ったら <b>-е</b>。6つの格の中でいちばん形がシンプルです。</p>
   </div>
 
   <div class="case-row">
@@ -8013,7 +8017,7 @@ const GRAMMAR_UNITS = [
     <strong>в と на の使い分け</strong>
     <p>• <b>в</b>＝中に：в лесу́（森の中で）／в воде́（水の中で）／в шко́ле（学校で）</p>
     <p>• <b>на</b>＝上に・表面に：на де́реве（木の上で）／на снегу́（雪の上で）／на столе́（机の上で）</p>
-    <p style="font-size:11px;color:#7E5C42;">※ на рабо́те（職場で）、на по́чте（郵便局で）など、慣用的に на を使う場所もあります。</p>
+    <p style="font-size:12px;color:#7E5C42;">※ на рабо́те（職場で）、на по́чте（郵便局で）など、慣用的に на を使う場所もあります。</p>
   </div>
 
   <div class="case-row">
@@ -8117,7 +8121,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">Дере́вья <b>вокру́г</b> пруда́.</span><span class="form">木は池のまわりに　вокру́г ＋ 生格</span>
       <span class="pron">Мы гуля́ем <b>в</b> па́рке.</span><span class="form">公園を散歩する　в ＋ 前置格</span>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">※ 写真の鳥は <b>ога́рь</b>（アカツクシガモ）。
+    <p style="font-size:12px;color:#7E5C42;">※ 写真の鳥は <b>ога́рь</b>（アカツクシガモ）。
     モスクワの公園でよく見かける、у́тка のなかまです。</p>
   </div>
 
@@ -8138,11 +8142,11 @@ const GRAMMAR_UNITS = [
     <p>• <b>同じ・似た子音が続くとき</b>：в ＋ <b>в</b>то́рник → во вто́рник／с ＋ <b>с</b>тола́ → со стола́</p>
     <p>• <b>мной・всём・всех の前</b>：со мной・ко мне・обо мне・изо всех сил</p>
     <p>• <b>子音が3つ以上ぶつかるとき</b>：во рту（口の中で）・во сне（夢の中で）</p>
-    <p style="font-size:11px;color:#9D5700;"><b>母音で始まる語の前では、в のままです。</b>
+    <p style="font-size:12px;color:#9D5700;"><b>母音で始まる語の前では、в のままです。</b>
     <span class="ex-inline">в очка́х</span>（めがねをかけて）
     <span class="ex-inline">в а́вгусте</span>（8月に）——во очка́х とはなりません。
     во になるのは、うしろが<b>子音</b>で始まって言いにくいときです。</p>
-    <p style="font-size:11px;color:#7E5C42;">о だけは逆で、<b>母音の前で об</b> になります
+    <p style="font-size:12px;color:#7E5C42;">о だけは逆で、<b>母音の前で об</b> になります
     （<b>об</b> оре́хах・<b>об</b> э́том）。言いにくさを避けるという目的は同じです。</p>
   </div>
   `,
@@ -8201,7 +8205,7 @@ const GRAMMAR_UNITS = [
     <p>• 1 → 主格単数：<span class="ex-inline">одна́ кни́га</span></p>
     <p>• 2・3・4 → 生格<b>単数</b>：<span class="ex-inline">две кни́ги</span> <span class="ex-inline">три оре́ха</span></p>
     <p>• 5以上 → 生格<b>複数</b>：<span class="ex-inline">пять книг</span> <span class="ex-inline">шесть оре́хов</span></p>
-    <p style="font-size:11px;color:#7E5C42;">※ 21, 31…のように「1」で終わる数は再び主格単数：два́дцать одна́ кни́га。</p>
+    <p style="font-size:12px;color:#7E5C42;">※ 21, 31…のように「1」で終わる数は再び主格単数：два́дцать одна́ кни́га。</p>
   </div>
   `,
   drills:[
@@ -8283,7 +8287,7 @@ const GRAMMAR_UNITS = [
     <strong>使い分けの感覚</strong>
     <p>• Вчера́ я <b>чита́л</b> кни́гу.（昨日は本を読んで過ごした ＝ 過程）</p>
     <p>• Вчера́ я <b>прочита́л</b> кни́гу.（昨日その本を読み終えた ＝ 結果）</p>
-    <p style="font-size:11px;color:#7E5C42;">「どこまで言いたいか」で選びます。慣れるまでは、結果を言いたいときは完了体、と覚えておけば十分です。</p>
+    <p style="font-size:12px;color:#7E5C42;">「どこまで言いたいか」で選びます。慣れるまでは、結果を言いたいときは完了体、と覚えておけば十分です。</p>
   </div>
   `,
   drills:[
@@ -8330,7 +8334,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">造格</span><span class="form">оре́хами ／ зеркала́ми</span>
       <span class="pron">前置格</span><span class="form">об оре́хах ／ о зеркала́х</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">※ 母音の前では о → <b>об</b>（об оре́хах）。</p>
+    <p style="font-size:12px;color:#7A5040;">※ 母音の前では о → <b>об</b>（об оре́хах）。</p>
   </div>
 
   <div class="rule-row">
@@ -8370,7 +8374,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">ребёнок（子）</span><span class="form">де́ти / дете́й / де́тям / с детьми́ / о де́тях</span>
       <span class="pron">челове́к（人）</span><span class="form">лю́ди / люде́й / лю́дям / с людьми́ / о лю́дях</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">детьми́ と людьми́ だけ造格が特別です（-ами ではありません）。</p>
+    <p style="font-size:12px;color:#7A5040;">детьми́ と людьми́ だけ造格が特別です（-ами ではありません）。</p>
   </div>
   `,
   drills:[
@@ -8430,7 +8434,7 @@ const GRAMMAR_UNITS = [
       <text x="300" y="170" text-anchor="middle" class="pm-note">кни́ги＝生格　主語がありません</text>
       <text x="300" y="190" text-anchor="middle" class="pm-note">（机の上に本がない）</text>
     </svg>
-    <p style="font-size:11px;color:#7E5C42;">右の文には<b>主語がありません</b>。「本が」ではなく「本というものが」と、
+    <p style="font-size:12px;color:#7E5C42;">右の文には<b>主語がありません</b>。「本が」ではなく「本というものが」と、
     存在そのものを打ち消しています。だから動詞も нет の一語で、何にも合わせて変わりません。</p>
   </div>
 
@@ -8444,10 +8448,10 @@ const GRAMMAR_UNITS = [
       <span class="pron">未来・ある</span><span class="form">У меня́ <b>бу́дет</b> кни́га.</span>
       <span class="pron">未来・ない</span><span class="form">У меня́ <b>не бу́дет</b> кни́ги.</span>
     </div>
-    <p style="font-size:11px;color:#9D5700;">左の列（ある）では была́ が кни́га（女性）に合わせて変わります。
+    <p style="font-size:12px;color:#9D5700;">左の列（ある）では была́ が кни́га（女性）に合わせて変わります。
     右の列（ない）では<b>いつも не́ было</b>——合わせる主語がないので、中性・単数の形のまま動きません。
     未来も同じで <b>не бу́дет</b> だけです。</p>
-    <p style="font-size:11px;color:#7E5C42;">※ <b>не́ было</b> は не にアクセントが移ります。</p>
+    <p style="font-size:12px;color:#7E5C42;">※ <b>не́ было</b> は не にアクセントが移ります。</p>
   </div>
 
   <div class="case-row">
@@ -8458,7 +8462,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">明日わたしはいない</span><span class="form">Меня́ за́втра не бу́дет.</span>
       <span class="pron">誰もいない</span><span class="form">Никого́ нет.</span>
     </div>
-    <p style="font-size:11px;color:#3A5578;">меня́・тебя́・его́・её・нас・вас・их——どれも生格の形です。
+    <p style="font-size:12px;color:#3A5578;">меня́・тебя́・его́・её・нас・вас・их——どれも生格の形です。
     「彼<b>は</b>いない」と主格で言いたくなりますが、いないものは主語になれません。</p>
   </div>
 
@@ -8473,7 +8477,7 @@ const GRAMMAR_UNITS = [
     </div>
     <p>• 数えられるものが「ひとつもない」ときは、<b>生格・複数</b>を使うのがふつうです。</p>
     <p>• 数えられないもの（вре́мя・вода́・хлеб）は、<b>生格・単数</b>のままです。</p>
-    <p style="font-size:11px;color:#7E5C42;">複数生格は語尾が消えたり о が入ったりします
+    <p style="font-size:12px;color:#7E5C42;">複数生格は語尾が消えたり о が入ったりします
     （кни́га → книг／окно́ → о́кон／друзья́ → друзе́й）。ここは前のユニットの復習です。</p>
   </div>
 
@@ -8492,7 +8496,7 @@ const GRAMMAR_UNITS = [
     <p>• <b>対格が残りやすい</b>のは、特定のもの・人・「その〜」と指せるもの。</p>
     <p>　<span class="ex-inline">Я не чита́л э́ту кни́гу.</span>（この本は読んでいない）
     <span class="ex-inline">Я не ви́дел Ма́шу.</span>（マーシャに会っていない）</p>
-    <p style="font-size:11px;color:#9D5700;">迷ったときの目安：<b>「ひとかけらもない」と言いたいなら生格</b>、
+    <p style="font-size:12px;color:#9D5700;">迷ったときの目安：<b>「ひとかけらもない」と言いたいなら生格</b>、
     <b>「その特定のものについて」なら対格</b>。まずは нет ＋ 生格を確実にして、
     こちらは読みながら感覚をためていけば十分です。</p>
   </div>
@@ -8514,13 +8518,13 @@ const GRAMMAR_UNITS = [
     <p>• <span class="ex-inline">Чего́ то́лько нет!</span>
     ——直訳すれば「<b>何だけがないというのか</b>」。
     つまり<b>ないものを探すほうが難しい ＝ 何でもそろっている</b>という意味になります。</p>
-    <p style="font-size:11px;color:#3A5578;">чего́ は что の生格。нет ＋ 生格 の形そのままです。
+    <p style="font-size:12px;color:#3A5578;">чего́ は что の生格。нет ＋ 生格 の形そのままです。
     <span class="ex-inline">В э́том магази́не чего́ то́лько нет!</span>（この店には何でもある！）</p>
     <p>• <span class="ex-inline">Кого́ то́лько не́ было!</span>
     ——「誰だけがいなかったというのか」＝<b>それはもう、いろんな人が来ていた</b>。</p>
     <p>• <span class="ex-inline">Где я то́лько не́ был!</span>
     ——「どこにだけ行かなかったというのか」＝<b>あちこち行った</b>。</p>
-    <p style="font-size:11px;color:#9D5700;">目印は <b>то́лько</b>。
+    <p style="font-size:12px;color:#9D5700;">目印は <b>то́лько</b>。
     疑問詞 ＋ то́лько ＋ 否定 が並んだら、<b>裏返して読む</b>合図です。</p>
   </div>
 
@@ -8533,7 +8537,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">Нет слов!</span><span class="form">ことばもない（あきれ・感動）</span>
       <span class="pron">Нет пробле́м!</span><span class="form">問題ないよ！</span>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">どれも нет ＋ 生格。
+    <p style="font-size:12px;color:#7E5C42;">どれも нет ＋ 生格。
     <b>В нога́х пра́вды нет.</b> は「足に真実はない」——立たせたままでは話にならない、
     まあ座って、と席をすすめる言い方です。</p>
   </div>
@@ -8603,7 +8607,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">造格</span><span class="form">но́вым / но́вым / но́вой / но́выми</span>
       <span class="pron">前置格</span><span class="form">о но́вом / о но́вом / о но́вой / о но́вых</span>
     </div>
-    <p style="font-size:11px;color:#3A5578;">女性は生格・与格・造格・前置格がすべて <b>-ой</b>。ここだけ覚えれば女性形は終わりです。</p>
+    <p style="font-size:12px;color:#3A5578;">女性は生格・与格・造格・前置格がすべて <b>-ой</b>。ここだけ覚えれば女性形は終わりです。</p>
   </div>
 
   <div class="case-row">
@@ -8627,7 +8631,7 @@ const GRAMMAR_UNITS = [
     <strong>男性・複数の対格は「動物性」で決まります</strong>
     <p>• もの：Я чита́ю <b>но́вый</b> журна́л.（主格と同じ）</p>
     <p>• 生きもの：Я ви́жу <b>ма́ленького</b> ежа́.（生格と同じ）</p>
-    <p style="font-size:11px;color:#9D5700;">ёж は格変化で ё → е になります（ёж → ежа́, ежу́, ежо́м）。ё は強勢がある時だけの文字だからです。</p>
+    <p style="font-size:12px;color:#9D5700;">ёж は格変化で ё → е になります（ёж → ежа́, ежу́, ежо́м）。ё は強勢がある時だけの文字だからです。</p>
   </div>
 
 
@@ -8648,7 +8652,7 @@ const GRAMMAR_UNITS = [
       <p><b>造格</b><span>но́в<b>ым</b> → си́н<b>им</b></span></p>
       <p><b>前置格</b><span>о но́в<b>ом</b> → о си́н<b>ем</b></span></p>
     </div>
-    <p style="font-size:11px;color:#9D5700;">о が е に、ы が и に、а が я に、у が ю に。
+    <p style="font-size:12px;color:#9D5700;">о が е に、ы が и に、а が я に、у が ю に。
     <b>並びも順番もまったく同じ</b>です。新しく覚えることは、ほとんどありません。</p>
   </div>
 
@@ -8662,7 +8666,7 @@ const GRAMMAR_UNITS = [
     </div>
     <p>• 硬：кра́сн<b>ый</b> — кра́сн<b>ая</b> — кра́сн<b>ое</b></p>
     <p>• 軟：си́н<b>ий</b> — си́н<b>яя</b> — си́н<b>ее</b></p>
-    <p style="font-size:11px;color:#3A5578;">辞書には男性形しか載っていませんが、
+    <p style="font-size:12px;color:#3A5578;">辞書には男性形しか載っていませんが、
     <b>-ний で終わっていれば軟変化</b>と決まります。迷ったら女性形にしてみてください。</p>
   </div>
 
@@ -8677,7 +8681,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">хоро́ший</span><span class="form">хоро́ш<b>ая</b> → <b>硬変化</b>（生格が хоро́шего なのは正書法）</span>
       <span class="pron">си́ний</span><span class="form">си́н<b>яя</b>（-яя）→ <b>ほんものの軟変化</b></span>
     </div>
-    <p style="font-size:11px;color:#9D5700;">だから<b>女性形が最強の見分け方</b>です。
+    <p style="font-size:12px;color:#9D5700;">だから<b>女性形が最強の見分け方</b>です。
     -ая なら硬、-яя なら軟。ここだけ見ればまちがえません。</p>
   </div>
 
@@ -8698,7 +8702,7 @@ const GRAMMAR_UNITS = [
       <p><b>そのほか（数えるほど）</b>
       <span>си́ний（青い）ли́шний（余分な）и́скренний（誠実な）посторо́нний（部外の）</span></p>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">色で軟変化なのは <b>си́ний</b> だけです。
+    <p style="font-size:12px;color:#7E5C42;">色で軟変化なのは <b>си́ний</b> だけです。
     ほかの色はすべて硬変化（кра́сный・зелёный・жёлтый…）。
     голубо́й は -о́й 型で、これも硬変化です。</p>
   </div>
@@ -8709,7 +8713,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">男性</span><span class="form">молодо́й / молодо́го / молодо́му / молоды́м</span>
       <span class="pron">女性</span><span class="form">молода́я / молодо́й / молоду́ю / молодо́й</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">主格男性が <b>-о́й</b> なら、この型。ほかの語尾は но́вый と同じ並びです。</p>
+    <p style="font-size:12px;color:#7A5040;">主格男性が <b>-о́й</b> なら、この型。ほかの語尾は но́вый と同じ並びです。</p>
   </div>
   `,
   drills:[
@@ -8749,7 +8753,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">11〜15</span><span class="form">оди́ннадцать / двена́дцать / трина́дцать / четы́рнадцать / пятна́дцать</span>
       <span class="pron">16〜20</span><span class="form">шестна́дцать / семна́дцать / восемна́дцать / девятна́дцать / два́дцать</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">11〜19 は「-надцать（＝10の上に）」の形。強勢の位置に注意：четы́рнадцать だけ前寄りです。</p>
+    <p style="font-size:12px;color:#7A5040;">11〜19 は「-надцать（＝10の上に）」の形。強勢の位置に注意：четы́рнадцать だけ前寄りです。</p>
   </div>
 
   <div class="verb-row">
@@ -8759,8 +8763,8 @@ const GRAMMAR_UNITS = [
       <span class="pron">60〜80</span><span class="form">шестьдеся́т / се́мьдесят / во́семьдесят</span>
       <span class="pron">90・100</span><span class="form">девяно́сто / сто</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">50・60 は語尾に強勢、70・80 は前に強勢。ここは対で覚えると楽です。</p>
-    <p style="font-size:11px;color:#9D5700;"><b>со́рок</b>（40）だけは仲間はずれです。
+    <p style="font-size:12px;color:#7A5040;">50・60 は語尾に強勢、70・80 は前に強勢。ここは対で覚えると楽です。</p>
+    <p style="font-size:12px;color:#9D5700;"><b>со́рок</b>（40）だけは仲間はずれです。
     ほかは「4＋10」のような組み立てなのに、40 は独自の語。
     もとは毛皮を40枚ずつ束にして数えた単位だった、といわれています。</p>
 
@@ -8773,11 +8777,11 @@ const GRAMMAR_UNITS = [
       <span class="pron">2000</span><span class="form">две ты́сячи　※ 2〜4 のあとなので単数生格</span>
       <span class="pron">5000</span><span class="form">пять ты́сяч　※ 5以上なので複数生格</span>
     </div>
-    <p style="font-size:11px;color:#9D5700;"><b>ты́сяча</b> は数詞でありながら、
+    <p style="font-size:12px;color:#9D5700;"><b>ты́сяча</b> は数詞でありながら、
     <b>名詞と同じように変化します</b>。だから前の数の影響を受け、
     <b>две ты́сячи</b>（2〜4 → 単数生格）／<b>пять ты́сяч</b>（5以上 → 複数生格）と形が変わります。
     年号の <b>две ты́сячи два́дцать шесто́й год</b> は、この規則どおりです。</p>
-    <p style="font-size:11px;color:#7E5C42;">200〜400 は <b>-ста / -сти</b>、500〜900 は <b>-со́т</b>。
+    <p style="font-size:12px;color:#7E5C42;">200〜400 は <b>-ста / -сти</b>、500〜900 は <b>-со́т</b>。
     これも сто（100）を数えた形が残ったものです。</p>
   </div>
 
@@ -8800,7 +8804,7 @@ const GRAMMAR_UNITS = [
     <p>• два́дцать <b>оди́н</b> оре́х（1の位が1 → 主格単数）</p>
     <p>• два́дцать <b>две</b> кни́ги（1の位が2 → 生格単数）</p>
     <p>• два́дцать <b>пять</b> книг（1の位が5 → 生格複数）</p>
-    <p style="font-size:11px;color:#9D5700;">※ ただし 11〜14 は例外で、つねに生格複数：оди́ннадцать книг。</p>
+    <p style="font-size:12px;color:#9D5700;">※ ただし 11〜14 は例外で、つねに生格複数：оди́ннадцать книг。</p>
   </div>
 
   <div class="case-row">
@@ -8817,7 +8821,7 @@ const GRAMMAR_UNITS = [
     <p>複数形しかない名詞は два と組めないので、集合数詞の出番です：
     <span class="ex-inline">дво́е су́ток（まる2日）</span>
     （су́тки「一昼夜」は де́ньги と同じ、複数専用の名詞）。</p>
-    <p style="font-size:11px;color:#7E5C42;">女性だけのグループにはふつうの数詞を使います：две сестры́（2人の姉妹）。</p>
+    <p style="font-size:12px;color:#7E5C42;">女性だけのグループにはふつうの数詞を使います：две сестры́（2人の姉妹）。</p>
   </div>
 
   <div class="rule-row">
@@ -8829,24 +8833,24 @@ const GRAMMAR_UNITS = [
     <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:12px 0;">
       <div style="text-align:center;max-width:150px;"><svg viewBox="0 0 100 100" width="108" height="108" role="img"><circle cx="50" cy="50" r="46" fill="#FFFDF8" stroke="#7E5C42" stroke-width="2"/><path d="M50 50 L50.0 4.0 A46 46 0 0 1 96.0 50.0 Z" fill="#C97B72" opacity="0.25"/><line x1="50.0" y1="6.0" x2="50.0" y2="11.0" stroke="#7E5C42" stroke-width="2"/><line x1="72.0" y1="11.9" x2="69.5" y2="16.2" stroke="#7E5C42" stroke-width="1"/><line x1="88.1" y1="28.0" x2="83.8" y2="30.5" stroke="#7E5C42" stroke-width="1"/><line x1="94.0" y1="50.0" x2="89.0" y2="50.0" stroke="#7E5C42" stroke-width="2"/><line x1="88.1" y1="72.0" x2="83.8" y2="69.5" stroke="#7E5C42" stroke-width="1"/><line x1="72.0" y1="88.1" x2="69.5" y2="83.8" stroke="#7E5C42" stroke-width="1"/><line x1="50.0" y1="94.0" x2="50.0" y2="89.0" stroke="#7E5C42" stroke-width="2"/><line x1="28.0" y1="88.1" x2="30.5" y2="83.8" stroke="#7E5C42" stroke-width="1"/><line x1="11.9" y1="72.0" x2="16.2" y2="69.5" stroke="#7E5C42" stroke-width="1"/><line x1="6.0" y1="50.0" x2="11.0" y2="50.0" stroke="#7E5C42" stroke-width="2"/><line x1="11.9" y1="28.0" x2="16.2" y2="30.5" stroke="#7E5C42" stroke-width="1"/><line x1="28.0" y1="11.9" x2="30.5" y2="16.2" stroke="#7E5C42" stroke-width="1"/><line x1="50" y1="50" x2="59.9" y2="74.0" stroke="#3A2A20" stroke-width="4" stroke-linecap="round"/><line x1="50" y1="50" x2="88.0" y2="50.0" stroke="#3A2A20" stroke-width="2" stroke-linecap="round"/><circle cx="50" cy="50" r="2.5" fill="#3A2A20"/></svg>
         <div style="font-size:13px;" lang="ru"><b>че́тверть шесто́го</b></div>
-        <div style="font-size:11px;color:#7A5040;">5時15分<br>（6時目の「4分の1」）</div></div>
+        <div style="font-size:12px;color:#7A5040;">5時15分<br>（6時目の「4分の1」）</div></div>
       <div style="text-align:center;max-width:150px;"><svg viewBox="0 0 100 100" width="108" height="108" role="img"><circle cx="50" cy="50" r="46" fill="#FFFDF8" stroke="#7E5C42" stroke-width="2"/><path d="M50 50 L50.0 4.0 A46 46 0 0 1 50.0 96.0 Z" fill="#C97B72" opacity="0.25"/><line x1="50.0" y1="6.0" x2="50.0" y2="11.0" stroke="#7E5C42" stroke-width="2"/><line x1="72.0" y1="11.9" x2="69.5" y2="16.2" stroke="#7E5C42" stroke-width="1"/><line x1="88.1" y1="28.0" x2="83.8" y2="30.5" stroke="#7E5C42" stroke-width="1"/><line x1="94.0" y1="50.0" x2="89.0" y2="50.0" stroke="#7E5C42" stroke-width="2"/><line x1="88.1" y1="72.0" x2="83.8" y2="69.5" stroke="#7E5C42" stroke-width="1"/><line x1="72.0" y1="88.1" x2="69.5" y2="83.8" stroke="#7E5C42" stroke-width="1"/><line x1="50.0" y1="94.0" x2="50.0" y2="89.0" stroke="#7E5C42" stroke-width="2"/><line x1="28.0" y1="88.1" x2="30.5" y2="83.8" stroke="#7E5C42" stroke-width="1"/><line x1="11.9" y1="72.0" x2="16.2" y2="69.5" stroke="#7E5C42" stroke-width="1"/><line x1="6.0" y1="50.0" x2="11.0" y2="50.0" stroke="#7E5C42" stroke-width="2"/><line x1="11.9" y1="28.0" x2="16.2" y2="30.5" stroke="#7E5C42" stroke-width="1"/><line x1="28.0" y1="11.9" x2="30.5" y2="16.2" stroke="#7E5C42" stroke-width="1"/><line x1="50" y1="50" x2="56.7" y2="75.1" stroke="#3A2A20" stroke-width="4" stroke-linecap="round"/><line x1="50" y1="50" x2="50.0" y2="88.0" stroke="#3A2A20" stroke-width="2" stroke-linecap="round"/><circle cx="50" cy="50" r="2.5" fill="#3A2A20"/></svg>
         <div style="font-size:13px;" lang="ru"><b>полови́на шесто́го</b></div>
-        <div style="font-size:11px;color:#7A5040;">5時30分<br>（6時目の「半分」）</div></div>
+        <div style="font-size:12px;color:#7A5040;">5時30分<br>（6時目の「半分」）</div></div>
       <div style="text-align:center;max-width:150px;"><svg viewBox="0 0 100 100" width="108" height="108" role="img"><circle cx="50" cy="50" r="46" fill="#FFFDF8" stroke="#7E5C42" stroke-width="2"/><path d="M50 50 L50.0 4.0 A46 46 0 1 1 27.0 10.2 Z" fill="#C97B72" opacity="0.25"/><path d="M50 50 L27.0 10.2 A46 46 0 0 1 50.0 4.0 Z" fill="#3A5578" opacity="0.4"/><line x1="50.0" y1="6.0" x2="50.0" y2="11.0" stroke="#7E5C42" stroke-width="2"/><line x1="72.0" y1="11.9" x2="69.5" y2="16.2" stroke="#7E5C42" stroke-width="1"/><line x1="88.1" y1="28.0" x2="83.8" y2="30.5" stroke="#7E5C42" stroke-width="1"/><line x1="94.0" y1="50.0" x2="89.0" y2="50.0" stroke="#7E5C42" stroke-width="2"/><line x1="88.1" y1="72.0" x2="83.8" y2="69.5" stroke="#7E5C42" stroke-width="1"/><line x1="72.0" y1="88.1" x2="69.5" y2="83.8" stroke="#7E5C42" stroke-width="1"/><line x1="50.0" y1="94.0" x2="50.0" y2="89.0" stroke="#7E5C42" stroke-width="2"/><line x1="28.0" y1="88.1" x2="30.5" y2="83.8" stroke="#7E5C42" stroke-width="1"/><line x1="11.9" y1="72.0" x2="16.2" y2="69.5" stroke="#7E5C42" stroke-width="1"/><line x1="6.0" y1="50.0" x2="11.0" y2="50.0" stroke="#7E5C42" stroke-width="2"/><line x1="11.9" y1="28.0" x2="16.2" y2="30.5" stroke="#7E5C42" stroke-width="1"/><line x1="28.0" y1="11.9" x2="30.5" y2="16.2" stroke="#7E5C42" stroke-width="1"/><line x1="50" y1="50" x2="51.1" y2="76.0" stroke="#3A2A20" stroke-width="4" stroke-linecap="round"/><line x1="50" y1="50" x2="31.0" y2="17.1" stroke="#3A2A20" stroke-width="2" stroke-linecap="round"/><circle cx="50" cy="50" r="2.5" fill="#3A2A20"/></svg>
         <div style="font-size:13px;" lang="ru"><b>без пяти́ шесть</b></div>
-        <div style="font-size:11px;color:#7A5040;">5時55分<br>（<span style="color:#3A5578;font-weight:bold;">6時まで、あと5分</span>）</div></div>
+        <div style="font-size:12px;color:#7A5040;">5時55分<br>（<span style="color:#3A5578;font-weight:bold;">6時まで、あと5分</span>）</div></div>
     </div>
     <p>• <b>30分まで</b>：「6時目のどれだけが過ぎたか」——序数の生格で
     че́тверть шесто́го／полови́на шесто́го（序数は「一年のことば」の課で見た形です）。</p>
     <p>• <b>30分すぎ</b>：「次の時刻まで、あといくつ足りないか」——<b>без ＋ 生格</b>で
     без пяти́ шесть・без че́тверти шесть（6時15分前）。</p>
-    <p style="font-size:11px;color:#7A5040;">полови́на шесто́го を「6時半」と思ってしまうのが、
+    <p style="font-size:12px;color:#7A5040;">полови́на шесто́го を「6時半」と思ってしまうのが、
     いちばん多いまちがい。<b>шесто́го（6番目の）が指すのは「いま進んでいる時間」</b>なので、実際は5時台です。</p>
-    <p style="font-size:11px;color:#7E5C42;">会話では полшесто́го（полови́на шесто́го の縮まった形）もよく聞きます。
+    <p style="font-size:12px;color:#7E5C42;">会話では полшесто́го（полови́на шесто́го の縮まった形）もよく聞きます。
     数字をそのまま読む пять три́дцать（5時30分）も、いまはふつうに使われます。
     たずね方は Кото́рый час?（いま何時？）／Во ско́лько?（何時に？）— В пять часо́в.（5時に）。</p>
-    <p style="font-size:11px;color:#7E5C42;">ことばの成り立ちをひとつ——「時計」の <b lang="ru">часы́</b> は、
+    <p style="font-size:12px;color:#7E5C42;">ことばの成り立ちをひとつ——「時計」の <b lang="ru">часы́</b> は、
     じつは <b lang="ru">час</b> の複数形です。ひと目盛りずつの「時」が
     たくさん集まったもの、それが時計。だから часы́ は<b>1つでも複数形</b>
     （単数の「時計」はありません）で、数えるときは集合数詞の出番です：дво́е часо́в（時計2つ）。
@@ -8904,7 +8908,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">不完了体</span><span class="form">бу́ду / бу́дешь / бу́дет ＋ 不定形　→ Я бу́ду чита́ть.</span>
       <span class="pron">完了体</span><span class="form">活用した形がそのまま未来　→ Я прочита́ю.</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">完了体に現在形はありません。прочита́ю は「読み終えるだろう」という未来です。</p>
+    <p style="font-size:12px;color:#7A5040;">完了体に現在形はありません。прочита́ю は「読み終えるだろう」という未来です。</p>
   </div>
 
   <div class="rule-row">
@@ -9001,7 +9005,7 @@ const GRAMMAR_UNITS = [
 
       <text x="200" y="232" text-anchor="middle" class="pm-note">矢印の「先」がどちらにあるかを見てください</text>
     </svg>
-    <p style="font-size:11.5px;color:#4A3524;line-height:1.9;">
+    <p style="font-size:12.5px;color:#4A3524;line-height:1.9;">
     どちらも<b>かべを越える</b>動きです。ちがうのは<b>出発点</b>——
     <b>в-</b> は外から始まって<b>中で終わり</b>、<b>вы-</b> は中から始まって<b>外で終わります</b>。<br>
     ・<span class="ex-inline">Я вошёл в дом.</span>（家に入った）　в ＋ 対格＝入る先<br>
@@ -9032,7 +9036,7 @@ const GRAMMAR_UNITS = [
       <line x1="86" y1="214" x2="370" y2="214" stroke="#9F544A" stroke-width="2.6" marker-end="url(#pmOut)"></line>
       <text x="374" y="200" text-anchor="end" class="pm-lb pm-o">у- 立ち去る</text>
     </svg>
-    <p style="font-size:11.5px;color:#4A3524;line-height:1.9;">
+    <p style="font-size:12.5px;color:#4A3524;line-height:1.9;">
     <b>от-</b> は、まだ同じ部屋にいるくらいの<b>わずかな距離</b>。
     <b>у-</b> は、その場から<b>いなくなる</b>ことです。<br>
     ・<span class="ex-inline">Он отошёл от окна́.</span>（窓から少し離れた）— まだ部屋にいます<br>
@@ -9077,7 +9081,7 @@ const GRAMMAR_UNITS = [
       <path d="M228,176 L 268,176 Q 300,176 300,200 Q 300,176 332,176 L 372,176" fill="none" stroke="#6B5B95" stroke-width="2.2" marker-end="url(#pmN)"></path>
     </svg>
 
-    <p style="font-size:11px;color:#7E5C42;">
+    <p style="font-size:12px;color:#7E5C42;">
     <b>под-</b> と <b>от-</b> は「くっつくほど近くへ」「少しだけ離れる」という、
     <b>距離の細かい動き</b>を表します。部屋を出る（вы-）ほどではない、その場での動きです。</p>
   </div>
@@ -9098,7 +9102,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">подо-（そばへ寄る）</span><span class="form">подойти́ → подошёл / подойду́</span>
       <span class="pron">ото-（少し離れる）</span><span class="form">отойти́ → отошёл / отойду́</span>
     </div>
-    <p style="font-size:11px;color:#3A5578;">вы- は完了体のとき<b>つねに強勢を持ちます</b>（<b>вы́</b>йти, <b>вы́</b>шел, <b>вы́</b>йду）。</p>
+    <p style="font-size:12px;color:#3A5578;">вы- は完了体のとき<b>つねに強勢を持ちます</b>（<b>вы́</b>йти, <b>вы́</b>шел, <b>вы́</b>йду）。</p>
   </div>
 
   <div class="verb-row">
@@ -9133,7 +9137,7 @@ const GRAMMAR_UNITS = [
     <p>• そばへ寄る：<b>подойти́ к ＋ 与格</b>　Он подошёл <b>к</b> окну́.（窓のそばへ寄った）</p>
     <p>• 少し離れる：<b>отойти́ от ＋ 生格</b>　Он отошёл <b>от</b> окна́.（窓から少し離れた）</p>
     <p>• ぐるりとまわる：<b>обойти́ ＋ 対格</b>　Мы обошли́ дом.（家をひとまわりした）</p>
-    <p style="font-size:11px;color:#7E5C42;">※ мне の前では к → <b>ко</b> になります（発音しやすくするため）。</p>
+    <p style="font-size:12px;color:#7E5C42;">※ мне の前では к → <b>ко</b> になります（発音しやすくするため）。</p>
   </div>
 
   <div class="column-box">
@@ -9148,7 +9152,7 @@ const GRAMMAR_UNITS = [
     <figure class="photo"><img src="ph-znachki.jpg" alt="ソ連時代のバッジ3つ。ПОЕХАЛИ…と書かれた宇宙飛行士、モスクワ五輪のこぐまミーシャ、スプートニクの少年" loading="lazy"><figcaption><b lang="ru">значки́</b><span>ズナチキ（バッジ）</span><span class="ph-note">左から、ガガーリンの «ПОЕХАЛИ…»、モスクワ五輪（1980）のマスコット
     олимпи́йский Ми́шка、そして спу́тник。значо́к を集めるのはソ連時代からの楽しみで、
     いまでも蚤の市にずらりと並びます。</span><em>撮影：杉山真央</em></figcaption></figure>
-    <p style="font-size:11px;color:#7E5C42;"><b>спу́тник</b> は с（一緒に）＋ путь（道）＋ -ник（人）——
+    <p style="font-size:12px;color:#7E5C42;"><b>спу́тник</b> は с（一緒に）＋ путь（道）＋ -ник（人）——
     もともと「<b>道づれ</b>」という意味です。1957年、世界初の人工衛星にこの名がつき、
     そのまま世界のことばになりました。地球の道づれ、というわけです。</p>
   </div>
@@ -9181,7 +9185,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">子音＋я の形に強勢</span><span class="form">пи́шут（пишу́）→ пиш<b>и́</b>（пиши́те）</span>
       <span class="pron">子音＋強勢が前</span><span class="form">отве́тят → отве́т<b>ь</b>（отве́тьте）</span>
     </div>
-    <p style="font-size:11px;color:#3A5578;">ていねいに言うときや複数の相手には <b>-те</b> をつけます。</p>
+    <p style="font-size:12px;color:#3A5578;">ていねいに言うときや複数の相手には <b>-те</b> をつけます。</p>
   </div>
 
   <div class="verb-row">
@@ -9224,7 +9228,7 @@ const GRAMMAR_UNITS = [
       <b>скажи́те</b>＝ひとつ教えて（一回・完了体）、<b>говори́те</b>＝話し続けてどうぞ（過程・不完了体）。
       同じ「言う」でも、体がちがえば場面がちがいます。</span></p>
     </div>
-    <p style="font-size:11px;color:#7E5C42;"><b>Бу́дьте ＋ 形容詞の短い形</b>（здоро́вы・добры́）は
+    <p style="font-size:12px;color:#7E5C42;"><b>Бу́дьте ＋ 形容詞の短い形</b>（здоро́вы・добры́）は
     「〜でいてください」という型。くしゃみへの返しを
     На здоро́вье! と言ってしまうのは定番のまちがいです——
     あちらは「召し上がれ・どういたしまして」でしたね。</p>
@@ -9239,7 +9243,7 @@ const GRAMMAR_UNITS = [
     <p><span class="ex-inline">Всегда́ говори́те пра́вду.（いつも本当のことを言いなさい）</span>
     <span class="ex-inline">Проходи́те!（どうぞお入りください）</span>
     <span class="ex-inline">Сади́тесь!（おかけください）</span></p>
-    <p style="font-size:11px;color:#7E5C42;margin-top:8px;">お客さまに「どうぞ」とすすめるときは<b>不完了体</b>です。
+    <p style="font-size:12px;color:#7E5C42;margin-top:8px;">お客さまに「どうぞ」とすすめるときは<b>不完了体</b>です。
     不完了体の <b>Сади́тесь!</b> ではなく完了体の <b>Ся́дьте!</b> と言うと、「座りなさい」という指示に聞こえてしまいます。
     <b>すすめる＝不完了体</b>と覚えておくと、失礼になりません。</p>
   </div>
@@ -9261,12 +9265,12 @@ const GRAMMAR_UNITS = [
       <span>Не <b>опозда́й</b>!（遅れないでね＝今日のこと）</span>
       <span>Не <b>простуди́сь</b>!（風邪をひかないでね）</span></p>
     </div>
-    <p style="font-size:11px;color:#7E5C42;"><b>覚えかた</b>——
+    <p style="font-size:12px;color:#7E5C42;"><b>覚えかた</b>——
     <b>禁止</b>は「その動作をするな」ですから、動作そのもの＝<b>過程</b>をあらわす<b>不完了体</b>。
     <b>警告</b>は「そうなってしまわないように」ですから、<b>結果</b>を心配する<b>完了体</b>。
     同じ動詞でも <b>Не опа́здывай!</b>（いつも遅刻するね、直しなさい）と
     <b>Не опозда́й!</b>（今日は遅れないでね）で、伝わることがまるで変わります。</p>
-    <p style="font-size:11px;color:#7E5C42;"><b>нельзя́ も同じしくみ</b>です。
+    <p style="font-size:12px;color:#7E5C42;"><b>нельзя́ も同じしくみ</b>です。
     <b>Здесь нельзя́ кури́ть.</b>（不完了体＝ここは禁煙です）に対して、
     <b>Э́ту дверь нельзя́ откры́ть.</b>（完了体＝どうしても開かない＝不可能）。
     禁止か、できないか——体が教えてくれます。</p>
@@ -9332,7 +9336,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">複数</span><span class="form">гото́вы</span>
     </div>
     <p>• <span class="ex-inline">Я гото́в.（用意ができています・男性）／Я гото́ва.（女性）</span></p>
-    <p style="font-size:11px;color:#7A5040;">больно́й → бо́лен、ну́жный → ну́жен のように、
+    <p style="font-size:12px;color:#7A5040;">больно́й → бо́лен、ну́жный → ну́жен のように、
     語尾ゼロの男性形には<b>出没母音</b>（о・е）が割り込みます——複数生格の ша́пок と同じ現象です。</p>
   </div>
 
@@ -9344,7 +9348,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">бо́лен／больна́</span><span class="form">（いま）病気だ　Он бо́лен.</span>
       <span class="pron">согла́сен／согла́сна</span><span class="form">賛成だ　Я согла́сна!</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">рад には長語尾がありません——短語尾専用のことばです。
+    <p style="font-size:12px;color:#7A5040;">рад には長語尾がありません——短語尾専用のことばです。
     за́нят → занята́・бо́лен → больна́ の<b>女性形だけ語尾へ</b>のアクセント移動は、был → была́ と同じ型です。</p>
   </div>
 
@@ -9365,7 +9369,7 @@ const GRAMMAR_UNITS = [
     <p>長語尾（но́вый・гото́вый…）は名詞の前でも述語でも使える万能型。
     短語尾は「いま・この場面で」という<b>一時の状態</b>に寄ります：
     Он бо́лен.（いま体調をくずしている）／Он больно́й.（病気がちの人だ）。</p>
-    <p style="font-size:11px;color:#7E5C42;">形動詞の短語尾（Кни́га прочи́тана.）も、これと同じしくみでした。
+    <p style="font-size:12px;color:#7E5C42;">形動詞の短語尾（Кни́га прочи́тана.）も、これと同じしくみでした。
     до́лжен（〜すべき）も、じつはこの仲間です。</p>
   </div>
   `,
@@ -9405,7 +9409,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">вку́сный</span><span class="form">вкусне́е（もっとおいしい）</span>
       <span class="pron">бы́стрый</span><span class="form">быстре́е（もっと速い）</span>
     </div>
-    <p style="font-size:11px;color:#3A5578;">この形は<b>格変化しません</b>。性・数・格に関係なく、いつも同じ形で使えます。</p>
+    <p style="font-size:12px;color:#3A5578;">この形は<b>格変化しません</b>。性・数・格に関係なく、いつも同じ形で使えます。</p>
   </div>
 
   <div class="verb-row">
@@ -9420,14 +9424,14 @@ const GRAMMAR_UNITS = [
       <span class="pron">дорого́й（高い）</span><span class="form">доро́же</span>
       <span class="pron">дешёвый（安い）</span><span class="form">деше́вле</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">дешёвый → деше́вле のように、ё が е に変わるものもあります（強勢が移るため）。</p>
+    <p style="font-size:12px;color:#7A5040;">дешёвый → деше́вле のように、ё が е に変わるものもあります（強勢が移るため）。</p>
   </div>
 
   <div class="rule-row">
     <strong>「〜より」の言い方は2つ</strong>
     <p>• <b>чем ＋ 主格</b>：Кни́га интере́снее, <b>чем</b> фильм.（本は映画よりおもしろい）</p>
     <p>• <b>生格だけ</b>（чем を使わない）：Кни́га интере́снее <b>фи́льма</b>.</p>
-    <p style="font-size:11px;color:#9D5700;">意味は同じ。чем の前には<b>かならずコンマ</b>を打ちます。</p>
+    <p style="font-size:12px;color:#9D5700;">意味は同じ。чем の前には<b>かならずコンマ</b>を打ちます。</p>
   </div>
 
   <div class="rule-row">
@@ -9448,7 +9452,7 @@ const GRAMMAR_UNITS = [
     </div>
     <p>• 特別な形：<b>лу́чший</b>（最良の）・<b>ху́дший</b>（最悪の）・<b>ста́рший</b>（年長の）・<b>мла́дший</b>（年少の）</p>
     <p>• <span class="ex-inline">Э́то мой лу́чший друг.（彼は私の親友です）</span></p>
-    <p style="font-size:11px;color:#7E5C42;">会話では <b>са́мый лу́чший</b> とも言います。
+    <p style="font-size:12px;color:#7E5C42;">会話では <b>са́мый лу́чший</b> とも言います。
     лу́чший だけで「いちばん良い」なので理屈では重なっていますが、ふつうに使われる言い方です。</p>
   </div>
 
@@ -9462,7 +9466,7 @@ const GRAMMAR_UNITS = [
     </div>
     <p>• <span class="ex-inline">Он бе́гает быстре́е всех.（彼は誰よりも速く走る）</span></p>
     <p>• <span class="ex-inline">Мне э́то нра́вится бо́льше всего́.（これが何よりも好きです）</span></p>
-    <p style="font-size:11px;color:#7E5C42;">どちらも всё・все の<b>生格</b>です。
+    <p style="font-size:12px;color:#7E5C42;">どちらも всё・все の<b>生格</b>です。
     「〜より」を生格で言う形（кни́га интере́снее фи́льма）と同じしくみで、
     比べる相手が「みんな」「すべて」になっただけ、と考えると迷いません。</p>
   </div>
@@ -9478,12 +9482,12 @@ const GRAMMAR_UNITS = [
       <span class="pron">кра́ткий</span><span class="form">кратча́йший（もっとも短い）</span>
     </div>
     <p>• <span class="ex-inline">Где ближа́йшая ста́нция метро́?（いちばん近い地下鉄の駅はどこですか）</span></p>
-    <p style="font-size:11px;color:#7E5C42;"><b>к・г・х</b> のあとでは <b>-а́йший</b> になり、
+    <p style="font-size:12px;color:#7E5C42;"><b>к・г・х</b> のあとでは <b>-а́йший</b> になり、
     その子音も <b>ч・ж・ш</b> に変わります（вели́<b>к</b>ий → вели<b>ч</b>а́йший、
     стро́<b>г</b>ий → стро<b>ж</b>а́йший）。
     <b>бли́зкий → ближа́йший</b> だけは少し特別で、
     зк がまとめて ж になります——比較級 бли́же と同じ変わり方です。</p>
-    <p style="font-size:11px;color:#7E5C42;"><b>ближа́йший</b> は道をたずねるときの必需品です。
+    <p style="font-size:12px;color:#7E5C42;"><b>ближа́йший</b> は道をたずねるときの必需品です。
     形はかたいのに、使う場面はいちばん日常的——という例外だと思ってください。
     書きことばではほかに <b>наибо́лее ＋ 形容詞</b>（наибо́лее ва́жный）も使われます。</p>
   </div>
@@ -9527,7 +9531,7 @@ const GRAMMAR_UNITS = [
     <p>• <span class="ex-inline">Я пью чай и ко́фе.（お茶とコーヒーを飲みます）</span> ← ただ並べるだけ</p>
     <p>• <span class="ex-inline">Я чита́ю, а ты пи́шешь.（私は読んで、いっぽうきみは書いている）</span> ← 2人をくらべる</p>
     <p>• <span class="ex-inline">Я хочу́ спать, но я чита́ю.（眠いけれど、読んでいます）</span> ← 内容がぶつかる</p>
-    <p style="font-size:11px;color:#7A5040;">会話でおなじみの <b lang="ru">А ты?</b>（きみは？）も、この「くらべる а」。
+    <p style="font-size:12px;color:#7A5040;">会話でおなじみの <b lang="ru">А ты?</b>（きみは？）も、この「くらべる а」。
     話の矛先を相手に向けるときに使います。</p>
   </div>
 
@@ -9554,7 +9558,7 @@ const GRAMMAR_UNITS = [
     <p>• <span class="ex-inline">Е́сли бу́дет вре́мя, я бу́ду чита́ть.（もし時間があったら、読むつもりです）</span></p>
     <p>• <span class="ex-inline">Когда́ я чита́ю, я пью чай.（読むときは、お茶を飲みます）</span></p>
     <p>• <span class="ex-inline">Чай и́ли ко́фе?（お茶、それともコーヒー？）</span></p>
-    <p style="font-size:11px;color:#7A5040;">е́сли は「現実にありうる話」。「ありえない仮定」になると
+    <p style="font-size:12px;color:#7A5040;">е́сли は「現実にありうる話」。「ありえない仮定」になると
     е́сли бы ＋ 過去形 —— これは仮定法の課でくわしく扱います。</p>
   </div>
 
@@ -9562,7 +9566,7 @@ const GRAMMAR_UNITS = [
     <strong>コンマの約束</strong>
     <p>а・но・что・потому́ что・е́сли・когда́ の前には<b>コンマを打ちます</b>。
     и で単語を並べるだけ（чай и ко́фе）なら、コンマは要りません。</p>
-    <p style="font-size:11px;color:#7E5C42;">ロシア語のコンマは「息つぎ」ではなく<b>文法の記号</b>。
+    <p style="font-size:12px;color:#7E5C42;">ロシア語のコンマは「息つぎ」ではなく<b>文法の記号</b>。
     つなぎ目に機械的に打つ、と覚えてしまうのがいちばん楽です。</p>
   </div>
   `,
@@ -9600,7 +9604,7 @@ const GRAMMAR_UNITS = [
     <strong>кото́рый の形は、2つの情報で決まります</strong>
     <p>① <b>性と数</b>　→ 前にある名詞（先行詞）に合わせる<br>
     ② <b>格</b>　　　→ 後ろの文の中での役割で決まる</p>
-    <p style="font-size:11px;color:#9D5700;">この2つを別々に考えるのが、いちばんの近道です。</p>
+    <p style="font-size:12px;color:#9D5700;">この2つを別々に考えるのが、いちばんの近道です。</p>
   </div>
 
   <div class="case-row">
@@ -9611,7 +9615,7 @@ const GRAMMAR_UNITS = [
     　（私が本を「読む」＝目的語なので対格）</p>
     <p>• <b>前置格</b>：<span class="ex-inline">Кни́га, о кото́рой я говорю́, там.</span><br>
     　（本「について」話す＝о ＋ 前置格）</p>
-    <p style="font-size:11px;color:#7E5C42;">どの文でも кото́р- の部分は女性単数のまま。変わるのは語尾だけです。</p>
+    <p style="font-size:12px;color:#7E5C42;">どの文でも кото́р- の部分は女性単数のまま。変わるのは語尾だけです。</p>
   </div>
 
   <div class="verb-row">
@@ -9667,7 +9671,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">受動・現在</span><span class="form">чита́емый（読まれている〜）</span>
       <span class="pron">受動・過去</span><span class="form">прочи́танный（読み終えられた〜）</span>
     </div>
-    <p style="font-size:11px;color:#3A5578;">どれも形容詞なので、<b>修飾する名詞に合わせて性・数・格が変わります</b>。</p>
+    <p style="font-size:12px;color:#3A5578;">どれも形容詞なので、<b>修飾する名詞に合わせて性・数・格が変わります</b>。</p>
   </div>
 
   <div class="rule-row">
@@ -9686,7 +9690,7 @@ const GRAMMAR_UNITS = [
     <strong>кото́рый の文と言いかえてみる</strong>
     <p>• Челове́к, <b>кото́рый чита́ет</b> кни́гу　＝　Челове́к, <b>чита́ющий</b> кни́гу</p>
     <p>• Письмо́, <b>кото́рое написа́л</b> оте́ц　＝　Письмо́, <b>напи́санное</b> отцо́м</p>
-    <p style="font-size:11px;color:#7E5C42;">※ 受動の文では、動作をする人が<b>造格</b>になります（отцо́м＝父によって）。</p>
+    <p style="font-size:12px;color:#7E5C42;">※ 受動の文では、動作をする人が<b>造格</b>になります（отцо́м＝父によって）。</p>
   </div>
 
   <div class="verb-row">
@@ -9698,7 +9702,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">中性</span><span class="form">Письмо́ напи́сано.（手紙は書かれた）</span>
       <span class="pron">複数</span><span class="form">Две́ри откры́ты.（扉は開いている）</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">短語尾では -нн- が <b>-н-</b> ひとつになります（прочи́танный → прочи́тана）。</p>
+    <p style="font-size:12px;color:#7A5040;">短語尾では -нн- が <b>-н-</b> ひとつになります（прочи́танный → прочи́тана）。</p>
   </div>
   `,
   drills:[
@@ -9750,7 +9754,7 @@ const GRAMMAR_UNITS = [
     <p>副動詞の動作をする人と、文の主語は<b>同じでなければなりません</b>。</p>
     <p>• ○ <b>Чита́я</b> кни́гу, <b>я</b> пил чай.（読むのも飲むのも「私」）</p>
     <p>• ✕ Чита́я кни́гу, <b>мне</b> бы́ло интере́сно.（「読む人」が文中にいない）</p>
-    <p style="font-size:11px;color:#9D5700;">ロシア語の作文でいちばん多い誤りです。直すなら «Когда́ я чита́л кни́гу, мне бы́ло интере́сно.» とします。</p>
+    <p style="font-size:12px;color:#9D5700;">ロシア語の作文でいちばん多い誤りです。直すなら «Когда́ я чита́л кни́гу, мне бы́ло интере́сно.» とします。</p>
   </div>
 
   <div class="rule-row">
@@ -9792,7 +9796,7 @@ const GRAMMAR_UNITS = [
     <p>• <span class="ex-inline">Е́сли бы у меня́ бы́ло вре́мя, я бы пошёл в цирк.</span><br>
     　（時間があったら、サーカスに行くのに）</p>
     <p>• <span class="ex-inline">Е́сли бы я знал, я бы сказа́л.</span>（知っていたら、言ったのに）</p>
-    <p style="font-size:11px;color:#7E5C42;">※ 実際に起こりうる話なら бы を使いません：Е́сли у меня́ бу́дет вре́мя, я пойду́ в цирк.</p>
+    <p style="font-size:12px;color:#7E5C42;">※ 実際に起こりうる話なら бы を使いません：Е́сли у меня́ бу́дет вре́мя, я пойду́ в цирк.</p>
   </div>
 
   <div class="verb-row">
@@ -9803,7 +9807,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">〜してくださいますか</span><span class="form">Вы не могли́ бы помо́чь?</span>
     </div>
     <p>• <span class="ex-inline">Я хоте́л бы ко́фе, пожа́луйста.（コーヒーをお願いしたいのですが）</span></p>
-    <p style="font-size:11px;color:#7A5040;">話し手が女性なら Я хоте́л<b>а</b> бы。過去形なので性に合わせます。</p>
+    <p style="font-size:12px;color:#7A5040;">話し手が女性なら Я хоте́л<b>а</b> бы。過去形なので性に合わせます。</p>
 
     <p style="margin-top:10px;"><b>Я хоте́л бы</b> と <b>Мне хоте́лось бы</b> のちがい——
     どちらも「〜したいのですが」ですが、<b>ひかえめさが一段ちがいます</b>。</p>
@@ -9817,7 +9821,7 @@ const GRAMMAR_UNITS = [
       さらに一歩引いた、やわらかい響きになります。あらたまった場や、
       遠い夢を語るとき——Мне хоте́лось бы уви́деть Москву́.（いつかモスクワを見られたら）。</span></p>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">ならべると、ひかえめの階段になります：
+    <p style="font-size:12px;color:#7E5C42;">ならべると、ひかえめの階段になります：
     <b>Я хочу́</b>（したい）＜ <b>Мне хо́чется</b>（したい気がする）＜
     <b>Я хоте́л бы</b>（したいのですが）＜ <b>Мне хоте́лось бы</b>（できたらいいのですが）。
     <b>主語を手放すほど、ことばはやわらかくなる</b>——
@@ -9830,7 +9834,7 @@ const GRAMMAR_UNITS = [
     　<span class="ex-inline">Я хочу́, что́бы ты пришёл.（あなたに来てほしい）</span></p>
     <p>• <b>主語が同じ</b> → что́бы ＋ <b>不定形</b><br>
     　<span class="ex-inline">Я пришёл, что́бы уви́деть тебя́.（あなたに会うために来た）</span></p>
-    <p style="font-size:11px;color:#9D5700;">что́бы は что ＋ бы が1語になったもの。だから後ろが過去形になるのです。</p>
+    <p style="font-size:12px;color:#9D5700;">что́бы は что ＋ бы が1語になったもの。だから後ろが過去形になるのです。</p>
   </div>
   `,
   drills:[
@@ -9863,8 +9867,8 @@ const GRAMMAR_UNITS = [
     — Я пью чай с молоко́м. Хо́чешь ча́ю?<br>
     — Да, спаси́бо!
     </p>
-    <p style="font-size:11.5px;color:#7E5C42;">（やあ！ 何してるの／本を読んでるよ。きみは？／ミルクティーを飲んでるんだ。お茶いる？／うん、ありがとう！）</p>
-    <p style="font-size:11px;color:#7A5040;">• <b>А ты?</b>＝「きみは？」　会話でとてもよく使います<br>
+    <p style="font-size:12.5px;color:#7E5C42;">（やあ！ 何してるの／本を読んでるよ。きみは？／ミルクティーを飲んでるんだ。お茶いる？／うん、ありがとう！）</p>
+    <p style="font-size:12px;color:#7A5040;">• <b>А ты?</b>＝「きみは？」　会話でとてもよく使います<br>
     • <b>Хо́чешь ча́ю?</b> — 「少し」の意味を表すとき、飲み物は生格になることがあります（ча́ю は чай の生格の古い形）</p>
   </div>
 
@@ -9876,8 +9880,8 @@ const GRAMMAR_UNITS = [
     Пото́м напишу́ тебе́.<br>
     Пока́!
     </p>
-    <p style="font-size:11.5px;color:#7E5C42;">（やあマーシャ！ 明日モスクワへ行くよ。3日いる予定。あとで手紙を書くね。またね！）</p>
-    <p style="font-size:11px;color:#7A5040;">• <b>е́ду</b>（乗り物で行く）＋ <b>в Москву́</b>（в＋対格＝方向）<br>
+    <p style="font-size:12.5px;color:#7E5C42;">（やあマーシャ！ 明日モスクワへ行くよ。3日いる予定。あとで手紙を書くね。またね！）</p>
+    <p style="font-size:12px;color:#7A5040;">• <b>е́ду</b>（乗り物で行く）＋ <b>в Москву́</b>（в＋対格＝方向）<br>
     • <b>Бу́ду там три дня.</b> — бу́ду＝быть の未来形。три дня は「2・3・4＋生格単数」<br>
     • <b>напишу́</b>＝完了体の未来「書き上げるつもり」　• <b>тебе́</b>＝ты の与格</p>
     <figure class="photo"><img src="ph-river.jpg" alt="夕暮れのモスクワ川。遊覧船が行き交い、奥にピョートル大帝の像が立つ" loading="lazy"><figcaption><b>Москва́-река́ ве́чером</b><span>夕暮れのモスクワ川</span><span class="ph-note">メッセージの相手が向かう先は、こんな街です。</span><em>撮影：杉山真央</em></figcaption></figure>
@@ -9928,7 +9932,7 @@ const GRAMMAR_UNITS = [
     Стал дед ре́пку из земли́ тяну́ть.<br>
     Тя́нет-потя́нет, вы́тянуть не мо́жет.
     </p>
-    <p style="font-size:11.5px;color:#7E5C42;">（おじいさんがかぶを植えました。かぶは大きな大きなかぶになりました。おじいさんはかぶを土から引っぱりはじめました。引っぱっても引っぱっても、抜くことができません。）</p>
+    <p style="font-size:12.5px;color:#7E5C42;">（おじいさんがかぶを植えました。かぶは大きな大きなかぶになりました。おじいさんはかぶを土から引っぱりはじめました。引っぱっても引っぱっても、抜くことができません。）</p>
   </div>
 
   <div class="verb-row">
@@ -9948,7 +9952,7 @@ const GRAMMAR_UNITS = [
     <p>おじいさんはおばあさん（<b>ба́бка</b>）を呼び、おばあさんは孫娘（<b>вну́чка</b>）を、
     孫娘は犬（<b>Жу́чка</b>）を、犬はねこ（<b>ко́шка</b>）を、そしてねこは<b>ネズミ（мы́шка）</b>を呼びます。
     最後にネズミが加わって、ようやくかぶが抜けます。</p>
-    <p style="font-size:11.5px;color:#7E5C42;">小さな力が加わって、はじめて事が成る——という昔話です。
+    <p style="font-size:12.5px;color:#7E5C42;">小さな力が加わって、はじめて事が成る——という昔話です。
     同じ文型がくり返されるので、<b>音読の教材として最適</b>です。</p>
   </div>
 
@@ -10000,7 +10004,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">ていねい</span><span class="form">Здра́вствуйте! ／ До свида́ния! ／ вы</span>
       <span class="pron">親しい間柄</span><span class="form">Приве́т! ／ Пока́! ／ ты</span>
     </div>
-    <p style="font-size:11px;color:#9D5700;">迷ったら <b>вы</b>。相手が「Дава́й на ты!（ты で話そう）」と言ってから切りかえます。</p>
+    <p style="font-size:12px;color:#9D5700;">迷ったら <b>вы</b>。相手が「Дава́й на ты!（ты で話そう）」と言ってから切りかえます。</p>
   </div>
 
   <div class="case-row">
@@ -10059,10 +10063,10 @@ const GRAMMAR_UNITS = [
   <div class="case-row">
     <strong>物語のはじまり</strong>
     <p style="font-size:15px;font-weight:700;line-height:1.9;">Жи́ли-бы́ли дед да ба́ба.</p>
-    <p style="font-size:11.5px;color:#7E5C42;">（むかしむかし、おじいさんとおばあさんがいました）</p>
+    <p style="font-size:12.5px;color:#7E5C42;">（むかしむかし、おじいさんとおばあさんがいました）</p>
     <p style="font-size:15px;font-weight:700;line-height:1.9;">В не́котором ца́рстве, в не́котором госуда́рстве…</p>
-    <p style="font-size:11.5px;color:#7E5C42;">（あるところの王国に、ある国に…＝「むかしむかしあるところに」）</p>
-    <p style="font-size:11px;color:#7A5040;">※ в ＋ 前置格。ца́рство → в ца́рстве、госуда́рство → в госуда́рстве です。</p>
+    <p style="font-size:12.5px;color:#7E5C42;">（あるところの王国に、ある国に…＝「むかしむかしあるところに」）</p>
+    <p style="font-size:12px;color:#7A5040;">※ в ＋ 前置格。ца́рство → в ца́рстве、госуда́рство → в госуда́рстве です。</p>
   </div>
 
   <div class="case-row">
@@ -10087,7 +10091,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">Коще́й Бессме́ртный</span><span class="form">不死身のカシチェイ（悪役）</span>
       <span class="pron">Ива́н-дура́к</span><span class="form">イワンのばか（最後に幸運をつかむ主人公）</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">※ 男性と女性で語尾が対になっているのがわかります（царь / цари́ца、принц / принце́сса）。</p>
+    <p style="font-size:12px;color:#7A5040;">※ 男性と女性で語尾が対になっているのがわかります（царь / цари́ца、принц / принце́сса）。</p>
   </div>
 
   <div class="case-row">
@@ -10096,7 +10100,7 @@ const GRAMMAR_UNITS = [
     <p>• <span class="ex-inline">хи́трая лиса́</span>（ずる賢いキツネ・女性）　• <span class="ex-inline">се́рый волк</span>（灰色オオカミ・男性）</p>
     <p>• <span class="ex-inline">косола́пый медве́дь</span>（のっしのっし歩くクマ）　• <span class="ex-inline">тру́сливый за́яц</span>（臆病なウサギ）</p>
     <p>• <span class="ex-inline">золото́й пету́х</span>（金の雄鶏）　• <span class="ex-inline">ма́ленькая мышь</span>（小さなネズミ）</p>
-    <p style="font-size:11px;color:#7E5C42;">虫たち：<b>пчела́</b>（ミツバチ）・<b>мураве́й</b>（アリ）・<b>ба́бочка</b>（チョウ）・<b>кома́р</b>（カ）・<b>пау́к</b>（クモ）。
+    <p style="font-size:12px;color:#7E5C42;">虫たち：<b>пчела́</b>（ミツバチ）・<b>мураве́й</b>（アリ）・<b>ба́бочка</b>（チョウ）・<b>кома́р</b>（カ）・<b>пау́к</b>（クモ）。
     働き者は <b>рабо́тящий мураве́й</b>、うるさいのは <b>надое́дливый кома́р</b>。</p>
   </div>
 
@@ -10176,7 +10180,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">богаты́рь</span><span class="form">勇士 — три богатыря́（三勇士）</span>
       <span class="pron">Снегу́рочка</span><span class="form">雪むすめ（снег ＋ 指小形）— Дед Моро́з の孫</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">домово́й・водяно́й・ле́ший は<b>形容詞の形をした名詞</b>。
+    <p style="font-size:12px;color:#7A5040;">домово́й・водяно́й・ле́ший は<b>形容詞の形をした名詞</b>。
     「家の（もの）」「水の（もの）」が、そのまま名前になりました。変化も形容詞と同じです。
     три богатыря́ の богатыря́ は、2〜4のあとの生格・単数——数詞の課のルールが精霊にも効いています。</p>
   </div>
@@ -10186,7 +10190,7 @@ const GRAMMAR_UNITS = [
     <p><span class="ex-inline">Избу́шка, избу́шка, поверни́сь ко мне пе́редом, к ле́су за́дом!</span><br>
     （小屋よ小屋、こちらへ前を、森へうしろを向けておくれ！）</p>
     <p>鶏の足の上に立つ Ба́ба-яга́ の小屋は、いつも背中を向けています。主人公はこう唱えて回らせます。</p>
-    <p style="font-size:11px;color:#7E5C42;">• поверни́сь — 再帰動詞の<b>命令形</b>（自分が回る）
+    <p style="font-size:12px;color:#7E5C42;">• поверни́сь — 再帰動詞の<b>命令形</b>（自分が回る）
     • пе́редом／за́дом — <b>造格</b>「前面を／背面を向けて」　• ко мне — к が母音の前で ко に（前置詞の課）</p>
   </div>
 
@@ -10195,7 +10199,7 @@ const GRAMMAR_UNITS = [
     <p><span class="ex-inline">Смерть Коще́я — на конце́ иглы́, игла́ — в яйце́, яйцо́ — в у́тке, у́тка — в за́йце…</span><br>
     （コシチェイの死は針の先に、針は卵の中、卵はカモの中、カモはウサギの中…）</p>
     <p>不死身（Бессме́ртный ＝ без ＋ смерть「死なし」）のコシチェイにも、じつは弱点があります。</p>
-    <p style="font-size:11px;color:#7E5C42;">• 全部 <b>в ＋ 前置格</b>の入れ子です：яйцо́ → в яйце́、у́тка → в у́тке
+    <p style="font-size:12px;color:#7E5C42;">• 全部 <b>в ＋ 前置格</b>の入れ子です：яйцо́ → в яйце́、у́тка → в у́тке
     • Смерть Коще́я・конце́ иглы́ — 「〜の」の<b>生格</b>が連なります</p>
   </div>
 
@@ -10204,7 +10208,7 @@ const GRAMMAR_UNITS = [
     <p><span class="ex-inline">Я от ба́бушки ушёл, я от де́душки ушёл!</span><br>
     （おばあさんからも逃げた、おじいさんからも逃げた！）</p>
     <p>ころがるパン Колобо́к の自慢の歌。最後はキツネにだまされて食べられてしまいます。</p>
-    <p style="font-size:11px;color:#7E5C42;">• от ＋ <b>生格</b>「〜のもとから」　• ушёл — шёл と同じ、<b>-л の見えない過去形</b>（у＋идти́）</p>
+    <p style="font-size:12px;color:#7E5C42;">• от ＋ <b>生格</b>「〜のもとから」　• ушёл — шёл と同じ、<b>-л の見えない過去形</b>（у＋идти́）</p>
   </div>
 
   <div class="verb-row">
@@ -10212,7 +10216,7 @@ const GRAMMAR_UNITS = [
     <p><span class="ex-inline">По щу́чьему веле́нью, по моему́ хоте́нью!</span><br>
     （カワカマスの命により、わたしの望みにより！）</p>
     <p>魔法のカワカマス（щу́ка）を逃がしてやったエメーリャは、この呪文でなんでも叶えられるようになります。</p>
-    <p style="font-size:11px;color:#7E5C42;">• по ＋ <b>与格</b>「〜にしたがって」　• щу́чий — 「カワカマスの」という所有の形容詞です</p>
+    <p style="font-size:12px;color:#7E5C42;">• по ＋ <b>与格</b>「〜にしたがって」　• щу́чий — 「カワカマスの」という所有の形容詞です</p>
   </div>
 
   <div class="verb-row">
@@ -10222,7 +10226,7 @@ const GRAMMAR_UNITS = [
     <p><span class="ex-inline">И я там был, мёд-пи́во пил, по уса́м текло́, а в рот не попа́ло.</span><br>
     （わたしもその場にいて、蜜酒を飲んだ——ひげを伝って流れたが、口には一滴も入らなかった）</p>
     <p>2つ目は物語のしめくくり。「見てきたような話だが、ほんとうかどうかはご想像におまかせ」という、語り手のウインクです。</p>
-    <p style="font-size:11px;color:#7E5C42;">• ска́зывается・де́лается — <b>-ся の受け身</b>（語られる・成される）
+    <p style="font-size:12px;color:#7E5C42;">• ска́зывается・де́лается — <b>-ся の受け身</b>（語られる・成される）
     • この да は「しかし」——「読む・語る」の課で見た да（＝〜と）とは別の顔です
     • текло́・попа́ло — 主語のない<b>無人称</b>の中性形　• а — くらべる接続詞</p>
   </div>
@@ -10268,7 +10272,7 @@ const GRAMMAR_UNITS = [
   <div class="case-row">
     <strong>昔話の書き出し</strong>
     <p style="font-size:16px;font-weight:700;line-height:1.9;">Жи́ли-бы́ли дед да ба́ба.</p>
-    <p style="font-size:11.5px;color:#7E5C42;">（むかしむかし、おじいさんとおばあさんが暮らしていました）</p>
+    <p style="font-size:12.5px;color:#7E5C42;">（むかしむかし、おじいさんとおばあさんが暮らしていました）</p>
     <p>• <b>жи́ли-бы́ли</b>：жить と быть の過去・複数。昔話の決まり文句です<br>
     • <b>дед</b>（おじいさん）・<b>ба́ба</b>（おばあさん）<br>
     • <b>да</b>：ここでは и（〜と）の古い言い方</p>
@@ -10277,7 +10281,7 @@ const GRAMMAR_UNITS = [
   <div class="case-row">
     <strong>プーシキンの詩から（『ルスラーンとリュドミーラ』序詩）</strong>
     <p style="font-size:16px;font-weight:700;line-height:1.9;">У лукомо́рья дуб зелёный,<br>Злата́я цепь на ду́бе том…</p>
-    <p style="font-size:11.5px;color:#7E5C42;">（入り江のほとりに緑の樫の木、その樫には黄金の鎖…）</p>
+    <p style="font-size:12.5px;color:#7E5C42;">（入り江のほとりに緑の樫の木、その樫には黄金の鎖…）</p>
     <p>• <b>у лукомо́рья</b>：у ＋ 生格（〜のほとりに）<br>
     • <b>на ду́бе</b>：на ＋ 前置格（〜の上に）<br>
     • <b>злата́я</b>：золота́я（黄金の）の詩的な古い形<br>
@@ -10296,7 +10300,7 @@ const GRAMMAR_UNITS = [
     <p>• ロシアの昔話（<b>ру́сские наро́дные ска́зки</b>）— 文が短く、くり返しが多い<br>
     • チェーホフの短編 — 現代語に近く、1篇が数ページ<br>
     • 子ども向けの詩（<b>Марша́к</b>・<b>Чуко́вский</b>）— 韻とリズムで音読に最適</p>
-    <p style="font-size:11px;color:#9D5700;">音読すると、学んだ発音のルール（無声音化・アクセントによる母音の弱化）が実感できます。</p>
+    <p style="font-size:12px;color:#9D5700;">音読すると、学んだ発音のルール（無声音化・アクセントによる母音の弱化）が実感できます。</p>
   </div>
   `,
   drills:[
@@ -10332,7 +10336,7 @@ const GRAMMAR_UNITS = [
     　「私が何をしているか」を伝える、いちばん自然な順番</p>
     <p>• <span class="ex-inline">Кни́гу чита́ю я.</span>（その本を読んでいるのは<b>私です</b>）<br>
     　「誰が読んでいるの？」への答え。новое ＝ я を文末に置いています</p>
-    <p style="font-size:11px;color:#7E5C42;">どちらも文法的に正しく、意味も同じ。ちがうのは<b>光の当て方</b>です。</p>
+    <p style="font-size:12px;color:#7E5C42;">どちらも文法的に正しく、意味も同じ。ちがうのは<b>光の当て方</b>です。</p>
   </div>
 
   <div class="verb-row">
@@ -10341,7 +10345,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">中立の語順</span><span class="form">主語 → 動詞 → 目的語・補語</span>
       <span class="pron">例</span><span class="form">Я（主語） хочу́（動詞） арбу́з（目的語）.</span>
     </div>
-    <p style="font-size:11px;color:#3A5578;">はじめのうちは、この順で組み立てれば失敗しません。
+    <p style="font-size:12px;color:#3A5578;">はじめのうちは、この順で組み立てれば失敗しません。
     慣れてきたら、伝えたい語を文末に動かしてみてください。</p>
   </div>
 
@@ -10350,7 +10354,7 @@ const GRAMMAR_UNITS = [
     <p>語順は自由でも、<b>前置詞と、それが支配する名詞は必ずセット</b>で動きます。</p>
     <p>• ○ <span class="ex-inline">Мы идём <b>в цирк</b>.</span>　○ <span class="ex-inline"><b>В цирк</b> мы идём.</span></p>
     <p>• ✕ В мы идём цирк.（前置詞だけ離すことはできません）</p>
-    <p style="font-size:11px;color:#9D5700;">この練習でも、<b>「в цирк」「с молоко́м」はひとまとまりのカード</b>で出てきます。</p>
+    <p style="font-size:12px;color:#9D5700;">この練習でも、<b>「в цирк」「с молоко́м」はひとまとまりのカード</b>で出てきます。</p>
   </div>
   `,
   drills:[
@@ -10414,7 +10418,7 @@ const GRAMMAR_UNITS = [
     <strong>語尾が変われば、意味が変わります</strong>
     <p>• <span class="ex-inline">Соба́ка ви́дит кота́.</span>（犬が<b>ねこを</b>見ている）</p>
     <p>соба́ка が主格、кот<b>а́</b> が対格になりました。<b>順番ではなく語尾</b>が意味を決めています。</p>
-    <p style="font-size:11px;color:#9D5700;">だからこそ、作文では<b>語順よりも格を先に決める</b>のが近道です。</p>
+    <p style="font-size:12px;color:#9D5700;">だからこそ、作文では<b>語順よりも格を先に決める</b>のが近道です。</p>
   </div>
 
   <div class="verb-row">
@@ -10426,7 +10430,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">④ 誰に → 与格</span><span class="form">ма́ме</span>
       <span class="pron">⑤ 並べる</span><span class="form">Он купи́л буке́т ма́ме.</span>
     </div>
-    <p style="font-size:11px;color:#3A5578;">格さえ合っていれば、並べ方は文脈で選べます。</p>
+    <p style="font-size:12px;color:#3A5578;">格さえ合っていれば、並べ方は文脈で選べます。</p>
   </div>
   `,
   drills:[
@@ -10479,7 +10483,7 @@ const GRAMMAR_UNITS = [
     → <span class="ex-inline">Чай пьёт <b>ма́ма</b>.</span>（お茶を飲んでいるのは<b>ママ</b>です）</p>
     <p><b>Что пьёт ма́ма?</b>（ママは何を飲んでいますか）<br>
     → <span class="ex-inline">Ма́ма пьёт <b>чай</b>.</span>（ママが飲んでいるのは<b>お茶</b>です）</p>
-    <p style="font-size:11px;color:#7E5C42;">聞かれた語（＝新しい情報）が、どちらも文末に来ています。</p>
+    <p style="font-size:12px;color:#7E5C42;">聞かれた語（＝新しい情報）が、どちらも文末に来ています。</p>
   </div>
 
   <div class="rule-row">
@@ -10488,7 +10492,7 @@ const GRAMMAR_UNITS = [
     　主語が新しい情報なので、<b>動詞のあと</b>に置きます</p>
     <p>• <b>Что сде́лал Ива́н?</b> → <span class="ex-inline">Ива́н пришёл.</span>（イワンは来ました）<br>
     　イワンは既知。新しいのは「来た」なので文末に</p>
-    <p style="font-size:11px;color:#9D5700;">日本語の「〜が」「〜は」の使い分けと、よく似た働きをしています。</p>
+    <p style="font-size:12px;color:#9D5700;">日本語の「〜が」「〜は」の使い分けと、よく似た働きをしています。</p>
   </div>
 
   <div class="verb-row">
@@ -10497,7 +10501,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">自然</span><span class="form">Вчера́ я чита́л кни́гу.（昨日、私は本を読んだ）</span>
       <span class="pron">強調</span><span class="form">Кни́гу я чита́л вчера́.（その本を読んだのは昨日だ）</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">вчера́・сего́дня・за́втра などは、文頭に置くと「いつの話か」の枠を先に示せます。</p>
+    <p style="font-size:12px;color:#7A5040;">вчера́・сего́дня・за́втра などは、文頭に置くと「いつの話か」の枠を先に示せます。</p>
   </div>
 
   <div class="rule-row">
@@ -10586,7 +10590,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">時の区切り</span><span class="form">у́тро（朝）／день（昼）／ве́чер（夕）／ночь（夜・女性）</span>
       <span class="pron">あいさつ</span><span class="form">До́брое у́тро!／До́брый день!／До́брый ве́чер!</span>
     </div>
-    <p style="font-size:11px;color:#7A5040;">あいさつの形容詞が変わるのは、у́тро が中性、день・ве́чер が男性だからです。</p>
+    <p style="font-size:12px;color:#7A5040;">あいさつの形容詞が変わるのは、у́тро が中性、день・ве́чер が男性だからです。</p>
   </div>
 
   <div class="rule-row">
@@ -10706,7 +10710,7 @@ const GRAMMAR_UNITS = [
       </g>
     </svg>
     <p class="tap-hint">見本をおすと、発音が聞けます。声に出して真似してみてください。</p>
-    <p style="font-size:11px;color:#9D5700;"><b>ロシア語には「青」が2つあります。</b>
+    <p style="font-size:12px;color:#9D5700;"><b>ロシア語には「青」が2つあります。</b>
     <b>голубо́й</b>（明るい水色）と <b>си́ний</b>（濃い青）は、
     日本語の「赤」と「ピンク」くらい<b>別の色</b>として区別されます。
     どちらかを使えばよい、という関係ではありません。</p>
@@ -10775,10 +10779,10 @@ const GRAMMAR_UNITS = [
       <span class="pron">я́рко-</span><span class="form">あざやかな　я́рко-кра́сный（真っ赤）я́рко-жёлтый</span>
       <span class="pron">бле́дно-</span><span class="form">淡い　бле́дно-ро́зовый（淡いピンク）</span>
     </div>
-    <p style="font-size:11px;color:#9D5700;">形が変わるのは<b>うしろの色のほうだけ</b>です。
+    <p style="font-size:12px;color:#9D5700;">形が変わるのは<b>うしろの色のほうだけ</b>です。
     тёмно- は動きません。<br>
     тёмно-си́н<b>ий</b> шарф（男）／тёмно-си́н<b>яя</b> ю́бка（女）／тёмно-си́н<b>ее</b> мо́ре（中）</p>
-    <p style="font-size:11px;color:#7E5C42;">2つの色をまぜたときも、同じくハイフンでつなぎます。
+    <p style="font-size:12px;color:#7E5C42;">2つの色をまぜたときも、同じくハイフンでつなぎます。
     <span class="ex-inline">се́ро-голубо́й</span>（灰色がかった青）
     <span class="ex-inline">чёрно-бе́лый</span>（白黒の）</p>
     <p>3色ならびも同じです。ロシアの国旗は上から
@@ -10798,7 +10802,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">жёлтый → желтова́тый</span><span class="form">黄色みがかった</span>
       <span class="pron">бе́лый → белова́тый</span><span class="form">白っぽい</span>
     </div>
-    <p style="font-size:11px;color:#3A5578;">тёмно- が<b>濃さ</b>を、-ова́тый が<b>あいまいさ</b>を足します。
+    <p style="font-size:12px;color:#3A5578;">тёмно- が<b>濃さ</b>を、-ова́тый が<b>あいまいさ</b>を足します。
     この2つを覚えるだけで、12色が何十通りにも広がります。</p>
   </div>
 
@@ -10819,7 +10823,7 @@ const GRAMMAR_UNITS = [
     <p><span class="ex-inline">разноцве́тные ша́рики（色とりどりの風船）</span>
     <span class="ex-inline">прозра́чное стекло́（透明なガラス）</span>
     <span class="ex-inline">цветно́й каранда́ш（色えんぴつ）</span></p>
-    <p style="font-size:11px;color:#7E5C42;"><b>разноцве́тный と многоцве́тный</b>は、
+    <p style="font-size:12px;color:#7E5C42;"><b>разноцве́тный と многоцве́тный</b>は、
     辞書でもたがいに言いかえとして挙げられる<b>ほぼ同じ意味</b>の語です。
     ちがいは<b>使う場面</b>のほう。ふだんの会話や、身のまわりのものには
     <b>разноцве́тный</b>（<b>ра́зные цвета́</b>＝いろいろな色、と考えると自然です）。
@@ -10828,11 +10832,11 @@ const GRAMMAR_UNITS = [
     （<b>многоцве́тная печа́ть</b>＝多色刷り）。
     どちらを使っても間違いではありませんが、
     子どもの風船やえんぴつなら разноцве́тный のほうが耳になじみます。</p>
-    <p style="font-size:11px;color:#7E5C42;"><b>разноцве́тный と пёстрый のちがい</b>——
+    <p style="font-size:12px;color:#7E5C42;"><b>разноцве́тный と пёстрый のちがい</b>——
     разноцве́тный は<b>色が何色もある</b>という事実を言うだけです。
     пёстрый は<b>入り混じって、にぎやかに見える</b>という見た目の印象が入ります。
     服について пёстрый と言うと、「派手だね」に近くなることもあります。</p>
-    <p style="font-size:11px;color:#7E5C42;"><b>прозра́чный</b> はたとえ話にも使います。
+    <p style="font-size:12px;color:#7E5C42;"><b>прозра́чный</b> はたとえ話にも使います。
     <b>прозра́чный намёк</b>＝「見えすいたほのめかし」。
     透けて中が見えてしまう、というところから来ています。</p>
   </div>
@@ -10847,7 +10851,7 @@ const GRAMMAR_UNITS = [
       <span class="jp">花（はな）の複数</span>
       <span>Он подари́л мне <b>цветы́</b>.（彼は私に花をくれました）</span></p>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">どちらも цвет- からできた語で、
+    <p style="font-size:12px;color:#7E5C42;">どちらも цвет- からできた語で、
     もとをたどれば「咲いて色づくもの」というひとつのイメージにつながっています。
     分かれたのは複数形の形だけ。<b>цвета́ は色、цветы́ は花</b>——ここだけ押さえれば迷いません。</p>
   </div>
@@ -10861,7 +10865,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">中性</span><span class="form">кра́сн<b>ое</b> со́лнце（赤いたいよう）</span>
       <span class="pron">複数</span><span class="form">кра́сн<b>ые</b> круги́（赤いまるたち）</span>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">形が名詞、色が形容詞——という組み合わせがふつうです。
+    <p style="font-size:12px;color:#7E5C42;">形が名詞、色が形容詞——という組み合わせがふつうです。
     <span class="ex-inline">си́ний квадра́т</span>（青い四角）
     <span class="ex-inline">зелёный треуго́льник</span>（緑の三角）
     <span class="ex-inline">жёлтая звезда́</span>（黄色い星）</p>
@@ -10960,10 +10964,10 @@ const GRAMMAR_UNITS = [
       <span class="pron">есть あり</span><span class="form">У тебя́ <b>есть</b> соба́ка?　犬を飼っているの？</span>
       <span class="pron">есть なし</span><span class="form">У тебя́ хоро́шая соба́ка.　いい犬だね</span>
     </div>
-    <p style="font-size:11px;color:#9D5700;">髪や目があるのは当たり前なので、
+    <p style="font-size:12px;color:#9D5700;">髪や目があるのは当たり前なので、
     「髪が<b>ある</b>」とは言いません。言いたいのは<b>長さや色</b>のほうです。
     形容詞がついたら есть は落ちる——と覚えておくと、ほぼ当たります。</p>
-    <p style="font-size:11px;color:#7E5C42;">※ 否定はいつも <b>нет ＋ 生格</b>です。
+    <p style="font-size:12px;color:#7E5C42;">※ 否定はいつも <b>нет ＋ 生格</b>です。
     есть のあるなしに関係なく、У меня́ <b>нет</b> маши́ны. となります。</p>
   </div>
 
@@ -10981,7 +10985,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">くせ毛</span><span class="form">кудря́вые во́лосы</span>
     </div>
     <p>• <span class="ex-inline">У неё дли́нные све́тлые во́лосы.</span>（彼女は長い金髪です）</p>
-    <p style="font-size:11px;color:#7E5C42;">「長い」「明るい」と2つ並べるときは、
+    <p style="font-size:12px;color:#7E5C42;">「長い」「明るい」と2つ並べるときは、
     <b>長さ → 色</b>の順が自然です。日本語と同じ並びです。</p>
   </div>
 
@@ -10995,7 +10999,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">黒い目</span><span class="form">чёрные глаза́</span>
       <span class="pron">大きな目</span><span class="form">больши́е глаза́</span>
     </div>
-    <p style="font-size:11px;color:#9D5700;"><b>ка́рий</b> は「目の茶色」だけに使う特別な語です
+    <p style="font-size:12px;color:#9D5700;"><b>ка́рий</b> は「目の茶色」だけに使う特別な語です
     （馬の毛色にも使います）。机やくるみの茶色は кори́чневый。
     同じ「茶色」でも語を選び分けます。</p>
   </div>
@@ -11023,9 +11027,9 @@ const GRAMMAR_UNITS = [
       <span class="pron">　</span><span class="form">ма́льчик <b>лет десяти́</b>　10歳ぐらいの男の子</span>
       <span class="pron">性質</span><span class="form">де́вушка <b>краси́вой вне́шности</b>　美しい容姿の女性</span>
     </div>
-    <p style="font-size:11px;color:#3A5578;">形は <b>［形容詞・生格］＋［名詞・生格］</b>。
+    <p style="font-size:12px;color:#3A5578;">形は <b>［形容詞・生格］＋［名詞・生格］</b>。
     語順は入れかわらず、いつもこの組で使います。</p>
-    <p style="font-size:11px;color:#9D5700;">Он высо́кий. と Он высо́кого ро́ста. は、どちらも「背が高い」。
+    <p style="font-size:12px;color:#9D5700;">Он высо́кий. と Он высо́кого ро́ста. は、どちらも「背が高い」。
     ちがいは<b>手ざわり</b>です。前者はふつうの会話、後者は<b>特徴を書きとめるような、かたい言い方</b>。
     人物紹介・書類・商品説明などでよく見かけます。
     пла́тье кра́сного цве́та も、日常なら кра́сное пла́тье で十分です。</p>
@@ -11042,7 +11046,7 @@ const GRAMMAR_UNITS = [
     <p>身につけているものは <b>в ＋ 前置格</b>で表します。</p>
     <p>• <span class="ex-inline">де́вушка в очка́х</span>（めがねをかけた女性）
     <span class="ex-inline">мужчи́на в чёрном пальто́</span>（黒いコートの男性）</p>
-    <p style="font-size:11px;color:#7E5C42;">体にそなわったもの（目・髪・ひげ）は <b>с ＋ 造格</b>、
+    <p style="font-size:12px;color:#7E5C42;">体にそなわったもの（目・髪・ひげ）は <b>с ＋ 造格</b>、
     身につけたもの（服・めがね・帽子）は <b>в ＋ 前置格</b>——と分けて覚えると迷いません。</p>
   </div>
 
@@ -11062,7 +11066,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">усы́</span><span class="form">口ひげ　※ <b>複数だけ</b>の名詞</span>
       <span class="pron">весну́шки</span><span class="form">そばかす　※ これも複数で使います</span>
     </div>
-    <p style="font-size:11px;color:#7E5C42;"><b>усы́</b> は、ねこの<b>ひげ</b>でもあります。
+    <p style="font-size:12px;color:#7E5C42;"><b>усы́</b> は、ねこの<b>ひげ</b>でもあります。
     <span class="ex-inline">У ко́шки дли́нные усы́.</span>（ねこには長いひげがある）<br>
     очки́・но́жницы と同じ<b>複数だけの名詞</b>なので、形容詞も複数形にします。</p>
   </div>
@@ -11079,7 +11083,7 @@ const GRAMMAR_UNITS = [
       <p><b>× высо́кий нос</b><span class="jp">通じません</span>
       <span>высо́кий（高い）は、背や建物など<b>縦にのびるもの</b>に使う語です</span></p>
     </div>
-    <p style="font-size:11px;color:#9D5700;">同じ「高い」でも、
+    <p style="font-size:12px;color:#9D5700;">同じ「高い」でも、
     <b>背には высо́кий が使えます</b>（Он высо́кий.）。
     鼻だけが別あつかいなのではなく、<b>鼻を測る「ものさし」がちがう</b>のです。
     日本語は横から見た<b>高さ</b>、ロシア語は正面から見た<b>大きさ</b>で捉えています。</p>
@@ -11091,7 +11095,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">орли́ный</span><span class="form">わし鼻　орёл（わし）から</span>
       <span class="pron">дли́нный</span><span class="form">長い</span>
     </div>
-    <p style="font-size:11px;color:#7E5C42;"><b>курно́сый</b> は悪口ではなく、
+    <p style="font-size:12px;color:#7E5C42;"><b>курно́сый</b> は悪口ではなく、
     どちらかといえば愛らしさを表す語です。
     <span class="ex-inline">курно́сая де́вочка</span>（鼻のちょこんと上を向いた女の子）。</p>
   </div>
@@ -11105,7 +11109,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">鼻</span><span class="form">高い低い → <b>大きい小さい</b>　большо́й / ма́ленький нос</span>
       <span class="pron">肩</span><span class="form">広い　широ́кие пле́чи　単数 плечо́</span>
     </div>
-    <p style="font-size:11px;color:#9D5700;">日本語で「<b>小顔</b>」はほめことばですが、
+    <p style="font-size:12px;color:#9D5700;">日本語で「<b>小顔</b>」はほめことばですが、
     ロシア語に同じ言い方はありません。
     <b>ма́ленькое лицо́</b> と言っても、ほめたことにはならないので気をつけましょう。</p>
   </div>
@@ -11113,8 +11117,8 @@ const GRAMMAR_UNITS = [
   <div class="rule-row">
     <strong>まとめて一人を描いてみる</strong>
     <p><span class="ex-inline">Э́то Ма́ша. Она́ высо́кая. У неё дли́нные тёмные во́лосы и ка́рие глаза́.</span></p>
-    <p style="font-size:11px;color:#7E5C42;">（こちらはマーシャです。背が高くて、長い黒髪と茶色い目をしています）</p>
-    <p style="font-size:11px;color:#3A5578;">この3文だけで、人の紹介ができます。
+    <p style="font-size:12px;color:#7E5C42;">（こちらはマーシャです。背が高くて、長い黒髪と茶色い目をしています）</p>
+    <p style="font-size:12px;color:#3A5578;">この3文だけで、人の紹介ができます。
     Э́то ＋ 名前 → 全体の印象 → 細かい特徴、の順で並べるのが自然です。</p>
   </div>
   `,
@@ -11174,7 +11178,7 @@ const GRAMMAR_UNITS = [
     <p>• <span class="ex-inline">Како́й он челове́к?（彼はどんな人ですか）</span></p>
     <p>• <span class="ex-inline">Что он за челове́к?（彼っていったいどんな人？）</span></p>
     <p>• <span class="ex-inline">Кака́я она́ по хара́ктеру?（彼女は性格的にはどんな人？）</span></p>
-    <p style="font-size:11px;color:#7E5C42;"><b>хара́ктер</b> は「性格」。
+    <p style="font-size:12px;color:#7E5C42;"><b>хара́ктер</b> は「性格」。
     <b>по ＋ 与格</b>で <b>по хара́ктеру</b>＝「性格の点では」。
     答えるときは <b>Он по хара́ктеру споко́йный.</b>（彼は落ち着いた性格です）のように言います。
     <b>У неё лёгкий хара́ктер.</b> は「彼女はつきあいやすい人だ」——
@@ -11183,7 +11187,7 @@ const GRAMMAR_UNITS = [
 
   <div class="verb-row">
     <strong>性格のものさし</strong>
-    <p style="font-size:11px;color:#7E5C42;">左と右が反対の意味です。
+    <p style="font-size:12px;color:#7E5C42;">左と右が反対の意味です。
     どちらか一方だけ覚えるより、対で覚えるほうがずっと早く身につきます。</p>
     <div class="trait-scale">
     <div class="trait-line">
@@ -11241,7 +11245,7 @@ const GRAMMAR_UNITS = [
     <p style="margin-top:8px;">• <b>любопы́тный</b>＝<b>もの好き・詮索好き</b>。
     人のことを知りたがる方向で、<b>皮肉に響くことがあります</b>。</p>
     <p><span class="ex-inline">Не будь таки́м любопы́тным.（そんなに詮索しないで）</span></p>
-    <p style="font-size:11px;color:#7E5C42;">ただし <b>любопы́тный</b> は、ものについて言えば
+    <p style="font-size:12px;color:#7E5C42;">ただし <b>любопы́тный</b> は、ものについて言えば
     「興味深い」というよい意味になります（<b>любопы́тный факт</b>＝面白い事実）。
     人に使うか、ものに使うかで印象が変わるのです。
     <b>знать</b>（知る）が入っている любозна́тельный のほうが<b>学びの好奇心</b>——
@@ -11258,7 +11262,7 @@ const GRAMMAR_UNITS = [
     <p>• <span class="ex-inline">Он засте́нчивый.（彼は恥ずかしがり屋だ＝いつも）</span></p>
     <p>• <span class="ex-inline">Она́ стесня́ется говори́ть по-ру́сски.（彼女はロシア語を話すのを恥ずかしがっている）</span></p>
     <p>• <span class="ex-inline">Не стесня́йтесь!（どうぞ遠慮なさらないで）</span></p>
-    <p style="font-size:11px;color:#7E5C42;"><b>形容詞は「そういう人」</b>、
+    <p style="font-size:12px;color:#7E5C42;"><b>形容詞は「そういう人」</b>、
     <b>-ся 動詞は「いま恥ずかしがっている」</b>——この住み分けです。
     <b>Не стесня́йтесь!</b> は食卓ですすめられたときの決まり文句でもあります。
     形は <b>Не ＋ 不完了体の命令形</b>。「命令形と未来形」で見た、あの形です。</p>
@@ -11290,7 +11294,7 @@ const GRAMMAR_UNITS = [
     <p>• <span class="ex-inline">Она́ о́чень до́брая.（彼女はとてもやさしい）</span></p>
     <p>• <span class="ex-inline">Он дово́льно скро́мный.（彼はなかなか控えめだ）</span></p>
     <p>• <span class="ex-inline">Ты сли́шком серьёзный.（きみはまじめすぎる）</span></p>
-    <p style="font-size:11px;color:#7E5C42;">性格の形容詞も、かかる人の<b>性・数に合わせます</b>。
+    <p style="font-size:12px;color:#7E5C42;">性格の形容詞も、かかる人の<b>性・数に合わせます</b>。
     Он до́брый ／ Она́ до́брая ／ Они́ до́брые。
     「形容詞のきほん」で覚えた語尾が、そのまま生きてきます。</p>
   </div>
@@ -11303,7 +11307,7 @@ const GRAMMAR_UNITS = [
     直訳すると「集まりの魂」です。</p>
     <p>反対に、心の動かない人には <b>У него́ нет души́.</b>（彼には心がない）と言うこともあります。
     <b>души́</b> は生格。<b>нет ＋ 生格</b>の形ですね。</p>
-    <p style="font-size:11px;color:#7E5C42;">性格を <b>хара́ктер</b>（もって生まれた気質）で語るか、
+    <p style="font-size:12px;color:#7E5C42;">性格を <b>хара́ктер</b>（もって生まれた気質）で語るか、
     <b>душа́</b>（人としての深み）で語るか——
     ロシア語には、人を見る「ものさし」が2本あります。</p>
   </div>
@@ -11363,17 +11367,17 @@ const GRAMMAR_UNITS = [
       <span class="pron">月に</span><span class="form"><b>в ＋ 前置格</b>　в январе́（1月に）</span>
       <span class="pron">曜日に</span><span class="form"><b>в ＋ 対格</b>　в понеде́льник（月曜日に）</span>
     </div>
-    <p style="font-size:11px;color:#9D5700;">3つとも別々です。ここだけ表で覚えてしまえば、あとは語彙を足すだけです。</p>
+    <p style="font-size:12px;color:#9D5700;">3つとも別々です。ここだけ表で覚えてしまえば、あとは語彙を足すだけです。</p>
   </div>
 
   <div class="case-row">
     <strong>季節 — 4つと、その「〜に」</strong>
 <div class="wd-list"><div class="wd-row" style="--wd:#3A708B;"><span class="wd-chip" aria-hidden="true">冬</span><span class="wd-t"><b>зима́</b><span class="wd-in">зимо́й（〜に）</span><span class="wd-why">12・1・2月</span></span></div><div class="wd-row" style="--wd:#AC486A;"><span class="wd-chip" aria-hidden="true">春</span><span class="wd-t"><b>весна́</b><span class="wd-in">весно́й（〜に）</span><span class="wd-why">3・4・5月</span></span></div><div class="wd-row" style="--wd:#3D7732;"><span class="wd-chip" aria-hidden="true">夏</span><span class="wd-t"><b>ле́то</b><span class="wd-in">ле́том（〜に）</span><span class="wd-why">6・7・8月</span></span></div><div class="wd-row" style="--wd:#8F6036;"><span class="wd-chip" aria-hidden="true">秋</span><span class="wd-t"><b>о́сень</b><span class="wd-in">о́сенью（〜に）</span><span class="wd-why">9・10・11月</span></span></div></div>
-    <p style="font-size:11px;color:#7E5C42;">「〜に」は<b>造格</b>で、前置詞をつけません。
+    <p style="font-size:12px;color:#7E5C42;">「〜に」は<b>造格</b>で、前置詞をつけません。
     <span class="ex-inline">Зимо́й хо́лодно.</span>（冬は寒い）
     <span class="ex-inline">Ле́том жа́рко.</span>（夏は暑い）</p>
-    <p style="font-size:11px;color:#7E5C42;">о́сень は -ь で終わる女性名詞。造格は <b>о́сенью</b> です。</p>
-    <p style="font-size:11px;color:#9D5700;"><b>なぜ「冬」から始まるのか</b>——
+    <p style="font-size:12px;color:#7E5C42;">о́сень は -ь で終わる女性名詞。造格は <b>о́сенью</b> です。</p>
+    <p style="font-size:12px;color:#9D5700;"><b>なぜ「冬」から始まるのか</b>——
     日本語では「春夏秋冬」と<b>春</b>から数えますが、ロシア語では
     <b>зима́ → весна́ → ле́то → о́сень</b> と<b>冬</b>から挙げるのがふつうです。
     暦の年が1月に始まり、いちばん大きなお祝いの <b>Но́вый год</b> も冬にあるためです。
@@ -11388,9 +11392,9 @@ const GRAMMAR_UNITS = [
       <span class="pron">夏</span><span class="form">ию́нь → в ию́не／ию́ль → в ию́ле／а́вгуст → в а́вгусте</span>
       <span class="pron">秋</span><span class="form">сентя́брь → в сентябре́／октя́брь → в октябре́／ноя́брь → в ноябре́</span>
     </div>
-    <p style="font-size:11px;color:#9D5700;"><b>-брь で終わる月は、アクセントが語尾に移ります。</b>
+    <p style="font-size:12px;color:#9D5700;"><b>-брь で終わる月は、アクセントが語尾に移ります。</b>
     сентя́брь → в сентябр<b>е́</b>。март・а́вгуст などは動きません（в ма́рте・в а́вгусте）。</p>
-    <p style="font-size:11px;color:#7E5C42;">月の名前は<b>小文字</b>で書きます（× Январь ○ янва́рь）。
+    <p style="font-size:12px;color:#7E5C42;">月の名前は<b>小文字</b>で書きます（× Январь ○ янва́рь）。
     どれも男性名詞です。</p>
   </div>
 
@@ -11402,7 +11406,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">3月1日です</span><span class="form">Сего́дня <b>пе́рвое ма́рта</b>.</span>
       <span class="pron">5月9日です</span><span class="form">Сего́дня <b>девя́тое ма́я</b>.</span>
     </div>
-    <p style="font-size:11px;color:#9D5700;">число́（日）は<b>中性名詞</b>なので、序数も
+    <p style="font-size:12px;color:#9D5700;">число́（日）は<b>中性名詞</b>なので、序数も
     <b>-ое / -ье</b> の中性形になります（пе́рв<b>ое</b>・тре́т<b>ье</b>）。</p>
 
     <p style="margin-top:12px;"><b>◆ 序数（1〜31）</b></p>
@@ -11413,7 +11417,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">20・30</span><span class="form">двадца́тое／тридца́тое</span>
       <span class="pron">21・31</span><span class="form">два́дцать <b>пе́рвое</b>／три́дцать <b>пе́рвое</b></span>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">21以上は、<b>最後の数だけ</b>が序数になります
+    <p style="font-size:12px;color:#7E5C42;">21以上は、<b>最後の数だけ</b>が序数になります
     （два́дцать пе́рвое ＝ 20＋1番目）。</p>
 
     <p style="margin-top:12px;"><b>◆ 月の生格（「〜月の」の形）</b></p>
@@ -11422,7 +11426,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">5〜8月</span><span class="form">ма́я／ию́ня／ию́ля／а́вгуста</span>
       <span class="pron">9〜12月</span><span class="form">сентября́／октября́／ноября́／декабря́</span>
     </div>
-    <p style="font-size:11px;color:#9D5700;"><b>-брь</b> の月は、生格でもアクセントが語尾に移ります
+    <p style="font-size:12px;color:#9D5700;"><b>-брь</b> の月は、生格でもアクセントが語尾に移ります
     （сентя́брь → сентябр<b>я́</b>）。</p>
 
     <p style="margin-top:12px;"><b>◆ 「〜日に」は、序数を生格に</b></p>
@@ -11431,7 +11435,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">5月9日<b>に</b></span><span class="form"><b>девя́того</b> ма́я</span>
       <span class="pron">3月8日<b>に</b></span><span class="form"><b>восьмо́го</b> ма́рта</span>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">前置詞はいりません。
+    <p style="font-size:12px;color:#7E5C42;">前置詞はいりません。
     <b>「〜です」なら中性形、「〜に」なら生格形</b>——ここだけの違いです。<br>
     <span class="ex-inline">Сего́дня восьмо́е ма́рта.</span>（今日は3月8日です）<br>
     <span class="ex-inline">Восьмо́го ма́рта мы да́рим мимо́зу.</span>（3月8日にミモザをおくります）</p>
@@ -11444,9 +11448,9 @@ const GRAMMAR_UNITS = [
       <span class="pron">2026年<b>に</b></span><span class="form"><b>в</b> две ты́сячи два́дцать <b>шесто́м</b> году́</span>
       <span class="pron">1998年に</span><span class="form">в ты́сяча девятьсо́т девяно́сто <b>восьмо́м</b> году́</span>
     </div>
-    <p style="font-size:11px;color:#9D5700;">年も<b>最後の数だけ</b>が序数になります。
+    <p style="font-size:12px;color:#9D5700;">年も<b>最後の数だけ</b>が序数になります。
     「〜年に」は <b>в ＋ 前置格</b>で、<b>году́</b> という形になります（× в го́де）。</p>
-    <p style="font-size:11px;color:#7E5C42;">日付と年を続けるときは、年を<b>生格</b>にします——
+    <p style="font-size:12px;color:#7E5C42;">日付と年を続けるときは、年を<b>生格</b>にします——
     <span class="ex-inline">пя́того ма́я две ты́сячи два́дцать шесто́го го́да</span>（2026年5月5日に）。</p>
   </div>
 
@@ -11459,9 +11463,9 @@ const GRAMMAR_UNITS = [
       <span class="pron">5歳以上</span><span class="form">пять／де́сять／два́дцать <b>лет</b></span>
       <span class="pron">わたしは25歳です</span><span class="form">Мне два́дцать пять лет.</span>
     </div>
-    <p style="font-size:11px;color:#9D5700;">年齢は<b>与格</b>（Мне・Тебе́・Ему́）。
+    <p style="font-size:12px;color:#9D5700;">年齢は<b>与格</b>（Мне・Тебе́・Ему́）。
     数詞のあとの形は、数のユニットで見た<b>1／2〜4／5以上</b>の3分けがそのまま効きます。</p>
-    <p style="font-size:11px;color:#7E5C42;">11〜14 は例外で、いつも <b>лет</b>
+    <p style="font-size:12px;color:#7E5C42;">11〜14 は例外で、いつも <b>лет</b>
     （оди́ннадцать лет・двена́дцать лет）。「1で終わる数」でも 11 は лет です。</p>
   </div>
 
@@ -11476,7 +11480,7 @@ const GRAMMAR_UNITS = [
       <p><b>順番を言うとき</b><span class="jp">序数 ＝ 形容詞　→ 名詞は主格・単数のまま</span>
       <span>два́дцать шесто́й <b>год</b>（26番目の年 ＝ 2026年）</span></p>
     </div>
-    <p style="font-size:11px;color:#9D5700;">序数は<b>形容詞のなかま</b>です。
+    <p style="font-size:12px;color:#9D5700;">序数は<b>形容詞のなかま</b>です。
     形容詞のうしろの名詞は、いくつであろうと形が変わりません——
     <b>но́вый год</b>（新年）と<b>まったく同じ構造</b>です。
     「26個の年」ではなく「<b>26番目の</b>年」だから год のまま、というわけです。</p>
@@ -11486,19 +11490,19 @@ const GRAMMAR_UNITS = [
       <span class="pron">26年間</span><span class="form">два́дцать шесть <b>лет</b>　※ 数えている</span>
       <span class="pron">2026年に</span><span class="form">в две ты́сячи два́дцать шесто́м <b>году́</b>　※ 順番</span>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">見分け方は<b>数字の形</b>です。
+    <p style="font-size:12px;color:#7E5C42;">見分け方は<b>数字の形</b>です。
     <b>шесть</b>（六）なら数えている、<b>шесто́й</b>（六番目）なら順番。
     数字の形を見れば、うしろの名詞がどうなるかも決まります。</p>
 
     <p style="margin-top:12px;"><b>◆ おまけ — лет は「夏」からきています</b></p>
     <p>じつは <b>лет</b> は год の形ではありません。
     <b>ле́то</b>（夏）の複数生格です。</p>
-    <p style="font-size:11px;color:#7E5C42;">昔のロシアでは、年を<b>「夏」の数</b>で数えていました。
+    <p style="font-size:12px;color:#7E5C42;">昔のロシアでは、年を<b>「夏」の数</b>で数えていました。
     冬を越して夏を迎えるたびに一つ年をとる——その名残が、
     いまも「пять <b>лет</b>」として残っています。
     <span class="ex-inline">Ско́лько тебе́ лет?</span> は、直訳すれば
     「あなたは<b>いくつの夏</b>を過ごしましたか」。</p>
-    <p style="font-size:11px;color:#9D5700;">だから год は、単数と「1・2〜4」のときだけ顔を出します
+    <p style="font-size:12px;color:#9D5700;">だから год は、単数と「1・2〜4」のときだけ顔を出します
     （оди́н год／два го́да）。5以上になると、ле́то から借りてきた лет に交代します。</p>
   </div>
 
@@ -11516,10 +11520,10 @@ const GRAMMAR_UNITS = [
       <p><b>С днём рожде́ния!</b><span class="jp">お誕生日おめでとう</span>
       <span>с ＋ 造格。день → днём、рожде́ние → рожде́ния（生格）</span></p>
     </div>
-    <p style="font-size:11px;color:#9D5700;"><b>день рожде́ния</b> は「生まれた<b>日</b>」——
+    <p style="font-size:12px;color:#9D5700;"><b>день рожде́ния</b> は「生まれた<b>日</b>」——
     рожде́ния は生格です。だから「おめでとう」は
     <b>с днём</b>（造格）<b>рожде́ния</b>（生格のまま）となります。</p>
-    <p style="font-size:11px;color:#7E5C42;">つなげて言ってみましょう。<br>
+    <p style="font-size:12px;color:#7E5C42;">つなげて言ってみましょう。<br>
     <span class="ex-inline">Меня́ зову́т Мао. Мне два́дцать пять лет.
     Я родила́сь пя́того ма́я. Мой день рожде́ния весно́й.</span></p>
   </div>
@@ -11528,11 +11532,11 @@ const GRAMMAR_UNITS = [
   <div class="case-row">
     <strong>曜日 — 7つと、その「〜に」</strong>
 <div class="wd-list"><div class="wd-row" style="--wd:#8C52A4;"><span class="wd-chip" aria-hidden="true">月</span><span class="wd-t"><b>понеде́льник</b><span class="wd-in">в понеде́льник</span><span class="wd-why">неде́ля（週）のあと</span></span></div><div class="wd-row" style="--wd:#A45324;"><span class="wd-chip" aria-hidden="true">火</span><span class="wd-t"><b>вто́рник</b><span class="wd-in"><b>во</b> вто́рник</span><span class="wd-why">второ́й（2番目）から</span></span></div><div class="wd-row" style="--wd:#386E9A;"><span class="wd-chip" aria-hidden="true">水</span><span class="wd-t"><b>среда́</b><span class="wd-in">в <b>сре́ду</b></span><span class="wd-why">「まんなか」の意味</span></span></div><div class="wd-row" style="--wd:#2B7847;"><span class="wd-chip" aria-hidden="true">木</span><span class="wd-t"><b>четве́рг</b><span class="wd-in">в четве́рг</span><span class="wd-why">четвёртый（4番目）から</span></span></div><div class="wd-row" style="--wd:#7A6922;"><span class="wd-chip" aria-hidden="true">金</span><span class="wd-t"><b>пя́тница</b><span class="wd-in">в <b>пя́тницу</b></span><span class="wd-why">пя́тый（5番目）から</span></span></div><div class="wd-row" style="--wd:#806452;"><span class="wd-chip" aria-hidden="true">土</span><span class="wd-t"><b>суббо́та</b><span class="wd-in">в <b>суббо́ту</b></span><span class="wd-why">ヘブライ語 шабба́т から</span></span></div><div class="wd-row" style="--wd:#B44453;"><span class="wd-chip" aria-hidden="true">日</span><span class="wd-t"><b>воскресе́нье</b><span class="wd-in">в воскресе́нье</span><span class="wd-why">воскресе́ние（復活）から</span></span></div></div>
-    <p style="font-size:11px;color:#7E5C42;">曜日は<b>в ＋ 対格</b>。女性名詞は語尾が -у / -ю に変わります
+    <p style="font-size:12px;color:#7E5C42;">曜日は<b>в ＋ 対格</b>。女性名詞は語尾が -у / -ю に変わります
     （среда́ → в сре́ду、пя́тница → в пя́тницу）。</p>
-    <p style="font-size:11px;color:#7E5C42;">色は日本の<b>七曜</b>（日＝太陽・月＝月・火＝火…）に合わせてあります。
+    <p style="font-size:12px;color:#7E5C42;">色は日本の<b>七曜</b>（日＝太陽・月＝月・火＝火…）に合わせてあります。
     意味と色が結びつくと、7つの長い語も覚えやすくなります。</p>
-    <p style="font-size:11px;color:#7E5C42;">名前の由来も、そのまま数字や意味につながっています。
+    <p style="font-size:12px;color:#7E5C42;">名前の由来も、そのまま数字や意味につながっています。
     <b>воскресе́нье</b>（日曜）は「復活」——復活祭 <b>Па́сха</b> と同じ語根です。</p>
   </div>
   <div class="column-box">
@@ -11573,13 +11577,13 @@ const GRAMMAR_UNITS = [
       <p><b>окно́</b><span class="jp">空きコマ（授業と授業のあいだの、ぽっかり空いた時間）</span>
       <span>У меня́ сейча́с окно́.（いま空きコマです）</span></p>
     </div>
-    <p style="font-size:11px;color:#9D5700;">学生の休みに <b>о́тпуск</b> は使いません。
+    <p style="font-size:12px;color:#9D5700;">学生の休みに <b>о́тпуск</b> は使いません。
     働く人の休暇に <b>кани́кулы</b> も使いません。ここは日本語の「休み」1語ではまかなえないところです。
     そして空きコマが <b>окно́</b>（窓）なのは、時間割に<b>ぽっかり開いた窓</b>だから——
     学生も先生もふつうに使う、公認のたとえです。</p>
   </div>
 
-  <p style="font-size:11px;color:#7E5C42;margin:14px 0 2px;"><b>ここからは季節をひとめぐりします。</b>
+  <p style="font-size:12px;color:#7E5C42;margin:14px 0 2px;"><b>ここからは季節をひとめぐりします。</b>
   上の表と同じく <b>зима́ → весна́ → ле́то → о́сень</b> の順です。
   日本語の「春夏秋冬」とは出発点がちがうので、
   <b>冬から</b>読みはじめてください。</p>
@@ -11622,10 +11626,10 @@ const GRAMMAR_UNITS = [
       <span class="pron">С Днём Побе́ды!</span><span class="form">戦勝記念日おめでとう</span>
       <span class="pron">С пра́здником!</span><span class="form">（何の祝日にも使える）おめでとう</span>
     </div>
-    <p style="font-size:11px;color:#9D5700;">言われたときの返し方は
+    <p style="font-size:12px;color:#9D5700;">言われたときの返し方は
     <span class="ex-inline">Спаси́бо! И вас та́кже!</span>（ありがとう、あなたも）。
     <b>вас</b> は対格です。</p>
-    <p style="font-size:11px;color:#7E5C42;">この型は、もともと
+    <p style="font-size:12px;color:#7E5C42;">この型は、もともと
     <b>Поздравля́ю вас с …</b>（〜をお祝い申し上げます）の省略です。
     だから с ＋ 造格 の部分だけが残っています。</p>
   </div>
@@ -11678,11 +11682,11 @@ const GRAMMAR_UNITS = [
       <p><b>— Христо́с воскре́се!</b><span class="jp">キリストは復活しました！</span>
       <span><b>— Вои́стину воскре́се!</b>　まことに復活しました！</span></p>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">воскре́се は古い教会スラヴ語の形で、
+    <p style="font-size:12px;color:#7E5C42;">воскре́се は古い教会スラヴ語の形で、
     この挨拶にだけ残っています。ふつうのロシア語なら
     <span class="ex-inline">Христо́с воскре́с! — Вои́стину воскре́с!</span>。
     どちらも使われます。</p>
-    <p style="font-size:11px;color:#9D5700;"><b>воскре́с</b>（復活した）と
+    <p style="font-size:12px;color:#9D5700;"><b>воскре́с</b>（復活した）と
     <b>воскресе́нье</b>（日曜日）は同じ語根です。
     ロシア語の日曜は、もともと「復活の日」なのです。</p>
     <p style="margin-top:12px;"><b>◆ 食卓にならぶもの</b></p>
@@ -11691,10 +11695,10 @@ const GRAMMAR_UNITS = [
       <span class="pron">па́сха</span><span class="form">カッテージチーズの菓子（祝日と同じ名前）</span>
       <span class="pron">кра́шеные я́йца</span><span class="form">色をつけたゆで卵。赤が定番</span>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">卵を持ち寄って、たがいにぶつけ合う遊びもあります。
+    <p style="font-size:12px;color:#7E5C42;">卵を持ち寄って、たがいにぶつけ合う遊びもあります。
     割れなかったほうが勝ち——子どもたちの楽しみです。</p>
     <p style="margin-top:10px;"><b>◆ 冬から春へ、行事はつながっています</b></p>
-    <p style="font-size:11px;color:#7E5C42;">
+    <p style="font-size:12px;color:#7E5C42;">
     <b>Ма́сленица</b>（冬送り・ブリヌイの週）→
     <b>Вели́кий пост</b>（大斎・肉や乳を控える約7週間）→
     <b>Па́сха</b>（復活祭）。<br>
@@ -11711,7 +11715,7 @@ const GRAMMAR_UNITS = [
     亡くなった人も、写真になって家族と一緒に行進する——だから「不滅」なのです。</p>
     <figure class="photo"><img src="ph-polk.jpg" alt="雨のモスクワ。オレンジと黒の縞の横断幕を先頭に、家族の白黒写真を掲げた人々が行進している" loading="lazy"><figcaption><b lang="ru">Бессме́ртный полк</b><span>不滅の連隊（モスクワ）</span><span class="ph-note">掲げられているのは、それぞれの家の
     おじいさん・おばあさんの写真。オレンジと黒の縞は <span lang="ru">гео́ргиевская ле́нта</span>（聖ゲオルギーのリボン）といい、この日の街にあふれます。</span><em>撮影：杉山真央</em></figcaption></figure>
-    <p style="font-size:11px;color:#7E5C42;"><b>бессме́ртный</b> のつくりは
+    <p style="font-size:12px;color:#7E5C42;"><b>бессме́ртный</b> のつくりは
     <b>без（〜なしの）＋ смерть（死）＋ -ный</b>。з が с に変わるのは、
     次の с につられる音の同化です。おとぎ話の課に出てきた
     <b lang="ru">Коще́й Бессме́ртный</b>（不死身のカシチェイ）と、同じことばです。</p>
@@ -11734,7 +11738,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">со́лнце</span><span class="form">たいよう　※ л は読みません</span>
     </div>
     <figure class="photo il"><img src="il-sunflower.jpg" alt="大きなひまわりの花のかげから、帽子をかぶった2匹のねこがのぞいている" loading="lazy"><figcaption><b>Ле́том цвету́т подсо́лнухи.</b><span>夏にはひまわりが咲きます</span><span class="ph-note">подсо́лнух は「под（〜の下）＋ со́лнце（たいよう）」——太陽を追う花、という名前です。</span><em>絵：杉山真央</em></figcaption></figure>
-    <p style="font-size:11px;color:#7E5C42;">夏になると、街の人は週末ごとに <b>да́ча</b> へ出かけます。
+    <p style="font-size:12px;color:#7E5C42;">夏になると、街の人は週末ごとに <b>да́ча</b> へ出かけます。
     小さな菜園のある郊外の家で、きゅうりやトマトを育て、
     <b>шашлы́к</b>（シャシリク＝串焼き肉）を焼きます。
     <b>жа́рить шашлы́к</b>——ロシアの夏はここが舞台です。</p>
@@ -11750,7 +11754,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">дождь</span><span class="form">雨　Идёт дождь.</span>
     </div>
     <figure class="photo il"><img src="il-autumn.jpg" alt="赤いもみじの葉と色とりどりの丸、ねずみたちにかこまれた2匹のねこ" loading="lazy"><figcaption><b>О́сенью па́дают ли́стья.</b><span>秋には葉が落ちます</span><span class="ph-note">ли́стья は лист の複数形。листопа́д はこの2語からできた語です。</span><em>絵：杉山真央</em></figcaption></figure>
-    <p style="font-size:11px;color:#7E5C42;">秋の <b>грибы́</b> はロシアの人にとって特別です。
+    <p style="font-size:12px;color:#7E5C42;">秋の <b>грибы́</b> はロシアの人にとって特別です。
     森へきのこ狩りに出かけることを <b>ходи́ть за гриба́ми</b> と言います。
     <b>за ＋ 造格</b>で「〜を取りに」——買い物なら <b>за хле́бом</b>（パンを買いに）です。</p>
   </div>
@@ -11834,7 +11838,7 @@ const GRAMMAR_UNITS = [
   <div class="rule-row">
     <strong>ねこたちの服</strong>
     <div class="cl-grid"><div class="cl-card" role="button" tabindex="0" aria-expanded="false" aria-label="блу́зка ブラウス — おすと、関連することばが出ます" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}"><div class="cl-inner"><div class="cl-front"><img src="cl-blouse.png" alt="水色のブラウスを着たオレンジのねこ。襟にリボンがついている" loading="lazy"><span class="clf-ru">блу́зка</span><span class="clf-jp">ブラウス</span><span class="cl-hint">おす</span></div><div class="cl-back"><span class="clb-head">блу́зка</span><span class="clb-row"><b>блу́зка</b><span>女性名詞</span></span><span class="clb-row"><b>воротни́к</b><span>えり</span></span><span class="clb-row"><b>бант</b><span>リボン</span></span><span class="clb-ex">голуба́я блу́зка с ба́нтом</span><span class="clb-exjp">リボンのついた水色のブラウス</span><button class="clb-say" onclick="event.stopPropagation();speak('блу́зка')" aria-label="блу́зка の発音を聞く">&#9834; 聞く</button><span class="cl-back-hint">もどす</span></div></div></div><div class="cl-card" role="button" tabindex="0" aria-expanded="false" aria-label="руба́шка и джи́нсы シャツとジーンズ — おすと、関連することばが出ます" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}"><div class="cl-inner"><div class="cl-front"><img src="cl-jeans.png" alt="しま模様のシャツと青いジーンズのねこ" loading="lazy"><span class="clf-ru">руба́шка и джи́нсы</span><span class="clf-jp">シャツとジーンズ</span><span class="cl-hint">おす</span></div><div class="cl-back"><span class="clb-head">руба́шка и джи́нсы</span><span class="clb-row"><b>руба́шка</b><span>シャツ・女性</span></span><span class="clb-row"><b>джи́нсы</b><span>複数だけ</span></span><span class="clb-row"><b>в поло́ску</b><span>しま模様の</span></span><span class="clb-ex">руба́шка в поло́ску и си́ние джи́нсы</span><span class="clb-exjp">しまのシャツと青いジーンズ</span><button class="clb-say" onclick="event.stopPropagation();speak('руба́шка и джи́нсы')" aria-label="руба́шка и джи́нсы の発音を聞く">&#9834; 聞く</button><span class="cl-back-hint">もどす</span></div></div></div><div class="cl-card" role="button" tabindex="0" aria-expanded="false" aria-label="футбо́лка и ю́бка Tシャツとスカート — おすと、関連することばが出ます" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}"><div class="cl-inner"><div class="cl-front"><img src="cl-skirt.png" alt="白いTシャツと黄色いチェックのスカートのねこ" loading="lazy"><span class="clf-ru">футбо́лка и ю́бка</span><span class="clf-jp">Tシャツとスカート</span><span class="cl-hint">おす</span></div><div class="cl-back"><span class="clb-head">футбо́лка и ю́бка</span><span class="clb-row"><b>футбо́лка</b><span>Tシャツ・女性</span></span><span class="clb-row"><b>ю́бка</b><span>スカート・女性</span></span><span class="clb-row"><b>в кле́тку</b><span>チェックの</span></span><span class="clb-ex">футбо́лка и ю́бка в кле́тку</span><span class="clb-exjp">Tシャツとチェックのスカート</span><button class="clb-say" onclick="event.stopPropagation();speak('футбо́лка и ю́бка')" aria-label="футбо́лка и ю́бка の発音を聞く">&#9834; 聞く</button><span class="cl-back-hint">もどす</span></div></div></div><div class="cl-card" role="button" tabindex="0" aria-expanded="false" aria-label="пла́тье и су́мка ワンピースとバッグ — おすと、関連することばが出ます" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}"><div class="cl-inner"><div class="cl-front"><img src="cl-dress.png" alt="水玉のワンピースを着て、バッグを持ったねこ" loading="lazy"><span class="clf-ru">пла́тье и су́мка</span><span class="clf-jp">ワンピースとバッグ</span><span class="cl-hint">おす</span></div><div class="cl-back"><span class="clb-head">пла́тье и су́мка</span><span class="clb-row"><b>пла́тье</b><span>中性名詞</span></span><span class="clb-row"><b>су́мка</b><span>かばん・女性</span></span><span class="clb-row"><b>в горо́шек</b><span>水玉の</span></span><span class="clb-ex">си́нее пла́тье в горо́шек</span><span class="clb-exjp">青い水玉のワンピース</span><button class="clb-say" onclick="event.stopPropagation();speak('пла́тье и су́мка')" aria-label="пла́тье и су́мка の発音を聞く">&#9834; 聞く</button><span class="cl-back-hint">もどす</span></div></div></div><div class="cl-card" role="button" tabindex="0" aria-expanded="false" aria-label="толсто́вка パーカー — おすと、関連することばが出ます" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}"><div class="cl-inner"><div class="cl-front"><img src="cl-hoodie.png" alt="フードつきのパーカーを着たねこ" loading="lazy"><span class="clf-ru">толсто́вка</span><span class="clf-jp">パーカー</span><span class="cl-hint">おす</span></div><div class="cl-back"><span class="clb-head">толсто́вка</span><span class="clb-row"><b>толсто́вка</b><span>女性名詞</span></span><span class="clb-row"><b>капюшо́н</b><span>フード</span></span><span class="clb-row"><b>карма́н</b><span>ポケット</span></span><span class="clb-ex">толсто́вка с капюшо́ном</span><span class="clb-exjp">フードつきのパーカー</span><button class="clb-say" onclick="event.stopPropagation();speak('толсто́вка')" aria-label="толсто́вка の発音を聞く">&#9834; 聞く</button><span class="cl-back-hint">もどす</span></div></div></div><div class="cl-card" role="button" tabindex="0" aria-expanded="false" aria-label="ку́ртка ジャンパー — おすと、関連することばが出ます" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}"><div class="cl-inner"><div class="cl-front"><img src="cl-jacket.png" alt="ねこの足あとがついた黄色いジャンパーのねこ" loading="lazy"><span class="clf-ru">ку́ртка</span><span class="clf-jp">ジャンパー</span><span class="cl-hint">おす</span></div><div class="cl-back"><span class="clb-head">ку́ртка</span><span class="clb-row"><b>ку́ртка</b><span>女性名詞</span></span><span class="clb-row"><b>пу́говица</b><span>ボタン</span></span><span class="clb-row"><b>ла́па</b><span>足・肉球</span></span><span class="clb-ex">жёлтая ку́ртка с пу́говицами</span><span class="clb-exjp">ボタンのついた黄色いジャンパー</span><button class="clb-say" onclick="event.stopPropagation();speak('ку́ртка')" aria-label="ку́ртка の発音を聞く">&#9834; 聞く</button><span class="cl-back-hint">もどす</span></div></div></div><div class="cl-card" role="button" tabindex="0" aria-expanded="false" aria-label="шарф и носки́ マフラーと靴下 — おすと、関連することばが出ます" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}"><div class="cl-inner"><div class="cl-front"><img src="cl-scarf.png" alt="緑のマフラーを巻き、赤い靴下をはいたねこ" loading="lazy"><span class="clf-ru">шарф и носки́</span><span class="clf-jp">マフラーと靴下</span><span class="cl-hint">おす</span></div><div class="cl-back"><span class="clb-head">шарф и носки́</span><span class="clb-row"><b>шарф</b><span>男性名詞</span></span><span class="clb-row"><b>носки́</b><span>単数は носо́к</span></span><span class="clb-row"><b>тёплый</b><span>あたたかい</span></span><span class="clb-ex">зелёный шарф и кра́сные носки́</span><span class="clb-exjp">緑のマフラーと赤い靴下</span><button class="clb-say" onclick="event.stopPropagation();speak('шарф и носки́')" aria-label="шарф и носки́ の発音を聞く">&#9834; 聞く</button><span class="cl-back-hint">もどす</span></div></div></div><div class="cl-card" role="button" tabindex="0" aria-expanded="false" aria-label="ва́ленки и варе́жки 長ぐつとミトン — おすと、関連することばが出ます" onclick="flipCard(this)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();flipCard(this);}"><div class="cl-inner"><div class="cl-front"><img src="cl-valenki.png" alt="緑のミトンを持ち、青いフェルトのブーツをはいたねこ" loading="lazy"><span class="clf-ru">ва́ленки и варе́жки</span><span class="clf-jp">長ぐつとミトン</span><span class="cl-hint">おす</span></div><div class="cl-back"><span class="clb-head">ва́ленки и варе́жки</span><span class="clb-row"><b>ва́ленки</b><span>足・複数だけ</span></span><span class="clb-row"><b>варе́жки</b><span>手・ミトン</span></span><span class="clb-row"><b>перча́тки</b><span>指の分かれた手袋</span></span><span class="clb-ex">ва́ленки и варе́жки из ше́рсти</span><span class="clb-exjp">羊毛のフェルト長ぐつとミトン</span><button class="clb-say" onclick="event.stopPropagation();speak('ва́ленки и варе́жки')" aria-label="ва́ленки и варе́жки の発音を聞く">&#9834; 聞く</button><span class="cl-back-hint">もどす</span></div></div></div></div>
-    <p class="tap-hint">カードをおすと、うらに関連することばが出ます。</p><p style="font-size:11px;color:#7E5C42;">絵：杉山真央</p>
+    <p class="tap-hint">カードをおすと、うらに関連することばが出ます。</p><p style="font-size:12px;color:#7E5C42;">絵：杉山真央</p>
   </div>
 
   <div class="case-row">
@@ -11848,7 +11852,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">ку́ртка</span><span class="form">ジャンパー・上着（女）</span>
       <span class="pron">пальто́</span><span class="form">コート（中）※ <b>形が変わりません</b></span>
     </div>
-    <p style="font-size:11px;color:#9D5700;"><b>пальто́</b> は外来語で、格変化しません
+    <p style="font-size:12px;color:#9D5700;"><b>пальто́</b> は外来語で、格変化しません
     （в пальто́・с пальто́）。同じ仲間に <b>метро́</b>・<b>кино́</b>・<b>ко́фе</b> があります。</p>
   </div>
 
@@ -11865,7 +11869,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">су́мка</span><span class="form">かばん（女）</span>
       <span class="pron">о́бувь</span><span class="form">履きもの　※ まとめて1つの集合名詞</span>
     </div>
-    <p style="font-size:11px;color:#9D5700;"><b>брю́ки・джи́нсы</b> は
+    <p style="font-size:12px;color:#9D5700;"><b>брю́ки・джи́нсы</b> は
     очки́・но́жницы と同じ<b>複数だけの名詞</b>。
     「新しいジーンズ」は <b>но́вые джи́нсы</b> と、形容詞も複数にします。</p>
   </div>
@@ -11879,10 +11883,10 @@ const GRAMMAR_UNITS = [
       <span class="pron">сапоги́</span><span class="form">ブーツ　単数 сапо́г</span>
       <span class="pron">ту́фли</span><span class="form">くつ（かかとのあるもの）</span>
     </div>
-    <p style="font-size:11px;color:#9D5700;"><b>ва́ленки</b> と <b>варе́жки</b> は
+    <p style="font-size:12px;color:#9D5700;"><b>ва́ленки</b> と <b>варе́жки</b> は
     音が似ていて混ざりやすい組です。<b>ва́ленки は足、варе́жки は手</b>。
     どちらも <b>шерсть</b>（羊毛）から作る、ロシアの冬の定番です。</p>
-    <p style="font-size:11px;color:#7E5C42;"><b>варе́жки</b> と <b>перча́тки</b> の違いは、
+    <p style="font-size:12px;color:#7E5C42;"><b>варе́жки</b> と <b>перча́тки</b> の違いは、
     <b>指が分かれているかどうか</b>。варе́жки は親指だけ独立した形、
     перча́тки は5本とも分かれています。</p>
   </div>
@@ -11891,7 +11895,7 @@ const GRAMMAR_UNITS = [
     <strong>柄は в ＋ 対格</strong>
     <p>柄の言い方は<b>ひとつの型</b>で覚えられます。</p>
 <div class="pat-list"><div class="pat-row"><svg class="pat-sw" viewBox="0 0 76 28" role="img" aria-label="青地に白い水玉の見本"><rect width="76" height="28" rx="6" fill="#2E5FA3"/><circle cx="6" cy="6" r="2.4" fill="#fff"/><circle cx="17" cy="6" r="2.4" fill="#fff"/><circle cx="28" cy="6" r="2.4" fill="#fff"/><circle cx="39" cy="6" r="2.4" fill="#fff"/><circle cx="50" cy="6" r="2.4" fill="#fff"/><circle cx="61" cy="6" r="2.4" fill="#fff"/><circle cx="72" cy="6" r="2.4" fill="#fff"/><circle cx="11" cy="15" r="2.4" fill="#fff"/><circle cx="22" cy="15" r="2.4" fill="#fff"/><circle cx="33" cy="15" r="2.4" fill="#fff"/><circle cx="44" cy="15" r="2.4" fill="#fff"/><circle cx="55" cy="15" r="2.4" fill="#fff"/><circle cx="66" cy="15" r="2.4" fill="#fff"/><circle cx="77" cy="15" r="2.4" fill="#fff"/><circle cx="6" cy="24" r="2.4" fill="#fff"/><circle cx="17" cy="24" r="2.4" fill="#fff"/><circle cx="28" cy="24" r="2.4" fill="#fff"/><circle cx="39" cy="24" r="2.4" fill="#fff"/><circle cx="50" cy="24" r="2.4" fill="#fff"/><circle cx="61" cy="24" r="2.4" fill="#fff"/><circle cx="72" cy="24" r="2.4" fill="#fff"/><rect x="0.6" y="0.6" width="74.8" height="26.8" rx="6" fill="none" stroke="#B9A79C" stroke-width="1.2"/></svg><span class="pat-t"><b>в горо́шек</b><span>水玉の　пла́тье в горо́шек</span></span></div><div class="pat-row"><svg class="pat-sw" viewBox="0 0 76 28" role="img" aria-label="白地にオレンジのしま模様の見本"><rect width="76" height="28" rx="6" fill="#FFFDF8"/><rect x="2" y="0" width="5" height="28" fill="#E8842A"/><rect x="13" y="0" width="5" height="28" fill="#E8842A"/><rect x="24" y="0" width="5" height="28" fill="#E8842A"/><rect x="35" y="0" width="5" height="28" fill="#E8842A"/><rect x="46" y="0" width="5" height="28" fill="#E8842A"/><rect x="57" y="0" width="5" height="28" fill="#E8842A"/><rect x="68" y="0" width="5" height="28" fill="#E8842A"/><rect x="0.6" y="0.6" width="74.8" height="26.8" rx="6" fill="none" stroke="#B9A79C" stroke-width="1.2"/></svg><span class="pat-t"><b>в поло́ску</b><span>しま模様の　руба́шка в поло́ску</span></span></div><div class="pat-row"><svg class="pat-sw" viewBox="0 0 76 28" role="img" aria-label="黄色いチェック模様の見本"><rect width="76" height="28" rx="6" fill="#FAE9B4"/><rect x="4" y="0" width="4" height="28" fill="#E0AE3C" opacity="0.85"/><rect x="16" y="0" width="4" height="28" fill="#E0AE3C" opacity="0.85"/><rect x="28" y="0" width="4" height="28" fill="#E0AE3C" opacity="0.85"/><rect x="40" y="0" width="4" height="28" fill="#E0AE3C" opacity="0.85"/><rect x="52" y="0" width="4" height="28" fill="#E0AE3C" opacity="0.85"/><rect x="64" y="0" width="4" height="28" fill="#E0AE3C" opacity="0.85"/><rect x="0" y="3" width="76" height="4" fill="#E0AE3C" opacity="0.85"/><rect x="0" y="13" width="76" height="4" fill="#E0AE3C" opacity="0.85"/><rect x="0" y="23" width="76" height="4" fill="#E0AE3C" opacity="0.85"/><rect x="4" y="3" width="4" height="4" fill="#C08F22"/><rect x="4" y="13" width="4" height="4" fill="#C08F22"/><rect x="4" y="23" width="4" height="4" fill="#C08F22"/><rect x="16" y="3" width="4" height="4" fill="#C08F22"/><rect x="16" y="13" width="4" height="4" fill="#C08F22"/><rect x="16" y="23" width="4" height="4" fill="#C08F22"/><rect x="28" y="3" width="4" height="4" fill="#C08F22"/><rect x="28" y="13" width="4" height="4" fill="#C08F22"/><rect x="28" y="23" width="4" height="4" fill="#C08F22"/><rect x="40" y="3" width="4" height="4" fill="#C08F22"/><rect x="40" y="13" width="4" height="4" fill="#C08F22"/><rect x="40" y="23" width="4" height="4" fill="#C08F22"/><rect x="52" y="3" width="4" height="4" fill="#C08F22"/><rect x="52" y="13" width="4" height="4" fill="#C08F22"/><rect x="52" y="23" width="4" height="4" fill="#C08F22"/><rect x="64" y="3" width="4" height="4" fill="#C08F22"/><rect x="64" y="13" width="4" height="4" fill="#C08F22"/><rect x="64" y="23" width="4" height="4" fill="#C08F22"/><rect x="0.6" y="0.6" width="74.8" height="26.8" rx="6" fill="none" stroke="#B9A79C" stroke-width="1.2"/></svg><span class="pat-t"><b>в кле́тку</b><span>チェックの　ю́бка в кле́тку</span></span></div><div class="pat-row"><svg class="pat-sw" viewBox="0 0 76 28" role="img" aria-label="うすいピンク地に小花模様の見本"><rect width="76" height="28" rx="6" fill="#FDF1F4"/><circle cx="9.0" cy="4.8" r="1.9" fill="#E58FB0"/><circle cx="12.0" cy="7.0" r="1.9" fill="#E58FB0"/><circle cx="10.9" cy="10.6" r="1.9" fill="#E58FB0"/><circle cx="7.1" cy="10.6" r="1.9" fill="#E58FB0"/><circle cx="6.0" cy="7.0" r="1.9" fill="#E58FB0"/><circle cx="9" cy="8" r="1.5" fill="#EFC53F"/><circle cx="24.0" cy="4.8" r="1.9" fill="#E58FB0"/><circle cx="27.0" cy="7.0" r="1.9" fill="#E58FB0"/><circle cx="25.9" cy="10.6" r="1.9" fill="#E58FB0"/><circle cx="22.1" cy="10.6" r="1.9" fill="#E58FB0"/><circle cx="21.0" cy="7.0" r="1.9" fill="#E58FB0"/><circle cx="24" cy="8" r="1.5" fill="#EFC53F"/><circle cx="39.0" cy="4.8" r="1.9" fill="#E58FB0"/><circle cx="42.0" cy="7.0" r="1.9" fill="#E58FB0"/><circle cx="40.9" cy="10.6" r="1.9" fill="#E58FB0"/><circle cx="37.1" cy="10.6" r="1.9" fill="#E58FB0"/><circle cx="36.0" cy="7.0" r="1.9" fill="#E58FB0"/><circle cx="39" cy="8" r="1.5" fill="#EFC53F"/><circle cx="54.0" cy="4.8" r="1.9" fill="#E58FB0"/><circle cx="57.0" cy="7.0" r="1.9" fill="#E58FB0"/><circle cx="55.9" cy="10.6" r="1.9" fill="#E58FB0"/><circle cx="52.1" cy="10.6" r="1.9" fill="#E58FB0"/><circle cx="51.0" cy="7.0" r="1.9" fill="#E58FB0"/><circle cx="54" cy="8" r="1.5" fill="#EFC53F"/><circle cx="69.0" cy="4.8" r="1.9" fill="#E58FB0"/><circle cx="72.0" cy="7.0" r="1.9" fill="#E58FB0"/><circle cx="70.9" cy="10.6" r="1.9" fill="#E58FB0"/><circle cx="67.1" cy="10.6" r="1.9" fill="#E58FB0"/><circle cx="66.0" cy="7.0" r="1.9" fill="#E58FB0"/><circle cx="69" cy="8" r="1.5" fill="#EFC53F"/><circle cx="16.0" cy="16.8" r="1.9" fill="#E58FB0"/><circle cx="19.0" cy="19.0" r="1.9" fill="#E58FB0"/><circle cx="17.9" cy="22.6" r="1.9" fill="#E58FB0"/><circle cx="14.1" cy="22.6" r="1.9" fill="#E58FB0"/><circle cx="13.0" cy="19.0" r="1.9" fill="#E58FB0"/><circle cx="16" cy="20" r="1.5" fill="#EFC53F"/><circle cx="31.0" cy="16.8" r="1.9" fill="#E58FB0"/><circle cx="34.0" cy="19.0" r="1.9" fill="#E58FB0"/><circle cx="32.9" cy="22.6" r="1.9" fill="#E58FB0"/><circle cx="29.1" cy="22.6" r="1.9" fill="#E58FB0"/><circle cx="28.0" cy="19.0" r="1.9" fill="#E58FB0"/><circle cx="31" cy="20" r="1.5" fill="#EFC53F"/><circle cx="46.0" cy="16.8" r="1.9" fill="#E58FB0"/><circle cx="49.0" cy="19.0" r="1.9" fill="#E58FB0"/><circle cx="47.9" cy="22.6" r="1.9" fill="#E58FB0"/><circle cx="44.1" cy="22.6" r="1.9" fill="#E58FB0"/><circle cx="43.0" cy="19.0" r="1.9" fill="#E58FB0"/><circle cx="46" cy="20" r="1.5" fill="#EFC53F"/><circle cx="61.0" cy="16.8" r="1.9" fill="#E58FB0"/><circle cx="64.0" cy="19.0" r="1.9" fill="#E58FB0"/><circle cx="62.9" cy="22.6" r="1.9" fill="#E58FB0"/><circle cx="59.1" cy="22.6" r="1.9" fill="#E58FB0"/><circle cx="58.0" cy="19.0" r="1.9" fill="#E58FB0"/><circle cx="61" cy="20" r="1.5" fill="#EFC53F"/><circle cx="76.0" cy="16.8" r="1.9" fill="#E58FB0"/><circle cx="79.0" cy="19.0" r="1.9" fill="#E58FB0"/><circle cx="77.9" cy="22.6" r="1.9" fill="#E58FB0"/><circle cx="74.1" cy="22.6" r="1.9" fill="#E58FB0"/><circle cx="73.0" cy="19.0" r="1.9" fill="#E58FB0"/><circle cx="76" cy="20" r="1.5" fill="#EFC53F"/><rect x="0.6" y="0.6" width="74.8" height="26.8" rx="6" fill="none" stroke="#B9A79C" stroke-width="1.2"/></svg><span class="pat-t"><b>в цвето́чек</b><span>花柄の　блу́зка в цвето́чек</span></span></div><div class="pat-row"><svg class="pat-sw" viewBox="0 0 76 28" role="img" aria-label="無地の見本"><rect width="76" height="28" rx="6" fill="#4E9A5B"/><rect x="0.6" y="0.6" width="74.8" height="26.8" rx="6" fill="none" stroke="#B9A79C" stroke-width="1.2"/></svg><span class="pat-t"><b>одноцве́тный</b><span>無地の　※ これだけ形容詞。одноцве́тная ю́бка</span></span></div></div>
-    <p style="font-size:11px;color:#9D5700;">どれも <b>в ＋ 対格</b>で、
+    <p style="font-size:12px;color:#9D5700;">どれも <b>в ＋ 対格</b>で、
     <b>名詞のうしろ</b>に置きます。色の形容詞は前、柄はうしろ——
     <span class="ex-inline">си́нее пла́тье в горо́шек</span>（青い水玉のワンピース）。</p>
   </div>
@@ -11908,14 +11912,14 @@ const GRAMMAR_UNITS = [
     </div>
     <p>• <span class="ex-inline">блу́зка с воротнико́м и ба́нтом</span>（えりとリボンのついたブラウス）</p>
     <p>• <span class="ex-inline">толсто́вка с капюшо́ном</span>（フードつきのパーカー）</p>
-    <p style="font-size:11px;color:#7E5C42;">ついているものは <b>с ＋ 造格</b>。
+    <p style="font-size:12px;color:#7E5C42;">ついているものは <b>с ＋ 造格</b>。
     人の外見のときと同じ形です（де́вушка с голубы́ми глаза́ми）。</p>
   </div>
 
   <div class="rule-row">
     <strong>長い・短い、そして「着ている」</strong>
 <div class="len-list"><div class="len-row"><svg class="len-sw" viewBox="0 0 76 54" role="img" aria-label="丈の長いスカートの図"><path d="M27 13 L49 13 L53 46 L23 46 Z" fill="#EFC53F" stroke="#9C8A7C" stroke-width="1.2" stroke-linejoin="round"/><rect x="26" y="8" width="24" height="5" rx="2" fill="#EFC53F" stroke="#9C8A7C" stroke-width="1.2"/><path d="M32 15 L30 44" stroke="#9C8A7C" stroke-width="0.9" opacity="0.65"/><path d="M38 15 L38 44" stroke="#9C8A7C" stroke-width="0.9" opacity="0.65"/><path d="M44 15 L46 44" stroke="#9C8A7C" stroke-width="0.9" opacity="0.65"/></svg><span class="len-t"><b>дли́нная ю́бка</b><span>ロングスカート</span><span class="len-ex">дли́нный（長い）＋ ю́бка</span></span></div><div class="len-row"><svg class="len-sw" viewBox="0 0 76 54" role="img" aria-label="丈の短いスカートの図"><path d="M27 13 L49 13 L49 28 L27 28 Z" fill="#EFC53F" stroke="#9C8A7C" stroke-width="1.2" stroke-linejoin="round"/><rect x="26" y="8" width="24" height="5" rx="2" fill="#EFC53F" stroke="#9C8A7C" stroke-width="1.2"/><path d="M32 15 L30 26" stroke="#9C8A7C" stroke-width="0.9" opacity="0.65"/><path d="M38 15 L38 26" stroke="#9C8A7C" stroke-width="0.9" opacity="0.65"/><path d="M44 15 L46 26" stroke="#9C8A7C" stroke-width="0.9" opacity="0.65"/></svg><span class="len-t"><b>коро́ткая ю́бка</b><span>ミニスカート</span><span class="len-ex">коро́ткий（短い）＋ ю́бка</span></span></div><div class="len-row"><svg class="len-sw" viewBox="0 0 76 54" role="img" aria-label="長そでの服の図"><path d="M28 14 L20 16 L14 38 L24 40 Z" fill="#6FB6E8" stroke="#9C8A7C" stroke-width="1.2" stroke-linejoin="round"/><path d="M48 14 L56 16 L62 38 L52 40 Z" fill="#6FB6E8" stroke="#9C8A7C" stroke-width="1.2" stroke-linejoin="round"/><rect x="28" y="13" width="20" height="27" rx="3" fill="#6FB6E8" stroke="#9C8A7C" stroke-width="1.2"/><path d="M33 13 q5 5 10 0" fill="none" stroke="#9C8A7C" stroke-width="1.2"/></svg><span class="len-t"><b>дли́нный рука́в</b><span>長そで</span><span class="len-ex">блу́зка с дли́нными рукава́ми</span></span></div><div class="len-row"><svg class="len-sw" viewBox="0 0 76 54" role="img" aria-label="半そでの服の図"><path d="M28 14 L20 16 L14 24 L24 26 Z" fill="#6FB6E8" stroke="#9C8A7C" stroke-width="1.2" stroke-linejoin="round"/><path d="M48 14 L56 16 L62 24 L52 26 Z" fill="#6FB6E8" stroke="#9C8A7C" stroke-width="1.2" stroke-linejoin="round"/><rect x="28" y="13" width="20" height="27" rx="3" fill="#6FB6E8" stroke="#9C8A7C" stroke-width="1.2"/><path d="M33 13 q5 5 10 0" fill="none" stroke="#9C8A7C" stroke-width="1.2"/></svg><span class="len-t"><b>коро́ткий рука́в</b><span>半そで</span><span class="len-ex">футбо́лка с коро́ткими рукава́ми</span></span></div></div>
-    <p style="font-size:11px;color:#7E5C42;">そで（<b>рука́в</b>）は2本あるので、
+    <p style="font-size:12px;color:#7E5C42;">そで（<b>рука́в</b>）は2本あるので、
     「〜そでの」と言うときは<b>複数の造格</b>になります——
     с дли́нн<b>ыми</b> рукав<b>а́ми</b>／с коро́тк<b>ими</b> рукав<b>а́ми</b>。</p>
     <p style="margin-top:10px;"><b>◆「着ている」の3つの言い方</b></p>
@@ -11927,7 +11931,7 @@ const GRAMMAR_UNITS = [
       <p><b>надева́ть / наде́ть ＋ 対格</b><span class="jp">身につける（動作）</span>
       <span>Я надева́ю ку́ртку.（ジャンパーを着る）</span></p>
     </div>
-    <p style="font-size:11px;color:#9D5700;">日本語の「着る」は、ロシア語では
+    <p style="font-size:12px;color:#9D5700;">日本語の「着る」は、ロシア語では
     <b>状態か・習慣か・動作か</b>で分かれます。
     写真や絵を説明するときは、ほとんどが <b>в ＋ 前置格</b>です。</p>
   </div>
@@ -11946,11 +11950,11 @@ const GRAMMAR_UNITS = [
       <span>Я оде́лся и вы́шел.（服を着て出かけた）</span>
       <span>Оде́нься тепле́е!（あたたかくしてね）</span></p>
     </div>
-    <p style="font-size:11px;color:#9D5700;">ロシアの学校で教わる<b>合いことば</b>があります。<br>
+    <p style="font-size:12px;color:#9D5700;">ロシアの学校で教わる<b>合いことば</b>があります。<br>
     <span class="ex-inline">Наде́ть оде́жду, оде́ть Наде́жду.</span><br>
     「<b>оде́жду</b>（服）には <b>наде́ть</b>、<b>Наде́жду</b>（ナジェージダさん）には <b>оде́ть</b>」——
     韻をふんでいて、一度で覚えられます。</p>
-    <p style="font-size:11px;color:#7E5C42;">оде́ть のあとに来るのは<b>人</b>です。
+    <p style="font-size:12px;color:#7E5C42;">оде́ть のあとに来るのは<b>人</b>です。
     <b>× оде́ть ку́ртку</b> とは言えません。自分が着るなら <b>-ся</b> をつけて оде́ться。
     「-ся がつくと目的語をとれなくなる」という、上級の課で見たしくみそのものです。</p>
   </div>
@@ -11965,7 +11969,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">разу́ться</span><span class="form">靴を脱ぐ</span>
       <span class="pron">та́почки</span><span class="form">スリッパ　単数 та́почка</span>
     </div>
-    <p style="font-size:11px;color:#9D5700;">ロシアでは、<b>家に上がるとき靴を脱ぎます</b>。
+    <p style="font-size:12px;color:#9D5700;">ロシアでは、<b>家に上がるとき靴を脱ぎます</b>。
     玄関で <b>разу́ться</b> して、出してもらった <b>та́почки</b> にはきかえる——
     日本と同じ習慣です。<br>
     お客を迎える側は <span class="ex-inline">Раздева́йтесь, проходи́те!</span>
@@ -11984,7 +11988,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">水色のブラウス</span><span class="form">голуба́я блу́зка</span>
     </div>
     <p>• <span class="ex-inline">Ко́шка в си́нем пла́тье в горо́шек.</span>（ねこは青い水玉のワンピースを着ている）</p>
-    <p style="font-size:11px;color:#7E5C42;">в のあとなので пла́тье は前置格 пла́тье（中性は形が同じ）、
+    <p style="font-size:12px;color:#7E5C42;">в のあとなので пла́тье は前置格 пла́тье（中性は形が同じ）、
     形容詞は си́нем になります。柄の в горо́шек は形が変わりません。</p>
   </div>
   `,
@@ -12056,23 +12060,23 @@ const GRAMMAR_UNITS = [
       <div class="tp-item"><img src="sh-baletki.png" alt="バレエシューズ" loading="lazy"><b>бале́тки</b><i>バレエシューズ</i></div>
     </div>
     <p class="tp-credit">絵：杉山真央</p>
-    <p style="font-size:11px;color:#7E5C42;"><b>о́бувь</b> は履きもの全体をまとめて言う語で、
+    <p style="font-size:12px;color:#7E5C42;"><b>о́бувь</b> は履きもの全体をまとめて言う語で、
     <b>оде́жда</b> と同じ<b>集合名詞</b>です。いつも単数で、
     <b>Я покупа́ю о́бувь.</b>（靴を買います）のように使います。
     絵のいちばんはじめに置いたのは、この語だけが<b>種類の名前ではなく、全体の呼び名</b>だからです。</p>
 
-    <p style="font-size:11px;color:#7E5C42;"><b>кроссо́вки と ке́ды</b>——
+    <p style="font-size:12px;color:#7E5C42;"><b>кроссо́вки と ке́ды</b>——
     どちらもスニーカーですが、<b>кроссо́вки</b> は運動用の、底の厚いもの。
     <b>ке́ды</b> は布地にゴム底の、薄くて軽いものを指します。
     ке́ды という語は、アメリカの靴の商標 <b>Keds</b> から来ました。</p>
 
-    <p style="font-size:11px;color:#7E5C42;"><b>шлёпанцы</b> は
+    <p style="font-size:12px;color:#7E5C42;"><b>шлёпанцы</b> は
     <b>шлёпать</b>（ぺたぺた音を立てる）から。歩くときの音がそのまま名前になっています。
     日本語の「つっかけ」に近い成り立ちですね。
     かかとにひもがあるサンダルなら <b>босоно́жки</b>——
     <b>бо́сый</b>（はだしの）＋ <b>но́ги</b>（足）で「はだしの足」です。</p>
 
-    <p style="font-size:11px;color:#7E5C42;">新しいものほど、外から来た語が多くなります。
+    <p style="font-size:12px;color:#7E5C42;">新しいものほど、外から来た語が多くなります。
     <b>у́гги</b>（UGG）、<b>ло́феры</b>（loafer）、<b>бале́тки</b>（バレエの бале́т から）。
     どれも、もとの形をロシア語の複数形にして使っています。</p>
   </div>
@@ -12087,7 +12091,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">боти́нки</span><span class="form">単数 боти́нок</span>
       <span class="pron">кроссо́вки</span><span class="form">単数 кроссо́вка</span>
     </div>
-    <p style="font-size:11px;color:#7E5C42;"><b>рези́новые сапоги́</b>（長靴）のように
+    <p style="font-size:12px;color:#7E5C42;"><b>рези́новые сапоги́</b>（長靴）のように
     形容詞がつくときは、<b>複数形に合わせて -ые</b>。
     帽子の <b>мехова́я ша́пка</b> が単数・女性だったのと同じしくみです。</p>
     <p style="margin-top:8px;">「一足の〜」は <b>па́ра ＋ 複数生格</b>。
@@ -12096,11 +12100,11 @@ const GRAMMAR_UNITS = [
     <span class="ex-inline">па́ра сапо́г</span>
     <span class="ex-inline">па́ра боти́нок</span>
     <span class="ex-inline">па́ра ва́ленок</span></p>
-    <p style="font-size:11px;color:#7E5C42;">ところが<b>носки́</b>（靴下）だけは
+    <p style="font-size:12px;color:#7E5C42;">ところが<b>носки́</b>（靴下）だけは
     <b>па́ра носко́в</b> と <b>-ов</b> がつきます。
     同じ「一足」なのに、сапо́г は語尾なし、носко́в は -ов。
     ロシア語の複数生格は、この<b>ゼロ語尾</b>がいちばんの難所です。</p>
-    <p style="font-size:11px;color:#7E5C42;">男性名詞からできた
+    <p style="font-size:12px;color:#7E5C42;">男性名詞からできた
     <b>сла́нцы</b>・<b>шлёпанцы</b>・<b>ло́феры</b> も <b>-ев / -ов</b> がつきます
     （<b>па́ра сла́нцев</b>、<b>па́ра ло́феров</b>）。
     <b>-ки</b> で終わる女性名詞のなかまが語尾なし、と覚えると見分けやすくなります。</p>
@@ -12132,12 +12136,12 @@ const GRAMMAR_UNITS = [
       <span class="pron">ку́ртка на мо́лнии</span><span class="form">ファスナーのジャケット　мо́лния（稲妻＝ファスナー）</span>
       <span class="pron">пальто́ на пу́говицах</span><span class="form">ボタンのコート　пу́говица（ボタン）</span>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">靴は2つあるのに <b>на высо́ком каблуке́</b> と
+    <p style="font-size:12px;color:#7E5C42;">靴は2つあるのに <b>на высо́ком каблуке́</b> と
     <b>単数</b>になるのが不思議に見えますが、
     「<b>高いヒールという型の</b>」とひとまとまりで考えているためです。
     <b>на каблука́х</b>（複数）は「ヒールのある靴全般」、
     <b>на высо́ком каблуке́</b>（単数）は「ハイヒールという種類」——そんな使い分けです。</p>
-    <p style="font-size:11px;color:#7E5C42;"><b>мо́лния</b> が「ファスナー」なのは、
+    <p style="font-size:12px;color:#7E5C42;"><b>мо́лния</b> が「ファスナー」なのは、
     ぱっと閉まる速さを<b>稲妻</b>にたとえたから。日本語の「ジッパー」が音から来たのと、
     発想がちがっておもしろいところです。</p>
   </div>
@@ -12153,7 +12157,7 @@ const GRAMMAR_UNITS = [
     </div>
     <p>• <span class="ex-inline">Она́ не хо́дит на каблука́х.（彼女はヒールを履きません）</span></p>
     <p>• <span class="ex-inline">До́ма мы хо́дим в та́почках.（家ではスリッパで過ごします）</span></p>
-    <p style="font-size:11px;color:#7E5C42;">ここで使うのは<b>ходи́ть</b>——
+    <p style="font-size:12px;color:#7E5C42;">ここで使うのは<b>ходи́ть</b>——
     「運動の動詞」で習った、<b>くり返し・習慣</b>をあらわすほうです。
     一回の「いま歩いている」なら идти́ ですが、
     <b>ヒールを履く人かどうか</b>という話なので ходи́ть になります。
@@ -12174,7 +12178,7 @@ const GRAMMAR_UNITS = [
       <span>Развяза́лись шнурки́.（靴ひもがほどけました）</span>
       <span>Натёр мозо́ль.（靴ずれができました）</span></p>
     </div>
-    <p style="font-size:11px;color:#7E5C42;"><b>-ова́т-</b> は「ちょっと〜すぎる」を足す部分です。
+    <p style="font-size:12px;color:#7E5C42;"><b>-ова́т-</b> は「ちょっと〜すぎる」を足す部分です。
     <b>вели́кий</b>（大きい）→ <b>великова́т</b>、<b>ма́лый</b>（小さい）→ <b>малова́т</b>。
     色の <b>-ова́тый</b>（красноватый＝赤みがかった）と同じ仲間で、
     <b>言いきらずに、少しやわらげる</b>はたらきをします。
@@ -12199,20 +12203,20 @@ const GRAMMAR_UNITS = [
       <div class="tp-item long"><img src="ht-vyazanaya.png" alt="ニット帽" loading="lazy"><b>вя́заная ша́пка</b><i>ニット帽</i></div>
     </div>
     <p class="tp-credit">絵：杉山真央</p>
-    <p style="font-size:11px;color:#7E5C42;">全体をまとめて言うときは
+    <p style="font-size:12px;color:#7E5C42;">全体をまとめて言うときは
     <b>головно́й убо́р</b>（頭の被りもの）。少しかたい言い方で、
     書類や店の分類でよく見かけます。
     ふだんの会話では、それぞれの名前で呼びます。</p>
-    <p style="font-size:11px;color:#7E5C42;"><b>ша́пка</b> は本来<b>あたたかい帽子</b>のこと。
+    <p style="font-size:12px;color:#7E5C42;"><b>ша́пка</b> は本来<b>あたたかい帽子</b>のこと。
     夏のつば付き帽子まで ша́пка と呼ぶと、少し不自然に響きます。
     そこは <b>шля́па</b>・<b>ке́пка</b>・<b>пана́ма</b> の出番です。</p>
-    <p style="font-size:11px;color:#7E5C42;">ちなみに <b>шля́па</b> を人に向かって言うと、
+    <p style="font-size:12px;color:#7E5C42;">ちなみに <b>шля́па</b> を人に向かって言うと、
     「のろま・気のきかない人」という意味になります
     （<b>Ну ты и шля́па!</b>）。帽子の話とは限りません。</p>
-    <p style="font-size:11px;color:#7E5C42;"><b>уша́нка</b> は <b>у́ши</b>（耳）から。
+    <p style="font-size:12px;color:#7E5C42;"><b>уша́нка</b> は <b>у́ши</b>（耳）から。
     「耳のついた帽子」という、そのままの名前です。
     ロシアの冬の帽子といえばこれで、耳あては下ろしても、頭の上で結んでもかまいません。</p>
-    <p style="font-size:11px;color:#7E5C42;"><b>канотье́</b> はフランス語 <b>canotier</b> から来た外来語で、
+    <p style="font-size:12px;color:#7E5C42;"><b>канотье́</b> はフランス語 <b>canotier</b> から来た外来語で、
     <b>格変化しません</b>。髪型の <b>ка́ре</b> と同じ仲間です。</p>
 
     <div class="rule-row">
@@ -12222,7 +12226,7 @@ const GRAMMAR_UNITS = [
       <p><span class="ex-inline">мехова́я ша́пка（毛皮の帽子）</span>
       <span class="ex-inline">вя́заная ша́пка（ニット帽）</span>
       <span class="ex-inline">соло́менная шля́па（麦わら帽子）</span></p>
-      <p style="font-size:11px;color:#7E5C42;">материа́л（素材）で呼び分けるこの形は、
+      <p style="font-size:12px;color:#7E5C42;">материа́л（素材）で呼び分けるこの形は、
       服にもそのまま使えます——<b>ко́жаная ку́ртка</b>（革のジャケット）、
       <b>шерстяно́й шарф</b>（ウールのマフラー／шарф は男性なので -о́й）。</p>
     </div>
@@ -12237,7 +12241,7 @@ const GRAMMAR_UNITS = [
     <b>Без ша́пки заболе́ешь!</b>（帽子なしだと病気になるよ）とも言います。
     医学というより、寒い国の暮らしから生まれた言い伝えに近いものですが、
     大人になっても親からこう言われる、という話をよく聞きます。</p>
-    <p style="font-size:11px;color:#7E5C42;">形は <b>наде́ть</b> の命令形で <b>наде́нь</b>。
+    <p style="font-size:12px;color:#7E5C42;">形は <b>наде́ть</b> の命令形で <b>наде́нь</b>。
     <b>оде́ть</b> のあとに来るのは<b>人</b>でしたから、
     <b>× Оде́нь ша́пку</b> とは言えません——「服のことば」で見た使い分けです。</p>
 
@@ -12268,12 +12272,12 @@ const GRAMMAR_UNITS = [
       <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 32 Q18 15 32 15 Q46 15 45 32 Q41 23 32 23 Q23 23 19 32 Z" fill="#E8D5C4"/><ellipse cx="32" cy="32" rx="11" ry="12.5" fill="#FFFDF8"/><path d="M21 28 Q25 19 32 19 Q39 19 43 28 Q37 24 32 24 Q27 24 21 28 Z" fill="#E8D5C4"/><circle cx="32" cy="11" r="6.5" fill="#E8D5C4"/><path d="M27 13 Q32 8 37 13"/></svg><b>пучо́к</b><i>おだんご</i></div>
       <div class="tp-item"><svg viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7A5040" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="30" r="6.5" fill="#E8D5C4"/><circle cx="25" cy="20" r="7" fill="#E8D5C4"/><circle cx="34" cy="17" r="7.5" fill="#E8D5C4"/><circle cx="43" cy="21" r="7" fill="#E8D5C4"/><circle cx="46" cy="30" r="6.5" fill="#E8D5C4"/><ellipse cx="32" cy="32" rx="11" ry="12.5" fill="#FFFDF8"/><circle cx="24" cy="26" r="4" fill="#E8D5C4"/><circle cx="32" cy="21" r="4" fill="#E8D5C4"/><circle cx="40" cy="25" r="4" fill="#E8D5C4"/></svg><b>ку́дри</b><i>巻き毛</i></div>
     </div>
-    <p style="font-size:11px;color:#7E5C42;"><b>во́лосы</b>（髪）はいつも複数形。
+    <p style="font-size:12px;color:#7E5C42;"><b>во́лосы</b>（髪）はいつも複数形。
     <b>причёска</b> が「髪型」です。
     <b>ко́сы</b>（коса́ の複数）は左右に垂らした三つ編み、
     <b>хвост</b>（しっぽ）はそのままポニーテール——
     小さくして <b>хво́стик</b> と言うほうがふつうです。</p>
-    <p style="font-size:11px;color:#7E5C42;"><b>ка́ре</b> はフランス語から来た外来語で、
+    <p style="font-size:12px;color:#7E5C42;"><b>ка́ре</b> はフランス語から来た外来語で、
     <b>格変化しません</b>。ко́фе や метро́ と同じ仲間です。
     <b>Она́ но́сит ка́ре.</b>（彼女はボブにしている）——形はそのままです。</p>
     <div class="pair-list">
@@ -12284,7 +12288,7 @@ const GRAMMAR_UNITS = [
       <span>Он <b>лы́сый</b>.（彼ははげている）</span>
       <span>Она́ <b>подстри́глась</b>.（彼女は髪を切った）</span></p>
     </div>
-    <p style="font-size:11px;color:#7E5C42;"><b>подстри́чься</b> は「自分の髪を切る（切ってもらう）」。
+    <p style="font-size:12px;color:#7E5C42;"><b>подстри́чься</b> は「自分の髪を切る（切ってもらう）」。
     <b>-ся</b> がつくのは、切る相手が自分だからです。
     美容師に切ってもらった場合もこの形を使います。</p>
   </div>
@@ -12300,16 +12304,16 @@ const GRAMMAR_UNITS = [
       <span class="pron">бант → ба́нтик</span><span class="form">リボン → 小さなリボン</span>
     </div>
     <p>• <span class="ex-inline">У неё ко́сички с ба́нтиками.（彼女はリボンつきの三つ編みをしている）</span></p>
-    <p style="font-size:11px;color:#7E5C42;"><b>хвост</b> のままだと動物のしっぽそのもの、
+    <p style="font-size:12px;color:#7E5C42;"><b>хвост</b> のままだと動物のしっぽそのもの、
     <b>хво́стик</b> にすると髪型として自然になります。
     <b>ко́сы</b> は長く垂らした三つ編み、<b>ко́сички</b> は子どもがよくする、
     両側の小さな三つ編み——大きさだけでなく、<b>浮かぶ絵が変わります</b>。</p>
-    <p style="font-size:11px;color:#7E5C42;"><b>じつは、このユニットのあちこちに隠れています。</b>
+    <p style="font-size:12px;color:#7E5C42;"><b>じつは、このユニットのあちこちに隠れています。</b>
     <b>та́почки</b> は <b>та́пки</b> の、<b>сапо́жки</b> は <b>сапоги́</b> の、
     <b>ша́почка</b> は <b>ша́пка</b> の小さい形。
     子どもの持ちものや、やわらかく言いたいときには、こちらが選ばれます。
     季節の <b>флажо́к</b>（小さな旗）も同じ仲間でした。</p>
-    <p style="font-size:11px;color:#7E5C42;">つくり方はいくつもあります——
+    <p style="font-size:12px;color:#7E5C42;">つくり方はいくつもあります——
     <b>-ик</b>（хво́стик）、<b>-ичк-</b>（ко́сичка）、<b>-ушк- / -ышк-</b>（ба́бушка）、
     <b>-очк- / -ечк-</b>（ша́почка）。
     規則で作るというより、<b>語ごとに決まっている</b>ので、出会うたびに覚えていきます。</p>
@@ -12326,7 +12330,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">着る</span><span class="form">наде́ть（服を）／оде́ть（人に）／носи́ть（ふだん着る）</span>
       <span class="pron">靴</span><span class="form">ту́фли／боти́нки／сапоги́／кроссо́вки…</span>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">辞書で1語だけ引いて済ませると、
+    <p style="font-size:12px;color:#7E5C42;">辞書で1語だけ引いて済ませると、
     どこかで必ずずれます。<b>どの場面の語か</b>までいっしょに覚えると、
     使うときに迷いません。</p>
   </div>
@@ -12473,7 +12477,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">ссо́риться</span><span class="form">けんかする</span>
       <span class="pron">обнима́ться</span><span class="form">抱きあう</span>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">相手が要るときは <b>с ＋ 造格</b>です。
+    <p style="font-size:12px;color:#7E5C42;">相手が要るときは <b>с ＋ 造格</b>です。
     <span class="ex-inline">Я встреча́юсь с дру́гом.</span>（友だちと会う）</p>
   </div>
 
@@ -12493,7 +12497,7 @@ const GRAMMAR_UNITS = [
       <p><b>меня́ть → меня́ться</b>
       <span>Всё меня́ется.（すべては変わる）</span></p>
     </div>
-    <p style="font-size:11px;color:#9D5700;">ここがいちばんの落とし穴です。
+    <p style="font-size:12px;color:#9D5700;">ここがいちばんの落とし穴です。
     <b>× Я учу́сь ру́сский язы́к.</b> とは言えません。-ся がついた動詞に「〜を」は続きません。
     ○ <b>Я учу́ ру́сский язы́к.</b>（-ся なし）／○ <b>Я учу́сь в университе́те.</b>（場所を言う）</p>
   </div>
@@ -12511,7 +12515,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">занима́ться</span><span class="form">取り組む　＋ <b>造格</b></span>
       <span class="pron">интересова́ться</span><span class="form">興味がある　＋ <b>造格</b></span>
     </div>
-    <p style="font-size:11px;color:#3A5578;">後ろにとる格がばらばらなので、<b>動詞と格をセットで</b>覚えます。</p>
+    <p style="font-size:12px;color:#3A5578;">後ろにとる格がばらばらなので、<b>動詞と格をセットで</b>覚えます。</p>
     <p>• <span class="ex-inline">Я бою́сь соба́к.</span>（犬がこわい・生格）</p>
     <p>• <span class="ex-inline">Я занима́юсь спо́ртом.</span>（スポーツをしている・造格）</p>
     <p>• <span class="ex-inline">Я интересу́юсь му́зыкой.</span>（音楽に興味がある・造格）</p>
@@ -12565,12 +12569,12 @@ const GRAMMAR_UNITS = [
       <p><b>преподава́ть ＋ 対格</b><span class="jp">（職業として）教える</span>
       <span>Она́ преподаёт ру́сский язы́к.</span></p>
     </div>
-    <p style="font-size:11px;color:#9D5700;">「ロシア語を勉強しています」は、言いたい中身で変わります。<br>
+    <p style="font-size:12px;color:#9D5700;">「ロシア語を勉強しています」は、言いたい中身で変わります。<br>
     • <b>изуча́ю</b> ру́сский язы́к — 専攻している、体系的に学んでいる<br>
     • <b>занима́юсь</b> ру́сским языко́м — 日々取り組んでいる<br>
     • <b>учу́</b> ру́сские слова́ — 単語を覚えている<br>
     • <b>учу́сь</b> в университе́те — 大学に通っている</p>
-    <p style="font-size:11px;color:#7E5C42;">учи́ть には「教える」の意味もあります
+    <p style="font-size:12px;color:#7E5C42;">учи́ть には「教える」の意味もあります
     （учи́ть кого́ чему́：<span class="ex-inline">Он у́чит нас ру́сскому языку́.</span>）。
     どちらの意味かは、あとに続く格で分かります。</p>
   </div>
@@ -12587,7 +12591,7 @@ const GRAMMAR_UNITS = [
     </div>
     <p>• <span class="ex-inline">Я уме́ю говори́ть по-ру́сски.</span>（ロシア語が話せます＝身についている）</p>
     <p>• <span class="ex-inline">Я не могу́ говори́ть — боли́т го́рло.</span>（いま話せない＝のどが痛い）</p>
-    <p style="font-size:11px;color:#3A5578;">「泳げる」は уме́ю（技）。「今日は泳げない」は не могу́（状況）。
+    <p style="font-size:12px;color:#3A5578;">「泳げる」は уме́ю（技）。「今日は泳げない」は не могу́（状況）。
     同じ「できる」でも、身についているか・その場でできるかで分かれます。</p>
   </div>
 
@@ -12603,7 +12607,7 @@ const GRAMMAR_UNITS = [
       <p><b>расска́зывать</b><span class="jp">語って聞かせる</span>
       <span>Он расска́зывает о Росси́и.</span></p>
     </div>
-    <p style="font-size:11px;color:#9D5700;">言語は <b>по-ру́сски</b>（副詞）で表します。
+    <p style="font-size:12px;color:#9D5700;">言語は <b>по-ру́сски</b>（副詞）で表します。
     <b>× говори́ть ру́сский язы́к</b> とはなりません。
     ただし「ロシア語を知っている」なら <b>знать ру́сский язы́к</b>（対格）です。</p>
   </div>
@@ -12619,7 +12623,7 @@ const GRAMMAR_UNITS = [
     </div>
     <p>• <span class="ex-inline">Кни́га лежи́т на столе́.</span>（本が置いてある）</p>
     <p>• <span class="ex-inline">Я положи́л кни́гу на стол.</span>（本を置いた）</p>
-    <p style="font-size:11px;color:#7E5C42;">状態のほうは <b>где?（どこに）＋ 前置格</b>、
+    <p style="font-size:12px;color:#7E5C42;">状態のほうは <b>где?（どこに）＋ 前置格</b>、
     動作のほうは <b>куда?（どこへ）＋ 対格</b>をとります。前置詞の課で見た区別と同じしくみです。</p>
   </div>
   `,
@@ -12662,7 +12666,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">過去</span><span class="form">Мне <b>бы́ло</b> хо́лодно.　中性・単数</span>
       <span class="pron">未来</span><span class="form">Мне <b>бу́дет</b> хо́лодно.　3人称・単数</span>
     </div>
-    <p style="font-size:11px;color:#3A5578;">否定生格の <b>не́ было</b> が変化しなかったのと同じしくみです。
+    <p style="font-size:12px;color:#3A5578;">否定生格の <b>не́ было</b> が変化しなかったのと同じしくみです。
     合わせる主語がないから、動詞は動きません。</p>
   </div>
 
@@ -12678,7 +12682,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">Нам интере́сно.</span><span class="form">私たちには面白い</span>
       <span class="pron">Ей пло́хо.</span><span class="form">彼女は具合が悪い</span>
     </div>
-    <p style="font-size:11px;color:#9D5700;">形容詞の <b>хо́лодный</b>（冷たい）ではなく、副詞の <b>хо́лодно</b> を使います。
+    <p style="font-size:12px;color:#9D5700;">形容詞の <b>хо́лодный</b>（冷たい）ではなく、副詞の <b>хо́лодно</b> を使います。
     合わせる名詞がないので、形容詞は出番がありません。</p>
   </div>
 
@@ -12691,7 +12695,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">Здесь нельзя́ кури́ть.</span><span class="form">ここは禁煙です</span>
       <span class="pron">Мне ну́жно бы́ло идти́.</span><span class="form">行かなければならなかった</span>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">あとには<b>不定形</b>が続きます。
+    <p style="font-size:12px;color:#7E5C42;">あとには<b>不定形</b>が続きます。
     <b>мо́жно</b>（〜してよい）と <b>нельзя́</b>（〜してはいけない）は、そのまま覚えてしまいましょう。</p>
   </div>
 
@@ -12715,14 +12719,14 @@ const GRAMMAR_UNITS = [
       <span><b>Мне на́до</b> верну́ть кни́гу.（本を返さなくちゃ）</span>
       <span><b>Нам ну́жно</b> идти́.（もう行かないと）</span></p>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">日本語にするとどちらも「〜しなければ」ですが、
+    <p style="font-size:12px;color:#7E5C42;">日本語にするとどちらも「〜しなければ」ですが、
     <b>до́лжен</b> は<b>その人の責任</b>、<b>на́до</b> は<b>そうせざるをえない状況</b>を指します。
     до́лжен のほうが硬く、書きことばや約束ごとでよく使われます。</p>
-    <p style="font-size:11px;color:#7E5C42;">過去・未来もそれぞれの形で作ります。
+    <p style="font-size:12px;color:#7E5C42;">過去・未来もそれぞれの形で作ります。
     <b>Я до́лжен был идти́.</b>（был は主語に合わせる）／
     <b>Мне на́до бы́ло идти́.</b>（бы́ло は中性のまま）。
     無人称文は主語がないので、いつも中性・単数——ここでも同じ規則です。</p>
-    <p style="font-size:11px;color:#7E5C42;"><b>необходи́мо</b> は「どうしても必要だ・不可欠だ」。
+    <p style="font-size:12px;color:#7E5C42;"><b>необходи́мо</b> は「どうしても必要だ・不可欠だ」。
     на́до よりずっと強く、かたい言い方です（<b>Необходи́мо име́ть ви́зу.</b>＝ビザが必要です）。
     強さの順に並べると <b>мо́жно ＜ на́до・ну́жно ＜ необходи́мо</b>。
     до́лжен はこの線とは別で、<b>義務・責任</b>の軸にあります。</p>
@@ -12742,7 +12746,7 @@ const GRAMMAR_UNITS = [
       <span>Мне <b>ну́жно</b> вре́мя.（時間がいる／中性）</span>
       <span>Мне <b>нужны́</b> де́ньги.（お金がいる／複数）</span></p>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">必要としている人はどちらも<b>与格</b>のままです。
+    <p style="font-size:12px;color:#7E5C42;">必要としている人はどちらも<b>与格</b>のままです。
     変わるのは「必要なもの」に合わせる部分だけ。
     <b>Мне нужны́ де́ньги.</b> の де́ньги は複数だけの名詞でしたね。</p>
   </div>
@@ -12755,7 +12759,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">Моро́зит.</span><span class="form">冷えこむ</span>
       <span class="pron">На у́лице хо́лодно.</span><span class="form">外は寒い</span>
     </div>
-    <p style="font-size:11px;color:#7E5C42;">※ <span class="ex-inline">Идёт дождь.</span>（雨が降っている）は дождь が主語なので、
+    <p style="font-size:12px;color:#7E5C42;">※ <span class="ex-inline">Идёт дождь.</span>（雨が降っている）は дождь が主語なので、
     無人称文ではありません。</p>
   </div>
 
@@ -12768,7 +12772,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">В Япо́нии едя́т рис.</span><span class="form">日本ではお米を食べます</span>
       <span class="pron">Меня́ зову́т Мао.</span><span class="form">私はマオといいます</span>
     </div>
-    <p style="font-size:11px;color:#9D5700;"><b>Меня́ зову́т…</b> は、直訳すると
+    <p style="font-size:12px;color:#9D5700;"><b>Меня́ зову́т…</b> は、直訳すると
     「（人々は）私を〜と呼んでいる」。зову́т は звать の3人称・複数です。
     自己紹介のいちばん基本の形が、実は無人称の考え方でできています。
     だから <b>меня́</b>（対格）から始まるのです。</p>
@@ -12788,7 +12792,7 @@ const GRAMMAR_UNITS = [
       <span class="pron">持ちもの</span><span class="form">У меня́ есть кот.　ねこがいます</span>
       <span class="pron">むすび</span><span class="form">О́чень прия́тно!　はじめまして／よろしく</span>
     </div>
-    <p style="font-size:11px;color:#3A5578;">与格（Мне…）・生格（из Япо́нии・у меня́）・前置格（в университе́те）・
+    <p style="font-size:12px;color:#3A5578;">与格（Мне…）・生格（из Япо́нии・у меня́）・前置格（в университе́те）・
     対格（ру́сский язы́к）——<b>ここまで習った格が、ぜんぶ顔を出します</b>。
     自己紹介はいちばん短い総復習です。</p>
   </div>
