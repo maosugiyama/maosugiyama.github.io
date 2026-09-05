@@ -13,7 +13,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ねこと学ぶ キリル文字 - ロシア語アルファベットの森の散歩</title>
-<meta name="description" content="ロシア語をキリル文字から上級文法まで。33匹のねこと33文字をおぼえ、発音のルール・名詞・動詞・6つの格・形動詞・副動詞・仮定法まで進める無料の教材アプリ。全57ユニット・721問、音声つき。">
+<meta name="description" content="ロシア語をキリル文字から上級文法まで。33匹のねこと33文字をおぼえ、発音のルール・名詞・動詞・6つの格・形動詞・副動詞・仮定法まで進める無料の教材アプリ。全58ユニット・731問、音声つき。">
 <meta name="author" content="杉山真央">
 
 <!-- PWA（ホーム画面に追加・オフライン起動） -->
@@ -6471,7 +6471,7 @@ const GRAMMAR_UNITS = [
     </div>
     <p style="font-size:11px;color:#7E5C42;">ロシア語の質問には「〜か？」にあたる語尾がありません。
     疑問詞があればそれで質問、なければ<b>音の上げ下げ</b>だけで質問になります
-    （Ты студе́нт?↗）。書きことば用の小さな ли だけは例外——この課のおしまいで紹介します。</p>
+    （Ты студе́нт?↗）。書きことば用の小さな ли だけは例外——この課のおしまいで紹介します。この「上げ下げ」の正体は、「イントネーション — 7つの ИК」の課でくわしく。</p>
   </div>
 
   <div class="rule-row">
@@ -6744,6 +6744,59 @@ const GRAMMAR_UNITS = [
   ]
 },
 
+{
+  id:'intonation', cat:'other', level:'中級', title:'イントネーション — 7つの ИК', sub:'同じ文でも、メロディーが意味を決める',
+  lesson: `
+  <p>Он студе́нт<b>.</b> と Он студе́нт<b>?</b> ——ロシア語では語順も語尾も変わりません。
+  ちがいは<b>メロディーだけ</b>。この文の音調は
+  <b lang="ru">ИК</b>（интонацио́нная констру́кция・イントネーション構造）として
+  <b>7つの型</b>に整理されています。ふだんの会話は、最初の4つでほとんど足ります。</p>
+  <p>図の<span style="color:#C1443C;font-weight:bold;">赤い点</span>が
+  <b>中心（це́нтр）</b>——メロディーが動く、いちばん大事なアクセント音節です。</p>
+
+  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 26 L95 27 L125 46 L190 50" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="110" cy="36" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-1　平叙文</b>　<span lang="ru">Э́то дом.</span><br><span style="font-size:12px;color:#5A3A30;">これは家です——中心からなだらかに下げて終わる</span><br><span style="font-size:11px;color:#7E5C42;">日本語の言い切りより、最後をしっかり低く。</span></div></div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 24 L80 24 L100 26 L130 48 L190 50" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="90" cy="25" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-2　疑問詞のある質問</b>　<span lang="ru">Кто э́то?　Где кни́га?</span><br><span style="font-size:12px;color:#5A3A30;">だれ？どこ？——上げずに、疑問詞を強めにいって下げる</span><br><span style="font-size:11px;color:#7E5C42;">疑問詞が質問のしるしなので、メロディーは上げません。呼びかけや命令もこの型です。</span></div></div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 32 L80 32 L100 8 L125 44 L190 48" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="8" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-3　はい・いいえの質問</b>　<span lang="ru">Ты студе́нт?</span><br><span style="font-size:12px;color:#5A3A30;">学生なの？——中心で急角度に高く上げ、すぐ下げる</span><br><span style="font-size:11px;color:#7E5C42;">疑問詞の課の「↗」の正体がこれ。話しことばでは、この上げこそが「〜か？」の代わりです（書きことばの ли に相当）。</span></div></div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 28 L85 28 L105 44 L150 22 L190 12" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="105" cy="44" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-4　くらべる聞き返し</b>　<span lang="ru">А ты?</span><br><span style="font-size:12px;color:#5A3A30;">で、きみは？——いったん下げてから、なめらかに上げて終わる</span><br><span style="font-size:11px;color:#7E5C42;">接続詞の課で見た「くらべる а」の質問。窓口などのあらたまった聞き返しにも使います。</span></div></div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 38 L45 12 L135 12 L170 40 L190 46" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="45" cy="12" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-5　感嘆（ほめる）</b>　<span lang="ru">Кака́я пого́да!</span><br><span style="font-size:12px;color:#5A3A30;">なんていい天気！——2つの山：高く上げて、保って、下げる</span><br><span style="font-size:11px;color:#7E5C42;">中心が2つあるのが特徴。Как хорошо́!（ああ、いいなあ）もこの型です。</span></div></div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 38 L90 38 L115 12 L190 9" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="115" cy="12" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-6　余韻の感嘆・未完</b>　<span lang="ru">А пиро́г како́й!</span><br><span style="font-size:12px;color:#5A3A30;">あのピローグときたら！——上げたまま、高く漂わせて終わる</span><br><span style="font-size:11px;color:#7E5C42;">下げないことで「まだ続きがある」余韻が残ります。</span></div></div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 32 L85 32 L105 8 L122 8" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="105" cy="8" r="5" fill="#C1443C"/><line x1="126" y1="2" x2="126" y2="16" stroke="#C1443C" stroke-width="3"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-7　皮肉の否定</b>　<span lang="ru">Како́й он студе́нт!</span><br><span style="font-size:12px;color:#5A3A30;">彼が学生だなんて！（＝学生なんかじゃない）——急に上げて、ぷつっと切る</span><br><span style="font-size:11px;color:#7E5C42;">形は感嘆、意味は否定。ИК-5 でほめ、ИК-7 でけなす——メロディーだけで正反対になります。</span></div></div>
+
+  <div class="rule-row">
+    <strong>いちばん大事なこと — 上げる場所で、質問の焦点が変わる</strong>
+    <p>ИК-3 の中心は「文末」ではなく、<b>たずねたい語のアクセント音節</b>に置きます。</p>
+    <div class="conj-table">
+      <span class="pron">Вы за́втра е́дете в Москву́?</span><span class="form">за́втра で上げれば「行くのは明日？」</span>
+      <span class="pron">Вы за́втра е́дете в Москву́?</span><span class="form">Москву́ で上げれば「行き先はモスクワ？」</span>
+    </div>
+    <p style="font-size:11px;color:#7A5040;">日本語の「〜？」の上げより、ИК-3 は<b>急で高い</b>のがコツ。
+    ひかえめに上げると、ロシア語話者には平叙文（ИК-1）に聞こえてしまい、
+    「質問だったの？」となりがちです。思いきって上げてください。</p>
+  </div>
+  `,
+  drills: [
+    {type:'mc', q:'Он студе́нт. を質問「彼は学生？」にするには？', opts:['語順はそのまま、ИК-3 で студе́нт を急に上げる','語順を Студе́нт он? に変える','文末に ка をつける'], a:0,
+     ex:'ロシア語のはい・いいえ質問は、メロディー（ИК-3）だけで作ります。'},
+    {type:'mc', q:'ИК-3 で上げる場所は？', opts:['たずねたい語のアクセント音節','いつも文末','いつも文頭'], a:0,
+     ex:'中心を動かすと質問の焦点が変わります。за́втра なら「明日？」、Москву́ なら「モスクワ？」。'},
+    {type:'mc', q:'Кто э́то?　Где кни́га? のような質問は？', opts:['ИК-2 — 上げずに疑問詞を強める','ИК-3 — 急に上げる','ИК-5 — 2つの山'], a:0,
+     ex:'疑問詞そのものが質問のしるしなので、メロディーは上げません。'},
+    {type:'mc', q:'聞き返しの А ты?（で、きみは？）は？', opts:['ИК-4 — 下げてからなめらかに上げる','ИК-1 — 下げて終わる','ИК-7 — 上げて切る'], a:0,
+     ex:'くらべる а の質問は ИК-4。あらたまった窓口の聞き返しにも使う型です。'},
+    {type:'mc', q:'「なんていい天気！」と心からほめる Кака́я пого́да! は？', opts:['ИК-5','ИК-2','ИК-1'], a:0,
+     ex:'高く上げて、保って、下げる——中心が2つある感嘆の型です。'},
+    {type:'mc', q:'Како́й он студе́нт!（ИК-7）の意味は？', opts:['彼は学生なんかじゃない','彼はなんて立派な学生だ','彼は学生ですか'], a:0,
+     ex:'形は感嘆でも、ИК-7 は皮肉の否定。急に上げて、ぷつっと切るのが合図です。'},
+    {type:'mc', q:'話しことばで、書きことばの ли（〜か）の代わりをするのは？', opts:['ИК-3','ИК-1','ИК-6'], a:0,
+     ex:'Зна́ешь ли ты…? と書く内容を、話すときは Ты зна́ешь?（ИК-3）と言います。'},
+    {type:'mc', q:'Вы за́втра е́дете в Москву́? — 「行くのは明日かどうか」を確かめたいときは？', opts:['за́втра の上で急に上げる','Москву́ の上で急に上げる','どこも上げない'], a:0,
+     ex:'たずねたいのは「明日かどうか」。中心を за́втра に置きます。'},
+    {type:'mc', q:'平叙文 Э́то дом. のメロディー（ИК-1）は？', opts:['中心からなだらかに下げて終わる','最後を高く上げる','高いまま漂わせる'], a:0,
+     ex:'言い切りはしっかり低く。下げが浅いと、質問と聞きまちがえられます。'},
+    {type:'mc', q:'日本語の「〜？」の上げとくらべた ИК-3 のコツは？', opts:['思いきって急に高く上げる','ひかえめにそっと上げる','上げずに強く言う'], a:0,
+     ex:'ひかえめな上げは平叙文に聞こえます。ИК-3 は急角度・高めが正解です。'}
+  ]
+},
 {
   id:'phrases', cat:'other', level:'基礎', title:'きほんの表現', sub:'Э́то… / У меня́… / Я люблю́…',
   lesson:`
@@ -14255,6 +14308,17 @@ const WHY = {
   'numbers:15': ['', '6時15分は че́тверть седьмо́го になります', '45分は「あと15分」なので без че́тверти шесть です'],
   'case-gen:18': ['', 'е が残ったままの形はありません。出没母音は語尾がつくと消えます', 'отце́ は前置格の形です'],
   'case-gen:19': ['', 'е は消えます。де́ня という形はありません', 'そのような形はありません。дня です'],
+  // ---- イントネーション ----
+  'intonation:0': ['', '語順を変える必要はありません。メロディーだけで質問になります', 'ка という疑問の語尾はロシア語にありません'],
+  'intonation:1': ['', '文末とは限りません。たずねたい語の上で上げます', '文頭でもありません。焦点の語の上です'],
+  'intonation:2': ['', 'ИК-3 は疑問詞のない、はい・いいえ質問の型です', 'ИК-5 は感嘆の型です'],
+  'intonation:3': ['', 'ИК-1 で言うと「きみは。」という言い切りになってしまいます', 'ИК-7 は皮肉の否定の型です'],
+  'intonation:4': ['', 'ИК-2 だと「どんな天気？」という質問になります', 'ИК-1 だと「こういう天気です」という平叙になります'],
+  'intonation:5': ['', 'ほめるなら ИК-5 で言います。ИК-7 は正反対です', '質問なら ИК-2（疑問詞あり）の型になります'],
+  'intonation:6': ['', 'ИК-1 は平叙文の型です', 'ИК-6 は余韻の感嘆の型です'],
+  'intonation:7': ['', 'Москву́ で上げると「行き先はモスクワかどうか」の質問に変わります', '上げないと質問に聞こえません'],
+  'intonation:8': ['', '上げて終わるのは質問（ИК-3・ИК-4）です', '高いまま漂うのは ИК-6 です'],
+  'intonation:9': ['', 'ひかえめだと平叙文（ИК-1）に聞こえてしまいます', '上げずに強くいうのは ИК-2（疑問詞の質問）です'],
   // ---- свой・集合数詞・だれか・ли ----
   'possessive:10': ['', 'её だと「主語とは別の彼女の」本になります', 'своя́ は主格の形。「本を」に合わせて свою́ です'],
   'possessive:11': ['', '自分の本なら свою́ кни́гу と言います'],
@@ -15423,6 +15487,7 @@ const TOPIC_INDEX = [
   { t:'疑問詞（кто・что・где・когда́…）', u:'question-words', k:'ぎもんし たずねる 質問 куда откуда почему как сколько' },
   { t:'где・куда́・отку́да の使い分け', u:'question-words', k:'どこ どこへ どこから 場所' },
   { t:'кто・что の格変化（кого́・кому́・о чём）', u:'question-words', k:'кого кому кем о ком о чём かくへんか' },
+  { t:'イントネーション（ИК-1〜ИК-7）', u:'intonation', k:'いんとねーしょん おんちょう メロディー 音調 質問 上げ下げ ик' },
   { t:'時計の読み方（полови́на шесто́го・без пяти́）', u:'numbers', k:'とけい じこく なんじ половина четверть без пяти полшестого который час' },
   { t:'出没母音 — 消える о・е（оте́ц → отца́）', u:'case-gen', k:'しゅつぼつぼいん きえる отца дня день出没' },
   { t:'люби́ть と нра́виться のちがい', u:'case-dat', k:'すき 好き いいね あいしてる понравился このみ' },
