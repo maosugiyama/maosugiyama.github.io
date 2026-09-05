@@ -32,7 +32,7 @@ try{
   // ---- 0. 起動と数 ----
   ok('起動:59ユニット', GRAMMAR_UNITS.length===59, GRAMMAR_UNITS.length);
   var totalQ = GRAMMAR_UNITS.reduce(function(n,u){return n+u.drills.length;},0);
-  ok('起動:777問', totalQ===777, totalQ);
+  ok('起動:779問', totalQ===779, totalQ);
   ok('起動:表紙が描画', !!document.querySelector('#home-cover, .cover-intro'));
 
   // ---- 1. 目次 → ユニット → 帰り道（スクロール復元）----
