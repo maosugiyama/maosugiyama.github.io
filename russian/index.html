@@ -642,8 +642,8 @@
     border-radius: 8px;
     padding: 3px 8px;
     margin: 3px 2px;
-    font-size: 11.5px;
-    color: #7A5040;
+    font-size: 15px;
+    color: #3A2318;
   }
   .conj-table {
     display: grid;
@@ -3111,6 +3111,11 @@
      そろえる。入れ子になったときの二重拡大は下の行で打ち消す */
   [lang="ru"] { letter-spacing: normal; font-size: 1.09em; }
   [lang="ru"] [lang="ru"] { font-size: 1em; }
+  /* 本文の太字は控えめに。ロシア語の単語は書体と大きさで
+     すでに区別できているので、太字にしない（1文字だけの
+     対比強調 <b>а</b> などは lang が付かないため太字が残る） */
+  .info-card p b { font-weight: 600; }
+  .info-card p b[lang="ru"] { font-weight: 400; }
 
   /* ---- キーボードで操作したときの位置表示 ---- */
   /* マウスでは出さず、キーボードで進めたときだけ出す。
