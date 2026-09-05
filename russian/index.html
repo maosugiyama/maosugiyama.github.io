@@ -3773,7 +3773,7 @@
         </div>
         <div class="stage-items">
           <div class="stage-meter" id="stage-meter-1"></div>
-          <button class="home-card step1b" onclick="switchTab(&#39;dictation&#39;)" style="order:2;">
+          <button class="home-card step1b" onclick="goTab(&#39;dictation&#39;)" style="order:2;">
             <div class="home-card-icon"><span class="lu lu-md"><svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg></span></div>
             <div class="home-card-body">
               <strong>聞いて綴る（ディクテーション）</strong>
@@ -3782,7 +3782,7 @@
             </div>
             <div class="home-card-arrow">→</div>
           </button>
-          <button class="home-card step1" onclick="switchTab(&#39;alphabet&#39;)" style="order:1;">
+          <button class="home-card step1" onclick="goTab(&#39;alphabet&#39;)" style="order:1;">
             <div class="home-card-icon"><span class="lu lu-md"><svg viewBox="0 0 24 24"><path d="M12 5c.67 0 1.35.09 2 .26 1.78-2 5.03-2.84 6.42-2.26 1.4.58-.42 7-.42 7 .57 1.07 1 2.24 1 3.44C21 17.9 16.97 21 12 21s-9-3-9-7.56c0-1.25.5-2.4 1-3.44 0 0-1.89-6.42-.5-7 1.39-.58 4.72.23 6.5 2.23A9.04 9.04 0 0 1 12 5Z"></path><path d="M8 14v.5"></path><path d="M16 14v.5"></path><path d="M11.25 16.25h1.5L12 17l-.75-.75Z"></path></svg></span></div>
             <div class="home-card-body">
               <strong>キリル文字（ねこ図鑑）</strong>
@@ -3791,7 +3791,7 @@
             </div>
             <div class="home-card-arrow">→</div>
           </button>
-      <button class="home-sub-link" onclick="switchTab(&#39;pronunciation&#39;)">
+      <button class="home-sub-link" onclick="goTab(&#39;pronunciation&#39;)">
         <span style="font-size:15px;letter-spacing:-4px;color:#3A2318;padding-right:4px;">♩♩</span>
         発音のお約束
         <span class="desc">無声音化・母音の弱化・硬音と軟音（いつでもどうぞ）</span>
@@ -3806,7 +3806,7 @@
         </div>
         <div class="stage-items">
           <div class="stage-meter" id="stage-meter-2"></div>
-          <button class="home-card step2" onclick="switchTab(&#39;grammar&#39;)">
+          <button class="home-card step2" onclick="goTab(&#39;grammar&#39;)">
             <div class="home-card-icon"><span class="lu lu-md"><svg viewBox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></span></div>
             <div class="home-card-body">
               <strong>文法・練習と解説</strong>
@@ -3815,7 +3815,7 @@
             </div>
             <div class="home-card-arrow">→</div>
           </button>
-          <button class="home-card step3" onclick="switchTab(&#39;challenge&#39;)">
+          <button class="home-card step3" onclick="goTab(&#39;challenge&#39;)">
             <div class="home-card-icon"><span class="lu lu-md"><svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg></span></div>
             <div class="home-card-body">
               <strong>チャレンジ（順番どおり・ランダム）</strong>
@@ -4106,7 +4106,7 @@
 
   <!-- TAB 1: Alphabet (ねこ図鑑) -->
   <div class="tab-content" id="tab-alphabet">
-    <button class="back-to-home-btn" onclick="switchTab(&#39;home&#39;)" title="ホームに戻る"><span class="lu lu-lg"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span></button>
+    <button class="back-to-home-btn" onclick="tabBack()" title="ホームに戻る"><span class="lu lu-lg"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span></button>
     <div class="progress-card">
       <div class="progress-head">
         <span class="progress-label">コレクション進捗</span>
@@ -4257,31 +4257,31 @@
       <img class="cat-img" src="cat-ya.jpg" alt="Я">
       <div class="word">???</div>
     </div></div>
-    <div style="text-align:center;margin-top:16px;"><button onclick="switchTab(&#39;home&#39;)" title="ホームに戻る" class="back-to-home-btn" style="margin-bottom:0;"><span class="lu lu-lg"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span></button></div>
+    <div style="text-align:center;margin-top:16px;"><button onclick="tabBack()" title="ホームに戻る" class="back-to-home-btn" style="margin-bottom:0;"><span class="lu lu-lg"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span></button></div>
   </div>
 
   <!-- TAB 2: Grammar (文法＋練習) -->
   <div class="tab-content" id="tab-grammar">
-    <button class="back-to-home-btn" onclick="switchTab(&#39;home&#39;)" title="ホームに戻る"><span class="lu lu-lg"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span></button>
+    <button class="back-to-home-btn" onclick="tabBack()" title="ホームに戻る"><span class="lu lu-lg"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span></button>
     <div id="grammar-hub"></div>
     <div id="grammar-unit" style="display:none;"></div>
   </div>
 
   <!-- TAB 5: Dictation (聞いて綴る) -->
   <div class="tab-content" id="tab-dictation">
-    <button class="back-to-home-btn" onclick="switchTab(&#39;home&#39;)" title="ホームに戻る"><span class="lu lu-lg"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span></button>
+    <button class="back-to-home-btn" onclick="tabBack()" title="ホームに戻る"><span class="lu lu-lg"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span></button>
     <div id="dictation-view"></div>
   </div>
 
   <!-- TAB 4: Challenge (チャレンジ) -->
   <div class="tab-content" id="tab-challenge">
-    <button class="back-to-home-btn" onclick="switchTab(&#39;home&#39;)" title="ホームに戻る"><span class="lu lu-lg"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span></button>
+    <button class="back-to-home-btn" onclick="tabBack()" title="ホームに戻る"><span class="lu lu-lg"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span></button>
     <div id="challenge-view"></div>
   </div>
 
   <!-- TAB 3: Pronunciation (発音のお約束) -->
   <div class="tab-content" id="tab-pronunciation">
-    <button class="back-to-home-btn" onclick="switchTab(&#39;home&#39;)" title="ホームに戻る"><span class="lu lu-lg"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span></button>
+    <button class="back-to-home-btn" onclick="tabBack()" title="ホームに戻る"><span class="lu lu-lg"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span></button>
     <div class="info-card">
       <h3><span style="display:inline-block;font-size:1em;letter-spacing:-2px;vertical-align:-0.05em;">♩♩</span> 発音のお約束</h3>
       <p style="color:#7A5040;font-size:12px;margin-top:-4px;">ロシア語の発音を理解するためのきほんのルールをまとめました。</p>
@@ -4402,7 +4402,7 @@
       </div>
     </div>
 
-    <div style="text-align:center;margin-top:16px;"><button onclick="switchTab(&#39;home&#39;)" title="ホームに戻る" class="back-to-home-btn" style="margin-bottom:0;"><span class="lu lu-lg"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span></button></div>
+    <div style="text-align:center;margin-top:16px;"><button onclick="tabBack()" title="ホームに戻る" class="back-to-home-btn" style="margin-bottom:0;"><span class="lu lu-lg"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span></button></div>
   </div>
 </div>
 
@@ -4668,7 +4668,10 @@ const REWARD_PDF_URL = "cyrillic_alphabet_by_maoche.pdf";
 const REWARD_PDF_FILENAME = "cyrillic_alphabet_by_maoche.pdf";
 
 // Tab navigation
+let activeTab = 'home';
+let tabOrigin = null;   // { tab, y }
 function switchTab(tabName) {
+  activeTab = tabName;
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
   const btn = document.getElementById('tab-btn-' + tabName);
@@ -4689,6 +4692,24 @@ function switchTab(tabName) {
   if (tabName === 'home' && typeof renderInstallBand === 'function') renderInstallBand();
   // Scroll to top when switching
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// タブをまたぐジャンプの帰り道 ——
+// どの画面のどの位置から来たかを覚えておき、ホームボタンで
+// 「来た場所」へ帰れるようにする（ユニットの帰り道と同じ考え方）
+function goTab(tab) {
+  const from = { tab: activeTab, y: window.scrollY || 0 };
+  switchTab(tab);
+  if (tab !== from.tab) tabOrigin = from;
+}
+function tabBack() {
+  const o = tabOrigin; tabOrigin = null;
+  if (o && o.tab && o.tab !== activeTab) {
+    switchTab(o.tab);
+    window.scrollTo({ top: o.y || 0, behavior: 'auto' });
+    return;
+  }
+  switchTab('home');
 }
 
 // 音声再生機能（ブラウザ内蔵のWeb Speech API）
@@ -12946,7 +12967,7 @@ function startReview() {
     }
     return;
   }
-  switchTab('challenge');
+  goTab('challenge');
   startChallenge(qs, 'review');
 }
 
@@ -13456,7 +13477,7 @@ function setHubLevel(v) {
 
 // ホームの各とびらから、そのレベルの文法へ直行する
 function openGrammarLevel(level) {
-  switchTab('grammar');
+  goTab('grammar');
   hubLevel = level;
   openCatsForLevel(level);
   renderGrammarHub();
@@ -15167,7 +15188,7 @@ function stageInfo() {
 // 最後に開いたユニットへ戻る
 function resumeLastUnit() {
   if (!lastUnitId || !unitById(lastUnitId)) return;
-  switchTab('grammar');
+  goTab('grammar');
   openGrammarUnit(lastUnitId);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
