@@ -13552,6 +13552,8 @@ let currentUnitId = null;
 // ユニットをどこから開いたか（'hub' 文法メニュー ／ 'toc' 目次）。
 // 戻り先を、来た道と同じにするために覚えておく。
 let unitOrigin = 'hub';
+// ユニットを開く直前のスクロール位置（戻ったとき、見ていた場所に帰るため）
+let savedScrollPos = { hub: 0, toc: 0 };
 function unitBackLabel(long) {
   if (unitOrigin === 'toc')   return long ? '← 目次に戻る' : '← 目次';
   if (unitOrigin === 'vocab') return long ? '← ことばの索引に戻る' : '← 索引';
@@ -13584,13 +13586,23 @@ function backToUnitOrigin() {
   if (hub) hub.style.display = 'block';
   unitOrigin = 'hub';
   switchTab('home');
-  openToc();
+  openToc(savedScrollPos.toc);
 }
 
 function openGrammarUnit(id, origin) {
   const u = unitById(id);
   if (!u) return;
   unitOrigin = (origin === 'toc' || origin === 'vocab') ? origin : 'hub';
+  if (unitOrigin === 'toc') {
+    savedScrollPos.toc = window.scrollY || 0;
+  } else if (unitOrigin === 'hub') {
+    // 表紙の「つづきから」など、文法メニューが見えていない状態から
+    // 開いたときは保存しない（表紙の位置でメニューの記憶を汚さない）
+    const hubEl = document.getElementById('grammar-hub');
+    if (hubEl && hubEl.style.display !== 'none' && hubEl.offsetParent !== null) {
+      savedScrollPos.hub = window.scrollY || 0;
+    }
+  }
   currentUnitId = id;
   noteVisit(stageOfLevel(u.level), id);
   const p = unitProg(id);
@@ -13633,7 +13645,7 @@ function backToGrammarHub() {
   const hub = document.getElementById('grammar-hub');
   if (hub) hub.style.display = 'block';
   renderGrammarHub();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: savedScrollPos.hub || 0, behavior: 'auto' });
 }
 
 // ============================================================
@@ -16498,12 +16510,16 @@ function openIntro() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function openToc() {
+function openToc(restoreY) {
   tocQuery = '';
   renderIntroToc();
   showHomeView('toc');
   logScreen('toc');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (typeof restoreY === 'number' && restoreY > 0) {
+    window.scrollTo({ top: restoreY, behavior: 'auto' });
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
 
 // 表紙の「文字からはじめる」。
