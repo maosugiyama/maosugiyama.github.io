@@ -3109,6 +3109,16 @@
   /* キリル文字は Times New Roman の字面（エックスハイト）が小さく、
      同じpxでも日本語より一段小さく見える。少し拡大して視覚サイズを
      そろえる。入れ子になったときの二重拡大は下の行で打ち消す */
+  /* 「もっと深く」の折りたたみ（二周目向けの深掘り） */
+  details.deep { background: #FBF7F0; border: 1.5px dashed #D9C8B2; border-radius: 12px; padding: 0 12px; margin: 12px 0; }
+  details.deep > summary { cursor: pointer; padding: 10px 2px; font-weight: 700; color: #8A6A2E; font-size: 13px; }
+  details.deep[open] { background: #FFFDF8; padding-bottom: 10px; }
+  /* ユニットのリンクコピー */
+  .unit-link-btn { background: #fff; border: 1.5px solid #F0DDD7; color: #9F544A; border-radius: 999px;
+    padding: 4px 10px; font-family: inherit; font-size: 11.5px; cursor: pointer; margin-left: 6px; }
+  /* 教科書対応の早見表のリンク */
+  .tb-link { background: none; border: none; padding: 0; font-family: inherit; font-size: inherit;
+    color: #9F544A; text-decoration: underline; cursor: pointer; }
   [lang="ru"] { letter-spacing: normal; font-size: 1.09em; }
   [lang="ru"] [lang="ru"] { font-size: 1em; }
   /* 本文の太字は控えめに。ロシア語の単語は書体と大きさで
@@ -3672,6 +3682,33 @@
           <p class="im-note">説明のしかたが教科書とちがうことがあります。
           そのときは、どちらが正しいかではなく<b>どちらが自分に入ってくるか</b>で選んでください。
           同じことを二通りの言い方で聞けるのは、むしろ得なことです。</p>
+          <details class="deep" style="margin-top:10px;">
+            <summary>教科書対応の早見表 —— 授業で習ったら、ここで深掘り</summary>
+            <p style="font-size:12px;color:#7A5040;">課の順番は教科書ごとにちがうので、<b>習った項目の名前</b>で引いてください。
+            左が教科書によくある項目名、右がこのアプリの課です。</p>
+            <div class="conj-table">
+              <span class="pron">文字と発音</span><span class="form"><button class="tb-link" onclick="openUnitFromHome('spelling-sound')">書いてあるのに、そう読まない</button></span>
+              <span class="pron">Э́то…・Что э́то?</span><span class="form"><button class="tb-link" onclick="openUnitFromHome('phrases')">きほんの表現</button></span>
+              <span class="pron">名詞の性</span><span class="form"><button class="tb-link" onclick="openUnitFromHome('noun-gender')">名詞の性</button></span>
+              <span class="pron">人称・所有代名詞</span><span class="form"><button class="tb-link" onclick="openUnitFromHome('pron-personal')">人称代名詞</button>　<button class="tb-link" onclick="openUnitFromHome('possessive')">所有代名詞</button></span>
+              <span class="pron">動詞の現在形</span><span class="form"><button class="tb-link" onclick="openUnitFromHome('verb-e')">第1変化</button>　<button class="tb-link" onclick="openUnitFromHome('verb-i')">第2変化</button>　<button class="tb-link" onclick="openUnitFromHome('verb-irr')">不規則</button></span>
+              <span class="pron">対格</span><span class="form"><button class="tb-link" onclick="openUnitFromHome('case-acc')">対格（〜を）</button></span>
+              <span class="pron">生格・「ない」</span><span class="form"><button class="tb-link" onclick="openUnitFromHome('case-gen')">生格</button>　<button class="tb-link" onclick="openUnitFromHome('negation-gen')">否定生格</button></span>
+              <span class="pron">与格</span><span class="form"><button class="tb-link" onclick="openUnitFromHome('case-dat')">与格（〜に）</button></span>
+              <span class="pron">造格</span><span class="form"><button class="tb-link" onclick="openUnitFromHome('case-inst')">造格（〜で）</button></span>
+              <span class="pron">前置格・前置詞</span><span class="form"><button class="tb-link" onclick="openUnitFromHome('case-prep')">前置格</button>　<button class="tb-link" onclick="openUnitFromHome('prepositions')">前置詞と格</button></span>
+              <span class="pron">複数形・数詞</span><span class="form"><button class="tb-link" onclick="openUnitFromHome('noun-plural')">名詞の複数形</button>　<button class="tb-link" onclick="openUnitFromHome('numbers')">数詞と数え方</button></span>
+              <span class="pron">過去・未来・命令形</span><span class="form"><button class="tb-link" onclick="openUnitFromHome('verb-past')">過去形</button>　<button class="tb-link" onclick="openUnitFromHome('imperative-future')">命令形と未来形</button></span>
+              <span class="pron">運動の動詞</span><span class="form"><button class="tb-link" onclick="openUnitFromHome('verb-motion')">運動の動詞</button>　<button class="tb-link" onclick="openUnitFromHome('verb-motion-pref')">接頭辞つき</button></span>
+              <span class="pron">体（アスペクト）</span><span class="form"><button class="tb-link" onclick="openUnitFromHome('aspect')">動詞の体</button>　<button class="tb-link" onclick="openUnitFromHome('aspect-use')">使い分け</button></span>
+              <span class="pron">比較級・最上級</span><span class="form"><button class="tb-link" onclick="openUnitFromHome('comparative')">比較級・最上級</button></span>
+              <span class="pron">関係代名詞</span><span class="form"><button class="tb-link" onclick="openUnitFromHome('relative')">кото́рый</button></span>
+              <span class="pron">形動詞・副動詞</span><span class="form"><button class="tb-link" onclick="openUnitFromHome('participles')">形動詞</button>　<button class="tb-link" onclick="openUnitFromHome('gerunds')">副動詞</button></span>
+              <span class="pron">仮定法</span><span class="form"><button class="tb-link" onclick="openUnitFromHome('conditional')">бы とていねいな表現</button></span>
+            </div>
+            <p style="font-size:12px;color:#7A5040;">先生方へ：各課はアドレスの後ろに <b>#u/課のID</b> をつけた直リンクで開けます
+            （課を開いて「&#128279; リンク」を押すとコピーできます）。レジュメやLMSにどうぞ。</p>
+          </details>
         </div>
       </div>
 
@@ -4706,6 +4743,31 @@ function switchTab(tabName) {
 // タブをまたぐジャンプの帰り道 ——
 // どの画面のどの位置から来たかを覚えておき、ホームボタンで
 // 「来た場所」へ帰れるようにする（ユニットの帰り道と同じ考え方）
+// ユニットへの直リンク（#u/ユニットID）——授業のレジュメやLMSに貼れる
+function applyHashLink() {
+  const m = (location.hash || '').match(/^#u\/([a-z0-9-]+)$/);
+  if (!m || !unitById(m[1])) return false;
+  switchTab('grammar');
+  openGrammarUnit(m[1]);
+  return true;
+}
+function setUnitHash(id) {
+  try { history.replaceState(null, '', '#u/' + id); } catch (e) {}
+}
+function clearUnitHash() {
+  if (!/^#u\//.test(location.hash || '')) return;
+  try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
+}
+function copyUnitLink(id) {
+  const url = location.origin.indexOf('http') === 0
+    ? location.origin + location.pathname + '#u/' + id
+    : 'https://maosugiyama.github.io/russian/#u/' + id;
+  const done = function(){ showToast('この課へのリンクをコピーしました'); };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(done, function(){ showToast(url); });
+  } else { showToast(url); }
+}
+
 function goTab(tab) {
   const from = { tab: activeTab, y: window.scrollY || 0 };
   switchTab(tab);
@@ -6949,9 +7011,9 @@ const GRAMMAR_UNITS = [
   <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 24 L80 24 L100 26 L130 48 L190 50" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="90" cy="25" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-2　疑問詞のある質問</b>　<span lang="ru">Кто э́то?　Где кни́га?</span> <button class="acc-say" onclick="speak('Кто это? Где книга?')" aria-label="ИК-2 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">だれ？どこ？——上げずに、疑問詞を強めにいって下げる</span><br><span style="font-size:12px;color:#7E5C42;">疑問詞が質問のしるしなので、メロディーは上げません。呼びかけや命令もこの型です。</span></div></div>
   <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 32 L80 32 L100 8 L125 44 L190 48" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="8" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-3　はい・いいえの質問</b>　<span lang="ru">Ты студе́нт?</span> <button class="acc-say" onclick="speak('Ты студент?')" aria-label="ИК-3 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">学生なの？——中心で急角度に高く上げ、すぐ下げる</span><br><span style="font-size:12px;color:#7E5C42;">疑問詞の課の「↗」の正体がこれ。話しことばでは、この上げこそが「〜か？」の代わりです（書きことばの ли に相当）。</span></div></div>
   <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 28 L85 28 L105 44 L150 22 L190 12" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="105" cy="44" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-4　くらべる聞き返し</b>　<span lang="ru">А ты?</span> <button class="acc-say" onclick="speak('А ты?')" aria-label="ИК-4 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">で、きみは？——いったん下げてから、なめらかに上げて終わる</span><br><span style="font-size:12px;color:#7E5C42;">接続詞の課で見た「くらべる а」の質問。窓口などのあらたまった聞き返しにも使います。</span></div></div>
-  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 38 L45 12 L135 12 L170 40 L190 46" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="45" cy="12" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-5　感嘆（ほめる）</b>　<span lang="ru">Кака́я пого́да!</span> <button class="acc-say" onclick="speak('Какая погода!')" aria-label="ИК-5 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">なんていい天気！——2つの山：高く上げて、保って、下げる</span><br><span style="font-size:12px;color:#7E5C42;">中心が2つあるのが特徴。Как хорошо́!（ああ、いいなあ）もこの型です。</span></div></div>
+  <details class="deep"><summary>もっと深く —— 感情の3つの型（ИК-5・ИК-6・ИК-7）</summary><div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 38 L45 12 L135 12 L170 40 L190 46" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="45" cy="12" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-5　感嘆（ほめる）</b>　<span lang="ru">Кака́я пого́да!</span> <button class="acc-say" onclick="speak('Какая погода!')" aria-label="ИК-5 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">なんていい天気！——2つの山：高く上げて、保って、下げる</span><br><span style="font-size:12px;color:#7E5C42;">中心が2つあるのが特徴。Как хорошо́!（ああ、いいなあ）もこの型です。</span></div></div>
   <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 38 L90 38 L115 12 L190 9" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="115" cy="12" r="5" fill="#C1443C"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-6　余韻の感嘆・未完</b>　<span lang="ru">А пиро́г како́й!</span> <button class="acc-say" onclick="speak('А пирог какой!')" aria-label="ИК-6 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">あのピローグときたら！——上げたまま、高く漂わせて終わる</span><br><span style="font-size:12px;color:#7E5C42;">下げないことで「まだ続きがある」余韻が残ります。</span></div></div>
-  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 32 L85 32 L105 8 L122 8" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="105" cy="8" r="5" fill="#C1443C"/><line x1="126" y1="2" x2="126" y2="16" stroke="#C1443C" stroke-width="3"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-7　皮肉の否定</b>　<span lang="ru">Како́й он студе́нт!</span> <button class="acc-say" onclick="speak('Какой он студент!')" aria-label="ИК-7 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">彼が学生だなんて！（＝学生なんかじゃない）——急に上げて、ぷつっと切る</span><br><span style="font-size:12px;color:#7E5C42;">形は感嘆、意味は否定。ИК-5 でほめ、ИК-7 でけなす——メロディーだけで正反対になります。</span></div></div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;padding:8px;background:#FBF7F0;border-radius:10px;"><div><svg viewBox="0 0 200 62" width="190" height="59" role="img" style="background:#FFFDF8;border:1px solid #E8DCCB;border-radius:8px;"><line x1="6" y1="31" x2="194" y2="31" stroke="#E8DCCB" stroke-width="1"/><path d="M10 32 L85 32 L105 8 L122 8" fill="none" stroke="#3A5578" stroke-width="3" stroke-linecap="round"/><circle cx="105" cy="8" r="5" fill="#C1443C"/><line x1="126" y1="2" x2="126" y2="16" stroke="#C1443C" stroke-width="3"/></svg></div><div style="flex:1;min-width:200px;"><b>ИК-7　皮肉の否定</b>　<span lang="ru">Како́й он студе́нт!</span> <button class="acc-say" onclick="speak('Какой он студент!')" aria-label="ИК-7 の例を聞く">&#9834; 聞く</button><br><span style="font-size:12px;color:#5A3A30;">彼が学生だなんて！（＝学生なんかじゃない）——急に上げて、ぷつっと切る</span><br><span style="font-size:12px;color:#7E5C42;">形は感嘆、意味は否定。ИК-5 でほめ、ИК-7 でけなす——メロディーだけで正反対になります。</span></div></div></details>
 
   <div class="rule-row">
     <strong>いちばん大事なこと — 上げる場所で、質問の焦点が変わる</strong>
@@ -9918,7 +9980,7 @@ const GRAMMAR_UNITS = [
     <p>疑問詞の что（なに？）と同じ顔をしていますが、ここでは文をまるごと包む接続詞です。
     発音も同じ「シトー」。<b>前にかならずコンマ</b>を打ちます。</p>
 
-    <p style="margin-top:10px;"><b>一歩先へ —— то, что（格の座席をつくる）</b></p>
+    <details class="deep"><summary>一歩先へ —— то, что・тот, кто（格の座席をつくる）</summary>
     <p>Я зна́ю, что… がそのまま言えるのは、зна́ть が「〜を」を直接とれるから。
     でも говори́ть <b>о</b> ＋ 前置格 のように<b>格が必要な場面</b>では、文のかたまりは格変化できません。
     そこで <b>то</b> に座席を代行させます——то が格を引き受け、что 以下はそのまま。</p>
@@ -9941,6 +10003,7 @@ const GRAMMAR_UNITS = [
     <p style="font-size:12px;color:#7E5C42;">複数の「〜する人たち」は те, кто。для（〜のために）が生格を求めるので
     те → тех と変わります。ちなみに、このアプリも
     для тех, кто лю́бит ко́шек и ру́сский язы́к——ねこもロシア語も好きな人のために作られています。</p>
+    </details>
   </div>
 
   <div class="verb-row">
@@ -14101,6 +14164,7 @@ function backToUnitOrigin() {
   const hub = document.getElementById('grammar-hub');
   if (hub) hub.style.display = 'block';
   unitOrigin = 'hub';
+  clearUnitHash();
   switchTab('home');
   openToc(savedScrollPos.toc);
 }
@@ -14133,6 +14197,7 @@ function openGrammarUnit(id, origin) {
   html += '<div class="unit-head">';
   html += '  <button class="unit-back" onclick="' + unitBackFn() + '">' + unitBackLabel(false) + '</button>';
   html += '  <span class="unit-level">' + u.level + '</span>';
+  html += '  <button class="unit-link-btn" onclick="copyUnitLink(\'' + u.id + '\')" title="この課へのリンクをコピー">&#128279; リンク</button>';
   html += '</div>';
   html += '<div class="info-card">';
   html += '  <h3>' + icon('book', 'lu-md') + ' ' + u.title + '</h3>';
@@ -14149,6 +14214,7 @@ function openGrammarUnit(id, origin) {
 
   view.innerHTML = html;
   decorateNotes(view, u.id);
+  setUnitHash(id);
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -14160,6 +14226,7 @@ function backToGrammarHub() {
   if (view) { view.style.display = 'none'; view.innerHTML = ''; }
   const hub = document.getElementById('grammar-hub');
   if (hub) hub.style.display = 'block';
+  clearUnitHash();
   renderGrammarHub();
   window.scrollTo({ top: savedScrollPos.hub || 0, behavior: 'auto' });
 }
@@ -18309,6 +18376,7 @@ purgeUnknownSrs();   // 教材更新でなくなった問題を取り除く
 render();
 renderGrammarHub();
 renderChallengeSetup();
+applyHashLink();   // #u/ユニットID の直リンクで開かれたとき
 renderDictationSetup();
 updateHomeStepStatus();
 renderInstallBand();

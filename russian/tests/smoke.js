@@ -47,6 +47,15 @@ try{
   backToUnitOrigin();
   ok('目次へ帰還+位置復元', Math.abs(window.scrollY-y0)<80, 'y='+window.scrollY+' 期待'+y0);
 
+  // ---- 1b. 直リンクと深掘りたたみ ----
+  location.hash='#u/conditional';
+  ok('直リンクで開く', applyHashLink() && currentUnitId==='conditional');
+  ok('ハッシュが付く', (location.hash||'').indexOf('#u/')===0);
+  backToGrammarHub();
+  openGrammarUnit('intonation');
+  ok('深掘りたたみ(ИК-5〜7)', uv.querySelectorAll('details.deep').length>=1);
+  backToGrammarHub();
+
   // ---- 2. 文法メニューの帰り道 ----
   switchTab('grammar');
   window.scrollTo(0,300); var y1=window.scrollY;
