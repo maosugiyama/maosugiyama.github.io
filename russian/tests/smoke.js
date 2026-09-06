@@ -30,9 +30,9 @@ var R=[], F=[];
 function ok(name,cond,extra){ if(cond){R.push(name);}else{F.push(name+(extra?('｜'+String(extra).slice(0,80)):''));} }
 try{
   // ---- 0. 起動と数 ----
-  ok('起動:59ユニット', GRAMMAR_UNITS.length===59, GRAMMAR_UNITS.length);
+  ok('起動:60ユニット', GRAMMAR_UNITS.length===60, GRAMMAR_UNITS.length);
   var totalQ = GRAMMAR_UNITS.reduce(function(n,u){return n+u.drills.length;},0);
-  ok('起動:779問', totalQ===779, totalQ);
+  ok('起動:800問', totalQ===800, totalQ);
   ok('起動:表紙が描画', !!document.querySelector('#home-cover, .cover-intro'));
 
   // ---- 1. 目次 → ユニット → 帰り道（スクロール復元）----
