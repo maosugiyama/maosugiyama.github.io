@@ -71,6 +71,18 @@ try{
   tabBack();
   ok('ホームへ帰還+位置復元', activeTab==='home' && Math.abs(window.scrollY-y2)<80, 'y='+window.scrollY);
 
+  // ---- 3b. ホームの顔の記憶（表紙の人は表紙へ、道のりの人は道のりへ）----
+  showHomeView('cover');
+  switchTab('grammar'); switchTab('home');
+  ok('表紙の人は表紙へ帰る', (document.getElementById('cover-actions')||{}).style.display==='block');
+  showHomeView('road');
+  switchTab('grammar'); switchTab('home');
+  ok('道のりの人は道のりへ帰る', (document.getElementById('home-road')||{}).style.display==='block');
+  ok('道のりに「表紙にもどる」常設', (document.getElementById('home-road')||{innerHTML:''}).innerHTML.indexOf('表紙にもどる')>=0);
+  openToc();
+  openGrammarUnit('conjunctions','toc'); backToUnitOrigin();
+  ok('目次からの帰還は目次のまま', (document.getElementById('home-toc')||{}).style.display==='block');
+
   // ---- 4. 練習を最後まで解く（全形式）----
   function solveUnit(id){
     openGrammarUnit(id); startUnitDrill(id);
