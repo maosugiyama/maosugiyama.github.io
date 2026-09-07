@@ -18607,13 +18607,45 @@ function isIOS() {
   return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 }
 
+// LINE・X（Twitter）・Instagram などのアプリ内ブラウザか
+function isInAppBrowser() {
+  const ua = navigator.userAgent || '';
+  return /Line\/|FBAN|FBAV|FB_IAB|Instagram|Twitter/i.test(ua);
+}
+
+function installGuideHtml() {
+  return '<details class="deep" style="margin-top:8px;">'
+    + '<summary>うまくいかないときは —— くわしい手順</summary>'
+    + '<p style="font-size:12.5px;line-height:1.9;"><b>「ホーム画面に追加」が見つからない場合、'
+    + 'いちばん多い原因は LINE・X（Twitter）・Instagram の中でこのページを開いていること</b>です。'
+    + 'アプリ内の画面には、この項目がそもそもありません。右下か右上の「…」から'
+    + '「<b>Safariで開く</b>」（Androidは「<b>Chromeで開く</b>」）を選ぶか、'
+    + 'アドレスをコピーして Safari／Chrome に貼りつけてから、やり直してください。</p>'
+    + '<p style="font-size:12.5px;line-height:1.9;"><b>iPhone（Safari）</b>：下の共有ボタン（□に↑）→ '
+    + '出てきた縦のメニューを<b>いちばん下までスクロール</b>→「ホーム画面に追加」。'
+    + 'それでも無いときは、メニュー最下部の「アクションを編集…」を開くと、'
+    + '非表示になっている「ホーム画面に追加」を＋で戻せます。</p>'
+    + '<p style="font-size:12.5px;line-height:1.9;"><b>Android（Chrome）</b>：右上の「︙」→'
+    + '「アプリをインストール」または「ホーム画面に追加」。</p>'
+    + '<p style="font-size:12.5px;line-height:1.9;"><b>パソコン</b>：お気に入り登録は '
+    + 'Ctrl＋D（Macは ⌘＋D）。Chrome・Edge ならアドレスバー右端のインストールマークから、'
+    + 'アプリとして入れることもできます。</p>'
+    + '</details>';
+}
+
 function renderInstallBand() {
   const box = document.getElementById('install-band');
   if (!box) return;
   if (isStandalone()) { box.innerHTML = ''; box.style.display = 'none'; return; }
   box.style.display = 'block';
   let html = '';
-  if (deferredInstall) {
+  if (isInAppBrowser()) {
+    html += '<div class="ib-main"><span class="ib-icon">' + icon('warning', 'lu-md') + '</span>'
+         + '<span class="ib-body"><strong>いま、アプリの中のブラウザで開いています</strong>'
+         + '<span>この画面からは「ホーム画面に追加」ができません。'
+         + '右下か右上の「…」→「<b>Safariで開く</b>」（Androidは「<b>Chromeで開く</b>」）を選んでから、'
+         + 'ホーム画面に追加してください</span></span></div>';
+  } else if (deferredInstall) {
     html += '<div class="ib-main"><span class="ib-icon">' + icon('gift', 'lu-md') + '</span>'
          + '<span class="ib-body"><strong>ホーム画面に追加できます</strong>'
          + '<span>アプリのように開けて、電波がなくても使えます</span></span></div>'
@@ -18626,7 +18658,8 @@ function renderInstallBand() {
   } else {
     box.innerHTML = ''; box.style.display = 'none'; return;
   }
-  box.innerHTML = html;
+  html += installGuideHtml();
+  box.innerHTML = renderIcons ? renderIcons(html) : html;
 }
 
 function doInstall() {
