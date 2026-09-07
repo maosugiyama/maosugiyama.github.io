@@ -3804,6 +3804,7 @@
     </div>
 
     <div id="home-road" style="display:none;">
+      <p class="intro-back" style="margin:0 0 6px;"><button onclick="backToCover()">← 表紙にもどる</button></p>
       <p class="intro-back" id="road-back" style="display:none;"><button onclick="returnToIntro()">← 「はじめに」にもどる</button></p>
     <p class="roadmap-title">ねこと歩く、ロシア語の道のり</p>
     <div class="stairs-wrap" id="stairs"></div>
@@ -4717,6 +4718,7 @@ const REWARD_PDF_FILENAME = "cyrillic_alphabet_by_maoche.pdf";
 // Tab navigation
 let activeTab = 'home';
 let tabOrigin = null;   // { tab, y }
+let lastHomeFace = 'cover';   // ホームの顔：'cover'（表紙）か 'road'（道のり）
 function switchTab(tabName) {
   activeTab = tabName;
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -4732,8 +4734,9 @@ function switchTab(tabName) {
   if (tabName === 'dictation' && typeof renderDictationSetup === 'function' && !chalState) renderDictationSetup();
   if (tabName === 'home') {
     // ほかの画面から戻ったときは、表紙ではなく道のりのページへ
-    const road = document.getElementById('home-road');
-    if (road && road.style.display === 'none') showHomeView('road');
+    // 表紙を見ていた人は表紙へ、道のりにいた人は道のりへ帰す
+    const face = document.getElementById(lastHomeFace === 'cover' ? 'cover-actions' : 'home-road');
+    if (face && face.style.display === 'none') showHomeView(lastHomeFace);
     if (typeof updateHomeStepStatus === 'function') updateHomeStepStatus();
   }
   if (tabName === 'home' && typeof renderInstallBand === 'function') renderInstallBand();
@@ -17463,6 +17466,7 @@ function tocGoUnit(id) {
 
 // 表紙・はじめに・目次・道のり の4画面を出し分ける
 function showHomeView(which) {
+  if (which === 'cover' || which === 'road') lastHomeFace = which;
   const ids = { cover:'cover-actions', intro:'home-intro', toc:'home-toc', road:'home-road', notes:'home-notes', log:'home-log', vocab:'home-vocab' };
   Object.keys(ids).forEach(function(k) {
     const el = document.getElementById(ids[k]);
