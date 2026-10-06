@@ -339,6 +339,39 @@ footer{
   .brand{letter-spacing:.2em;font-size:.74rem}
   body{line-height:2}
 }
+
+/* ---- wide layout: use the page width on larger screens ---- */
+@media (min-width:1000px){
+  main{max-width:1160px}
+  section.block{padding-top:6rem}
+  .lead{max-width:44em}
+  /* news: cards in three columns */
+  #news .sec-inner > .reveal{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+  #news .entry{
+    grid-template-columns:1fr;gap:.5rem;align-content:start;
+    padding:1.5rem 1.6rem 1.7rem;
+    border:1px solid var(--hairline);border-radius:3px;background:rgba(255,255,255,.45);
+  }
+  #news .entry:last-child{border-bottom:1px solid var(--hairline)}
+  #news .entry .body{line-height:2}
+  #news .entry .pill{margin-left:0;margin-right:.4em}
+  /* concept: three themes side by side */
+  #concept .sec-inner{display:grid;grid-template-columns:repeat(3,1fr);column-gap:3rem}
+  #concept .lead{grid-column:1/-1;margin-bottom:3.2rem}
+  #concept .sub{margin-bottom:1rem}
+  /* career: employment | education */
+  #career .sec-inner{
+    display:grid;grid-template-columns:1.25fr 1fr;grid-template-rows:auto 1fr;
+    grid-auto-flow:column;column-gap:4rem;
+  }
+  #career .group-label{margin-top:0}
+  #career .entry{grid-template-columns:4.6em 1fr;gap:1rem;padding:1.1rem 0}
+  /* grants and materials: two columns */
+  #projects .sec-inner > .reveal,
+  #materials .sec-inner > .reveal{display:grid;grid-template-columns:1fr 1fr;column-gap:4rem}
+  #projects .entry:nth-last-child(2),
+  #materials .mat:nth-last-child(2){border-bottom:none}
+}
 </style>
 </head>
 <body>
